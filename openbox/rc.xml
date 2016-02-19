@@ -248,6 +248,24 @@
       <keybind key="W-d">
           <action name="ToggleShowDesktop"/>
       </keybind>
+
+	<!-- Window Tiling: Emulates Windows 7 Snap feature -->
+	<keybind key="W-Left">
+	  <action name="UnmaximizeFull"/>
+	  <action name="MaximizeVert"/>
+	  <action name="MoveResizeTo">
+	    <width>50%</width>
+	  </action>
+	  <action name="MoveToEdgeWest"/>
+	</keybind>
+	<keybind key="W-Right">
+	  <action name="UnmaximizeFull"/>
+	  <action name="MaximizeVert"/>
+	  <action name="MoveResizeTo">
+	    <width>50%</width>
+	  </action>
+	  <action name="MoveToEdgeEast"/>
+	</keybind>
       <!-- Keybindings for windows -->
       <keybind key="A-F4">
           <action name="Close"/>
