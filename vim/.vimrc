@@ -34,6 +34,18 @@ map <buffer> <S-F5> :w<CR>:!time php %<CR>
 "Toggle the tagbar when we press f4
 map <F4> :TagbarToggle<CR>
 
+"Control t opens a new tab. Just like da interwebz
+nmap <c-t> :tabnew<CR>
+
+"Go to next tab with tab
+nmap <Tab> :tabnext<CR>
+
+"Go to next match from vimgrep with right arrow"
+nmap <Right> :cnext<CR>
+
+"Go to next match from vimgrep with right arrow"
+nmap <Left> :cprev<CR>
+
 set tags=tags;/
 
 "Commands
@@ -80,14 +92,11 @@ set numberwidth=2 "Make the line number gutter smaller
 set incsearch "highlight them as they're typed as well
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set relativenumber "Turn on relative numbering for all lines
+set complete-=i "Don't scan included files with omnicompletion
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set backspace=indent,eol,start "Make backspace behave like it does everywhere else
 set scrolloff=3 "Keep at least 3 lines in view when the cursor hits the bottom of the buffer
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
-
-
-"airline settings
-let g:airline_theme='monochrome'
 
 
 "syntastic plugin settings
