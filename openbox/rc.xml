@@ -249,23 +249,23 @@
           <action name="ToggleShowDesktop"/>
       </keybind>
 
-	<!-- Window Tiling: Emulates Windows 7 Snap feature -->
-	<keybind key="W-Left">
-	  <action name="UnmaximizeFull"/>
-	  <action name="MaximizeVert"/>
-	  <action name="MoveResizeTo">
-	    <width>50%</width>
-	  </action>
-	  <action name="MoveToEdgeWest"/>
-	</keybind>
-	<keybind key="W-Right">
-	  <action name="UnmaximizeFull"/>
-	  <action name="MaximizeVert"/>
-	  <action name="MoveResizeTo">
-	    <width>50%</width>
-	  </action>
-	  <action name="MoveToEdgeEast"/>
-	</keybind>
+      <!-- Window Tiling: Emulates Windows 7 Snap feature -->
+      <keybind key="W-Left">
+          <action name="UnmaximizeFull"/>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo">
+              <width>50%</width>
+          </action>
+          <action name="MoveToEdgeWest"/>
+      </keybind>
+      <keybind key="W-Right">
+          <action name="UnmaximizeFull"/>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo">
+              <width>50%</width>
+          </action>
+          <action name="MoveToEdgeEast"/>
+      </keybind>
       <!-- Keybindings for windows -->
       <keybind key="A-F4">
           <action name="Close"/>
@@ -288,7 +288,7 @@
       </keybind>
       <keybind key="W-E">
           <action name="Execute">
-              <command>rofi -show run -bg "#fd2424" -fg "#ffffff"</command>
+              <command>rofi -show run -bg "#d13726" -fg "#ffffff"</command>
           </action>
       </keybind>
       <!-- Keybindings for brightness -->

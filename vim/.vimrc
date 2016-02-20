@@ -58,7 +58,8 @@ autocmd ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
 
 "When we write to the buffer, run pylint on the current file
 "if it's a python file
-autocmd BufWritePost *.py !pylint <afile>
+"Note this is no longer needed since syntastic is way better.
+"autocmd BufWritePost *.py !pylint <afile>
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
