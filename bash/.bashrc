@@ -2,12 +2,17 @@
 alias sl=ls
 alias vrc="vim ~/.vimrc"
 alias brc="vim ~/.bashrc"
+alias shutdown="sudo shutdown -h now"
 alias wiki="vim ~/Documents/wiki/main.wiki"
+alias aperr="cat /var/log/apache2/error.log"
+alias learn="vim ~/Documents/txt/things-to-learn"
+alias rgetd="cd /var/www/html/reap-get.com/public_html/starterkit"
 
 #git aliases
 alias gp="git pull"
 alias gpu="git push"
 alias gf="git fetch"
+alias ga="git add -p"
 alias gb="git branch"
 alias gc="git commit"
 alias gs="git status"
@@ -15,6 +20,12 @@ alias gr="git remote -v"
 alias gpo="git push origin $1"
 alias grepi="git grep -i -- $1"
 
+#conf aliases
+alias conf-vim="vim ~/.vimrc"
+alias conf-bash="vim ~/.bashrc"
+alias conf-gtk="vim ~/.config/gtk-3.0/gtk.css"
+alias conf-conky="vim ~/.config/conky/conky.conf"
+alias conf-openbox="vim ~/.config/openbox/rc.xml"
 
 #Funny story. I originally called this 'fi' as shorthand
 #but that conflicted with the 'fi' keyword to signal
@@ -60,6 +71,35 @@ psyf() {
     ~/programs/psysh $1
 }
 
-source ~/.private_bashrc
+#Run a local server in the current directory
+serve() {
+    sudo php -S localhost:999
+}
 
-echo "bashrc successfully loaded"
+# start up reap-get locally
+rget() {
+    echo "reap-get now available on port 666"
+    cd /var/www/html/reap-get.com/public_html/starterkit
+    sudo php -S localhost:666 
+}
+
+# Starts up ncmpcpp, removes the tcp
+# port on 6600 since it conflicts with mpd
+music() {
+    sudo fuser -k 6600/tcp
+    mpd
+    ncmpcpp
+}
+
+# Start JRA locally
+jra() {
+    echo "jra now available on port 667"
+    cd /var/www/html/joe-reynolds-audio
+    sudo php -S localhost:667 
+}
+
+#knowledgeable cow
+echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
+
+#work sensitive rc not for prying eyes
+source ~/.private_bashrc

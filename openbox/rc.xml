@@ -286,9 +286,33 @@
               <command>gnome-screenshot -w</command>
           </action>
       </keybind>
+      <!-- Volume controls -->
+      <keybind key="W-T">
+          <action name="Execute">
+              <command>amixer -D pulse set Master 1+ toggle</command>
+          </action>
+      </keybind>
+      <keybind key="W-Y">
+          <action name="Execute">
+              <command>amixer -D pulse sset Master 10%-</command>
+          </action>
+      </keybind>
+      <keybind key="W-U">
+          <action name="Execute">
+              <command>amixer -D pulse sset Master 10%+</command>
+          </action>
+      </keybind>
+
+      <!-- Custom stuff -->
       <keybind key="W-E">
           <action name="Execute">
-              <command>rofi -show run -bg "#d13726" -fg "#ffffff"</command>
+              <command>
+                  rofi -show run 
+                  -bg "#d13726"
+                  -hlfg "#d13726"
+                  -hlbg "#ffffff"
+                  -fg "#ffffff"
+              </command>
           </action>
       </keybind>
       <!-- Keybindings for brightness -->
