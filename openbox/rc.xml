@@ -266,6 +266,21 @@
           </action>
           <action name="MoveToEdgeEast"/>
       </keybind>
+      <keybind key="W-Down">
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+              <height>50%</height>
+          </action>
+          <action name="MoveToEdgeSouth"/>
+      </keybind>
+
+      <keybind key="W-Up">
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+              <height>100%</height>
+          </action>
+          <action name="North"/>
+      </keybind>
       <!-- Keybindings for windows -->
       <keybind key="A-F4">
           <action name="Close"/>
@@ -287,17 +302,17 @@
           </action>
       </keybind>
       <!-- Volume controls -->
-      <keybind key="W-T">
+      <keybind key="XF86AudioMute">
           <action name="Execute">
               <command>amixer -D pulse set Master 1+ toggle</command>
           </action>
       </keybind>
-      <keybind key="W-Y">
+      <keybind key="XF86AudioLowerVolume">
           <action name="Execute">
               <command>amixer -D pulse sset Master 10%-</command>
           </action>
       </keybind>
-      <keybind key="W-U">
+      <keybind key="XF86AudioRaiseVolume">
           <action name="Execute">
               <command>amixer -D pulse sset Master 10%+</command>
           </action>
@@ -316,14 +331,14 @@
           </action>
       </keybind>
       <!-- Keybindings for brightness -->
-      <keybind key="W-Down">
+      <keybind key="XF86MonBrightnessDown">
           <action name="Execute">
-              <command>xbacklight -5</command>
+              <command>xbacklight -2</command>
           </action>
       </keybind>
-      <keybind key="W-Up">
+      <keybind key="XF86MonBrightnessUp">
           <action name="Execute">
-              <command>xbacklight +5</command>
+              <command>xbacklight +2</command>
           </action>
       </keybind>
       <!-- Keybindings for window switching -->

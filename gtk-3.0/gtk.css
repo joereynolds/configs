@@ -1,0 +1,20 @@
+/*
+ * Need to actually read the docs rather than
+ * targeting blindly...
+ */
+TerminalWindow * {
+    border : none;
+    color : #fff;
+}
+.notebook {
+    padding : 0;
+    border-width : 0;
+}
+.notebook tab {
+    padding : 5px;
+}
+.notebook tab:active {
+    background-color : darker(#D13726);
+}
+
+
