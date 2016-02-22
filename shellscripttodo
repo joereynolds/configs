@@ -5,9 +5,6 @@ Some of Vim's plugins require the tools here
 to compile. Without the setup step, you're
 left to do it on your own. Good luck.
 
-
-
-
 ## Packages
 - Get xbacklight
     sudo apt-get install xbacklight
@@ -36,6 +33,8 @@ left to do it on your own. Good luck.
         ln -s ~/programs/config/vim/.vimrc ~/.vimrc
     - Bash
         ln -s ~/programs/config/bash/.bashrc ~/.bashrc
+    - Openbox themes
+        ln -s ~/programs/configs/openbox/.themes ~/.themes
 
 - Get a background
     cd ~/Pictures
@@ -52,9 +51,6 @@ left to do it on your own. Good luck.
 
 - Get obconf
     sudo apt-get install obconf
-
-- Get the theme
-    1977 Openbox
 
 # Vim
 
