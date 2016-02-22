@@ -27,7 +27,18 @@ left to do it on your own. Good luck.
 - Get feh
     sudo apt-get install feh
 
+- Get obconf
+    sudo apt-get install obconf
+
+- Get a decent version of vim
+    sudo apt-get install vim-gnome
+
 ## Other
+
+- Remove the shit version of vim and link the new one
+    sudo rm -rf /usr/local/bin/vim
+    ln -s /usr/bin/vim.gnome /usr/local/bin/vim
+
 - Create symlinks
     - Vim
         ln -s ~/programs/config/vim/.vimrc ~/.vimrc
@@ -47,19 +58,8 @@ left to do it on your own. Good luck.
     - ctrl-z for previous tab
     - ctrl-x for next tab
 
-# Openbox
-
-- Get obconf
-    sudo apt-get install obconf
 
 # Vim
-
-- Get a decent version of vim
-    sudo apt-get install vim-gnome
-
-- Remove the shit version of vim and link the new one
-    sudo rm -rf /usr/local/bin/vim
-    ln -s /usr/bin/vim.gnome /usr/local/bin/vim
 
 - get pathogen
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
