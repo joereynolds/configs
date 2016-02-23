@@ -2,9 +2,11 @@
 
 packages=(
     cmake
+    conky
     exuberant-ctags
     feh
     obconf
+    openbox
     python-dev
     rake
     ruby-dev
@@ -19,8 +21,6 @@ for package in ${packages[*]}; do
     sudo apt-get install -qq ${package}
 done
 echo "Packages installed."
-
-echo "Installing Vim plugins started"
 
 echo "Installing Command-T"
 git clone https://github.com/wincent/command-t
@@ -39,3 +39,10 @@ cd youcompleteme
 git submodule update --init --recursive
 ./install.py --clang-completer
 
+echo "Installing Vim-Surround"
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-surround.git
+
+echo "Installing Vimwiki"
+cd ~/.vim/bundle
+git clone https://github.com/vimwiki/vimwiki
