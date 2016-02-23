@@ -33,6 +33,12 @@ left to do it on your own. Good luck.
 - Get a decent version of vim
     sudo apt-get install vim-gnome
 
+- Get openbox
+    sudo apt-get install openbox
+
+- Get conky
+    sudo apt-get install conky
+
 ## Other
 
 - Remove the shit version of vim and link the new one
@@ -41,9 +47,11 @@ left to do it on your own. Good luck.
 
 - Create symlinks
     - Vim
-        ln -s ~/programs/config/vim/.vimrc ~/.vimrc
+        ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
     - Bash
-        ln -s ~/programs/config/bash/.bashrc ~/.bashrc
+        ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
+    - Conky
+        ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf
     - Openbox themes
         ln -s ~/programs/configs/openbox/.themes ~/.themes
 
