@@ -22,6 +22,11 @@ for package in ${packages[*]}; do
 done
 echo "Packages installed."
 
+echo "Installing Pathogen"
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+
 echo "Installing Command-T"
 git clone https://github.com/wincent/command-t
 cd ~/.vim/bundle/command-t
@@ -46,3 +51,11 @@ git clone git://github.com/tpope/vim-surround.git
 echo "Installing Vimwiki"
 cd ~/.vim/bundle
 git clone https://github.com/vimwiki/vimwiki
+
+echo "Plugins installed"
+
+echo "Creating symlinks"
+ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
+ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
+ln -s ~/programs/configs/openbox/.themes ~/.themes
+ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf

@@ -11,30 +11,12 @@ left to do it on your own. Good luck.
     sudo rm -rf /usr/local/bin/vim
     ln -s /usr/bin/vim.gnome /usr/local/bin/vim
 
-- Create symlinks
-    - Vim
-        ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
-    - Bash
-        ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
-    - Conky
-        ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf
-    - Openbox themes
-        ln -s ~/programs/configs/openbox/.themes ~/.themes
-
 - Get a background
     cd ~/Pictures
     feh --bg-fill yourPicture.jpg
 
 
 # Optional
-
 - Change openboxes terminal hotkeys
     - ctrl-z for previous tab
     - ctrl-x for next tab
-
-
-# Vim
-
-- get pathogen
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

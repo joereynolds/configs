@@ -39,7 +39,7 @@ alias gets="find -iname *$1*"
 #Delete a git branch both locally and remotely
 delbranch() {
     git push origin --delete $1;
-    git push upstream -- delete $1;
+    git push upstream --delete $1;
 }
 
 #neatly format xml, requires xmllint
