@@ -1,7 +1,6 @@
 set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
-
 filetype plugin indent on
 
 "Keyboard mappings
@@ -46,15 +45,18 @@ nmap <Right> :cnext<CR>
 "Go to next match from vimgrep with right arrow"
 nmap <Left> :cprev<CR>
 
+
 set tags=tags;/
 
 "Commands
 
+au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
+au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
+au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JSON syntax
+au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JSON syntax
+
 "On startup, turn the tagbar on
 autocmd VimEnter *.php TagbarToggle
-
-" Makes sure our highlight doesn't get destroyed by setting the colorscheme
-autocmd ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
 
 "When we write to the buffer, run pylint on the current file
 "if it's a python file
@@ -66,17 +68,20 @@ autocmd ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
 autocmd BufWritePre,BufRead *.xml :normal gg=G
 autocmd BufWritePre,BufRead *.html :normal gg=G
 
-au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
-au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
-au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JSON syntax
-au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JSON syntax
+" Makes sure our highlight doesn't get destroyed by setting the colorscheme
+autocmd ColorScheme * highlight TrailingWhitespace ctermbg=yellow
+autocmd ColorScheme * highlight overLengthSoft ctermbg=magenta
+autocmd ColorScheme * highlight overLengthHard ctermbg=red
 
-highlight TrailingWhitespace ctermbg=red "Give our highlight group a name so we can display it on matches
-highlight overLengthSoft ctermbg=grey
+"Give our highlight groups names so we can display them on matches
+highlight TrailingWhitespace ctermbg=yellow
+highlight overLengthSoft ctermbg=magenta
+highlight overLengthHard ctermbg=red
 
 "Highlights
 match TrailingWhitespace /\s\+$/
-math overLengthSoft /\%81v. \+/
+call matchadd('overLengthSoft', '\%81v', 100);
+call matchadd('overLengthHard', '\%100v', 100);
 
 "Skeletons
 "none here yet....
