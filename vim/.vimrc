@@ -72,9 +72,11 @@ au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to hav
 au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JSON syntax
 
 highlight TrailingWhitespace ctermbg=red "Give our highlight group a name so we can display it on matches
+highlight overLengthSoft ctermbg=grey
 
 "Highlights
 match TrailingWhitespace /\s\+$/
+math overLengthSoft /\%81v. \+/
 
 "Skeletons
 "none here yet....
