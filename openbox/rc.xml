@@ -319,7 +319,7 @@
       </keybind>
 
       <!-- Custom stuff -->
-      <keybind key="W-E">
+      <keybind key="W-e">
           <action name="Execute">
               <command>
                   rofi -show run 

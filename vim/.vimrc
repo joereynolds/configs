@@ -50,13 +50,14 @@ set tags=tags;/
 
 "Commands
 
+au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
+au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
 au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
 au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
-au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JSON syntax
-au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JSON syntax
 
 "On startup, turn the tagbar on
 autocmd VimEnter *.php TagbarToggle
+autocmd VimEnter *.py TagbarToggle
 
 "When we write to the buffer, run pylint on the current file
 "if it's a python file
@@ -65,51 +66,52 @@ autocmd VimEnter *.php TagbarToggle
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
-autocmd BufWritePre,BufRead *.xml :normal gg=G
 autocmd BufWritePre,BufRead *.html :normal gg=G
+autocmd BufWritePre,BufRead *.xml :normal gg=G
 
 " Makes sure our highlight doesn't get destroyed by setting the colorscheme
+autocmd ColorScheme * highlight Search ctermfg=white ctermbg=green
 autocmd ColorScheme * highlight TrailingWhitespace ctermbg=yellow
 autocmd ColorScheme * highlight overLengthSoft ctermbg=magenta
 autocmd ColorScheme * highlight overLengthHard ctermbg=red
 
 "Give our highlight groups names so we can display them on matches
+highlight Search ctermfg=white ctermbg=green
 highlight TrailingWhitespace ctermbg=yellow
 highlight overLengthSoft ctermbg=magenta
 highlight overLengthHard ctermbg=red
 
 "Highlights
+call matchadd('overLengthHard', '\%100v');
+call matchadd('overLengthSoft', '\%81v');
 match TrailingWhitespace /\s\+$/
-call matchadd('overLengthSoft', '\%81v', 100);
-call matchadd('overLengthHard', '\%100v', 100);
 
 "Skeletons
 "none here yet....
 
 scriptencoding utf-8 "Unicode support is good
 
-set number "Show line numbers
-set ruler "Show our current position
-set omnifunc=syntaxcomplete#Complete
-set expandtab "Change tabs into spaces
-set hlsearch "Highlight matching searches
-set ignorecase "Ignore cases when searching
-set encoding=utf-8 "We like funny characters
-set cursorline "Show the current line you're on
-set numberwidth=2 "Make the line number gutter smaller
-set incsearch "highlight them as they're typed as well
-set tabstop=4 "Pressing tab should only indent 4 spaces
-set relativenumber "Turn on relative numbering for all lines
-set complete-=i "Don't scan included files with omnicompletion
-set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set backspace=indent,eol,start "Make backspace behave like it does everywhere else
-set scrolloff=3 "Keep at least 3 lines in view when the cursor hits the bottom of the buffer
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
-
+set scrolloff=3 "Keep at least 3 lines in view when the cursor hits the bottom of the buffer
+set backspace=indent,eol,start "Make backspace behave like it does everywhere else
+set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
+set complete-=i "Don't scan included files with omnicompletion
+set relativenumber "Turn on relative numbering for all lines
+set tabstop=4 "Pressing tab should only indent 4 spaces
+set incsearch "highlight them as they're typed as well
+set numberwidth=2 "Make the line number gutter smaller
+set cursorline "Show the current line you're on
+set encoding=utf-8 "We like funny characters
+set ignorecase "Ignore cases when searching
+set hlsearch "Highlight matching searches
+set expandtab "Change tabs into spaces
+set omnifunc=syntaxcomplete#Complete
+set ruler "Show our current position
+set number "Show line numbers
 
 "syntastic plugin settings
-set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%#warningmsg#
 set statusline+=%*o
 
 let g:syntastic_always_populate_loc_list = 1
