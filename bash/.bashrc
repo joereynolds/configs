@@ -43,6 +43,10 @@ delbranch() {
     git push upstream --delete $1;
 }
 
+clearcache() {
+    sudo service memcached restart
+}
+
 #neatly format xml, requires xmllint
 xml(){
     xmllint $1 --format - | less

@@ -56,8 +56,9 @@ au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS s
 au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
 
 "On startup, turn the tagbar on
-autocmd VimEnter *.php TagbarToggle
-autocmd VimEnter *.py TagbarToggle
+autocmd BufRead *.php TagbarToggle
+autocmd BufRead *.py TagbarToggle
+autocmd BufRead *.js TagbarToggle
 
 "When we write to the buffer, run pylint on the current file
 "if it's a python file
@@ -82,8 +83,8 @@ highlight overLengthSoft ctermbg=magenta
 highlight overLengthHard ctermbg=red
 
 "Highlights
-call matchadd('overLengthHard', '\%100v');
-call matchadd('overLengthSoft', '\%81v');
+call matchadd('overLengthHard', '\%100v')
+call matchadd('overLengthSoft', '\%81v')
 match TrailingWhitespace /\s\+$/
 
 "Skeletons
@@ -108,6 +109,7 @@ set expandtab "Change tabs into spaces
 set omnifunc=syntaxcomplete#Complete
 set ruler "Show our current position
 set number "Show line numbers
+set shell=/bin/bash
 
 "syntastic plugin settings
 set statusline+=%{SyntasticStatuslineFlag()}
