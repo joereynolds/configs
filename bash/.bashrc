@@ -85,7 +85,7 @@ serve() {
 rget() {
     echo "reap-get now available on port 666"
     cd /var/www/html/reap-get.com/public_html/starterkit
-    sudo php -S localhost:666 
+    sudo php -S localhost:666
 }
 
 # Starts up ncmpcpp, removes the tcp
@@ -100,7 +100,7 @@ music() {
 jra() {
     echo "jra now available on port 667"
     cd /var/www/html/joe-reynolds-audio
-    sudo php -S localhost:667 
+    sudo php -S localhost:667
 }
 
 #knowledgeable cow
@@ -108,3 +108,7 @@ echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 
 #work sensitive rc not for prying eyes
 source ~/.private_bashrc
+
+#A simpler prompt
+PS1="\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
+export PS1
