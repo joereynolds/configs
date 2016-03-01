@@ -103,12 +103,29 @@ jra() {
     sudo php -S localhost:667
 }
 
+testconf() {
+    echo "This will refresh the live site's cache. Are you sure you want to run this?[y/n]"
+
+    read input
+    if [ "$input" == "y" ]
+    then
+        echo "Ran successfully"
+    else
+        echo "Process aborted"
+    fi
+}
+
 #knowledgeable cow
 echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 
 #work sensitive rc not for prying eyes
 source ~/.private_bashrc
 
+# show a date on the right hand side
+rightprompt() {
+    printf "%*s" $COLUMNS "$(date +%T) ";
+}
+
 #A simpler prompt
-PS1="\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
+PS1="\$(tput sc; rightprompt; tput rc)\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
 export PS1
