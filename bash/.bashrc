@@ -127,5 +127,5 @@ rightprompt() {
 }
 
 #A simpler prompt
-PS1="\$(tput sc; rightprompt; tput rc)\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
+PS1="\[\033[0;32m\]\$(tput sc; rightprompt; tput rc)\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
 export PS1
