@@ -43,6 +43,7 @@ delbranch() {
     git push upstream --delete $1;
 }
 
+#Clear the local memcached
 clearcache() {
     sudo service memcached restart
 }
@@ -127,5 +128,6 @@ rightprompt() {
 }
 
 #A simpler prompt
-PS1="\[\033[0;32m\]\$(tput sc; rightprompt; tput rc)\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
+source ~/.git-prompt.sh
+PS1="\033[0;32m\$(__git_ps1)\n\[\033[0;32m\]\$(tput sc; rightprompt; tput rc)\033[0;31m:: \033[0;34m\W \033[0;31m:: \033[0;30m"
 export PS1

@@ -60,11 +60,6 @@ autocmd BufRead *.php TagbarToggle
 autocmd BufRead *.py TagbarToggle
 autocmd BufRead *.js TagbarToggle
 
-"When we write to the buffer, run pylint on the current file
-"if it's a python file
-"Note this is no longer needed since syntastic is way better.
-"autocmd BufWritePost *.py !pylint <afile>
-
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
 autocmd BufWritePre,BufRead *.html :normal gg=G
@@ -86,9 +81,6 @@ highlight overLengthHard ctermbg=red
 call matchadd('overLengthHard', '\%100v')
 call matchadd('overLengthSoft', '\%81v')
 match TrailingWhitespace /\s\+$/
-
-"Skeletons
-"none here yet....
 
 scriptencoding utf-8 "Unicode support is good
 

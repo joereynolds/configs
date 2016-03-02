@@ -11,6 +11,8 @@ left to do it on your own. Good luck.
     sudo rm -rf /usr/local/bin/vim
     ln -s /usr/bin/vim.gnome /usr/local/bin/vim
 
+- Symlink git-prompt to ~/.git-prompt.sh
+
 - Get a background
     cd ~/Pictures
     feh --bg-fill yourPicture.jpg
