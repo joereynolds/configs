@@ -16,10 +16,12 @@ packages=(
 
 echo "Startup script started"
 
+sudo rm -rf /usr/local/bin/vim #Remove crap vim and later link it to the good one
 for package in ${packages[*]}; do
     echo "Installing" ${package}
     sudo apt-get install -qq ${package}
 done
+ln -s /usr/bin/vim.gnome /usr/local/bin/vim
 echo "Packages installed."
 
 echo "Installing Pathogen"
@@ -59,3 +61,4 @@ ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
 ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
 ln -s ~/programs/configs/openbox/.themes ~/.themes
 ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf
+ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt-sh
