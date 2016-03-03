@@ -123,7 +123,7 @@ echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 source ~/.private_bashrc
 
 #PROMPT STUFF
-source .colours
+source ~/programs/configs/bash/.colours
 
 # show a date on the right hand side
 rightprompt() {
@@ -132,5 +132,5 @@ rightprompt() {
 
 #A simpler prompt
 source ~/.git-prompt.sh
-PS1="$Green\$(__git_ps1)\n\$(tput sc; rightprompt; tput rc)$Red:: $Blue\W $Red:: $Black"
+PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n\$(tput sc; rightprompt; tput rc)$Red:: $Blue\W $Red:: $Black"
 export PS1
