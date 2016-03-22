@@ -123,7 +123,7 @@ echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 source ~/.private_bashrc
 
 #PROMPT STUFF
-source .colours
+source ~/programs/configs/bash/.colours
 
 # show a date on the right hand side
 rightprompt() {
