@@ -24,6 +24,7 @@ alias grepi="git grep -i -- $1"
 alias conf-vim="vim ~/.vimrc"
 alias conf-bash="vim ~/.bashrc"
 alias conf-git="vim ~/.gitconfig"
+alias conf-dir="cd ~/programs/configs"
 alias conf-gtk="vim ~/.config/gtk-3.0/gtk.css"
 alias conf-conky="vim ~/.config/conky/conky.conf"
 alias conf-openbox="vim ~/.config/openbox/rc.xml"
@@ -132,5 +133,5 @@ rightprompt() {
 
 #A simpler prompt
 source ~/.git-prompt.sh
-PS1="$Green\$(__git_ps1)\n\$(tput sc; rightprompt; tput rc)$Red:: $Blue\W $Red:: $Black"
+PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n\$(tput sc; rightprompt; tput rc)$Red:: $Blue\W $Red:: $Black"
 export PS1
