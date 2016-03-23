@@ -126,12 +126,8 @@ source ~/.private_bashrc
 #PROMPT STUFF
 source ~/programs/configs/bash/.colours
 
-# show a date on the right hand side
-rightprompt() {
-    printf "%*s" $COLUMNS "$(date +%T) ";
-}
 
 #A simpler prompt
 source ~/.git-prompt.sh
-PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n\$(tput sc; rightprompt; tput rc)$Red:: $Blue\W $Red:: $Black"
+PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n$Red:: $Blue\W $Red:: $Black"
 export PS1
