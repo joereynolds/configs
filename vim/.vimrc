@@ -46,7 +46,7 @@ nmap <Right> :cnext<CR>
 nmap <Left> :cprev<CR>
 
 
-set tags=tags;/
+set tags=./tags;$HOME
 
 "Commands
 

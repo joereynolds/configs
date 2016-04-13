@@ -118,7 +118,7 @@ testconf() {
 }
 
 #knowledgeable cow
-echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
+#echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 
 #work sensitive rc not for prying eyes
 source ~/.private_bashrc
@@ -131,3 +131,5 @@ source ~/programs/configs/bash/.colours
 source ~/.git-prompt.sh
 PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n$Red:: $Blue\W $Red:: $Black"
 export PS1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
