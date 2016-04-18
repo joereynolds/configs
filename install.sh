@@ -30,6 +30,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 
 echo "Installing Command-T"
+cd ~/.vim/bundle
 git clone https://github.com/wincent/command-t
 cd ~/.vim/bundle/command-t
 rake make
@@ -53,6 +54,10 @@ git clone git://github.com/tpope/vim-surround.git
 echo "Installing Vimwiki"
 cd ~/.vim/bundle
 git clone https://github.com/vimwiki/vimwiki
+
+echo "Installing Fugitive"
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-fugitive.git
 
 echo "Plugins installed"
 
