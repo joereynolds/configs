@@ -33,6 +33,9 @@ map <buffer> <S-F5> :w<CR>:!time php %<CR>
 "Toggle the tagbar when we press f4
 map <F4> :TagbarToggle<CR>
 
+"Toggle git blame statusbar
+map <F3> :Gblame<CR>
+
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
