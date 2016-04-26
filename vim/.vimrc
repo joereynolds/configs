@@ -59,9 +59,9 @@ au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS s
 au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
 
 "On startup, turn the tagbar on
-autocmd BufRead *.php TagbarToggle
-autocmd BufRead *.py TagbarToggle
-autocmd BufRead *.js TagbarToggle
+"autocmd BufRead *.php TagbarToggle
+"autocmd BufRead *.py TagbarToggle
+"autocmd BufRead *.js TagbarToggle
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
@@ -89,6 +89,7 @@ scriptencoding utf-8 "Unicode support is good
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=3 "Keep at least 3 lines in view when the cursor hits the bottom of the buffer
+set foldmethod=manual "Apparently this should help autocomplete not be insanely slow
 set backspace=indent,eol,start "Make backspace behave like it does everywhere else
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set complete-=i "Don't scan included files with omnicompletion
