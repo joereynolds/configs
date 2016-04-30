@@ -1,0 +1,11 @@
+--exclude=.git
+--exclude=node_modules
+--exclude=vendor
+--exclude=*.jpg
+--exclude=*.png
+--exclude=*.jpeg
+--exclude=*.gif
+--exclude=*.bmp
+--exclude=*.pdf
+--exclude=*.doc
+--exclude=*.docx

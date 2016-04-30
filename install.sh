@@ -28,7 +28,6 @@ echo "Installing Pathogen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-
 echo "Installing Command-T"
 cd ~/.vim/bundle
 git clone https://github.com/wincent/command-t
@@ -51,10 +50,6 @@ echo "Installing Vim-Surround"
 cd ~/.vim/bundle
 git clone git://github.com/tpope/vim-surround.git
 
-echo "Installing Vimwiki"
-cd ~/.vim/bundle
-git clone https://github.com/vimwiki/vimwiki
-
 echo "Installing Fugitive"
 cd ~/.vim/bundle
 git clone git://github.com/tpope/vim-fugitive.git
@@ -63,6 +58,7 @@ echo "Plugins installed"
 
 echo "Creating symlinks"
 ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
+ln -s ~/programs/configs/ctags/.ctags ~/.ctags
 ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
 ln -s ~/programs/configs/openbox/.themes ~/.themes
 ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf
