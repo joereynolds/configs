@@ -9,3 +9,5 @@
 --exclude=*.pdf
 --exclude=*.doc
 --exclude=*.docx
+--exclude=libraries
+
