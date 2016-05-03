@@ -1,3 +1,5 @@
+--recurse=yes
+
 --exclude=.git
 --exclude=node_modules
 --exclude=vendor
@@ -10,4 +12,5 @@
 --exclude=*.doc
 --exclude=*.docx
 --exclude=libraries
-
+--exclude=*.min.js
+--exclude=*.js
