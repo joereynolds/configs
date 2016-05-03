@@ -10,4 +10,5 @@
 --exclude=*.doc
 --exclude=*.docx
 --exclude=libraries
-
+--exclude=*.min.js
+--exclude=*.js
