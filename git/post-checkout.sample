@@ -1,0 +1,4 @@
+# To enable this, rename it to 'post-checkout'
+
+composer update
+grunt
