@@ -24,12 +24,6 @@ inoremap <Right> <NOP>
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-" runs the current file you're in
-map <buffer> <F5> :w<CR>:!php %<CR>
-
-" times scripts execution
-map <buffer> <S-F5> :w<CR>:!time php %<CR>
-
 "Toggle the tagbar when we press f4
 map <F4> :TagbarToggle<CR>
 
