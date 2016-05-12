@@ -1,15 +1,6 @@
-set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
-
-"Keyboard mappings
-inoremap ( ()<Left>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
-inoremap < <><Left>
 
 "Learn vim properly. Disable lazyness
 nnoremap <Up> <NOP>
@@ -42,20 +33,13 @@ nmap <Right> :cnext<CR>
 "Go to next match from vimgrep with right arrow"
 nmap <Left> :cprev<CR>
 
-
 set tags=./tags;$HOME
 
 "Commands
-
 au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
 au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
 au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
 au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
-
-"On startup, turn the tagbar on
-"autocmd BufRead *.php TagbarToggle
-"autocmd BufRead *.py TagbarToggle
-"autocmd BufRead *.js TagbarToggle
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
