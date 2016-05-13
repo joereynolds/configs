@@ -1,3 +1,4 @@
+set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
@@ -26,6 +27,9 @@ nmap <c-t> :tabnew<CR>
 
 "Go to next tab with tab
 nmap <Tab> :tabnext<CR>
+
+" ctrl ; will append a semi-colon to the end of the line
+nmap <c-l> A;<ESC>
 
 "Go to next match from vimgrep with right arrow"
 nmap <Right> :cnext<CR>
