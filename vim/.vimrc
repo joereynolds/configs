@@ -1,6 +1,17 @@
 set nocompatible
-execute pathogen#infect()
-call pathogen#helptags()
+
+call plug#begin()
+
+Plug 'wincent/command-t'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme'
+
+call plug#end()
+
+
 filetype plugin indent on
 
 "Learn vim properly. Disable lazyness

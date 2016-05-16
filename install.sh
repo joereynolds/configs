@@ -24,37 +24,22 @@ done
 ln -s /usr/bin/vim.gnome /usr/local/bin/vim
 echo "Packages installed."
 
-echo "Installing Pathogen"
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+echo "Installing vim-plug"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "Installing Command-T"
-cd ~/.vim/bundle
-git clone https://github.com/wincent/command-t
-cd ~/.vim/bundle/command-t
+echo "Configuring vim plugins"
+
+echo "Command-T"
+cd ~/.vim/plugged/command-t
 rake make
 
-echo "Installing Syntastic"
-git clone https://github.com/scrooloose/syntastic.git
-
-echo "Installing Tagbar"
-git clone https://github.com/majutsushi/tagbar
-
-echo "Installing YouCompleteMe"
-git clone https://github.com/valloric/youcompleteme
-cd youcompleteme
+echo "YouCompleteMe"
+cd ~/.vim/plugged/youcompleteme
 git submodule update --init --recursive
 ./install.py --clang-completer
 
-echo "Installing Vim-Surround"
-cd ~/.vim/bundle
-git clone git://github.com/tpope/vim-surround.git
-
-echo "Installing Fugitive"
-cd ~/.vim/bundle
-git clone git://github.com/tpope/vim-fugitive.git
-
-echo "Plugins installed"
+echo "Plugins configured"
 
 echo "Creating symlinks"
 ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
