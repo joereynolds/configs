@@ -12,6 +12,7 @@ packages=(
     ruby-dev
     vim-gnome
     xbacklight
+    silversearch-ag
 )
 
 echo "Startup script started"

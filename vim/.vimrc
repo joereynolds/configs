@@ -8,6 +8,9 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'valloric/youcompleteme'
+Plug 'kshenoy/vim-signature'
+Plug 'qualiabyte/vim-colorstepper'
+Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -23,6 +26,12 @@ inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
+
+
+" ColorStepper Keys
+nmap <F6> <Plug>ColorstepPrev
+nmap <F7> <Plug>ColorstepNext
+nmap <S-F7> <Plug>ColorstepReload
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -107,6 +116,11 @@ set shell=/bin/bash
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%#warningmsg#
 set statusline+=%*o
+
+" Use thesilversearch instead of ack for greps
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
