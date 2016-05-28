@@ -1,10 +1,17 @@
+set nocompatible
+
 call plug#begin()
-Plug 'majutsushi/tagbar'
-Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'wincent/command-t'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-"Plug 'valloric/youcompleteme'
+Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme'
+Plug 'kshenoy/vim-signature'
+Plug 'qualiabyte/vim-colorstepper'
+Plug 'flazz/vim-colorschemes'
+
 call plug#end()
 
 filetype plugin indent on
@@ -19,8 +26,17 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
+
+" ColorStepper Keys
+nmap <F6> <Plug>ColorstepPrev
+nmap <F7> <Plug>ColorstepNext
+nmap <S-F7> <Plug>ColorstepReload
+
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
+
+"Pressing enter in normal mode behaves like it would in insert mode
+nnoremap <silent> <CR> i<CR><ESC>
 
 "Toggle the tagbar when we press f4
 map <F4> :TagbarToggle<CR>
@@ -100,10 +116,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%#warningmsg#
 set statusline+=%*o
 
+" Use thesilversearch instead of ack for greps
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 syntax on
-colorscheme elflord
+colorscheme beauty256
