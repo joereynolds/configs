@@ -12,6 +12,7 @@ packages=(
     ruby-dev
     vim-gnome
     xbacklight
+    php-cs-fixer
 )
 
 echo "Startup script started"
