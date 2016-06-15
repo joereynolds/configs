@@ -2,14 +2,14 @@ set nocompatible
 
 call plug#begin()
 
-Plug 'wincent/command-t'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'kshenoy/vim-signature'
-Plug 'qualiabyte/vim-colorstepper'
-Plug 'flazz/vim-colorschemes'
-Plug 'joonty/vdebug'
+Plug 'wincent/command-t'            "fuzzy file finding
+Plug 'scrooloose/syntastic'         "linter
+Plug 'tpope/vim-fugitive'           "git wrapper
+Plug 'tpope/vim-surround'           "surround editing
+Plug 'kshenoy/vim-signature'        "visible marks
+Plug 'qualiabyte/vim-colorstepper'  "switch colours no reload
+Plug 'flazz/vim-colorschemes'       "colours
+Plug 'joonty/vdebug'                "debugging
 
 call plug#end()
 
