@@ -4,16 +4,14 @@ call plug#begin()
 
 Plug 'wincent/command-t'
 Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'valloric/youcompleteme'
 Plug 'kshenoy/vim-signature'
 Plug 'qualiabyte/vim-colorstepper'
 Plug 'flazz/vim-colorschemes'
+Plug 'joonty/vdebug'
 
 call plug#end()
-
 
 filetype plugin indent on
 
@@ -27,20 +25,15 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
-
 " ColorStepper Keys
 nmap <F6> <Plug>ColorstepPrev
 nmap <F7> <Plug>ColorstepNext
-nmap <S-F7> <Plug>ColorstepReload
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 "Pressing enter in normal mode behaves like it would in insert mode
 nnoremap <silent> <CR> i<CR><ESC>
-
-"Toggle the tagbar when we press f4
-map <F4> :TagbarToggle<CR>
 
 "Toggle git blame statusbar
 map <F3> :Gblame<CR>
@@ -51,14 +44,8 @@ nmap <c-t> :tabnew<CR>
 "Go to next tab with tab
 nmap <Tab> :tabnext<CR>
 
-" ctrl ; will append a semi-colon to the end of the line
+" ctrl l will append a semi-colon to the end of the line
 nmap <c-l> A;<ESC>
-
-"Go to next match from vimgrep with right arrow"
-nmap <Right> :cnext<CR>
-
-"Go to next match from vimgrep with right arrow"
-nmap <Left> :cprev<CR>
 
 set tags=./tags;$HOME
 
@@ -112,20 +99,25 @@ set ruler "Show our current position
 set number "Show line numbers
 set shell=/bin/bash
 
-"syntastic plugin settings
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%#warningmsg#
-set statusline+=%*o
-
 " Use thesilversearch instead of ack for greps
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+"Plugin settings
+
+"syntastic
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%#warningmsg#
+set statusline+=%*o
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+"CommandT
+let g:CommandTFileScanner = "git"
 
 syntax on
 colorscheme beauty256

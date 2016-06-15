@@ -50,7 +50,7 @@ clearcache() {
 }
 
 #neatly format xml, requires xmllint
-xml(){
+xml() {
     xmllint $1 --format - | less
 }
 
@@ -64,7 +64,7 @@ xmlfind() {
 }
 
 #neatly format json, requires python
-json(){
+json() {
     python3 -m json.tool $1
 }
 
@@ -133,3 +133,6 @@ PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n$Red:: $Blue\W $Red:: $Black"
 export PS1
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="/home/joe/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

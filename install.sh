@@ -35,11 +35,6 @@ echo "Command-T"
 cd ~/.vim/plugged/command-t
 rake make
 
-echo "YouCompleteMe"
-cd ~/.vim/plugged/youcompleteme
-git submodule update --init --recursive
-./install.py --clang-completer
-
 echo "Plugins configured"
 
 echo "Creating symlinks"
