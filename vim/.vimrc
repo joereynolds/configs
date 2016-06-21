@@ -60,6 +60,9 @@ au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to hav
 au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
 au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
 au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
+au VimEnter *.md colorscheme seoul256 "Different colorscheme when writing
+au VimEnter *.md :Goyo "use goyo on md files.
+
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
