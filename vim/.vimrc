@@ -1,7 +1,9 @@
+
 set nocompatible
 
 call plug#begin()
 
+"Dev
 Plug 'wincent/command-t'            "fuzzy file finding
 Plug 'scrooloose/syntastic'         "linter
 Plug 'tpope/vim-fugitive'           "git wrapper
@@ -10,6 +12,10 @@ Plug 'kshenoy/vim-signature'        "visible marks
 Plug 'qualiabyte/vim-colorstepper'  "switch colours no reload
 Plug 'flazz/vim-colorschemes'       "colours
 Plug 'joonty/vdebug'                "debugging
+
+"Writing
+Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -119,5 +125,18 @@ let g:syntastic_check_on_wq = 0
 "CommandT
 let g:CommandTFileScanner = "git"
 
+"vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
 syntax on
 colorscheme beauty256
+
+
+
+"scripts
+
+"Runs the test your cursor is in
+function! TestFunction()
+    execute "normal! [m kk"
+
+endfunction
