@@ -1,12 +1,10 @@
 #!/bin/bash
 
+#Install script for a sane distro (xubuntu, lubuntu, mint etc...)
 packages=(
     cmake
-    conky
+    curl
     exuberant-ctags
-    feh
-    obconf
-    openbox
     python-dev
     rake
     ruby-dev
@@ -36,12 +34,24 @@ echo "Command-T"
 cd ~/.vim/plugged/command-t
 rake make
 
-echo "Plugins configured"
+echo "Cloning your important repos"
+mkdir -p ~/programs
+cd ~/programs
+git clone https://github.com/joereynolds/fanbox
+git clone https://github.com/joereynolds/life
+git clone https://github.com/joereynolds/programming-dump
+git clone https://github.com/joereynolds/util.joereynoldsaudio
 
 echo "Creating symlinks"
+#Use a loop instead of this grossness
+rm ~/.vimrc
 ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
+
+rm ~/.ctags
 ln -s ~/programs/configs/ctags/.ctags ~/.ctags
+
+rm ~/.bashrc
 ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
-ln -s ~/programs/configs/openbox/.themes ~/.themes
-ln -s ~/programs/configs/conky/.conky.conf ~/.conky.conf
-ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt-sh
+
+rm ~/.git-prompt.sh
+ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt.sh
