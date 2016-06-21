@@ -34,7 +34,10 @@ echo "Command-T"
 cd ~/.vim/plugged/command-t
 rake make
 
-echo "Cloning your important repos"
+echo "Git config and clones"
+git config --global user.email "joereynolds952@gmail.com"
+git config --global user.name "Joe Reynolds"
+
 mkdir -p ~/programs
 cd ~/programs
 git clone https://github.com/joereynolds/fanbox
