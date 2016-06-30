@@ -4,7 +4,7 @@ set nocompatible
 call plug#begin()
 
 "Dev
-Plug 'wincent/command-t'            "fuzzy file finding
+Plug 'kien/ctrlp.vim'               "fuzzy file finder
 Plug 'scrooloose/syntastic'         "linter
 Plug 'tpope/vim-fugitive'           "git wrapper
 Plug 'tpope/vim-surround'           "surround editing
@@ -131,9 +131,15 @@ let g:CommandTFileScanner = "git"
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
+"vdebug
+let g:vdebug_options = {'path_maps':
+\   {
+\       "/var/www" : "/home/joe/code"
+\   }
+\}
+
 syntax on
 colorscheme beauty256
-
 
 
 "scripts
@@ -141,5 +147,4 @@ colorscheme beauty256
 "Runs the test your cursor is in
 function! TestFunction()
     execute "normal! [m kk"
-
 endfunction
