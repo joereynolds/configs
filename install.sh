@@ -7,6 +7,7 @@ packages=(
     exuberant-ctags
     npm
     python-dev
+    rake
     vim-gnome
     php-cs-fixer
     silversearch-ag
