@@ -13,12 +13,22 @@ packages=(
     silversearch-ag
 )
 
+npmPackages=(
+    jsonlint
+)
+
 sudo rm -rf /usr/local/bin/vim #Remove crap vim and later link it to the good one
 for package in ${packages[*]}; do
     echo "Installing" ${package}
     sudo apt-get install -qq ${package}
 done
+
+for package in ${npmPackages[*]}; do
+    echo "Installing" ${package}
+    npm install ${package} -g
+done
 ln -s /usr/bin/vim.gnome /usr/local/bin/vim
+
 
 echo "Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
