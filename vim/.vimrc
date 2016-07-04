@@ -9,11 +9,11 @@ Plug 'scrooloose/syntastic'        "linter
 Plug 'tpope/vim-fugitive'          "git wrapper
 Plug 'tpope/vim-surround'          "surround editing
 Plug 'kshenoy/vim-signature'       "visible marks
-"Plug 'qualiabyte/vim-colorstepper' "switch colours no reload
+Plug 'qualiabyte/vim-colorstepper' "switch colours no reload
 Plug 'flazz/vim-colorschemes'      "colours
 Plug 'joonty/vdebug'               "debugging
 Plug 'hail2u/vim-css3-syntax'      "better syntax for css
-Plug 'ap/vim-css-color'            "highlight css colours
+Plug 'ap/vim-css-color'            "highlight css colours ... Doesn't seem to work :(
 
 "Writing
 Plug 'junegunn/goyo.vim'
@@ -22,6 +22,7 @@ Plug 'vimwiki/vimwiki'
 call plug#end()
 
 filetype plugin indent on
+syntax on
 
 "Learn vim properly. Disable lazyness
 nnoremap <Up> <NOP>
@@ -58,10 +59,13 @@ nmap <c-l> A;<ESC>
 set tags=./tags;$HOME
 
 "Commands
-au BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
-au BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
-au BufRead,BufNewFile *.less setfiletype css " Set all .less files to have CSS syntax
-au BufRead,BufNewFile *.scss setfiletype css " Set all .scss files to have CSS syntax
+autocmd BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
+autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
+
+autocmd BufRead,BufNewFile *.less set filetype=less.css " Set all .less files to have CSS syntax
+autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to have CSS syntax
+autocmd FileType scss set iskeyword+=-
+
 au VimEnter *.md colorscheme seoul256 "Different colorscheme when writing
 au VimEnter *.md :Goyo "use goyo on md files.
 
@@ -141,7 +145,6 @@ let g:vdebug_options = {'path_maps':
 \   }
 \}
 
-syntax on
 colorscheme beauty256
 
 
