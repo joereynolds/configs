@@ -4,14 +4,16 @@ set nocompatible
 call plug#begin()
 
 "Dev
-Plug 'kien/ctrlp.vim'               "fuzzy file finder
-Plug 'scrooloose/syntastic'         "linter
-Plug 'tpope/vim-fugitive'           "git wrapper
-Plug 'tpope/vim-surround'           "surround editing
-Plug 'kshenoy/vim-signature'        "visible marks
-Plug 'qualiabyte/vim-colorstepper'  "switch colours no reload
-Plug 'flazz/vim-colorschemes'       "colours
-Plug 'joonty/vdebug'                "debugging
+Plug 'wincent/command-t'           "fuzzy file finder
+Plug 'scrooloose/syntastic'        "linter
+Plug 'tpope/vim-fugitive'          "git wrapper
+Plug 'tpope/vim-surround'          "surround editing
+Plug 'kshenoy/vim-signature'       "visible marks
+"Plug 'qualiabyte/vim-colorstepper' "switch colours no reload
+Plug 'flazz/vim-colorschemes'      "colours
+Plug 'joonty/vdebug'               "debugging
+Plug 'hail2u/vim-css3-syntax'      "better syntax for css
+Plug 'ap/vim-css-color'            "highlight css colours
 
 "Writing
 Plug 'junegunn/goyo.vim'
