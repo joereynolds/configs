@@ -14,6 +14,7 @@ Plug 'flazz/vim-colorschemes'      "colours
 Plug 'joonty/vdebug'               "debugging
 Plug 'hail2u/vim-css3-syntax'      "better syntax for css
 Plug 'ap/vim-css-color'            "highlight css colours ... Doesn't seem to work :(
+Plug 'ehamberg/vim-cute-python'    "Math notation for Python
 
 "Writing
 Plug 'junegunn/goyo.vim'
