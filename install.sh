@@ -10,6 +10,7 @@ packages=(
     rake
     vim-gnome
     php-cs-fixer
+    phpmd
     silversearch-ag
 )
 
@@ -17,7 +18,7 @@ npmPackages=(
     jsonlint
 )
 
-sudo rm -rf /usr/local/bin/vim #Remove crap vim and later link it to the good one
+sudo rm -rf /usr/local/bin/vim #Remove crap vim and later link it to a good one
 for package in ${packages[*]}; do
     echo "Installing" ${package}
     sudo apt-get install -qq ${package}

@@ -146,7 +146,7 @@ let g:vdebug_options = {'path_maps':
 \   }
 \}
 
-colorscheme beauty256
+colorscheme Benokai
 
 
 "scripts

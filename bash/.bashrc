@@ -125,14 +125,3 @@ source ~/.private_bashrc
 
 #PROMPT STUFF
 source ~/programs/configs/bash/.colours
-
-
-#A simpler prompt
-source ~/.git-prompt.sh
-PS1="$(echo -e '\u2387')$Green\$(__git_ps1) \n$Red:: $Blue\W $Red:: $Black"
-export PS1
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export NVM_DIR="/home/joe/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
