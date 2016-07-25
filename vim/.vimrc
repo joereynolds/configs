@@ -14,7 +14,6 @@ Plug 'flazz/vim-colorschemes'      "colours
 Plug 'joonty/vdebug'               "debugging
 Plug 'hail2u/vim-css3-syntax'      "better syntax for css
 Plug 'ap/vim-css-color'            "highlight css colours ... Doesn't seem to work :(
-Plug 'ehamberg/vim-cute-python'    "Math notation for Python
 
 "Writing
 Plug 'junegunn/goyo.vim'
@@ -50,9 +49,6 @@ map <F3> :Gblame<CR>
 
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
-
-"Go to next tab with tab
-nmap <Tab> :tabnext<CR>
 
 " ctrl l will append a semi-colon to the end of the line
 nmap <c-l> A;<ESC>
@@ -113,6 +109,7 @@ set expandtab "Change tabs into spaces
 set omnifunc=syntaxcomplete#Complete
 set ruler "Show our current position
 set number "Show line numbers
+set mouse=a "mouse support
 set shell=/bin/bash
 
 " Use thesilversearch instead of ack for greps
