@@ -117,6 +117,11 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+" Use matchit
+if !exists('g:loaded_matchit')
+    runtime macros/matchit.vim
+endif
+
 "Plugin settings
 
 "syntastic

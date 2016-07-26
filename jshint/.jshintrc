@@ -1,0 +1,8 @@
+{
+  "esversion": 6,
+  "devel": true,
+  "strict": "global",
+  "globals": {
+    "angular": false
+  }
+}
