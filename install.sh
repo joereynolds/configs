@@ -57,3 +57,6 @@ ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
 
 rm ~/.git-prompt.sh
 ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt.sh
+
+rm ~/.jshintrc
+ln -s ~/programs/configs/jshint/.jshintrc ~/.jshintrc
