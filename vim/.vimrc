@@ -34,6 +34,12 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
+"Sane copy and paste
+vmap <C-c> "+yi
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
+
 " ColorStepper Keys
 nmap <F6> <Plug>ColorstepPrev
 nmap <F7> <Plug>ColorstepNext
@@ -154,6 +160,7 @@ colorscheme Benokai
 "scripts
 
 "Runs the test your cursor is in
+"Doesn't work
 function! TestFunction()
     execute "normal! [m kk"
 endfunction
