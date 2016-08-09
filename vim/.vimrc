@@ -34,6 +34,7 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
+
 "Sane copy and paste
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
@@ -51,7 +52,10 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <silent> <CR> i<CR><ESC>
 
 "Toggle git blame statusbar
-map <F3> :Gblame<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Gcommit<CR>
 
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
@@ -101,6 +105,7 @@ set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This chan
 set scrolloff=3 "Keep at least 3 lines in view when the cursor hits the bottom of the buffer
 set foldmethod=manual "Apparently this should help autocomplete not be insanely slow
 set backspace=indent,eol,start "Make backspace behave like it does everywhere else
+set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set complete-=i "Don't scan included files with omnicompletion
 set relativenumber "Turn on relative numbering for all lines
