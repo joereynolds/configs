@@ -4,16 +4,17 @@ set nocompatible
 call plug#begin()
 
 "Dev
-Plug 'wincent/command-t'           "fuzzy file finder
+Plug 'ap/vim-css-color'            "highlight css colours ... Doesn't seem to work :(
+Plug 'ervandew/supertab'           "tab completion
+Plug 'flazz/vim-colorschemes'      "colours
+Plug 'hail2u/vim-css3-syntax'      "better syntax for css
+Plug 'joonty/vdebug'               "debugging
+Plug 'kshenoy/vim-signature'       "visible marks
+Plug 'qualiabyte/vim-colorstepper' "switch colours no reload
 Plug 'scrooloose/syntastic'        "linter
 Plug 'tpope/vim-fugitive'          "git wrapper
 Plug 'tpope/vim-surround'          "surround editing
-Plug 'kshenoy/vim-signature'       "visible marks
-Plug 'qualiabyte/vim-colorstepper' "switch colours no reload
-Plug 'flazz/vim-colorschemes'      "colours
-Plug 'joonty/vdebug'               "debugging
-Plug 'hail2u/vim-css3-syntax'      "better syntax for css
-Plug 'ap/vim-css-color'            "highlight css colours ... Doesn't seem to work :(
+Plug 'wincent/command-t'           "fuzzy file finder
 
 "Writing
 Plug 'junegunn/goyo.vim'
@@ -123,6 +124,9 @@ set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
 
+"Not a fan of this hardcoded path...
+source ~/programs/configs/vim/plugins.vim
+
 " Use thesilversearch instead of ack for greps
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
@@ -133,33 +137,7 @@ if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
 
-"Plugin settings
-
-"syntastic
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%#warningmsg#
-set statusline+=%*o
-
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-"CommandT
-let g:CommandTFileScanner = "git"
-
-"vimwiki
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
-
-"vdebug
-let g:vdebug_options = {'path_maps':
-\   {
-\       "/var/www" : "/home/joe/code"
-\   }
-\}
-
-colorscheme Benokai
+colorscheme ron
 
 
 "scripts
