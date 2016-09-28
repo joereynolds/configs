@@ -15,6 +15,7 @@ Plug 'scrooloose/syntastic'        "linter
 Plug 'tpope/vim-fugitive'          "git wrapper
 Plug 'tpope/vim-surround'          "surround editing
 Plug 'wincent/command-t'           "fuzzy file finder
+Plug 'mhinz/vim-grepper'           "better grep
 
 "Writing
 Plug 'junegunn/goyo.vim'
@@ -58,6 +59,9 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
+"Have a friendly remapping for :Grepper
+nnoremap <Leader>z :Grepper -tool git -noswitch<CR>
+
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
@@ -67,6 +71,9 @@ nmap <c-l> A;<ESC>
 set tags=./tags;$HOME
 
 "Commands
+
+autocmd BufWinEnter * setlocal modifiable
+
 autocmd BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
 autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
 
@@ -123,6 +130,8 @@ set ruler "Show our current position
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
+
+
 
 "Not a fan of this hardcoded path...
 source ~/programs/configs/vim/plugins.vim
