@@ -140,11 +140,13 @@ nnoremap <Leader>z :Grepper -tool git -noswitch<CR>
 "supertab
 let g:SuperTabDefaultCompletionType = 'context'
 
+"vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
+"commandT
+let g:CommandTFileScanner = "git"
 
 
-
-"Not a fan of this hardcoded path...
-source ~/programs/configs/vim/plugins.vim
 
 
 " Use thesilversearch instead of ack for greps
