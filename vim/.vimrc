@@ -61,6 +61,10 @@ nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 
+"gw switches windows
+"similar to how gt switches between tabs
+nmap gw <c-w><c-w>
+
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
@@ -140,12 +144,8 @@ nnoremap <Leader>z :Grepper -tool git -noswitch<CR>
 "supertab
 let g:SuperTabDefaultCompletionType = 'context'
 
-
-
-
 "Not a fan of this hardcoded path...
 source ~/programs/configs/vim/plugins.vim
-
 
 " Use thesilversearch instead of ack for greps
 if executable('ag')
@@ -158,11 +158,3 @@ if !exists('g:loaded_matchit')
 endif
 
 colorscheme ron
-
-
-
-"Runs the test your cursor is in
-"Doesn't work
-function! TestFunction()
-    execute "normal! [m kk"
-endfunction
