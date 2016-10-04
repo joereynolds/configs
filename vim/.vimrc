@@ -144,8 +144,11 @@ nnoremap <Leader>z :Grepper -tool git -noswitch<CR>
 "supertab
 let g:SuperTabDefaultCompletionType = 'context'
 
-"Not a fan of this hardcoded path...
-source ~/programs/configs/vim/plugins.vim
+"vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
+"commandT
+let g:CommandTFileScanner = "git"
 
 " Use thesilversearch instead of ack for greps
 if executable('ag')
