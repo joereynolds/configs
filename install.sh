@@ -60,3 +60,6 @@ ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt.sh
 
 rm ~/.jshintrc
 ln -s ~/programs/configs/jshint/.jshintrc ~/.jshintrc
+
+rm -rf ~/.vim/UltiSnips
+ln -s ~/programs/configs/vim/UltiSnips ~/.vim/UltiSnips

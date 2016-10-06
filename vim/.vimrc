@@ -3,7 +3,6 @@ set nocompatible
 
 call plug#begin()
 
-"Dev
 Plug 'adoy/vim-php-refactoring-toolbox' "refactoring tools
 Plug 'ap/vim-css-color'                 "highlight css colours ... Doesn't seem to work :(
 Plug 'ervandew/supertab'                "tab completion
@@ -17,15 +16,16 @@ Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'wincent/command-t'                "fuzzy file finder
 Plug 'mhinz/vim-grepper'                "better grep
-
-"Writing
-Plug 'junegunn/goyo.vim'
-Plug 'vimwiki/vimwiki'
+Plug 'SirVer/ultisnips'                 "super duper snippets
+Plug 'junegunn/goyo.vim'                "margins for writing
+Plug 'vimwiki/vimwiki'                  "Organisational stuff
 
 call plug#end()
 
 filetype plugin indent on
 syntax on
+
+colorscheme ron
 
 "Learn vim properly. Disable lazyness
 nnoremap <Up> <NOP>
@@ -37,12 +37,10 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
-
 "Sane copy and paste
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
-
 
 " ColorStepper Keys
 nmap <F6> <Plug>ColorstepPrev
@@ -108,7 +106,8 @@ highlight overLengthHard ctermbg=red
 "Highlights
 call matchadd('overLengthHard', '\%100v')
 call matchadd('overLengthSoft', '\%81v')
-match TrailingWhitespace /\s\+$/
+call matchadd('TrailingWhitespace', '/\s\+$/v')
+"match TrailingWhitespace             /\s\+$/
 
 scriptencoding utf-8 "Unicode support is good
 
@@ -150,6 +149,10 @@ let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 "commandT
 let g:CommandTFileScanner = "git"
 
+"ultisnips
+let g:UltiSnipsExpandTrigger = "<C-a>"
+let g:UltiSnipsJumpForwardTrigger = "<C-d>"
+
 " Use thesilversearch instead of ack for greps
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
@@ -159,5 +162,3 @@ endif
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
-
-colorscheme ron
