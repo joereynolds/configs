@@ -122,6 +122,7 @@ set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set incsearch "highlight them as they're typed as well
 set numberwidth=2 "Make the line number gutter smaller
+set spell spelllang=en_gb "british and proud m8
 set cursorline "Show the current line you're on
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
@@ -162,3 +163,23 @@ endif
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
+
+
+
+"Trying inspectee
+inoremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
+
+function FindValueForVariable(variableName)
+    "If it begins with self:: or static:: use gd
+    "Otherwise use <C-]>
+endfunction
+
+"Grab the value from the define keyword
+function FindFromDefine(variableName)
+endfunction
+
+function ShowPopup(variable)
+    echo a:variable
+    call complete(col('.'), ['Matches for ' . a:variable, a:variable, '.', '.'])
+    return ''
+endfunction
