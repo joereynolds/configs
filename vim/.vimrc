@@ -53,10 +53,6 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
-"gw switches windows
-"similar to how gt switches between tabs
-nmap gw <c-w><c-w>
-
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
