@@ -170,8 +170,20 @@ endif
 inoremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
 
 function FindValueForVariable(variableName)
+    "Remove crap characters like [{(,
+    let stripped = substitute(a:variableName, '[', '', '')
+
+    echoerr stripped
     "If it begins with self:: or static:: use gd
+    if stridx(stripped, 'self') > -1 || stridx(stripped, 'static') > -1
+        let match = execute "normal! gdfl=vaw"
+        let variableValue = GetVisualSelection()
+        echoerr variableValue
+        echoerr 'This has self or static in it'
+    endif
     "Otherwise use <C-]>
+
+    return 'This is a test'
 endfunction
 
 "Grab the value from the define keyword
@@ -179,7 +191,18 @@ function FindFromDefine(variableName)
 endfunction
 
 function ShowPopup(variable)
-    echo a:variable
+    echoerr FindValueForVariable(a:variable)
+
+    "Shows the popup menu with what you were trying to search for
     call complete(col('.'), ['Matches for ' . a:variable, a:variable, '.', '.'])
     return ''
+endfunction
+
+function GetVisualSelection()
+    let [lnum1, col1] = getpos("'<")[1:2]
+    let [lnum2, col2] = getpos("'>")[1:2]
+    let lines = getline(lnum1, lnum2)
+    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][col1 - 1:]
+    return join(lines, "\n")
 endfunction
