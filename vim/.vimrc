@@ -10,7 +10,6 @@ Plug 'flazz/vim-colorschemes'           "colours
 Plug 'hail2u/vim-css3-syntax'           "better syntax for css
 Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
-Plug 'qualiabyte/vim-colorstepper'      "switch colours no reload
 Plug 'scrooloose/syntastic'             "linter
 Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
@@ -42,10 +41,6 @@ vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-" ColorStepper Keys
-nmap <F6> <Plug>ColorstepPrev
-nmap <F7> <Plug>ColorstepNext
-
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
@@ -58,16 +53,12 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
-
 "gw switches windows
 "similar to how gt switches between tabs
 nmap gw <c-w><c-w>
 
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
-
-" ctrl l will append a semi-colon to the end of the line
-nmap <c-l> A;<ESC>
 
 set tags=./tags;$HOME
 
@@ -106,8 +97,6 @@ highlight overLengthHard ctermbg=red
 "Highlights
 call matchadd('overLengthHard', '\%100v')
 call matchadd('overLengthSoft', '\%81v')
-call matchadd('TrailingWhitespace', '/\s\+$/v')
-"match TrailingWhitespace             /\s\+$/
 
 scriptencoding utf-8 "Unicode support is good
 
@@ -163,7 +152,6 @@ endif
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
-
 
 
 "Trying inspectee
