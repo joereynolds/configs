@@ -1,12 +1,6 @@
 #general aliases
 alias sl=ls
-alias vrc="vim ~/.vimrc"
-alias brc="vim ~/.bashrc"
 alias shutdown="sudo shutdown -h now"
-alias wiki="vim ~/Documents/wiki/main.wiki"
-alias aperr="cat /var/log/apache2/error.log"
-alias learn="vim ~/Documents/txt/things-to-learn"
-alias rgetd="cd /var/www/html/reap-get.com/public_html/starterkit"
 
 #git aliases
 alias gp="git pull"
@@ -29,24 +23,10 @@ alias conf-gtk="vim ~/.config/gtk-3.0/gtk.css"
 alias conf-conky="vim ~/.config/conky/conky.conf"
 alias conf-openbox="vim ~/.config/openbox/rc.xml"
 
-#Funny story. I originally called this 'fi' as shorthand
-#but that conflicted with the 'fi' keyword to signal
-#the end of an if statement. That means that I lost
-#all of my tab completion and cost me a few hours
-#in scratching my head. Oh the joys of
-#being an idiot...
-alias get="find -iname $1"
-alias gets="find -iname *$1*"
-
 #Delete a git branch both locally and remotely
 delbranch() {
     git push origin --delete $1;
     git push upstream --delete $1;
-}
-
-#Clear the local memcached
-clearcache() {
-    sudo service memcached restart
 }
 
 #neatly format xml, requires xmllint
@@ -105,17 +85,6 @@ jra() {
     sudo php -S localhost:667
 }
 
-testconf() {
-    echo "This will refresh the live site's cache. Are you sure you want to run this?[y/n]"
-
-    read input
-    if [ "$input" == "y" ]
-    then
-        echo "Ran successfully"
-    else
-        echo "Process aborted"
-    fi
-}
 
 #knowledgeable cow
 #echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay

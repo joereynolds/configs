@@ -151,7 +151,12 @@ endif
 
 
 "Trying inspectee
+noremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
 inoremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
+
+"debug
+noremap <F3> :call GetVisualSelection()<CR>
+
 
 function FindValueForVariable(variableName)
     "Remove crap characters like [{(,
@@ -163,11 +168,8 @@ function FindValueForVariable(variableName)
         let match = execute "normal! gdfl=vaw"
         let variableValue = GetVisualSelection()
         echoerr variableValue
-        echoerr 'This has self or static in it'
     endif
     "Otherwise use <C-]>
-
-    return 'This is a test'
 endfunction
 
 "Grab the value from the define keyword
@@ -188,5 +190,11 @@ function GetVisualSelection()
     let lines = getline(lnum1, lnum2)
     let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
     let lines[0] = lines[0][col1 - 1:]
+
+    echoerr join(lines, "\n")
     return join(lines, "\n")
 endfunction
+
+
+
+
