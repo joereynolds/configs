@@ -150,13 +150,32 @@ if !exists('g:loaded_matchit')
 endif
 
 
-"Trying inspectee
+
+"changesThis into-this
+"useful for CSS refactoring
+function CamelToDash()
+    
+
+endfunction
+
+"Pressing <leader>vd will insert a var dump of the current variable you're on
+"i.e.
+"    $request = 5
+"    <leader>vd
+"    var_dump($request);
+function VarDump()
+
+endfunction
+    
+
+"=============
+"|-INSPECTEE-|
+"=============
 noremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
 inoremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
 
 "debug
 noremap <F3> :call GetVisualSelection()<CR>
-
 
 function FindValueForVariable(variableName)
     "Remove crap characters like [{(,
