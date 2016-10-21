@@ -26,16 +26,6 @@ syntax on
 
 colorscheme ron
 
-"Learn vim properly. Disable lazyness
-nnoremap <Up> <NOP>
-nnoremap <Down> <NOP>
-nnoremap <Left> <NOP>
-nnoremap <Right> <NOP>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-
 "Sane copy and paste
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
@@ -55,6 +45,9 @@ nnoremap <Leader>gc :Gcommit<CR>
 
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
+
+"PHPStorm style mappings because I'm a convert and I am sorry vim people :(
+nnoremap <c-j> :%s///g<left><left>
 
 set tags=./tags;$HOME
 
