@@ -1,23 +1,26 @@
 
+
 set nocompatible
 
 call plug#begin()
 
+Plug 'Raimondi/delimitMate'             "auto-complete quotes etc...
+Plug 'SirVer/ultisnips'                 "super duper snippets
 Plug 'adoy/vim-php-refactoring-toolbox' "refactoring tools
 Plug 'ap/vim-css-color'                 "highlight css colours ... Doesn't seem to work :(
 Plug 'ervandew/supertab'                "tab completion
 Plug 'flazz/vim-colorschemes'           "colours
 Plug 'hail2u/vim-css3-syntax'           "better syntax for css
 Plug 'joonty/vdebug'                    "debugging
+Plug 'junegunn/goyo.vim'                "margins for writing
 Plug 'kshenoy/vim-signature'            "visible marks
+Plug 'mhinz/vim-grepper'                "better grep
+Plug 'mhinz/vim-startify'
 Plug 'scrooloose/syntastic'             "linter
 Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
-Plug 'wincent/command-t'                "fuzzy file finder
-Plug 'mhinz/vim-grepper'                "better grep
-Plug 'SirVer/ultisnips'                 "super duper snippets
-Plug 'junegunn/goyo.vim'                "margins for writing
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
+Plug 'wincent/command-t'                "fuzzy file finder
 
 call plug#end()
 
