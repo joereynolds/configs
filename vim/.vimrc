@@ -43,6 +43,9 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
+
+noremap <Leader>vd :call VarDump()<CR>
+
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
@@ -105,6 +108,7 @@ set cursorline "Show the current line you're on
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set hlsearch "Highlight matching searches
+set wildmenu "Show completions in a bar
 set expandtab "Change tabs into spaces
 set omnifunc=syntaxcomplete#Complete
 set ruler "Show our current position
@@ -157,6 +161,11 @@ endfunction
 "    <leader>vd
 "    var_dump($request);
 function VarDump()
+    let match = execute "normal vaW"
+    let variable = GetVisualSelection()
+    echoerr variable
+
+    
 
 endfunction
     
