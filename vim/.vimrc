@@ -1,5 +1,3 @@
-
-
 set nocompatible
 
 call plug#begin()
@@ -15,12 +13,13 @@ Plug 'joonty/vdebug'                    "debugging
 Plug 'junegunn/goyo.vim'                "margins for writing
 Plug 'kshenoy/vim-signature'            "visible marks
 Plug 'mhinz/vim-grepper'                "better grep
-Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'               "start menu
 Plug 'scrooloose/syntastic'             "linter
 Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
 Plug 'wincent/command-t'                "fuzzy file finder
+Plug 'osyo-manga/vim-over'              "live substitution
 
 call plug#end()
 
@@ -46,13 +45,13 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
-
 noremap <Leader>vd :call VarDump()<CR>
+nnoremap <Leader>x :OverCommandLine<CR>%s/
 
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
-"PHPStorm style mappings because I'm a convert and I am sorry vim people :(
+"IDE style mappings because I'm a convert and I am sorry vim people :(
 nnoremap <c-j> :%s///g<left><left>
 
 set tags=./tags;$HOME
@@ -218,7 +217,3 @@ function GetVisualSelection()
     echoerr join(lines, "\n")
     return join(lines, "\n")
 endfunction
-
-
-
-
