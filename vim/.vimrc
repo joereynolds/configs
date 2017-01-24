@@ -103,13 +103,13 @@ set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set complete-=i "Don't scan included files with omnicompletion
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
-set incsearch "highlight them as they're typed as well
 set numberwidth=2 "Make the line number gutter smaller
 set spell spelllang=en_gb "british and proud m8
 set cursorline "Show the current line you're on
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set hlsearch "Highlight matching searches
+set incsearch "highlight them as they're typed as well
 set wildmenu "Show completions in a bar
 set expandtab "Change tabs into spaces
 set omnifunc=syntaxcomplete#Complete
