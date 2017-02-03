@@ -10,7 +10,7 @@ Plug 'flazz/vim-colorschemes'           "colours
 Plug 'hail2u/vim-css3-syntax'           "better syntax for css
 Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
-Plug 'scrooloose/syntastic'             "linter
+Plug 'w0rp/ale'                         "linter
 Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
@@ -64,8 +64,6 @@ autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to
 autocmd FileType scss set iskeyword+=-
 
 au VimEnter *.md colorscheme seoul256 "Different colorscheme when writing
-au VimEnter *.md :Goyo "use goyo on md files.
-
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files

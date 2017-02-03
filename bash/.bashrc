@@ -87,7 +87,6 @@ jra() {
     sudo php -S localhost:667
 }
 
-
 #knowledgeable cow
 #echo 'What is' `shuf -n 1 ~/Documents/txt/things-to-learn`? | cowsay
 
@@ -96,5 +95,5 @@ export PATH=~/.composer/vendor/bin:$PATH
 #work sensitive rc not for prying eyes
 source ~/.private_bashrc
 
-#PROMPT STUFF
 source ~/programs/configs/bash/.colours
+source ~/Desktop/utilities/report-unused-functions
