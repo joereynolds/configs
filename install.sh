@@ -14,10 +14,6 @@ packages=(
     silversearch-ag
 )
 
-npmPackages=(
-    jsonlint
-)
-
 sudo rm -rf /usr/local/bin/vim #Remove crap vim and later link it to a good one
 for package in ${packages[*]}; do
     echo "Installing" ${package}
@@ -40,7 +36,6 @@ git config --global user.email "joereynolds952@gmail.com"
 git config --global user.name "Joe Reynolds"
 
 mkdir -p ~/programs && cd ~/programs
-git clone https://github.com/joereynolds/fanbox
 git clone https://github.com/joereynolds/life
 git clone https://github.com/joereynolds/programming-dump
 git clone https://github.com/joereynolds/util.joereynoldsaudio
@@ -55,11 +50,5 @@ ln -s ~/programs/configs/ctags/.ctags ~/.ctags
 rm ~/.bashrc
 ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
 
-rm ~/.git-prompt.sh
-ln -s ~/programs/configs/git/.git-prompt.sh ~/.git-prompt.sh
-
 rm ~/.jshintrc
 ln -s ~/programs/configs/jshint/.jshintrc ~/.jshintrc
-
-rm -rf ~/.vim/UltiSnips
-ln -s ~/programs/configs/vim/UltiSnips ~/.vim/UltiSnips
