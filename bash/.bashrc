@@ -1,3 +1,4 @@
+alias ls='ls --color=auto'
 alias sl=ls
 
 alias gs="git status"
@@ -12,14 +13,32 @@ alias conf-gtk="vim ~/.config/gtk-3.0/gtk.css"
 alias conf-conky="vim ~/.config/conky/conky.conf"
 alias conf-openbox="vim ~/.config/openbox/rc.xml"
 
-#neatly format json, requires python
-json() {
-    python3 -m json.tool $1
+#neatly format json
+function json() {
+  python3 -m json.tool $1
 }
 
-#Run interactive php shell
-psy() {
-    ~/programs/psysh
+function grepall() {
+  for directory in $(ls $1) ;
+  do 
+    cd "${directory}"
+    echo "-------------${directory}-------------"
+    git grep -i $2
+    echo "--------------------------------------"
+    cd - 
+  done
 }
+
+
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+force_color_prompt=yes
 
 export PATH=~/.composer/vendor/bin:$PATH

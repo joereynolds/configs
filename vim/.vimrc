@@ -3,19 +3,15 @@ set nocompatible
 call plug#begin()
 
 Plug 'Raimondi/delimitMate'             "auto-complete quotes etc...
-Plug 'adoy/vim-php-refactoring-toolbox' "refactoring tools
 Plug 'ap/vim-css-color'                 "highlight css colours ... Doesn't seem to work :(
 Plug 'ervandew/supertab'                "tab completion
-Plug 'flazz/vim-colorschemes'           "colours
 Plug 'hail2u/vim-css3-syntax'           "better syntax for css
 Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
-Plug 'w0rp/ale'                         "linter
 Plug 'tpope/vim-fugitive'               "git wrapper
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
 Plug 'wincent/command-t'                "fuzzy file finder
-Plug 'osyo-manga/vim-over'              "live substitution
 
 call plug#end()
 
@@ -47,23 +43,15 @@ nnoremap <Leader>x :OverCommandLine<CR>%s/
 "Control t opens a new tab. Just like da interwebz
 nmap <c-t> :tabnew<CR>
 
-"IDE style mappings because I'm a convert and I am sorry vim people :(
-nnoremap <c-j> :%s///g<left><left>
-
 set tags=./tags;$HOME
 
 "Commands
-
-autocmd BufWinEnter * setlocal modifiable
-
 autocmd BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
 autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
 
 autocmd BufRead,BufNewFile *.less set filetype=less.css " Set all .less files to have CSS syntax
 autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to have CSS syntax
 autocmd FileType scss set iskeyword+=-
-
-au VimEnter *.md colorscheme seoul256 "Different colorscheme when writing
 
 "Before we have written to our buffer, or when we read it,
 "format it nicely on xml and html files
@@ -128,10 +116,6 @@ let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 "commandT
 let g:CommandTFileScanner = "git"
 
-"ultisnips
-let g:UltiSnipsExpandTrigger = "<C-a>"
-let g:UltiSnipsJumpForwardTrigger = "<C-d>"
-
 " Use thesilversearch instead of ack for greps
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
@@ -141,73 +125,3 @@ endif
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
-
-
-
-"changesThis into-this
-"useful for CSS refactoring
-function CamelToDash()
-    
-
-endfunction
-
-"Pressing <leader>vd will insert a var dump of the current variable you're on
-"i.e.
-"    $request = 5
-"    <leader>vd
-"    var_dump($request);
-function VarDump()
-    let match = execute "normal vaW"
-    let variable = GetVisualSelection()
-    echoerr variable
-
-    
-
-endfunction
-    
-
-"=============
-"|-INSPECTEE-|
-"=============
-noremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
-inoremap <F2> <C-R>=ShowPopup(expand("<cWORD>"))<CR>
-
-"debug
-noremap <F3> :call GetVisualSelection()<CR>
-
-function FindValueForVariable(variableName)
-    "Remove crap characters like [{(,
-    let stripped = substitute(a:variableName, '[', '', '')
-
-    echoerr stripped
-    "If it begins with self:: or static:: use gd
-    if stridx(stripped, 'self') > -1 || stridx(stripped, 'static') > -1
-        let match = execute "normal! gdfl=vaw"
-        let variableValue = GetVisualSelection()
-        echoerr variableValue
-    endif
-    "Otherwise use <C-]>
-endfunction
-
-"Grab the value from the define keyword
-function FindFromDefine(variableName)
-endfunction
-
-function ShowPopup(variable)
-    echoerr FindValueForVariable(a:variable)
-
-    "Shows the popup menu with what you were trying to search for
-    call complete(col('.'), ['Matches for ' . a:variable, a:variable, '.', '.'])
-    return ''
-endfunction
-
-function GetVisualSelection()
-    let [lnum1, col1] = getpos("'<")[1:2]
-    let [lnum2, col2] = getpos("'>")[1:2]
-    let lines = getline(lnum1, lnum2)
-    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][col1 - 1:]
-
-    echoerr join(lines, "\n")
-    return join(lines, "\n")
-endfunction
