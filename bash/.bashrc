@@ -42,3 +42,4 @@ fi
 force_color_prompt=yes
 
 export PATH=~/.composer/vendor/bin:$PATH
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

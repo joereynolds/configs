@@ -53,11 +53,13 @@ function clonePersonalRepos() {
 function symlinkConfigs() {
 
   rm ~/.vimrc
+  rm ~/.config/nvim/init.vim
   rm ~/.ctags
   rm ~/.bashrc
   rm ~/.tmux.conf
 
   ln -s ~/programs/configs/vim/.vimrc ~/.vimrc
+  ln -s ~/programs/configs/nvim/init.vim ~/.config/nvim/init.vim
   ln -s ~/programs/configs/ctags/.ctags ~/.ctags
   ln -s ~/programs/configs/bash/.bashrc ~/.bashrc
   ln -s ~/programs/configs/tmux/.tmux.conf ~/.tmux.conf
