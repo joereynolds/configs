@@ -5,9 +5,11 @@ call plug#begin()
 Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
 Plug 'tpope/vim-surround'               "surround editing
+Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
 Plug 'ctrlpvim/ctrlp.vim'               "Fuzzy finder
 Plug 'Shougo/deoplete.nvim'             "completion
+Plug 'neomake/neomake'
 
 call plug#end()
 call deoplete#enable()
@@ -16,13 +18,8 @@ call deoplete#enable()
 filetype plugin indent on
 syntax on
 
-
 colorscheme ron
 
-"Sane copy and paste
-vmap <C-c> "+yi
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -30,17 +27,25 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 "Pressing enter in normal mode behaves like it would in insert mode
 nnoremap <silent> <CR> i<CR><ESC>
 
-"Toggle git blame statusbar
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gc :Gcommit<CR>
 
-noremap <Leader>vd :call VarDump()<CR>
-nnoremap <Leader>x :OverCommandLine<CR>%s/
+"IDE style mappings (Sublime text)
+nmap <c-r> :CtrlPBufTag<cr>
+nmap <c-t> :tabnew<cr>
 
-"Control t opens a new tab. Just like da interwebz
-nmap <c-t> :tabnew<CR>
+"Error navigation
+nmap <c-k>a :lopen<cr>
+nmap <c-k>n :lnext<cr>
+nmap <c-k>p :lprevious<cr>
+
+"comments
+nmap <c-_> gcc
+vmap <c-_> gcc
+imap <c-_> <esc>gcc
+
+"copy paste
+vmap <C-c> "+yi
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 
 set tags=./tags;$HOME
 
@@ -62,6 +67,9 @@ autocmd ColorScheme * highlight Search ctermfg=white ctermbg=green
 autocmd ColorScheme * highlight TrailingWhitespace ctermbg=yellow
 autocmd ColorScheme * highlight overLengthSoft ctermbg=magenta
 autocmd ColorScheme * highlight overLengthHard ctermbg=red
+
+" Lint on write
+autocmd! BufWritePost * Neomake
 
 "Give our highlight groups names so we can display them on matches
 highlight Search ctermfg=white ctermbg=green
@@ -102,26 +110,21 @@ set ruler "Show our current position
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
+set modifiable
 
 
 "plugins
 
-"vim-grepper
-"Have a friendly remapping for :Grepper
-nnoremap <Leader>z :Grepper -tool git -noswitch<CR>
-
-"supertab
-let g:SuperTabDefaultCompletionType = 'context'
+"ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|git'
+let g:ctrlp_match_window = 'top,order:ttb,results:30'
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
-"commandT
-let g:CommandTFileScanner = "git"
-
-" Use thesilversearch instead of ack for greps
+" Use thesilversearch instead for greps
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup
 endif
 
 " Use matchit
