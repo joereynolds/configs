@@ -5,7 +5,7 @@ Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
 Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
-Plug 'sts10/vim-mustard'                "nice colourscheme
+Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
@@ -19,7 +19,7 @@ call deoplete#enable()
 filetype plugin indent on
 syntax on
 
-colorscheme mustard
+colorscheme monokai
 
 
 "Clear the search when we press space
@@ -29,7 +29,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <silent> <CR> i<CR><ESC>
 
 nnoremap <leader>e :e ~/programs/configs/nvim/init.vim<cr>
-nnoremap <leader>f :GrepperGit 
+nnoremap <leader>f :Grepper -highlight -tool git -grepprg git grep -nIi<cr>
 
 "IDE style mappings (Sublime text)
 nmap <c-r> :CtrlPBufTag<cr>
@@ -79,11 +79,9 @@ set backspace=indent,eol,start "Make backspace behave like it does everywhere el
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set relativenumber "Turn on relative numbering for all lines
-set background=dark "We do this for the vim-mustard plugin
 set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set numberwidth=2 "Make the line number gutter smaller
-set spell spelllang=en_gb "british and proud m8
 set cursorline "Show the current line you're on
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
