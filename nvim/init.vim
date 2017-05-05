@@ -30,7 +30,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <silent> <CR> i<CR><ESC>
 
 nnoremap <leader>e :e ~/programs/configs/nvim/init.vim<cr>
-nnoremap <leader>f :Grepper -highlight -tool git -grepprg git grep -nIi<cr>
+nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
 
 "IDE style mappings (Sublime text)
 nmap <c-r> :CtrlPBufTag<cr>
@@ -105,6 +105,9 @@ nmap <leader><leader>w <Plug>(easymotion-bd-w)
 "vim grepper
 runtime autoload/grepper.vim
 let g:grepper.dir = 'repo'
+let g:grepper.highlight = 1
+let g:grepper.simple_prompt = 1
+let g:grepper.side = 1
 
 "ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|git'
