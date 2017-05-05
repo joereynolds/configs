@@ -6,6 +6,7 @@ Plug 'kshenoy/vim-signature'            "visible marks
 Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
 Plug 'crusoexia/vim-monokai'            "nice colourscheme
+Plug 'easymotion/vim-easymotion'        "it's pretty incredible
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
@@ -94,13 +95,16 @@ set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
 
-
 "plugins
+
+
+"vim easymotion
+"Have the motion work bi-directionally
+nmap <leader><leader>w <Plug>(easymotion-bd-w)
 
 "vim grepper
 runtime autoload/grepper.vim
 let g:grepper.dir = 'repo'
-
 
 "ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|git'
