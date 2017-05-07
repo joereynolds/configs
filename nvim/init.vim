@@ -69,8 +69,10 @@ autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to
 autocmd BufWritePre,BufRead *.html :normal gg=G
 autocmd BufWritePre,BufRead *.xml :normal gg=G
 
+autocmd BufEnter * :set modifiable
 " Lint on write
 autocmd! BufWritePost * Neomake
+
 
 scriptencoding utf-8 "Unicode support is good
 
