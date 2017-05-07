@@ -26,9 +26,6 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-"Pressing enter in normal mode behaves like it would in insert mode
-nnoremap <silent> <CR> i<CR><ESC>
-
 nnoremap <leader>e :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
 
