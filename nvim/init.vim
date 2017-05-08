@@ -11,6 +11,8 @@ Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "Organisational stuff
+Plug 'godlygeek/csapprox'               "terminal colours
+
 
 call plug#end()
 call deoplete#enable()
@@ -76,7 +78,6 @@ set cursorline "Show the current line you're on
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
-set termguicolors "true colours
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
