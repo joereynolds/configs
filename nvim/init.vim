@@ -34,6 +34,14 @@ nmap <c-k>a :lopen<cr>
 nmap <c-k>n :lnext<cr>
 nmap <c-k>p :lprevious<cr>
 
+"netrw
+nnoremap <c-k>b :Lexplore<cr>
+inoremap <c-k>b <esc>:Lexplore<cr>
+
+"save like a sane person
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <esc>:w<cr>
+
 "comments <c-_> actually means ctrl+/ for some reason _ is registered as /
 nmap <c-_> gcc
 vmap <c-_> gcc
@@ -83,6 +91,11 @@ set mouse=a "mouse support
 set shell=/bin/bash
 
 "plugins
+
+"netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = -40
 
 "vim easymotion
 "Have the motion work bi-directionally
