@@ -111,6 +111,7 @@ let g:grepper.side = 1
 "ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|git'
 let g:ctrlp_match_window = 'top,order:ttb,results:30'
+let g:ctrlp_max_depth = 100
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
