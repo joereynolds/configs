@@ -11,8 +11,9 @@ Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-fugitive'               "git integration
 Plug 'tpope/vim-surround'               "surround editing
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'godlygeek/csapprox'               "terminal colours
+Plug 'itchyny/lightline.vim'            "statusline
 
 
 
@@ -99,6 +100,22 @@ set mouse=a "mouse support
 set shell=/bin/bash
 
 "plugins
+
+"lightline
+
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ }
+      \ }
 
 "netrw
 let g:netrw_liststyle = 3
