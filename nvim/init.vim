@@ -9,9 +9,11 @@ Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'easymotion/vim-easymotion'        "it's pretty incredible
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
+Plug 'tpope/vim-fugitive'               "git integration
 Plug 'tpope/vim-surround'               "surround editing
-Plug 'vimwiki/vimwiki'                  "Organisational stuff
+Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/csapprox'               "terminal colours
+
 
 
 call plug#end()
@@ -24,6 +26,12 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 nnoremap <leader>e :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
+
+"resize windows easily
+nnoremap <up> :resize +10<cr>
+nnoremap <down> :resize -10<cr>
+nnoremap <left> :vertical resize -10<cr>
+nnoremap <right> :vertical resize +10<cr>
 
 "IDE style mappings (Sublime text)
 nmap <c-r> :CtrlPBufTag<cr>
@@ -100,6 +108,12 @@ let g:netrw_winsize = -40
 "vim easymotion
 "Have the motion work bi-directionally
 nmap <leader><leader>w <Plug>(easymotion-bd-w)
+
+"vim fugitive
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
 
 "vim grepper
 runtime autoload/grepper.vim
