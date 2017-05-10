@@ -15,8 +15,6 @@ Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'godlygeek/csapprox'               "terminal colours
 Plug 'itchyny/lightline.vim'            "statusline
 
-
-
 call plug#end()
 call deoplete#enable()
 
@@ -102,13 +100,15 @@ set shell=/bin/bash
 "plugins
 
 "lightline
-
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \ },
+      \ 'component_function': {
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' },
       \ 'component': {
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \ },
@@ -117,10 +117,37 @@ let g:lightline = {
       \ }
       \ }
 
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
 "netrw
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_winsize = -40
+let g:netrw_liststyle = 3 "style it as a tree
+let g:netrw_banner = 0    "Hide the default banner
+let g:netrw_winsize = -40 "Give the window an absolute size of 40
 
 "vim easymotion
 "Have the motion work bi-directionally
