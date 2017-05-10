@@ -1,7 +1,6 @@
 call plug#begin()
 
 Plug 'ctrlpvim/ctrlp.vim'               "Fuzzy finder
-Plug 'joonty/vdebug'                    "debugging
 Plug 'kshenoy/vim-signature'            "visible marks
 Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
@@ -36,11 +35,6 @@ nnoremap <right> :vertical resize +10<cr>
 nmap <c-r> :CtrlPBufTag<cr>
 nmap <c-t> :tabnew<cr>
 
-"Error navigation
-nmap <c-k>a :lopen<cr>
-nmap <c-k>n :lnext<cr>
-nmap <c-k>p :lprevious<cr>
-
 "netrw
 nnoremap <c-k>b :Lexplore<cr>
 inoremap <c-k>b <esc>:Lexplore<cr>
@@ -53,9 +47,6 @@ inoremap <c-s> <esc>:w<cr>
 nmap <c-_> gcc
 vmap <c-_> gcc
 imap <c-_> <esc>gcc 
-
-nmap <c-g> :
-imap <c-g> <esc>:
 
 "copy paste
 vmap <C-c> "+yi
@@ -156,15 +147,16 @@ nmap <leader><leader>w <Plug>(easymotion-bd-w)
 "vim fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gh :Git checkout 
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
 "vim grepper
 runtime autoload/grepper.vim
-let g:grepper.dir = 'repo'
-let g:grepper.highlight = 1
-let g:grepper.simple_prompt = 1
-let g:grepper.side = 1
+let g:grepper.dir = 'repo'      "scan from the top of our repo
+let g:grepper.highlight = 1     "highlight matches
+let g:grepper.simple_prompt = 1 "Remove the noise from the prompt
+let g:grepper.side = 1          "open a new buffer with some context
 
 "ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|git'
