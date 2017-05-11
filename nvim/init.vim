@@ -107,6 +107,8 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gh :Git checkout<space>
 nnoremap <leader>gd :Gdiff<cr>
+"For some reason :Gpush crashes my terminal so have to use the native version
+nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
 "vim grepper
