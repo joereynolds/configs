@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'               "git integration
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'godlygeek/csapprox'               "terminal colours
-Plug 'itchyny/lightline.vim'            "statusline
 
 call plug#end()
 call deoplete#enable()
@@ -22,8 +21,9 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-nnoremap <leader>e :e ~/programs/configs/nvim/init.vim<cr>
+nnoremap <leader>e :lopen<cr>
 nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
+nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 
 "resize windows easily
 nnoremap <up> :resize +10<cr>
@@ -55,13 +55,12 @@ imap <C-v> <ESC>"+pa
 
 "Commands
 autocmd BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
-autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .lock files to have JS syntax
+autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .json files to have JS syntax
 
 autocmd BufRead,BufNewFile *.less set filetype=less.css " Set all .less files to have CSS syntax
 autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to have CSS syntax
 
-"Before we have written to our buffer, or when we read it,
-"format it nicely on xml and html files
+"Format html and xml
 autocmd BufWritePre,BufRead *.html :normal gg=G
 autocmd BufWritePre,BufRead *.xml :normal gg=G
 
@@ -71,6 +70,10 @@ autocmd! BufWritePost * Neomake
 
 
 scriptencoding utf-8 "Unicode support is good
+
+"statusline
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+hi StatusLine ctermbg=white ctermfg=red
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -90,51 +93,6 @@ set shell=/bin/bash
 
 "plugins
 
-"lightline
-let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \ },
-      \ 'component_function': {
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' },
-      \ 'component': {
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ }
-      \ }
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_banner = 0    "Hide the default banner
@@ -147,7 +105,7 @@ nmap <leader><leader>w <Plug>(easymotion-bd-w)
 "vim fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gh :Git checkout 
+nnoremap <leader>gh :Git checkout<space>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
@@ -165,11 +123,6 @@ let g:ctrlp_max_depth = 100
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
-
-" Use thesilversearch instead for greps
-if executable('ag')
-    set grepprg=ag\ --nogroup
-endif
 
 " Use matchit
 if !exists('g:loaded_matchit')
