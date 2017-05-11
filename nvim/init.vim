@@ -72,8 +72,8 @@ autocmd! BufWritePost * Neomake
 scriptencoding utf-8 "Unicode support is good
 
 "statusline
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-hi StatusLine ctermbg=white ctermfg=red
+set statusline=%{fugitive#statusline()}%=%t[%04l,%04v]
+hi StatusLine ctermbg=white ctermfg=blue
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -110,6 +110,7 @@ nnoremap <leader>gd :Gdiff<cr>
 "For some reason :Gpush crashes my terminal so have to use the native version
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gt :Git stash<cr>
 
 "vim grepper
 runtime autoload/grepper.vim
