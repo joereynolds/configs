@@ -18,6 +18,7 @@ function installPackages() {
 
   packages=(
     cmake
+    composer
     curl
     exuberant-ctags
     git
