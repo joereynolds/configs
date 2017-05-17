@@ -1,17 +1,22 @@
 #!/bin/bash
 
-source ./functions.sh
-
 mkdir -p ~/programs
+mkdir -p ~/code
+
+source ../up/functions.sh
+source functions.sh
+
 
 echo 'Configuring Git'
-configureGit()
+configureGit
 
 echo 'Cloning personal repositories'
-clonePersonalRepos()
+clonePersonalRepos
 
 echo 'Installing apt packages'
-installPackages()
+addAptRepositories
+installPackages
+configurePackages
 
 echo 'Symlinking configs'
-symlinkConfigs()
+symlinkConfigs
