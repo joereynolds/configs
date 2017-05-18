@@ -22,6 +22,8 @@ function installPackages() {
     curl
     exuberant-ctags
     git
+    google-chrome
+    newsbeuter
     npm
     python-dev
     rake
@@ -74,6 +76,7 @@ function clonePersonalRepos() {
 
 function symlinkConfigs() {
 
+  mkdir ~/.config/nvim
   rm ~/.config/nvim/init.vim
   rm ~/.ctags
   rm ~/.bashrc
