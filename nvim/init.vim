@@ -66,7 +66,10 @@ autocmd BufWritePre,BufRead *.xml :normal gg=G
 
 autocmd BufEnter * :set modifiable
 " Lint on write
-autocmd! BufWritePost * Neomake
+autocmd BufWritePost * Neomake
+
+" Execute the file on write for super quick dev
+autocmd BufWritePost *.rkt :!racket %
 
 
 scriptencoding utf-8 "Unicode support is good

@@ -23,6 +23,7 @@ function installPackages() {
     exuberant-ctags
     git
     google-chrome
+    lnav
     newsbeuter
     npm
     python-dev
@@ -35,6 +36,7 @@ function installPackages() {
     php-cs-fixer
     phpmd
     python-pip
+    racket
     silversearcher-ag
     spotify-client
     tmux
