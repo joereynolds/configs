@@ -1,7 +1,11 @@
-alias ls='ls --color=auto'
+alias ls="ls --color=auto"
 alias sl=ls
 
 alias gs="git status"
+alias gl="git log --oneline"
+alias gb="git branch"
+alias gp="git push"
+alias gc="git commit"
 alias grepi="git grep -i -- $1"
 
 #conf aliases

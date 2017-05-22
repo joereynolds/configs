@@ -6,12 +6,14 @@ Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
 Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'easymotion/vim-easymotion'        "it's pretty incredible
+Plug 'janko-m/vim-test'                 "Run unit tests
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-fugitive'               "git integration
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'godlygeek/csapprox'               "terminal colours
+Plug 'FelikZ/ctrlp-py-matcher'          "Faster matching for ctrlp
 
 call plug#end()
 call deoplete#enable()
@@ -21,8 +23,6 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-nnoremap <leader>e :lopen<cr>
-nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 
 "resize windows easily
@@ -96,6 +96,9 @@ set shell=/bin/bash
 
 "plugins
 
+"vim-test
+nnoremap <leader>t :TestFile -strategy=neovim<cr>
+
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_banner = 0    "Hide the default banner
@@ -116,6 +119,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
 
 "vim grepper
+nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
 runtime autoload/grepper.vim
 let g:grepper.dir = 'repo'      "scan from the top of our repo
 let g:grepper.highlight = 1     "highlight matches
@@ -123,6 +127,7 @@ let g:grepper.simple_prompt = 1 "Remove the noise from the prompt
 let g:grepper.side = 1          "open a new buffer with some context
 
 "ctrlp
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_custom_ignore = 'node_modules\|git'
 let g:ctrlp_match_window = 'top,order:ttb,results:30'
 let g:ctrlp_max_depth = 100
