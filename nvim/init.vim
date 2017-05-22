@@ -6,7 +6,8 @@ Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
 Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'easymotion/vim-easymotion'        "it's pretty incredible
-Plug 'janko-m/vim-test'                 "Run unit tests
+Plug 'joereynolds/vim-test'                 "Run unit tests
+" Plug 'janko-m/vim-test'                 "Run unit tests
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-fugitive'               "git integration
