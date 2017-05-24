@@ -32,9 +32,21 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
+"move code up or down
+nnoremap <c-s-j> :m .+1<CR>==
+nnoremap <c-s-k> :m .-2<CR>==
+inoremap <c-s-j> <Esc>:m .+1<CR>==gi
+inoremap <c-s-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-s-j> :m '>+1<CR>gv=gv
+vnoremap <c-s-k> :m '<-2<CR>gv=gv
+
 "IDE style mappings (Sublime text)
 nmap <c-r> :CtrlPBufTag<cr>
 nmap <c-t> :tabnew<cr>
+
+"save like a sane person		
+nnoremap <c-s> :w<cr>		
+inoremap <c-s> <esc>:w<cr>		
 
 "comments <c-_> actually means ctrl+/ for some reason _ is registered as /
 nmap <c-_> gcc

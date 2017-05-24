@@ -1,6 +1,10 @@
-alias ls="ls --color=auto"
-alias sl=ls
+source '/home/joe/code/up/rc.sh'
 
+alias vim="nvim"
+alias ls="ls --color=auto"
+alias sl="ls"
+
+#git
 alias gs="git status"
 alias gl="git log --oneline"
 alias gb="git branch"
@@ -18,11 +22,11 @@ alias conf-conky="vim ~/.config/conky/conky.conf"
 alias conf-openbox="vim ~/.config/openbox/rc.xml"
 
 #neatly format json
-function json() {
+json() {
   python3 -m json.tool $1
 }
 
-function grepall() {
+grepall() {
   for directory in $(ls $1) ;
   do 
     cd "${directory}"
