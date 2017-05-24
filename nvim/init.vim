@@ -6,8 +6,8 @@ Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
 Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'easymotion/vim-easymotion'        "it's pretty incredible
-Plug 'joereynolds/vim-test'                 "Run unit tests
-" Plug 'janko-m/vim-test'                 "Run unit tests
+Plug 'joonty/vdebug'                    "Debugging support
+Plug 'janko-m/vim-test'                 "Run unit tests
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-fugitive'               "git integration
@@ -36,14 +36,6 @@ nnoremap <right> :vertical resize +10<cr>
 nmap <c-r> :CtrlPBufTag<cr>
 nmap <c-t> :tabnew<cr>
 
-"netrw
-nnoremap <c-k>b :Lexplore<cr>
-inoremap <c-k>b <esc>:Lexplore<cr>
-
-"save like a sane person
-nnoremap <c-s> :w<cr>
-inoremap <c-s> <esc>:w<cr>
-
 "comments <c-_> actually means ctrl+/ for some reason _ is registered as /
 nmap <c-_> gcc
 vmap <c-_> gcc
@@ -66,12 +58,9 @@ autocmd BufWritePre,BufRead *.html :normal gg=G
 autocmd BufWritePre,BufRead *.xml :normal gg=G
 
 autocmd BufEnter * :set modifiable
+
 " Lint on write
 autocmd BufWritePost * Neomake
-
-" Execute the file on write for super quick dev
-autocmd BufWritePost *.rkt :!racket %
-
 
 scriptencoding utf-8 "Unicode support is good
 
@@ -99,6 +88,14 @@ set shell=/bin/bash
 
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
+
+"vdebug
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 1337
+
+let g:vdebug_options["path_maps"] = {
+\ "/var/www/enterprise": "/home/joe/code/enterprise"
+\}
 
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
