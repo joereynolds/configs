@@ -134,6 +134,11 @@ nnoremap <c-s-c> :Commits<cr>
 nnoremap <leader>f :Ag<cr>
 nnoremap <c-x> :Commands<cr>
 
+if executable('ag')
+    set grepprg=ag\ --nogroup
+endif
+
+
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
