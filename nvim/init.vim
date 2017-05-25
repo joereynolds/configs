@@ -1,8 +1,8 @@
 call plug#begin()
 
-Plug 'ctrlpvim/ctrlp.vim'               "Fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
+Plug 'junegunn/fzf.vim'                 "Fuzzy searching in vim
 Plug 'kshenoy/vim-signature'            "visible marks
-Plug 'mhinz/vim-grepper'                "better search
 Plug 'neomake/neomake'                  "linting
 Plug 'crusoexia/vim-monokai'            "nice colourscheme
 Plug 'easymotion/vim-easymotion'        "it's pretty incredible
@@ -10,11 +10,10 @@ Plug 'joonty/vdebug'                    "Debugging support
 Plug 'janko-m/vim-test'                 "Run unit tests
 Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
-Plug 'tpope/vim-fugitive'               "git integration
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'godlygeek/csapprox'               "terminal colours
-Plug 'FelikZ/ctrlp-py-matcher'          "Faster matching for ctrlp
+Plug 'tpope/vim-fugitive'               "git integration
 
 call plug#end()
 call deoplete#enable()
@@ -41,7 +40,6 @@ vnoremap <c-s-j> :m '>+1<CR>gv=gv
 vnoremap <c-s-k> :m '<-2<CR>gv=gv
 
 "IDE style mappings (Sublime text)
-nmap <c-r> :CtrlPBufTag<cr>
 nmap <c-t> :tabnew<cr>
 
 "save like a sane person		
@@ -96,6 +94,7 @@ set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
 
+
 "plugins
 
 "vim-test
@@ -128,19 +127,13 @@ nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
 
-"vim grepper
-nnoremap <leader>f :Grepper -tool git -grepprg git grep -nIi<cr>
-runtime autoload/grepper.vim
-let g:grepper.dir = 'repo'      "scan from the top of our repo
-let g:grepper.highlight = 1     "highlight matches
-let g:grepper.simple_prompt = 1 "Remove the noise from the prompt
-let g:grepper.side = 1          "open a new buffer with some context
+"fzf
+nnoremap <c-p> :GFiles<cr>
+nnoremap <c-r> :BTags<cr>
+nnoremap <c-s-c> :Commits<cr>
+nnoremap <leader>f :Ag<cr>
+nnoremap <c-x> :Commands<cr>
 
-"ctrlp
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_custom_ignore = 'node_modules\|git'
-let g:ctrlp_match_window = 'top,order:ttb,results:30'
-let g:ctrlp_max_depth = 100
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
