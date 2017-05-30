@@ -21,6 +21,9 @@ alias conf-gtk="vim ~/.config/gtk-3.0/gtk.css"
 alias conf-conky="vim ~/.config/conky/conky.conf"
 alias conf-openbox="vim ~/.config/openbox/rc.xml"
 
+#docker
+alias dcu="docker-compose up"
+
 #neatly format json
 json() {
   python3 -m json.tool $1

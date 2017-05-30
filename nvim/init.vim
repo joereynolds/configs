@@ -22,7 +22,6 @@ colorscheme monokai
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
-
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 
 "resize windows easily
@@ -38,6 +37,8 @@ inoremap <c-s-j> <Esc>:m .+1<CR>==gi
 inoremap <c-s-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-s-j> :m '>+1<CR>gv=gv
 vnoremap <c-s-k> :m '<-2<CR>gv=gv
+
+tnoremap <esc> <c-\><c-n>
 
 "IDE style mappings (Sublime text)
 nmap <c-t> :tabnew<cr>
@@ -120,25 +121,23 @@ nmap <leader><leader>w <Plug>(easymotion-bd-w)
 "vim fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gh :Git checkout<space>
 nnoremap <leader>gd :Gdiff<cr>
 "For some reason :Gpush crashes my terminal so have to use the native version
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
+nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-", 'sink': 'silent !git checkout'})<cr>
 
 "fzf
 nnoremap <c-p> :GFiles<cr>
 nnoremap <c-r> :BTags<cr>
-nnoremap <c-s-c> :Commits<cr>
+nnoremap <c-c> :Commits<cr>
 nnoremap <leader>f :Ag<cr>
 nnoremap <c-x> :Commands<cr>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
 endif
-
-
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
