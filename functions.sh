@@ -52,6 +52,12 @@ function installPackages() {
   # install fzf
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
+
+
+function installNpmPackages() {
+    sudo npm install -g jshint
+    sudo npm install -g csslint
+
 }
 
 function configurePackages() {

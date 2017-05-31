@@ -12,7 +12,6 @@ Plug 'Shougo/deoplete.nvim'             "completion
 Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
-Plug 'godlygeek/csapprox'               "terminal colours
 Plug 'tpope/vim-fugitive'               "git integration
 
 call plug#end()
@@ -23,6 +22,7 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
+nnoremap <leader>s :source $MYVIMRC<cr>
 
 "resize windows easily
 nnoremap <up> :resize +10<cr>

@@ -17,6 +17,7 @@ echo 'Installing apt packages'
 addAptRepositories
 installPackages
 configurePackages
+installNpmPackages
 
 echo 'Symlinking configs'
 symlinkConfigs
