@@ -1,0 +1,4 @@
+function(${{+param+}})
+{
+    return ${{+~\~1+}};
+}

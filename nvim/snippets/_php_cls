@@ -1,0 +1,7 @@
+class {{++}}
+{
+    public function __construct(${{++}})
+    {
+        $this->{{+~\~1+}} = ${{+~\~1+}};
+    }
+}
