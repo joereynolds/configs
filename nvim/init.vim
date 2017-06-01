@@ -25,6 +25,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
 
+"fuzzy makefile completion (very naive)
+nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
+
 "resize windows easily
 nnoremap <up> :resize +10<cr>
 nnoremap <down> :resize -10<cr>
