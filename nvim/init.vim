@@ -13,7 +13,7 @@ Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'tpope/vim-fugitive'               "git integration
-Plug 'KeyboardFire/vim-minisnip'         "snippets (Ultisnips is bloated)
+Plug 'KeyboardFire/vim-minisnip'        "snippets (Ultisnips is bloated)
 
 call plug#end()
 call deoplete#enable()
@@ -23,7 +23,9 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
-nnoremap <leader>s :source $MYVIMRC<cr>
+
+"show snippets (Need to figure out the sink to just insert the text)
+nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets \| awk -F_ '{print $NF}'", 'sink': 'insert'})<cr>
 
 "fuzzy makefile completion (very naive)
 nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
@@ -35,12 +37,12 @@ nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
 "move code up or down
-nnoremap <c-s-j> :m .+1<CR>==
-nnoremap <c-s-k> :m .-2<CR>==
-inoremap <c-s-j> <Esc>:m .+1<CR>==gi
-inoremap <c-s-k> <Esc>:m .-2<CR>==gi
-vnoremap <c-s-j> :m '>+1<CR>gv=gv
-vnoremap <c-s-k> :m '<-2<CR>gv=gv
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+vnoremap <c-k> :m '<-2<CR>gv=gv
+nnoremap <c-j> :m .+1<CR>==
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
 
 tnoremap <esc> <c-\><c-n>
 
@@ -61,26 +63,37 @@ vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-"Commands
-autocmd BufRead,BufNewFile *.json setfiletype javascript " Set all .json files to have JS syntax
-autocmd BufRead,BufNewFile *.lock setfiletype javascript " Set all .json files to have JS syntax
+augroup set_syntax
+    autocmd!
+    autocmd BufRead,BufNewFile *.json setfiletype javascript
+    autocmd BufRead,BufNewFile *.lock setfiletype javascript
+    autocmd BufRead,BufNewFile *.less set filetype=less.css
+    autocmd BufRead,BufNewFile *.scss set filetype=sass.css
+augroup END
 
-autocmd BufRead,BufNewFile *.less set filetype=less.css " Set all .less files to have CSS syntax
-autocmd BufRead,BufNewFile *.scss set filetype=sass.css " Set all .scss files to have CSS syntax
+augroup formatting
+    autocmd!
+    autocmd BufWritePre,BufRead *.html :normal gg=G
+    autocmd BufWritePre,BufRead *.xml :normal gg=G
+augroup END
 
-"Format html and xml
-autocmd BufWritePre,BufRead *.html :normal gg=G
-autocmd BufWritePre,BufRead *.xml :normal gg=G
+augroup source_vimrc
+    autocmd!
+    "nested and piped to avoid easymotion being shit
+    autocmd BufWritePost init.vim nested | source % | redraw
+augroup END
+
+augroup linting
+    autocmd!
+    autocmd BufWritePost * Neomake
+augroup END
 
 autocmd BufEnter * :set modifiable
-
-" Lint on write
-autocmd BufWritePost * Neomake
 
 scriptencoding utf-8 "Unicode support is good
 
 "statusline
-set statusline=%{fugitive#statusline()}%=%t[%04l,%04v]
+set statusline=%{fugitive#statusline()}%=%t[%02p%%04l,%04v]
 hi StatusLine ctermbg=white ctermfg=blue
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
@@ -98,7 +111,6 @@ set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
-
 
 "plugins
 
