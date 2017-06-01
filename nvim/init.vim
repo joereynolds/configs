@@ -13,6 +13,7 @@ Plug 'tpope/vim-commentary'             "easier commenting
 Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'tpope/vim-fugitive'               "git integration
+Plug 'KeyboardFire/vim-minisnip'         "snippets (Ultisnips is bloated)
 
 call plug#end()
 call deoplete#enable()
@@ -111,6 +112,7 @@ let g:vdebug_options["path_maps"] = {
 
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
+let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
 

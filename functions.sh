@@ -93,6 +93,7 @@ function symlinkConfigs() {
   rm ~/.bashrc
   rm ~/.tmux.conf
 
+  ln -s ~/programs/configs/nvim/snippets ~/.vim/minisnip
   ln -s ~/programs/configs/nvim/init.vim ~/.config/nvim/init.vim
   ln -s ~/programs/configs/ctags/.ctags ~/.ctags
   ln -s ~/programs/configs/bash/.bashrc ~/.bashrc

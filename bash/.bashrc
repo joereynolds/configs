@@ -5,6 +5,7 @@ alias ls="ls --color=auto"
 alias sl="ls"
 
 #git
+alias gh="git checkout"
 alias gs="git status"
 alias gl="git log --oneline"
 alias gb="git branch"
