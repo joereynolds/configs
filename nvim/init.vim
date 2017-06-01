@@ -138,7 +138,7 @@ nmap <leader><leader>w <Plug>(easymotion-bd-w)
 "vim fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gvdiff<cr>
 "For some reason :Gpush crashes my terminal so have to use the native version
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
