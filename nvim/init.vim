@@ -148,7 +148,6 @@ nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-",
 "fzf
 nnoremap <c-p> :GFiles<cr>
 nnoremap <c-r> :BTags<cr>
-nnoremap <c-c> :Commits<cr>
 nnoremap <leader>f :Ag<cr>
 nnoremap <c-x> :Commands<cr>
 
