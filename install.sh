@@ -3,9 +3,7 @@
 mkdir -p ~/programs
 mkdir -p ~/code
 
-source ../up/functions.sh
 source functions.sh
-
 
 echo 'Configuring Git'
 configureGit
