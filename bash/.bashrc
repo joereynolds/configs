@@ -1,5 +1,3 @@
-source '/home/joe/code/up/rc.sh'
-
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias sl="ls"
@@ -60,6 +58,8 @@ if ! shopt -oq posix; then
 fi
 
 force_color_prompt=yes
+
+source ~/programs/up/rc.sh
 
 export PATH=~/.composer/vendor/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

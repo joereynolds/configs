@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'               "surround editing
 Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'tpope/vim-fugitive'               "git integration
 Plug 'KeyboardFire/vim-minisnip'        "snippets (Ultisnips is bloated)
+Plug 'mxw/vim-jsx'                      "react
 
 call plug#end()
 call deoplete#enable()
@@ -93,7 +94,7 @@ autocmd BufEnter * :set modifiable
 scriptencoding utf-8 "Unicode support is good
 
 "statusline
-set statusline=%{fugitive#statusline()}%=%t[%02p%%04l,%04v]
+set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 hi StatusLine ctermbg=white ctermfg=blue
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
@@ -154,6 +155,9 @@ nnoremap <c-x> :Commands<cr>
 if executable('ag')
     set grepprg=ag\ --nogroup
 endif
+
+"vim-jsx
+let g:jsx_ext_required = 0
 
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
