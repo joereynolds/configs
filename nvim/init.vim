@@ -174,14 +174,14 @@ if !exists('g:loaded_matchit')
 endif
 
 function! CopyFile()
-    let new_name = input('Name the new file:', expand('%'), 'file')
+    let new_name = input('Name the new file: ', expand('%'), 'file')
     let original_file = expand('%')
     exec ':!cp ' . original_file . ' ' . new_name
     redraw!
 endfunction
 
 function! CreateFile()
-    let new_name = input('New file:', expand('%'), 'file')
+    let new_name = input('New file: ', expand('%'), 'file')
     if new_name != ''
         exec ':edit ' . new_name
         redraw!
