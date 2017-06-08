@@ -1,21 +1,21 @@
 call plug#begin()
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
-Plug 'junegunn/fzf.vim'                 "Fuzzy searching in vim
-Plug 'kshenoy/vim-signature'            "visible marks
-Plug 'neomake/neomake'                  "linting
-Plug 'crusoexia/vim-monokai'            "nice colourscheme
-Plug 'easymotion/vim-easymotion'        "it's pretty incredible
-Plug 'joonty/vdebug'                    "Debugging support
-Plug 'janko-m/vim-test'                 "Run unit tests
-Plug 'Shougo/deoplete.nvim'             "completion
-Plug 'tpope/vim-commentary'             "easier commenting
-Plug 'tpope/vim-surround'               "surround editing
-Plug 'vimwiki/vimwiki'                  "organisational stuff
-Plug 'tpope/vim-fugitive'               "git integration
-Plug 'KeyboardFire/vim-minisnip'        "snippets (Ultisnips is bloated)
-Plug 'mxw/vim-jsx'                      "react
-Plug 'wlangstroth/vim-racket'           "racket support
+Plug 'junegunn/fzf.vim'            "Fuzzy searching in vim
+Plug 'kshenoy/vim-signature'       "visible marks
+Plug 'neomake/neomake'             "linting
+Plug 'crusoexia/vim-monokai'       "nice colourscheme
+Plug 'easymotion/vim-easymotion'   "it's pretty incredible
+Plug 'joonty/vdebug'               "Debugging support
+Plug 'janko-m/vim-test'            "Run unit tests
+Plug 'Shougo/deoplete.nvim'        "completion
+Plug 'tpope/vim-commentary'        "easier commenting
+Plug 'tpope/vim-surround'          "surround editing
+Plug 'vimwiki/vimwiki'             "organisational stuff
+Plug 'tpope/vim-fugitive'          "git integration
+Plug 'KeyboardFire/vim-minisnip'   "snippets (Ultisnips is bloated)
+Plug 'mxw/vim-jsx'                 "react
+Plug 'wlangstroth/vim-racket'      "racket support
 
 call plug#end()
 call deoplete#enable()
@@ -25,6 +25,9 @@ colorscheme monokai
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
+nnoremap <leader>fr :call RenameFile()<cr>
+nnoremap <leader>fc :call CopyFile()<cr>
+nnoremap <leader>fn :call CreateFile()<cr>
 
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets \| awk -F_ '{print $NF}'", 'sink': 'insert'})<cr>
@@ -47,6 +50,8 @@ inoremap <c-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-j> :m '>+1<CR>gv=gv
 
 tnoremap <esc> <c-\><c-n>
+
+
 
 "IDE style mappings (Sublime text)
 nmap <c-t> :tabnew<cr>
@@ -167,3 +172,28 @@ let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
+
+function! CopyFile()
+    let new_name = input('Name the new file:', expand('%'), 'file')
+    let original_file = expand('%')
+    exec ':!cp ' . original_file . ' ' . new_name
+    redraw!
+endfunction
+
+function! CreateFile()
+    let new_name = input('New file:', expand('%'), 'file')
+    if new_name != ''
+        exec ':edit ' . new_name
+        redraw!
+    endif
+endfunction
+
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
