@@ -15,6 +15,7 @@ Plug 'vimwiki/vimwiki'                  "organisational stuff
 Plug 'tpope/vim-fugitive'               "git integration
 Plug 'KeyboardFire/vim-minisnip'        "snippets (Ultisnips is bloated)
 Plug 'mxw/vim-jsx'                      "react
+Plug 'wlangstroth/vim-racket'           "racket support
 
 call plug#end()
 call deoplete#enable()
@@ -95,7 +96,7 @@ scriptencoding utf-8 "Unicode support is good
 
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
-hi StatusLine ctermbg=white ctermfg=blue
+hi StatusLine ctermbg=black ctermfg=white
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -111,7 +112,7 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
-set shell=/bin/bash
+set shell=/bin/sh
 
 "plugins
 
