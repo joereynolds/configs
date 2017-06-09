@@ -30,7 +30,7 @@ nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
     
 "show snippets (Need to figure out the sink to just insert the text)
-nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets \| awk -F_ '{print $NF}'", 'sink': 'insert'})<cr>
+nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 
 "fuzzy makefile completion (very naive)
 nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
@@ -101,6 +101,7 @@ scriptencoding utf-8 "Unicode support is good
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 hi StatusLine ctermbg=black ctermfg=white
 
+
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
@@ -115,7 +116,7 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
-set shell=/bin/sh
+set shell=/bin/bash
 
 "plugins
 
