@@ -22,7 +22,6 @@
 --exclude=*.sql
 --exclude=libraries
 --exclude=*.min.js
---exclude=*.js
 --exclude=*.less
 --exclude=*.scss
 --exclude=*.css
