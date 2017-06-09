@@ -28,7 +28,7 @@ nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
-
+    
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets \| awk -F_ '{print $NF}'", 'sink': 'insert'})<cr>
 
@@ -41,7 +41,6 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
-nnoremap <space> i<space><esc>
 "move code up or down
 nnoremap <c-k> :m .-2<CR>==
 inoremap <c-j> <Esc>:m .+1<CR>==gi
