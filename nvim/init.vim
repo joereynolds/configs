@@ -1,22 +1,21 @@
 call plug#begin()
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
-Plug 'junegunn/fzf.vim'            "Fuzzy searching in vim
-Plug 'kshenoy/vim-signature'       "visible marks
-Plug 'neomake/neomake'             "linting
-Plug 'crusoexia/vim-monokai'       "nice colourscheme
-Plug 'easymotion/vim-easymotion'   "it's pretty incredible
-Plug 'joonty/vdebug'               "Debugging support
-Plug 'janko-m/vim-test'            "Run unit tests
-Plug 'Shougo/deoplete.nvim'        "completion
-Plug 'tpope/vim-commentary'        "easier commenting
-Plug 'tpope/vim-surround'          "surround editing
-Plug 'vimwiki/vimwiki'             "organisational stuff
-Plug 'tpope/vim-fugitive'          "git integration
-Plug 'joereynolds/vim-minisnip'    "snippets (Ultisnips is bloated)
-Plug 'mxw/vim-jsx'                 "react
-Plug 'wlangstroth/vim-racket'      "racket support
-Plug 'Raimondi/delimitMate'        "auto close stuff
+Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
+Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
+Plug 'kshenoy/vim-signature'                                                "visible marks
+Plug 'neomake/neomake'                                                      "linting
+Plug 'crusoexia/vim-monokai'                                                "colourscheme
+Plug 'easymotion/vim-easymotion'                                            "targets 
+Plug 'joonty/vdebug'                                                        "Debugging support
+Plug 'janko-m/vim-test'                                                     "Run unit tests
+Plug 'Shougo/deoplete.nvim'                                                 "completion
+Plug 'tpope/vim-commentary'                                                 "easier commenting
+Plug 'tpope/vim-surround'                                                   "surround editing
+Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
+Plug 'tpope/vim-fugitive'                                                   "git integration
+Plug 'joereynolds/vim-minisnip'                                             "snippets
+Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
+Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}
 
 call plug#end()
 call deoplete#enable()
@@ -42,6 +41,7 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
+nnoremap <space> i<space><esc>
 "move code up or down
 nnoremap <c-k> :m .-2<CR>==
 inoremap <c-j> <Esc>:m .+1<CR>==gi
