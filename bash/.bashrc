@@ -63,3 +63,6 @@ source ~/programs/up/rc.sh
 
 export PATH=~/.composer/vendor/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin

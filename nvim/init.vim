@@ -13,9 +13,10 @@ Plug 'tpope/vim-commentary'        "easier commenting
 Plug 'tpope/vim-surround'          "surround editing
 Plug 'vimwiki/vimwiki'             "organisational stuff
 Plug 'tpope/vim-fugitive'          "git integration
-Plug 'KeyboardFire/vim-minisnip'   "snippets (Ultisnips is bloated)
+Plug 'joereynolds/vim-minisnip'    "snippets (Ultisnips is bloated)
 Plug 'mxw/vim-jsx'                 "react
 Plug 'wlangstroth/vim-racket'      "racket support
+Plug 'Raimondi/delimitMate'        "auto close stuff
 
 call plug#end()
 call deoplete#enable()
@@ -50,8 +51,6 @@ inoremap <c-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-j> :m '>+1<CR>gv=gv
 
 tnoremap <esc> <c-\><c-n>
-
-
 
 "IDE style mappings (Sublime text)
 nmap <c-t> :tabnew<cr>
