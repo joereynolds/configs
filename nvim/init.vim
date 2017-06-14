@@ -1,21 +1,22 @@
 call plug#begin()
 
+Plug 'crusoexia/vim-monokai'                                                "colourscheme
+Plug 'easymotion/vim-easymotion'                                            "targets 
+Plug 'janko-m/vim-test'                                                     "Run unit tests
+Plug 'joereynolds/vim-minisnip'                                             "snippets
+Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
+Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'neomake/neomake'                                                      "linting
-Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'easymotion/vim-easymotion'                                            "targets 
-Plug 'joonty/vdebug'                                                        "Debugging support
-Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
-Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'tpope/vim-fugitive'                                                   "git integration
-Plug 'joereynolds/vim-minisnip'                                             "snippets
-Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
-Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}
+Plug 'tpope/vim-surround'                                                   "surround editing
+Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
+Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
+Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
 call plug#end()
 call deoplete#enable()
@@ -24,16 +25,6 @@ colorscheme monokai
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
-nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
-nnoremap <leader>fr :call RenameFile()<cr>
-nnoremap <leader>fc :call CopyFile()<cr>
-nnoremap <leader>fn :call CreateFile()<cr>
-    
-"show snippets (Need to figure out the sink to just insert the text)
-nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
-
-"fuzzy makefile completion (very naive)
-nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
 
 "resize windows easily
 nnoremap <up> :resize +10<cr>
@@ -137,11 +128,7 @@ let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
 
-"vim easymotion
-"Have the motion work bi-directionally
-nmap <leader><leader>w <Plug>(easymotion-bd-w)
-
-"vim fugitive
+"fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gvdiff<cr>
@@ -153,9 +140,25 @@ nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-",
 
 "fzf
 nnoremap <c-p> :GFiles<cr>
-nnoremap <c-r> :BTags<cr>
-nnoremap <leader>f :Ag<cr>
-nnoremap <c-x> :Commands<cr>
+nnoremap <leader>b :BTags<cr>
+nnoremap <leader>z :Ag<cr>
+
+"File thing, unnamed
+nnoremap <leader>fr :call RenameFile()<cr>
+nnoremap <leader>fc :call CopyFile()<cr>
+nnoremap <leader>fn :call CreateFile()<cr>
+
+"easymotion
+"Have the motion work bi-directionally
+nmap <leader><leader>w <Plug>(easymotion-bd-w)
+nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
+
+"Various others
+nnoremap <leader>r :%s///g<left><left>
+"show snippets (Need to figure out the sink to just insert the text)
+nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
+"fuzzy makefile completion (very naive)
+nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
@@ -167,20 +170,29 @@ let g:jsx_ext_required = 0
 "vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
+"match tag always
+let g:mta_filetypes = {
+   \'html': 1,
+   \'xml': 1,
+   \'php': 1,
+   \'xhtml': 1,
+   \}
+
 " Use matchit
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
 
 function! CopyFile()
-    let new_name = input('Name the new file: ', expand('%'), 'file')
+    let new_name = input('[Copying File]Name the new file: ', expand('%'), 'file')
     let original_file = expand('%')
     exec ':!cp ' . original_file . ' ' . new_name
+    exec ':edit ' . new_name
     redraw!
 endfunction
 
 function! CreateFile()
-    let new_name = input('New file: ', expand('%'), 'file')
+    let new_name = input('[Creating File]New file: ', expand('%'), 'file')
     if new_name != ''
         exec ':edit ' . new_name
         redraw!
@@ -189,7 +201,7 @@ endfunction
 
 function! RenameFile()
     let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
+    let new_name = input('[Renaming File]New file name: ', expand('%'), 'file')
     if new_name != '' && new_name != old_name
         exec ':saveas ' . new_name
         exec ':silent !rm ' . old_name
