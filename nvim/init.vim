@@ -40,6 +40,12 @@ nnoremap <c-j> :m .+1<CR>==
 inoremap <c-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-j> :m '>+1<CR>gv=gv
 
+"'Auto closing'
+inoremap {<cr> {<cr>}<esc>O
+inoremap (<cr> (<cr>)<esc>O
+inoremap [<cr> [<cr>]<esc>O
+inoremap " ""<left>
+
 tnoremap <esc> <c-\><c-n>
 
 "IDE style mappings (Sublime text)
