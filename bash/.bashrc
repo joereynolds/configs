@@ -66,3 +66,5 @@ export PATH=~/.composer/vendor/bin:$PATH
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
+
