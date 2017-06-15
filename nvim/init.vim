@@ -17,9 +17,11 @@ Plug 'tpope/vim-surround'                                                   "sur
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
 Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
-
+ 
 call plug#end()
-call deoplete#enable()
+
+source /home/joe/programs/configs/nvim/scripts/gtags.vim
+source /home/joe/programs/configs/nvim/scripts/gtags-cscope.vim
 
 colorscheme monokai
 
@@ -45,6 +47,7 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap " ""<left>
+inoremap ' ''<left>
 
 tnoremap <esc> <c-\><c-n>
 
@@ -90,14 +93,20 @@ augroup linting
     autocmd BufWritePost * Neomake
 augroup END
 
+augroup indentation
+    autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
+augroup END
+
 autocmd BufEnter * :set modifiable
+
+highlight WordUnder ctermfg = 13
+autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 scriptencoding utf-8 "Unicode support is good
 
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 hi StatusLine ctermbg=black ctermfg=white
-
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -116,6 +125,17 @@ set mouse=a "mouse support
 set shell=/bin/bash
 
 "plugins
+
+"gtags (using cscope interface from gtags-cscope.vim)
+"Find all [r]eferences to this function
+nnoremap  <leader>csr :cs find c <cword><CR>
+
+"deoplete
+let g:deoplete#enable_at_startup = 1
+
+"easymotion
+"Have the motion work bi-directionally
+nmap <leader><leader>w <Plug>(easymotion-bd-w)
 
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
@@ -154,12 +174,10 @@ nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
 
-"easymotion
-"Have the motion work bi-directionally
-nmap <leader><leader>w <Plug>(easymotion-bd-w)
-nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
-
 "Various others
+"If the character is on the same line, remove it
+nnoremap <leader>x :call RemoveOnSameLine()<cr>
+nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
@@ -188,6 +206,10 @@ let g:mta_filetypes = {
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
+
+function! RemoveOnSameLine()
+
+endfunction
 
 function! CopyFile()
     let new_name = input('[Copying File]Name the new file: ', expand('%'), 'file')
