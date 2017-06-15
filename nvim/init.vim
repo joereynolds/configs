@@ -1,7 +1,6 @@
 call plug#begin()
 
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'easymotion/vim-easymotion'                                            "targets 
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
@@ -20,8 +19,6 @@ Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "rac
  
 call plug#end()
 
-source /home/joe/programs/configs/nvim/scripts/gtags.vim
-source /home/joe/programs/configs/nvim/scripts/gtags-cscope.vim
 
 colorscheme monokai
 
@@ -82,10 +79,11 @@ augroup formatting
     autocmd BufWritePre,BufRead *.xml :normal gg=G
 augroup END
 
-augroup source_vimrc
+augroup sourcing
     autocmd!
-    "nested and piped to avoid easymotion being shit
-    autocmd BufWritePost init.vim nested | source % | redraw
+    autocmd BufWritePost init.vim source %
+    autocmd VimEnter * source /home/joe/programs/configs/nvim/scripts/gtags.vim
+    autocmd VimEnter * source /home/joe/programs/configs/nvim/scripts/gtags-cscope.vim
 augroup END
 
 augroup linting
@@ -123,19 +121,32 @@ set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
-
+set cscopetag
 "plugins
 
 "gtags (using cscope interface from gtags-cscope.vim)
 "Find all [r]eferences to this function
 nnoremap  <leader>csr :cs find c <cword><CR>
+"Find all references to [s]ymbols
+nnoremap  <leader>css :cs find s <cword><CR>
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
-"easymotion
-"Have the motion work bi-directionally
-nmap <leader><leader>w <Plug>(easymotion-bd-w)
+"fugitive
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gvdiff<cr>
+"For some reason :Gpush crashes my terminal so have to use the native version
+nnoremap <leader>gp :Git push<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gt :Git stash<cr>
+nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-", 'sink': 'silent !git checkout'})<cr>
+
+"fzf
+nnoremap <c-p> :GFiles<cr>
+nnoremap <leader>b :BTags<cr>
+nnoremap <leader>z :Ag<cr>
 
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
@@ -153,22 +164,6 @@ let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
-
-"fugitive
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gvdiff<cr>
-"For some reason :Gpush crashes my terminal so have to use the native version
-nnoremap <leader>gp :Git push<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gt :Git stash<cr>
-nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-", 'sink': 'silent !git checkout'})<cr>
-
-"fzf
-nnoremap <c-p> :GFiles<cr>
-nnoremap <leader>b :BTags<cr>
-nnoremap <leader>z :Ag<cr>
-
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
