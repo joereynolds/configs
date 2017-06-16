@@ -2,7 +2,6 @@ call plug#begin()
 
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'janko-m/vim-test'                                                     "Run unit tests
-Plug 'joereynolds/gtags'                                             
 Plug 'joereynolds/gtags-scope'                                      
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
@@ -148,6 +147,9 @@ nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-",
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
+
+"gtags-cscope
+let g:GtagsCscope_Auto_Load = 1
 
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
