@@ -2,6 +2,8 @@ call plug#begin()
 
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'janko-m/vim-test'                                                     "Run unit tests
+Plug 'joereynolds/gtags'                                             
+Plug 'joereynolds/gtags-scope'                                      
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
@@ -18,7 +20,6 @@ Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "wri
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
  
 call plug#end()
-
 
 colorscheme monokai
 
@@ -171,13 +172,15 @@ nnoremap <leader>fn :call CreateFile()<cr>
 
 "Various others
 "If the character is on the same line, remove it
-nnoremap <leader>x :call RemoveOnSameLine()<cr>
+command! -nargs=* RemoveOnSameLine :call RemoveOnSameLine(<q-args>)
+" nnoremap <leader>x :RemoveOnSameLine
 nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 "fuzzy makefile completion (very naive)
 nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
+nnoremap <silent> <leader>x :call fzf#run({'source': cs find c <cword>, 'sink': 'e'})<cr>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
@@ -197,13 +200,13 @@ let g:mta_filetypes = {
    \'xhtml': 1,
    \}
 
+""A test string here
 " Use matchit
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
 
-function! RemoveOnSameLine()
-
+function! RemoveOnSameLine(character)
 endfunction
 
 function! CopyFile()
