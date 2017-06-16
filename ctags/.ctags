@@ -26,3 +26,4 @@
 --exclude=*.less
 --exclude=*.scss
 --exclude=*.css
+--langmap=scheme:+.rkt

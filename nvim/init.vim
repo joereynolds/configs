@@ -2,7 +2,7 @@ call plug#begin()
 
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'janko-m/vim-test'                                                     "Run unit tests
-Plug 'joereynolds/gtags-scope'                                      
+Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
@@ -110,6 +110,7 @@ set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This chan
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
+set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
@@ -121,7 +122,6 @@ set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
-set cscopetag
 "plugins
 
 "gtags (using cscope interface from gtags-cscope.vim)
