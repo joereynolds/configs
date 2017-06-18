@@ -181,7 +181,7 @@ nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 "fuzzy makefile completion (very naive)
-nnoremap <silent> <leader>m :call fzf#run({'source': "grep : Makefile \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
+nnoremap <silent> <leader>m :call fzf#run({'source': "grep -v = Makefile \| grep -v '^[[:space:]]' \| grep : \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
 nnoremap <silent> <leader>x :call fzf#run({'source': cs find c <cword>, 'sink': 'e'})<cr>
 
 if executable('ag')
