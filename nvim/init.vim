@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround'                                                   "sur
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
 Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
- 
+
 call plug#end()
 
 colorscheme monokai
@@ -82,8 +82,6 @@ augroup END
 augroup sourcing
     autocmd!
     autocmd BufWritePost init.vim source %
-    autocmd VimEnter * source /home/joe/programs/configs/nvim/scripts/gtags.vim
-    autocmd VimEnter * source /home/joe/programs/configs/nvim/scripts/gtags-cscope.vim
 augroup END
 
 augroup linting
@@ -124,11 +122,15 @@ set mouse=a "mouse support
 set shell=/bin/bash
 "plugins
 
-"gtags (using cscope interface from gtags-cscope.vim)
+"gtags-scope
 "Find all [r]eferences to this function
-nnoremap  <leader>csr :cs find c <cword><CR>
-"Find all references to [s]ymbols
-nnoremap  <leader>css :cs find s <cword><CR>
+nnoremap <leader>csr :cs find c <cword><cr>
+"Find all references to constants and other stuff
+nnoremap <leader>css :cs find s <cword><cr>
+"Find the definition of the word
+nnoremap <leader>csd :cs find g <cword><cr>
+
+let g:GtagsCscope_Auto_Load = 1
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
@@ -148,8 +150,6 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
-"gtags-cscope
-let g:GtagsCscope_Auto_Load = 1
 
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
