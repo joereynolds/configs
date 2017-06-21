@@ -1,1 +1,1 @@
-DELTE FROM {{++}} WHERE {{++}};
+DELETE FROM {{++}} WHERE {{++}};

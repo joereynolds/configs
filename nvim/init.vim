@@ -18,8 +18,6 @@ Plug 'tpope/vim-surround'                                                   "sur
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
 Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
-Plug 'francoiscabrol/ranger.vim'                                            "ranger integration
-Plug 'rbgrouleff/bclose.vim'                                                "used with ranger
 Plug 'alvan/vim-php-manual',   {'for': ['php']}    
 
 call plug#end()
@@ -155,7 +153,6 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
-
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
 
@@ -172,22 +169,21 @@ let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
+
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
 
 "Various others
-"If the character is on the same line, remove it
-command! -nargs=* RemoveOnSameLine :call RemoveOnSameLine(<q-args>)
 " nnoremap <leader>x :RemoveOnSameLine
-nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
+nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
+nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
 nnoremap <silent> <leader>x :call fzf#run({'source': cs find c <cword>, 'sink': 'e'})<cr>
-vnoremap <leader>em :call ExtractMethod()<CR>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
@@ -213,11 +209,8 @@ if !exists('g:loaded_matchit')
     runtime macros/matchit.vim
 endif
 
-function! RemoveOnSameLine(character)
-endfunction
-
 function! CopyFile()
-    let new_name = input('[Copying File]Name the new file: ', expand('%'), 'file')
+    let new_name = input('[Copying File]New file: ', expand('%'), 'file')
     let original_file = expand('%')
     exec ':!cp ' . original_file . ' ' . new_name
     exec ':edit ' . new_name
@@ -234,7 +227,7 @@ endfunction
 
 function! RenameFile()
     let old_name = expand('%')
-    let new_name = input('[Renaming File]New file name: ', expand('%'), 'file')
+    let new_name = input('[Renaming File]New file: ', expand('%'), 'file')
     if new_name != '' && new_name != old_name
         exec ':saveas ' . new_name
         exec ':silent !rm ' . old_name

@@ -28,12 +28,12 @@ json() {
   python3 -m json.tool $1
 }
 
-grepall() {
-  for directory in $(ls $1) ;
+grepia () {
+  for directory in $(ls ~/code) ;
   do 
     cd "${directory}"
     echo "-------------${directory}-------------"
-    git grep -i $2
+    git grep -i $1
     echo "--------------------------------------"
     cd - 
   done
