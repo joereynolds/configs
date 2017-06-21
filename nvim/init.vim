@@ -1,7 +1,8 @@
-call plug#begin()
 
+call plug#begin()
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'janko-m/vim-test'                                                     "Run unit tests
+Plug 'joereynolds/fzf-makefile'                                             "Fuzzy makefile
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
@@ -17,6 +18,9 @@ Plug 'tpope/vim-surround'                                                   "sur
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
 Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
+Plug 'francoiscabrol/ranger.vim'                                            "ranger integration
+Plug 'rbgrouleff/bclose.vim'                                                "used with ranger
+Plug 'alvan/vim-php-manual',   {'for': ['php']}    
 
 call plug#end()
 
@@ -130,6 +134,7 @@ nnoremap <leader>css :cs find s <cword><cr>
 "Find the definition of the word
 nnoremap <leader>csd :cs find g <cword><cr>
 
+let g:GtagsCscope_Quiet = 1
 let g:GtagsCscope_Auto_Load = 1
 
 "deoplete
@@ -180,9 +185,9 @@ nnoremap <leader>v :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
-"fuzzy makefile completion (very naive)
-nnoremap <silent> <leader>m :call fzf#run({'source': "grep -v = Makefile \| grep -v '^[[:space:]]' \| grep : \| tr -d : \| awk '{print $1}'", 'sink': '!make'})<cr>
+nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
 nnoremap <silent> <leader>x :call fzf#run({'source': cs find c <cword>, 'sink': 'e'})<cr>
+vnoremap <leader>em :call ExtractMethod()<CR>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
@@ -235,4 +240,7 @@ function! RenameFile()
         exec ':silent !rm ' . old_name
         redraw!
     endif
+endfunction
+
+function! DeleteFile()
 endfunction
