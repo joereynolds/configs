@@ -10,7 +10,7 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuz
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
-Plug 'neomake/neomake'                                                      "linting
+Plug 'w0rp/ale'                                                             "linting
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
@@ -84,11 +84,6 @@ augroup END
 augroup sourcing
     autocmd!
     autocmd BufWritePost init.vim source %
-augroup END
-
-augroup linting
-    autocmd!
-    autocmd BufWritePost * Neomake
 augroup END
 
 augroup indentation
@@ -236,4 +231,13 @@ function! RenameFile()
 endfunction
 
 function! DeleteFile()
+endfunction
+
+function! MoveVisualSelectionToNewFile()
+
+    let file_name = input('New file: ', expand('%'), 'file')
+    exec ':normal! gvd'
+    exec ':w!'
+    exec 'vsp: ' . file_name
+    exec ':w!'
 endfunction
