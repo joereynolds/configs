@@ -1,5 +1,6 @@
-
 call plug#begin()
+
+Plug 'alvan/vim-php-manual',   {'for': ['php']}    
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/fzf-makefile'                                             "Fuzzy makefile
@@ -10,15 +11,14 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuz
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
-Plug 'w0rp/ale'                                                             "linting
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
 Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
+Plug 'w0rp/ale'                                                             "linting
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
-Plug 'alvan/vim-php-manual',   {'for': ['php']}    
 
 call plug#end()
 
@@ -118,6 +118,9 @@ set number "Show line numbers
 set mouse=a "mouse support
 set shell=/bin/bash
 "plugins
+
+"ale
+let g:ale_sign_column_always = 1
 
 "gtags-scope
 "Find all [r]eferences to this function
