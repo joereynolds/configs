@@ -33,6 +33,9 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
+nnoremap [l :lprev<cr>
+nnoremap ]l :lnext<cr>
+
 "move code up or down
 nnoremap <c-k> :m .-2<CR>==
 inoremap <c-j> <Esc>:m .+1<CR>==gi
