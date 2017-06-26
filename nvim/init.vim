@@ -10,6 +10,7 @@ Plug 'joonty/vdebug'                                                        "Deb
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
+Plug 'mhinz/vim-randomtag'
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
@@ -93,7 +94,11 @@ augroup indentation
     autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
-autocmd BufEnter * :set modifiable
+augroup on_enter
+    autocmd BufEnter * :set modifiable
+    autocmd VimEnter * :Random
+
+augroup END
 
 highlight WordUnder ctermfg = 13
 autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
