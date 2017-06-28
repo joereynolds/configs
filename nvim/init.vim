@@ -2,22 +2,24 @@ call plug#begin()
 
 Plug 'alvan/vim-php-manual',   {'for': ['php']}    
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
+Plug 'google/vim-searchindex'                                               "shows search count
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/fzf-makefile'                                             "Fuzzy makefile
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
+Plug 'jsfaint/gen_tags.vim'
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
+Plug 'ozelentok/deoplete-gtags'
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
-Plug 'vimwiki/vimwiki',        {'for': ['markdown', 'vimwiki']}             "writing 
 Plug 'w0rp/ale'                                                             "linting
 Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
@@ -159,6 +161,11 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
+"jsfaint
+let g:gen_tags#ctags_auto_gen = 1
+let g:gen_tags#gtags_auto_gen = 1
+
+
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
 
@@ -209,7 +216,6 @@ let g:mta_filetypes = {
    \'xhtml': 1,
    \}
 
-""A test string here
 " Use matchit
 if !exists('g:loaded_matchit')
     runtime macros/matchit.vim

@@ -29,24 +29,26 @@ json() {
 }
 
 grepia () {
-  for directory in $(ls ~/code) ;
+
+  if [ "$1" = "" ]; then
+      echo "No arguments supplied for grepia"
+      return
+  fi
+
+  for directory in ~/code/*/;
+
   do 
     cd "${directory}"
-    echo "-------------${directory}-------------"
-    git grep -i $1
-    echo "--------------------------------------"
-    cd - 
+
+    if git grep -i $1 >/dev/null
+    then
+        echo "[$(basename ${directory})]"
+        git grep -i "$1"
+    fi
+    cd - >/dev/null
+
   done
 }
-
-# fb - checkout git branch
-fb() {
-  local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
 
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
