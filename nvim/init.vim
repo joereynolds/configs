@@ -1,6 +1,6 @@
 call plug#begin()
 
-Plug 'alvan/vim-php-manual',   {'for': ['php']}    
+Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'google/vim-searchindex'                                               "shows search count
 Plug 'janko-m/vim-test'                                                     "Run unit tests
@@ -8,13 +8,13 @@ Plug 'joereynolds/fzf-makefile'                                             "Fuz
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
-Plug 'jsfaint/gen_tags.vim'
+Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
-Plug 'mhinz/vim-randomtag'
+Plug 'mhinz/vim-randomtag'                                                  "Learn docs
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
-Plug 'ozelentok/deoplete-gtags'
+Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
@@ -40,12 +40,12 @@ nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 
 "move code up or down
-nnoremap <c-k> :m .-2<CR>==
 inoremap <c-j> <Esc>:m .+1<CR>==gi
-vnoremap <c-k> :m '<-2<CR>gv=gv
-nnoremap <c-j> :m .+1<CR>==
 inoremap <c-k> <Esc>:m .-2<CR>==gi
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
 vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 
 "'Auto closing'
 inoremap {<cr> {<cr>}<esc>O
@@ -62,11 +62,6 @@ nmap <c-t> :tabnew<cr>
 "save like a sane person		
 nnoremap <c-s> :w<cr>		
 inoremap <c-s> <esc>:w<cr>		
-
-"comments <c-_> actually means ctrl+/ for some reason _ is registered as /
-nmap <c-_> gcc
-vmap <c-_> gcc
-imap <c-_> <esc>gcc 
 
 "copy paste
 vmap <C-c> "+yi
@@ -99,7 +94,6 @@ augroup END
 augroup on_enter
     autocmd BufEnter * :set modifiable
     autocmd VimEnter * :Random
-
 augroup END
 
 highlight WordUnder ctermfg = 13
@@ -165,7 +159,6 @@ nnoremap <leader>z :Ag<cr>
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
 
-
 "vim-test
 nnoremap <leader>t :TestFile -strategy=neovim<cr>
 
@@ -192,11 +185,9 @@ nnoremap <leader>fn :call CreateFile()<cr>
 " nnoremap <leader>x :RemoveOnSameLine
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
-nnoremap <leader>r :%s///g<left><left>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
-nnoremap <silent> <leader>x :call fzf#run({'source': cs find c <cword>, 'sink': 'e'})<cr>
 
 if executable('ag')
     set grepprg=ag\ --nogroup
@@ -204,9 +195,6 @@ endif
 
 "vim-jsx
 let g:jsx_ext_required = 0
-
-"vimwiki
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
 "match tag always
 let g:mta_filetypes = {
@@ -251,7 +239,6 @@ function! DeleteFile()
 endfunction
 
 function! MoveVisualSelectionToNewFile()
-
     let file_name = input('New file: ', expand('%'), 'file')
     exec ':normal! gvd'
     exec ':w!'
