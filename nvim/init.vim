@@ -27,6 +27,9 @@ call plug#end()
 
 colorscheme monokai
 
+"work stuff
+source ~/programs/configs/nvim/work.rc
+
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
@@ -38,6 +41,8 @@ nnoremap <right> :vertical resize +10<cr>
 
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
+nnoremap [q :cprev<cr>
+nnoremap ]q :cnext<cr>
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
@@ -186,7 +191,7 @@ nnoremap <leader>fn :call CreateFile()<cr>
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 "show snippets (Need to figure out the sink to just insert the text)
-nnoremap <silent> <leader>s :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
+nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
 
 if executable('ag')
