@@ -6,6 +6,7 @@ Plug 'google/vim-searchindex'                                               "sho
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/fzf-makefile'                                             "Fuzzy makefile
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
+Plug 'joereynolds/vim-c-manual'
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
@@ -13,10 +14,13 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuz
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'                                                  "Learn docs
+Plug 'mjbrownie/swapit'                                                     "toggle keywords
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
+" Plug 'radenling/vim-dispatch-neovim'                                        "compatibility with nvim
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
+" Plug 'tpope/vim-dispatch'                                                   "async make
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
@@ -43,6 +47,8 @@ nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
+nnoremap [t :tprev<cr>
+nnoremap ]t :tnext<cr>
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
@@ -109,6 +115,9 @@ scriptencoding utf-8 "Unicode support is good
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 hi StatusLine ctermbg=black ctermfg=white
+
+let php_sql_query = 1
+let php_htmlInStrings = 1
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer

@@ -50,6 +50,21 @@ grepia () {
   done
 }
 
+report_unused_functions() {
+  # Find the function
+  # Remove the ampersands for pass by reference functions
+  # Remove everything after and including the ( in the function name
+  git grep -Ei '(public|private|protected) function' $1 | awk '{print $4}' | tr -d '&' | cut -f1 -d"(" | while read -r function ; do
+      
+    match_count="$(git grep -i $function| wc -l)"
+
+    if [ "$match_count" -lt 2 ]; then
+      echo "$function can be removed. $match_count match"
+    fi
+    
+  done 
+}
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
