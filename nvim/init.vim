@@ -32,7 +32,7 @@ call plug#end()
 colorscheme monokai
 
 "work stuff
-source ~/programs/configs/nvim/work.rc
+source ~/programs/configs/nvim/work.vim
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -85,6 +85,7 @@ augroup set_syntax
     autocmd BufRead,BufNewFile *.lock setfiletype javascript
     autocmd BufRead,BufNewFile *.less set filetype=less.css
     autocmd BufRead,BufNewFile *.scss set filetype=sass.css
+    autocmd BufRead,BufNewFile *.vim set filetype=vim
 augroup END
 
 augroup formatting
@@ -189,6 +190,7 @@ let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
+
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>

@@ -74,9 +74,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-force_color_prompt=yes
-
 source ~/programs/up/rc.sh
+source ~/git-prompt.sh
+
+export  PS1='\w$(__git_ps1 " (%s)")\n: '
+force_color_prompt=yes
 
 export PATH=~/.composer/vendor/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

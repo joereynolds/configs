@@ -1,3 +1,7 @@
 *.swp
 *.swo
-nvim/work.rc
+nvim/work.vim
+GPATH
+GRTAGS
+GTAGS
+tags
