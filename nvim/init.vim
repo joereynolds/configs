@@ -4,9 +4,7 @@ Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'google/vim-searchindex'                                               "shows search count
 Plug 'janko-m/vim-test'                                                     "Run unit tests
-Plug 'joereynolds/fzf-makefile'                                             "Fuzzy makefile
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
-Plug 'joereynolds/vim-c-manual'
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
@@ -14,13 +12,10 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuz
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'                                                  "Learn docs
-Plug 'mjbrownie/swapit'                                                     "toggle keywords
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
-" Plug 'radenling/vim-dispatch-neovim'                                        "compatibility with nvim
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
-" Plug 'tpope/vim-dispatch'                                                   "async make
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
@@ -191,14 +186,12 @@ let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
 
-
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
 
 "Various others
-" nnoremap <leader>x :RemoveOnSameLine
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 "show snippets (Need to figure out the sink to just insert the text)
