@@ -38,6 +38,14 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
+"<c-w>[hjkl] hurts my wrist :(
+nnoremap <m-j> <c-w>j
+nnoremap <m-h> <c-w>h
+nnoremap <m-k> <c-w>k
+nnoremap <m-l> <c-w>l
+nnoremap <m-v> <c-w>v
+nnoremap <m-=> <c-w>=
+
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [q :cprev<cr>
@@ -65,14 +73,16 @@ tnoremap <esc> <c-\><c-n>
 "IDE style mappings (Sublime text)
 nmap <c-t> :tabnew<cr>
 
-"save like a sane person		
-nnoremap <c-s> :w<cr>		
-inoremap <c-s> <esc>:w<cr>		
-
 "copy paste
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+"common typos
+abbr teh the
+abbr aginst against
+abbr yor your
+
 
 augroup set_syntax
     autocmd!
@@ -100,11 +110,15 @@ augroup END
 
 augroup on_enter
     autocmd BufEnter * :set modifiable
+    autocmd BufWinEnter,WinEnter term://* startinsert
     autocmd VimEnter * :Random
 augroup END
 
 highlight WordUnder ctermfg = 13
+
 autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+
 
 scriptencoding utf-8 "Unicode support is good
 
@@ -158,14 +172,14 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
-nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch \| cut -c 3-", 'sink': 'silent !git checkout'})<cr>
+nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstream \| cut -c 3- \| sed 's#^remotes/[^/]*/##'", 'sink': 'silent !git checkout'})<cr>
 
 "fzf
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
-"jsfaint
+"gen tags
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
 
