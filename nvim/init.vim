@@ -10,6 +10,7 @@ Plug 'joonty/vdebug'                                                        "Deb
 Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
+Plug 'kassio/neoterm'                                                       "TODO
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'                                                  "Learn docs
 Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
@@ -82,6 +83,7 @@ imap <C-v> <ESC>"+pa
 abbr teh the
 abbr aginst against
 abbr yor your
+abbr agian again
 
 
 augroup set_syntax
@@ -110,8 +112,7 @@ augroup END
 
 augroup on_enter
     autocmd BufEnter * :set modifiable
-    autocmd BufWinEnter,WinEnter term://* startinsert
-    autocmd VimEnter * :Random
+    autocmd VimEnter * :Random! | :Tnew
 augroup END
 
 highlight WordUnder ctermfg = 13
@@ -193,6 +194,14 @@ let g:vdebug_options["port"] = 1337
 let g:vdebug_options["path_maps"] = {
 \ "/var/www/enterprise": "/home/joe/code/enterprise"
 \}
+
+"neoterm
+let g:neoterm_autoscroll = 1
+let g:neoterm_size = 10
+nnoremap <leader>cl :TREPLSendLine<cr>
+nnoremap <leader>cf :TREPLSendFile<cr>
+nnoremap <leader>cv :TREPLSendSelection<cr>
+vnoremap <leader>cv :TREPLSendSelection<cr>
 
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
