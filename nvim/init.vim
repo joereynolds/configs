@@ -1,27 +1,28 @@
 call plug#begin()
 
 Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
+Plug 'ap/vim-css-color'
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
 Plug 'google/vim-searchindex'                                               "shows search count
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
-Plug 'joonty/vdebug'                                                        "Debugging support
+" Plug 'joonty/vdebug'                                                        "Debugging support
 Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
-Plug 'kassio/neoterm'                                                       "TODO
+Plug 'kassio/neoterm'                                                       "Send commands to a terminal
 Plug 'kshenoy/vim-signature'                                                "visible marks
-Plug 'mhinz/vim-randomtag'                                                  "Learn docs
-Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
+" Plug 'mhinz/vim-randomtag'                                                  "Learn docs
+" Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'Valloric/MatchTagAlways'                                              "highlight end tag
+" Plug 'Valloric/MatchTagAlways'                                              "highlight end tag (heavy plugin :(  )
 Plug 'w0rp/ale'                                                             "linting
-Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
+" Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
 call plug#end()
 
@@ -40,8 +41,8 @@ nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
 "<c-w>[hjkl] hurts my wrist :(
-nnoremap <m-j> <c-w>j
 nnoremap <m-h> <c-w>h
+nnoremap <m-j> <c-w>j
 nnoremap <m-k> <c-w>k
 nnoremap <m-l> <c-w>l
 nnoremap <m-v> <c-w>v
@@ -53,6 +54,11 @@ nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [t :tprev<cr>
 nnoremap ]t :tnext<cr>
+nnoremap ]<space> :normal a<space><cr>
+nnoremap [<space> :normal i<space><cr>
+nnoremap ]<cr> i<cr><esc>
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
@@ -80,11 +86,13 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 "common typos
+abbr setene sentence
+abbr sentene sentence
+abbr sentnece sentence
 abbr teh the
 abbr aginst against
 abbr yor your
 abbr agian again
-
 
 augroup set_syntax
     autocmd!
@@ -107,19 +115,20 @@ augroup sourcing
 augroup END
 
 augroup indentation
+    autocmd!
     autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
-augroup on_enter
+augroup events
+    autocmd!
     autocmd BufEnter * :set modifiable
-    autocmd VimEnter * :Random! | :Tnew
+    autocmd VimEnter * :Tnew
+    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
 augroup END
 
 highlight WordUnder ctermfg = 13
-
-autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-
 
 scriptencoding utf-8 "Unicode support is good
 
@@ -129,6 +138,7 @@ hi StatusLine ctermbg=black ctermfg=white
 
 let php_sql_query = 1
 let php_htmlInStrings = 1
+let g:sql_type_default = 'mysql'
 
 set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -198,6 +208,7 @@ let g:vdebug_options["path_maps"] = {
 "neoterm
 let g:neoterm_autoscroll = 1
 let g:neoterm_size = 10
+let g:neoterm_fixedsize = 1
 nnoremap <leader>cl :TREPLSendLine<cr>
 nnoremap <leader>cf :TREPLSendFile<cr>
 nnoremap <leader>cv :TREPLSendSelection<cr>
@@ -217,6 +228,7 @@ nnoremap <leader>fn :call CreateFile()<cr>
 "Various others
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
+
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
