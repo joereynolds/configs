@@ -1,5 +1,4 @@
 call plug#begin()
-
 Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
 Plug 'ap/vim-css-color'
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
@@ -13,7 +12,7 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuz
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kassio/neoterm'                                                       "Send commands to a terminal
 Plug 'kshenoy/vim-signature'                                                "visible marks
-" Plug 'mhinz/vim-randomtag'                                                  "Learn docs
+Plug 'mhinz/vim-randomtag'                                                  "Learn docs
 " Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
 Plug 'Shougo/deoplete.nvim'                                                 "completion
@@ -21,6 +20,7 @@ Plug 'tpope/vim-commentary'                                                 "eas
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 " Plug 'Valloric/MatchTagAlways'                                              "highlight end tag (heavy plugin :(  )
+Plug 'vim-scripts/dbext.vim'
 Plug 'w0rp/ale'                                                             "linting
 " Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
@@ -30,6 +30,8 @@ colorscheme monokai
 
 "work stuff
 source ~/programs/configs/nvim/work.vim
+"common typos
+source ~/programs/configs/nvim/abbreviations.vim
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -85,15 +87,6 @@ vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-"common typos
-abbr setene sentence
-abbr sentene sentence
-abbr sentnece sentence
-abbr teh the
-abbr aginst against
-abbr yor your
-abbr agian again
-
 augroup set_syntax
     autocmd!
     autocmd BufRead,BufNewFile *.json setfiletype javascript
@@ -122,10 +115,8 @@ augroup END
 augroup events
     autocmd!
     autocmd BufEnter * :set modifiable
-    autocmd VimEnter * :Tnew
+    autocmd VimEnter * :Random | :Tnew
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
 augroup END
 
 highlight WordUnder ctermfg = 13
@@ -161,6 +152,9 @@ set shell=/bin/bash
 "ale
 let g:ale_sign_column_always = 1
 
+"dbext
+"Details for this in private file
+
 "gtags-scope
 "Find all [r]eferences to this function
 nnoremap <leader>csr :cs find c <cword><cr>
@@ -176,6 +170,7 @@ let g:GtagsCscope_Auto_Load = 1
 let g:deoplete#enable_at_startup = 1
 
 "fugitive
+command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gvdiff<cr>
@@ -232,10 +227,6 @@ nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
-
-if executable('ag')
-    set grepprg=ag\ --nogroup
-endif
 
 "vim-jsx
 let g:jsx_ext_required = 0
