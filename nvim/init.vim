@@ -13,7 +13,6 @@ Plug 'junegunn/fzf.vim'                                                     "Fuz
 Plug 'kassio/neoterm'                                                       "Send commands to a terminal
 Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'                                                  "Learn docs
-" Plug 'mxw/vim-jsx',            {'for': ['javascript', 'javascript.jsx']}    "react
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
@@ -60,6 +59,8 @@ nnoremap [<space> :normal i<space><cr>
 nnoremap ]<cr> i<cr><esc>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
+
+nnoremap <leader>gw :G <cword><cr>
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
