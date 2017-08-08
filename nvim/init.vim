@@ -1,8 +1,8 @@
 call plug#begin()
+
 Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
 Plug 'ap/vim-css-color'
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'google/vim-searchindex'                                               "shows search count
 Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
@@ -19,7 +19,6 @@ Plug 'Shougo/deoplete.nvim'                                                 "com
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
-" Plug 'Valloric/MatchTagAlways'                                              "highlight end tag (heavy plugin :(  )
 Plug 'vim-scripts/dbext.vim'
 Plug 'w0rp/ale'                                                             "linting
 " Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
@@ -125,13 +124,12 @@ scriptencoding utf-8 "Unicode support is good
 
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
-hi StatusLine ctermbg=black ctermfg=white
+highlight StatusLine ctermbg=black ctermfg=white
 
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let g:sql_type_default = 'mysql'
 
-set viminfo='20,<1000,s1000 "By default vim only yanks up to 50 lines. This changes it to 1000 lines
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -140,7 +138,7 @@ set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set numberwidth=2 "Make the line number gutter smaller
-set cursorline "Show the current line you're on
+set lazyredraw "refresh the screen less often
 set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
@@ -169,8 +167,19 @@ let g:GtagsCscope_Auto_Load = 1
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
+
+if executable('ag') 
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+
 "fugitive
 command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
+
+"Useful for non git-repos
+command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
+
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gvdiff<cr>
