@@ -26,9 +26,7 @@ call plug#end()
 
 colorscheme monokai
 
-"work stuff
 source ~/programs/configs/nvim/work.vim
-"common typos
 source ~/programs/configs/nvim/abbreviations.vim
 
 "Clear the search when we press space
@@ -87,33 +85,17 @@ vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-augroup set_syntax
+augroup init_vim
     autocmd!
     autocmd BufRead,BufNewFile *.json setfiletype javascript
     autocmd BufRead,BufNewFile *.lock setfiletype javascript
     autocmd BufRead,BufNewFile *.less set filetype=less.css
     autocmd BufRead,BufNewFile *.scss set filetype=sass.css
     autocmd BufRead,BufNewFile *.vim set filetype=vim
-augroup END
-
-augroup formatting
-    autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePre,BufRead *.xml :normal gg=G
-augroup END
-
-augroup sourcing
-    autocmd!
     autocmd BufWritePost init.vim source %
-augroup END
-
-augroup indentation
-    autocmd!
-    autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
-augroup END
-
-augroup events
-    autocmd!
+    autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd BufEnter * :set modifiable
     autocmd VimEnter * :Random | :Tnew
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -122,6 +104,10 @@ augroup END
 highlight WordUnder ctermfg = 13
 
 scriptencoding utf-8 "Unicode support is good
+
+"Grep
+command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
+command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
 
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
@@ -168,23 +154,17 @@ let g:GtagsCscope_Auto_Load = 1
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
-
-if executable('ag') 
+if executable('ag')
     " Note we extract the column as well as the file and line number
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
 
 "fugitive
-command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
-
-"Useful for non git-repos
-command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
-
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gl :silent Glog<cr>:cw<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gvdiff<cr>
-"For some reason :Gpush crashes my terminal so have to use the native version
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
@@ -214,10 +194,6 @@ let g:vdebug_options["path_maps"] = {
 let g:neoterm_autoscroll = 1
 let g:neoterm_size = 10
 let g:neoterm_fixedsize = 1
-nnoremap <leader>cl :TREPLSendLine<cr>
-nnoremap <leader>cf :TREPLSendFile<cr>
-nnoremap <leader>cv :TREPLSendSelection<cr>
-vnoremap <leader>cv :TREPLSendSelection<cr>
 
 "netrw
 let g:netrw_liststyle = 3 "style it as a tree
@@ -236,7 +212,6 @@ nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
-nnoremap <silent> <leader>m :call makefile#CompleteMakefile()<cr>
 
 "vim-jsx
 let g:jsx_ext_required = 0
@@ -280,13 +255,8 @@ function! RenameFile()
     endif
 endfunction
 
-function! DeleteFile()
-endfunction
-
-function! MoveVisualSelectionToNewFile()
-    let file_name = input('New file: ', expand('%'), 'file')
-    exec ':normal! gvd'
-    exec ':w!'
-    exec 'vsp: ' . file_name
-    exec ':w!'
+function! TrimTrailingWhitespace()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
 endfunction

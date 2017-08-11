@@ -8,3 +8,6 @@ abbr yor your
 abbr agian again
 abbr cahcing caching
 abbr cahching caching
+abbr detials details
+abbr detaisl details
+abbr validatino validation
