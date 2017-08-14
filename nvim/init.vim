@@ -58,8 +58,6 @@ nnoremap ]<cr> i<cr><esc>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 
-nnoremap <leader>gw :G <cword><cr>
-
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
 inoremap <c-k> <Esc>:m .-2<CR>==gi
@@ -77,7 +75,6 @@ inoremap ' ''<left>
 
 tnoremap <esc> <c-\><c-n>
 
-"IDE style mappings (Sublime text)
 nmap <c-t> :tabnew<cr>
 
 "copy paste
@@ -87,10 +84,6 @@ imap <C-v> <ESC>"+pa
 
 augroup init_vim
     autocmd!
-    autocmd BufRead,BufNewFile *.json setfiletype javascript
-    autocmd BufRead,BufNewFile *.lock setfiletype javascript
-    autocmd BufRead,BufNewFile *.less set filetype=less.css
-    autocmd BufRead,BufNewFile *.scss set filetype=sass.css
     autocmd BufRead,BufNewFile *.vim set filetype=vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePre,BufRead *.xml :normal gg=G
@@ -155,7 +148,6 @@ let g:GtagsCscope_Auto_Load = 1
 let g:deoplete#enable_at_startup = 1
 
 if executable('ag')
-    " Note we extract the column as well as the file and line number
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
@@ -259,4 +251,9 @@ function! TrimTrailingWhitespace()
     let l:save = winsaveview()
     %s/\s\+$//e
     call winrestview(l:save)
+endfunction
+
+"Runs a command in an open terminal, simple replacement for neoterm
+function! RunTerminalCommand()
+
 endfunction
