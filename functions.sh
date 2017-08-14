@@ -62,9 +62,6 @@ installPackages(){
   ~/.fzf/install
 }
 
-generateSshKey() {
-
-}
 
 installNpmPackages() {
     sudo npm install -g jshint
