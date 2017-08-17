@@ -124,7 +124,6 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
-set shell=/bin/bash
 "plugins
 
 "ale
@@ -204,17 +203,6 @@ nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 
 "show snippets (Need to figure out the sink to just insert the text)
 nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
-
-"vim-jsx
-let g:jsx_ext_required = 0
-
-"match tag always
-let g:mta_filetypes = {
-   \'html': 1,
-   \'xml': 1,
-   \'php': 1,
-   \'xhtml': 1,
-   \}
 
 " Use matchit
 if !exists('g:loaded_matchit')
