@@ -19,6 +19,7 @@ Plug 'tpope/vim-commentary'                                                 "eas
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
 Plug 'vim-scripts/dbext.vim'
+Plug 'padawan-php/deoplete-padawan'
 Plug 'w0rp/ale'                                                             "linting
 " Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
@@ -50,10 +51,6 @@ nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
-nnoremap [t :tprev<cr>
-nnoremap ]t :tnext<cr>
-nnoremap ]<space> :normal a<space><cr>
-nnoremap [<space> :normal i<space><cr>
 nnoremap ]<cr> i<cr><esc>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
