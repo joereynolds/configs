@@ -3,7 +3,6 @@ call plug#begin()
 Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
 Plug 'ap/vim-css-color'
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 " Plug 'joonty/vdebug'                                                        "Debugging support
@@ -18,7 +17,6 @@ Plug 'Shougo/deoplete.nvim'                                                 "com
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'vim-scripts/dbext.vim'
 Plug 'padawan-php/deoplete-padawan'
 Plug 'w0rp/ale'                                                             "linting
 " Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
