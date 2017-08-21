@@ -3,7 +3,6 @@ call plug#begin()
 Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
 Plug 'ap/vim-css-color'
 Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'janko-m/vim-test'                                                     "Run unit tests
 Plug 'joereynolds/gtags-scope'                                              "cscope, but better
 Plug 'joereynolds/vim-minisnip'                                             "snippets
 " Plug 'joonty/vdebug'                                                        "Debugging support
@@ -11,17 +10,14 @@ Plug 'jsfaint/gen_tags.vim'                                                 "aut
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
 Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
 Plug 'kassio/neoterm'                                                       "Send commands to a terminal
-Plug 'kshenoy/vim-signature'                                                "visible marks
 Plug 'mhinz/vim-randomtag'                                                  "Learn docs
 Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
 Plug 'Shougo/deoplete.nvim'                                                 "completion
 Plug 'tpope/vim-commentary'                                                 "easier commenting
 Plug 'tpope/vim-fugitive'                                                   "git integration
 Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'vim-scripts/dbext.vim'
 Plug 'padawan-php/deoplete-padawan'
 Plug 'w0rp/ale'                                                             "linting
-" Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
 
 call plug#end()
 
@@ -126,9 +122,6 @@ set mouse=a "mouse support
 "ale
 let g:ale_sign_column_always = 1
 
-"dbext
-"Details for this in private file
-
 "gtags-scope
 "Find all [r]eferences to this function
 nnoremap <leader>csr :cs find c <cword><cr>
@@ -167,9 +160,6 @@ nnoremap <leader>z :Ag<cr>
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
 
-"vim-test
-nnoremap <leader>t :TestFile -strategy=neovim<cr>
-
 "vdebug
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 1337
@@ -197,9 +187,6 @@ nnoremap <leader>fn :call CreateFile()<cr>
 "Various others
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
-
-"show snippets (Need to figure out the sink to just insert the text)
-nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 
 " Use matchit
 if !exists('g:loaded_matchit')
@@ -240,5 +227,4 @@ endfunction
 
 "Runs a command in an open terminal, simple replacement for neoterm
 function! RunTerminalCommand()
-
 endfunction
