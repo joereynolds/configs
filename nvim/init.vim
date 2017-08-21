@@ -89,15 +89,13 @@ augroup END
 
 highlight WordUnder ctermfg = 13
 
-scriptencoding utf-8 "Unicode support is good
-
 "Grep
 command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
 command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
 
 "statusline
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
-highlight StatusLine ctermbg=black ctermfg=white
+highlight StatusLine ctermbg=black ctermfg=Gray
 
 let php_sql_query = 1
 let php_htmlInStrings = 1
@@ -110,9 +108,7 @@ set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
-set numberwidth=2 "Make the line number gutter smaller
 set lazyredraw "refresh the screen less often
-set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
