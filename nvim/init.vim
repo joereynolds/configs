@@ -4,6 +4,7 @@ call plug#begin()
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
     Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
+    " Plug 'joereynolds/deoplete-minisnip'
     " Plug 'joonty/vdebug'                                                        "Debugging support
     Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
