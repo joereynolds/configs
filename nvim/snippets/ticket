@@ -1,12 +1,12 @@
 # {{+Codebase+}}-{{+Ticket Number+}} - {{+Ticket Title+}}
 
+{{+~strftime("%c")+}}
 ## Todo
 -
 -
 
 ## Links
-http://jira.sykescottages.co.uk/browse/{{+Ticket Number+}}
-{{++}}
+http://jira.sykescottages.co.uk/browse/{{+ticket+}}
 
 ## Testing
 {{+Testing instructions here+}}

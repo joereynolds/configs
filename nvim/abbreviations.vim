@@ -11,3 +11,11 @@ abbr cahching caching
 abbr detials details
 abbr detaisl details
 abbr validatino validation
+abbr respoitory repository
+abbr repostiry repository
+abbr reositot repository
+abbr repositoe repository
+abbr repositore repository
+abbr repositiroy repository
+abbr repositoye repository
+abbr repositoy repository
