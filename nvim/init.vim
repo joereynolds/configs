@@ -1,24 +1,22 @@
 call plug#begin()
-
-Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
-Plug 'ap/vim-css-color'
-Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'joereynolds/gtags-scope'                                              "cscope, but better
-Plug 'joereynolds/vim-minisnip'                                             "snippets
-" Plug 'joonty/vdebug'                                                        "Debugging support
-Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
-Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
-Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
-Plug 'kassio/neoterm'                                                       "Send commands to a terminal
-Plug 'mhinz/vim-randomtag'                                                  "Learn docs
-Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
-Plug 'Shougo/deoplete.nvim'                                                 "completion
-Plug 'tpope/vim-commentary'                                                 "easier commenting
-Plug 'tpope/vim-fugitive'                                                   "git integration
-Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'padawan-php/deoplete-padawan'
-Plug 'w0rp/ale'                                                             "linting
-
+    Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
+    Plug 'ap/vim-css-color'
+    Plug 'crusoexia/vim-monokai'                                                "colourscheme
+    Plug 'joereynolds/gtags-scope'                                              "cscope, but better
+    Plug 'joereynolds/vim-minisnip'                                             "snippets
+    " Plug 'joonty/vdebug'                                                        "Debugging support
+    Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
+    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
+    Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
+    Plug 'kassio/neoterm'                                                       "Send commands to a terminal
+    Plug 'mhinz/vim-randomtag'                                                  "Learn docs
+    Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
+    Plug 'Shougo/deoplete.nvim'                                                 "completion
+    Plug 'tpope/vim-commentary'                                                 "easier commenting
+    Plug 'tpope/vim-fugitive'                                                   "git integration
+    Plug 'tpope/vim-surround'                                                   "surround editing
+    Plug 'padawan-php/deoplete-padawan'
+    Plug 'w0rp/ale'                                                             "linting
 call plug#end()
 
 colorscheme monokai
@@ -48,8 +46,6 @@ nnoremap ]l :lnext<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 nnoremap ]<cr> i<cr><esc>
-nmap <silent> [e <Plug>(ale_previous_wrap)
-nmap <silent> ]e <Plug>(ale_next_wrap)
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
@@ -113,10 +109,13 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
-"plugins
 
-"ale
-let g:ale_sign_column_always = 1
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+
+"plugins
 
 "gtags-scope
 "Find all [r]eferences to this function
@@ -125,17 +124,6 @@ nnoremap <leader>csr :cs find c <cword><cr>
 nnoremap <leader>css :cs find s <cword><cr>
 "Find the definition of the word
 nnoremap <leader>csd :cs find g <cword><cr>
-
-let g:GtagsCscope_Quiet = 1
-let g:GtagsCscope_Auto_Load = 1
-
-"deoplete
-let g:deoplete#enable_at_startup = 1
-
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --column
-    set grepformat=%f:%l:%c%m
-endif
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
@@ -152,28 +140,24 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
-"gen tags
+let g:ale_sign_column_always = 1
+let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-
-"vdebug
-let g:vdebug_options = {}
-let g:vdebug_options["port"] = 1337
-
-let g:vdebug_options["path_maps"] = {
-\ "/var/www/enterprise": "/home/joe/code/enterprise"
-\}
-
-"neoterm
+let g:GtagsCscope_Quiet = 1
+let g:GtagsCscope_Auto_Load = 1
 let g:neoterm_autoscroll = 1
 let g:neoterm_size = 10
 let g:neoterm_fixedsize = 1
-
-"netrw
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 1337
+let g:vdebug_options["path_maps"] = {
+    \ "/var/www/enterprise": "/home/joe/code/enterprise"
+\}
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
