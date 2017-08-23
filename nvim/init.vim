@@ -75,7 +75,8 @@ imap <C-v> <ESC>"+pa
 augroup init_vim
     autocmd!
     autocmd BufRead,BufNewFile *.vim set filetype=vim
-    autocmd BufWritePre,BufRead *.html, *.xml :normal gg=G
+    autocmd BufWritePre,BufRead *.html :normal gg=G
+    autocmd BufWritePre,BufRead *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd VimEnter * :Random | :Tnew
