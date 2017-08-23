@@ -75,32 +75,23 @@ imap <C-v> <ESC>"+pa
 augroup init_vim
     autocmd!
     autocmd BufRead,BufNewFile *.vim set filetype=vim
-    autocmd BufWritePre,BufRead *.html :normal gg=G
-    autocmd BufWritePre,BufRead *.xml :normal gg=G
+    autocmd BufWritePre,BufRead *.html, *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
-    autocmd BufEnter * :set modifiable
     autocmd VimEnter * :Random | :Tnew
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
 
-highlight WordUnder ctermfg = 13
-
-"Grep
 command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
 command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
 
-"statusline
-set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
-highlight StatusLine ctermbg=black ctermfg=Gray
-
 let php_sql_query = 1
 let php_htmlInStrings = 1
-let g:sql_type_default = 'mysql'
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
+set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
@@ -111,12 +102,13 @@ set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
 
+highlight StatusLine ctermbg=black ctermfg=Gray
+highlight WordUnder ctermfg = 13
+
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
-
-"plugins
 
 "gtags-scope
 "Find all [r]eferences to this function
@@ -165,7 +157,6 @@ nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
 
-"Various others
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 
