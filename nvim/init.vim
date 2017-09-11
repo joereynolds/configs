@@ -79,7 +79,6 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
-    autocmd VimEnter * :Random | :Tnew
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
 
