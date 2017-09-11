@@ -196,7 +196,3 @@ function! TrimTrailingWhitespace()
     %s/\s\+$//e
     call winrestview(l:save)
 endfunction
-
-"Runs a command in an open terminal, simple replacement for neoterm
-function! RunTerminalCommand()
-endfunction
