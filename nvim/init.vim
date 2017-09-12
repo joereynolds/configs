@@ -1,26 +1,23 @@
 call plug#begin()
-
-Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
-Plug 'ap/vim-css-color'
-Plug 'crusoexia/vim-monokai'                                                "colourscheme
-Plug 'joereynolds/gtags-scope'                                              "cscope, but better
-Plug 'joereynolds/vim-minisnip'                                             "snippets
-" Plug 'joonty/vdebug'                                                        "Debugging support
-Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
-Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
-Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
-Plug 'kassio/neoterm'                                                       "Send commands to a terminal
-Plug 'kshenoy/vim-signature'                                                "visible marks
-Plug 'mhinz/vim-randomtag'                                                  "Learn docs
-Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
-Plug 'Shougo/deoplete.nvim'                                                 "completion
-Plug 'tpope/vim-commentary'                                                 "easier commenting
-Plug 'tpope/vim-fugitive'                                                   "git integration
-Plug 'tpope/vim-surround'                                                   "surround editing
-Plug 'padawan-php/deoplete-padawan'
-Plug 'w0rp/ale'                                                             "linting
-" Plug 'wlangstroth/vim-racket', {'for': ['scheme', 'racket']}                "racket support
-
+    Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
+    Plug 'ap/vim-css-color'
+    Plug 'crusoexia/vim-monokai'                                                "colourscheme
+    Plug 'joereynolds/gtags-scope'                                              "cscope, but better
+    Plug 'joereynolds/vim-minisnip'                                             "snippets
+    " Plug 'joereynolds/deoplete-minisnip'
+    " Plug 'joonty/vdebug'                                                        "Debugging support
+    Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
+    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
+    Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
+    Plug 'kassio/neoterm'                                                       "Send commands to a terminal
+    Plug 'mhinz/vim-randomtag'                                                  "Learn docs
+    Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
+    Plug 'Shougo/deoplete.nvim'                                                 "completion
+    Plug 'tpope/vim-commentary'                                                 "easier commenting
+    Plug 'tpope/vim-fugitive'                                                   "git integration
+    Plug 'tpope/vim-surround'                                                   "surround editing
+    Plug 'padawan-php/deoplete-padawan'
+    Plug 'w0rp/ale'                                                             "linting
 call plug#end()
 
 colorscheme monokai
@@ -50,8 +47,6 @@ nnoremap ]l :lnext<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 nnoremap ]<cr> i<cr><esc>
-nmap <silent> [e <Plug>(ale_previous_wrap)
-nmap <silent> ]e <Plug>(ale_next_wrap)
 
 "move code up or down
 inoremap <c-j> <Esc>:m .+1<CR>==gi
@@ -84,48 +79,37 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
-    autocmd BufEnter * :set modifiable
     autocmd VimEnter * :Random | :Tnew
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
 
-highlight WordUnder ctermfg = 13
-
-scriptencoding utf-8 "Unicode support is good
-
-"Grep
 command! -nargs=+ G execute 'silent Ggrep!' <q-args> | cw | redraw!
 command! -nargs=+ A execute 'silent grep!' <q-args> | cw | redraw!
 
-"statusline
-set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
-highlight StatusLine ctermbg=black ctermfg=white
-
 let php_sql_query = 1
 let php_htmlInStrings = 1
-let g:sql_type_default = 'mysql'
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
+set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
-set numberwidth=2 "Make the line number gutter smaller
 set lazyredraw "refresh the screen less often
-set encoding=utf-8 "We like funny characters
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
-"plugins
 
-"ale
-let g:ale_sign_column_always = 1
+highlight StatusLine ctermbg=black ctermfg=Gray
+highlight WordUnder ctermfg = 13
 
-"dbext
-"Details for this in private file
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
 
 "gtags-scope
 "Find all [r]eferences to this function
@@ -134,17 +118,6 @@ nnoremap <leader>csr :cs find c <cword><cr>
 nnoremap <leader>css :cs find s <cword><cr>
 "Find the definition of the word
 nnoremap <leader>csd :cs find g <cword><cr>
-
-let g:GtagsCscope_Quiet = 1
-let g:GtagsCscope_Auto_Load = 1
-
-"deoplete
-let g:deoplete#enable_at_startup = 1
-
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --column
-    set grepformat=%f:%l:%c%m
-endif
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
@@ -161,43 +134,32 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
-"gen tags
+let g:ale_sign_column_always = 1
+let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-
-"vim-test
-nnoremap <leader>t :TestFile -strategy=neovim<cr>
-
-"vdebug
-let g:vdebug_options = {}
-let g:vdebug_options["port"] = 1337
-
-let g:vdebug_options["path_maps"] = {
-\ "/var/www/enterprise": "/home/joe/code/enterprise"
-\}
-
-"neoterm
+let g:GtagsCscope_Quiet = 1
+let g:GtagsCscope_Auto_Load = 1
 let g:neoterm_autoscroll = 1
 let g:neoterm_size = 10
 let g:neoterm_fixedsize = 1
-
-"netrw
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
 let g:netrw_winsize = -40 "Give the window an absolute size of 40
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 1337
+let g:vdebug_options["path_maps"] = {
+    \ "/var/www/enterprise": "/home/joe/code/enterprise"
+\}
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
 
-"Various others
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
-
-"show snippets (Need to figure out the sink to just insert the text)
-nnoremap <silent> <leader>sn :call fzf#run({'source': "ls ~/programs/configs/nvim/snippets", 'sink': 'insert'})<cr>
 
 " Use matchit
 if !exists('g:loaded_matchit')
@@ -238,5 +200,4 @@ endfunction
 
 "Runs a command in an open terminal, simple replacement for neoterm
 function! RunTerminalCommand()
-
 endfunction
