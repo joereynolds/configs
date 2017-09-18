@@ -11,7 +11,6 @@ call plug#begin()
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
     Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
     Plug 'kassio/neoterm'                                                       "Send commands to a terminal
-    Plug 'mhinz/vim-randomtag'                                                  "Learn docs
     Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
     Plug 'Shougo/deoplete.nvim'                                                 "completion
     Plug 'tpope/vim-commentary'                                                 "easier commenting
