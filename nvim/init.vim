@@ -86,9 +86,6 @@ augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
-let php_sql_query = 1
-let php_htmlInStrings = 1
-
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -106,10 +103,8 @@ set mouse=a "mouse support
 highlight StatusLine ctermbg=black ctermfg=Gray
 highlight WordUnder ctermfg = 13
 
-if executable('rg')
-    set grepprg=rg\ --vimgrep
-endif
-
+let php_sql_query = 1
+let php_htmlInStrings = 1
 let g:ale_sign_column_always = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
@@ -128,6 +123,10 @@ let g:vdebug_options["port"] = 1337
 let g:vdebug_options["path_maps"] = {
     \ "/var/www/enterprise": "/home/joe/code/enterprise"
 \}
+
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+endif
 
 "ctags/global
 nnoremap <leader>csr :cs find c <cword><cr>
