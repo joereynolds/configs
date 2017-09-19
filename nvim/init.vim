@@ -125,7 +125,7 @@ let g:vdebug_options["path_maps"] = {
 \}
 
 if executable('rg')
-    set grepprg=rg\ --vimgrep
+    set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
 "ctags/global
