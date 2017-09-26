@@ -3,6 +3,8 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
+    Plug 'igemnace/vim-makery'                                                  "per project config
+    Plug 'jelera/vim-javascript-syntax'
     Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
     " Plug 'joereynolds/deoplete-minisnip'
