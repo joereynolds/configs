@@ -1,6 +1,7 @@
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias sl="ls"
+alias de="cd ~/Desktop"
 
 #git
 alias gh="git checkout"

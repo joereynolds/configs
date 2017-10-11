@@ -1,4 +1,5 @@
 call plug#begin()
+    Plug 'adoy/vim-php-refactoring-toolbox'
     Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
@@ -13,8 +14,8 @@ call plug#begin()
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
     Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
     Plug 'kassio/neoterm'                                                       "Send commands to a terminal
-    Plug 'ozelentok/deoplete-gtags'                                             "gtag deoplete
     Plug 'Shougo/deoplete.nvim'                                                 "completion
+    Plug 'stephpy/vim-php-cs-fixer'
     Plug 'tpope/vim-commentary'                                                 "easier commenting
     Plug 'tpope/vim-fugitive'                                                   "git integration
     Plug 'tpope/vim-surround'                                                   "surround editing
@@ -72,6 +73,7 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <c-t> :tabnew<cr>
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
+inoremap kj <esc>
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
@@ -85,6 +87,12 @@ augroup init_vim
     autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
+
+let stub = "xdg-open 'http://devdocs.io/?q="
+
+command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
+            \ stub . &ft . ' ' . expand('<cword>') . "'" : len(split(<q-args>, ' ')) == 1 ?
+            \ stub . &ft . ' ' . <q-args> . "'" : stub . <q-args> . "'")
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
