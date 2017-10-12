@@ -1,5 +1,6 @@
 call plug#begin()
     Plug 'adoy/vim-php-refactoring-toolbox'
+    Plug 'airblade/vim-gitgutter'
     Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
@@ -18,6 +19,7 @@ call plug#begin()
     Plug 'stephpy/vim-php-cs-fixer'
     Plug 'tpope/vim-commentary'                                                 "easier commenting
     Plug 'tpope/vim-fugitive'                                                   "git integration
+    Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'                                                   "surround editing
     Plug 'padawan-php/deoplete-padawan'                                         "php completion
     Plug 'w0rp/ale'                                                             "linting
@@ -46,10 +48,6 @@ nnoremap <m-v> <c-w>v
 nnoremap <m-=> <c-w>=
 
 "semantic keybindings...kinda
-nnoremap [l :lprev<cr>
-nnoremap ]l :lnext<cr>
-nnoremap [q :cprev<cr>
-nnoremap ]q :cnext<cr>
 nnoremap ]<cr> i<cr><esc>
 nnoremap ]v :execute 'silent grep! .php.*\\b<cword> tags'<cr>
 
@@ -162,6 +160,9 @@ nnoremap <leader>z :Ag<cr>
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
+
+"gitgutter
+let g:gitgutter_grep_command = 'rg'
 
 "Ternjs
 let g:deoplete#sources#ternjs#docs = 1
