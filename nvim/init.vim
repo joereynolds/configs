@@ -153,6 +153,7 @@ nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstr
 
 "fzf
 nnoremap <c-p> :GFiles<cr>
+nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Ag<cr>
 
