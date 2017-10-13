@@ -62,6 +62,7 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 "DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
+
 inoremap [<cr> [<cr>]<esc>O
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -75,6 +76,7 @@ inoremap kj <esc>
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
 
 augroup init_vim
     autocmd!
@@ -164,6 +166,10 @@ nnoremap <leader>fn :call CreateFile()<cr>
 
 "gitgutter
 let g:gitgutter_grep_command = 'rg'
+
+"matchparen is pretty slow so set a smaller timeout
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
 
 "Ternjs
 let g:deoplete#sources#ternjs#docs = 1
