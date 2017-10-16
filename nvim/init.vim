@@ -109,6 +109,7 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
+set hidden
 
 highlight StatusLine ctermbg=black ctermfg=Gray
 highlight WordUnder ctermfg = 13
@@ -154,10 +155,23 @@ nnoremap <leader>gt :Git stash<cr>
 nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstream \| cut -c 3- \| sed 's#^remotes/[^/]*/##'", 'sink': 'silent !git checkout'})<cr>
 
 "fzf
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 nnoremap <c-p> :GFiles<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>b :BTags<cr>
-nnoremap <leader>z :Ag<cr>
+nnoremap <leader>z :Rg<cr>
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
