@@ -23,7 +23,7 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'                                         "php completion
     Plug 'w0rp/ale'                                                             "linting
     Plug 'machakann/vim-sandwich'
-    Plug 'xtal8/traces.vim'
+    " Plug 'xtal8/traces.vim'
 call plug#end()
 
 colorscheme monokai
