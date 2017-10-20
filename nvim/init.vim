@@ -20,9 +20,10 @@ call plug#begin()
     Plug 'tpope/vim-commentary'                                                 "easier commenting
     Plug 'tpope/vim-fugitive'                                                   "git integration
     Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-surround'                                                   "surround editing
     Plug 'padawan-php/deoplete-padawan'                                         "php completion
     Plug 'w0rp/ale'                                                             "linting
+    Plug 'machakann/vim-sandwich'
+    Plug 'xtal8/traces.vim'
 call plug#end()
 
 colorscheme monokai
@@ -110,6 +111,7 @@ set expandtab "Change tabs into spaces
 set number "Show line numbers
 set mouse=a "mouse support
 set hidden
+set viminfo='100,<1000,s100
 
 highlight StatusLine ctermbg=black ctermfg=Gray
 highlight WordUnder ctermfg = 13
@@ -172,6 +174,7 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Rg<cr>
+nnoremap <leader>df :Tags<cr>
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
