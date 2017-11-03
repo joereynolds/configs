@@ -5,3 +5,5 @@ GPATH
 GRTAGS
 GTAGS
 tags
+ticket
+_sql_add_endpoint
