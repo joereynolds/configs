@@ -9,7 +9,7 @@ call plug#begin()
     Plug 'jelera/vim-javascript-syntax'
     Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
-    " Plug 'joereynolds/deoplete-minisnip'
+    Plug 'joereynolds/deoplete-minisnip'
     " Plug 'joonty/vdebug'                                                        "Debugging support
     Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
@@ -108,6 +108,7 @@ set tabstop=4 "Pressing tab should only indent 4 spaces
 set lazyredraw "refresh the screen less often
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
+set noswapfile "it's 2017, people!
 set number "Show line numbers
 set mouse=a "mouse support
 set hidden
