@@ -5,7 +5,6 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
-    Plug 'igemnace/vim-makery'                                                  "per project config
     Plug 'jelera/vim-javascript-syntax'
     Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
@@ -16,7 +15,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
     Plug 'kassio/neoterm'                                                       "Send commands to a terminal
     Plug 'Shougo/deoplete.nvim'                                                 "completion
-    Plug 'stephpy/vim-php-cs-fixer'
+    Plug 'sbdchd/neoformat'
     Plug 'tpope/vim-commentary'                                                 "easier commenting
     Plug 'tpope/vim-fugitive'                                                   "git integration
     Plug 'tpope/vim-unimpaired'
