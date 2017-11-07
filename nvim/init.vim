@@ -74,7 +74,6 @@ vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-
 augroup init_vim
     autocmd!
     autocmd BufRead,BufNewFile *.vim set filetype=vim
@@ -106,7 +105,6 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set noswapfile "it's 2017, people!
 set number "Show line numbers
-set mouse=a "mouse support
 set hidden
 set viminfo='100,<1000,s100
 
@@ -121,9 +119,6 @@ let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
 let g:GtagsCscope_Quiet = 1
 let g:GtagsCscope_Auto_Load = 1
-let g:neoterm_autoscroll = 1
-let g:neoterm_size = 10
-let g:neoterm_fixedsize = 1
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
