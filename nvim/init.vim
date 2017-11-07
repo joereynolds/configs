@@ -1,7 +1,5 @@
 call plug#begin()
-    Plug 'adoy/vim-php-refactoring-toolbox'
     Plug 'airblade/vim-gitgutter'
-    Plug 'alvan/vim-php-manual',   {'for': ['php']}                             "php man pages
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
@@ -13,7 +11,6 @@ call plug#begin()
     Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
     Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
-    Plug 'kassio/neoterm'                                                       "Send commands to a terminal
     Plug 'Shougo/deoplete.nvim'                                                 "completion
     Plug 'sbdchd/neoformat'
     Plug 'tpope/vim-commentary'                                                 "easier commenting
