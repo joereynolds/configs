@@ -114,11 +114,15 @@ highlight WordUnder ctermfg = 13
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let g:ale_sign_column_always = 1
+let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
+let g:gitgutter_grep_command = 'rg'
 let g:GtagsCscope_Quiet = 1
 let g:GtagsCscope_Auto_Load = 1
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
 let g:netrw_liststyle = 3 "style it as a tree
 let g:netrw_preview = 1   "open file previews vertically
 let g:netrw_banner = 0    "Hide the default banner
@@ -148,9 +152,9 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
 nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstream \| cut -c 3- \| sed 's#^remotes/[^/]*/##'", 'sink': 'silent !git checkout'})<cr>
 
-"fzf
 
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+"fzf
+" Use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -172,16 +176,6 @@ nnoremap <leader>df :Tags<cr>
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 nnoremap <leader>fn :call CreateFile()<cr>
-
-"gitgutter
-let g:gitgutter_grep_command = 'rg'
-
-"matchparen is pretty slow so set a smaller timeout
-let g:matchparen_timeout = 10
-let g:matchparen_insert_timeout = 10
-
-"Ternjs
-let g:deoplete#sources#ternjs#docs = 1
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
