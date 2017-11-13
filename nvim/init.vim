@@ -44,7 +44,11 @@ nnoremap <m-=> <c-w>=
 
 "semantic keybindings...kinda
 nnoremap ]<cr> i<cr><esc>
-nnoremap ]v :execute 'silent grep! .php.*\\b<cword> tags'<cr>
+nnoremap ]v :call ShowVariable()<cr>
+
+function! ShowVariable()
+    execute 'silent grep! .php.*\\b<cword> tags'
+endfunction
 
 "move codeblocks
 inoremap <c-j> <Esc>:m .+1<CR>==gi
