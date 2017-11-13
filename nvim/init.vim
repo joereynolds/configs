@@ -3,7 +3,6 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'carlitux/deoplete-ternjs'                                             "js completion
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
-    Plug 'jelera/vim-javascript-syntax'
     Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
     Plug 'joereynolds/deoplete-minisnip'
@@ -19,7 +18,7 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'                                         "php completion
     Plug 'w0rp/ale'                                                             "linting
     Plug 'machakann/vim-sandwich'
-    " Plug 'xtal8/traces.vim'
+    Plug 'xtal8/traces.vim'
 call plug#end()
 
 colorscheme monokai
@@ -41,7 +40,6 @@ nnoremap <m-h> <c-w>h
 nnoremap <m-j> <c-w>j
 nnoremap <m-k> <c-w>k
 nnoremap <m-l> <c-w>l
-nnoremap <m-v> <c-w>v
 nnoremap <m-=> <c-w>=
 
 "semantic keybindings...kinda
@@ -59,7 +57,6 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 "DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
-
 inoremap [<cr> [<cr>]<esc>O
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -69,14 +66,12 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <c-t> :tabnew<cr>
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
-inoremap kj <esc>
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 augroup init_vim
     autocmd!
-    autocmd BufRead,BufNewFile *.vim set filetype=vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePre,BufRead *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
@@ -105,11 +100,12 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set noswapfile "it's 2017, people!
 set number "Show line numbers
-set hidden
 set viminfo='100,<1000,s100
+set mouse=a "mouse support
+set hidden
 
-highlight StatusLine ctermbg=black ctermfg=Gray
-highlight WordUnder ctermfg = 13
+"5
+highlight WordUnder ctermfg = 3
 
 let php_sql_query = 1
 let php_htmlInStrings = 1
@@ -167,7 +163,6 @@ command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 nnoremap <c-p> :GFiles<cr>
-nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Rg<cr>
 nnoremap <leader>df :Tags<cr>
