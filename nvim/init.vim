@@ -139,13 +139,9 @@ nnoremap <leader>csd :cs find g <cword><cr>
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gl :silent Glog<cr>:cw<cr>
-nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gt :Git stash<cr>
-nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstream \| cut -c 3- \| sed 's#^remotes/[^/]*/##'", 'sink': 'silent !git checkout'})<cr>
 
 "fzf
 " Use ripgrep instead of ag:
@@ -168,7 +164,6 @@ nnoremap <leader>df :Tags<cr>
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
-nnoremap <leader>fn :call CreateFile()<cr>
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
