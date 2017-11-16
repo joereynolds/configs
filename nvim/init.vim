@@ -21,8 +21,8 @@ call plug#end()
 
 colorscheme monokai
 
-source ~/programs/configs/nvim/work.vim
-source ~/programs/configs/nvim/abbreviations.vim
+silent! source ~/programs/configs/nvim/work.vim
+silent! source ~/programs/configs/nvim/abbreviations.vim
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -65,7 +65,6 @@ inoremap ' ''<left>
 
 "misc
 tnoremap <esc> <c-\><c-n>
-nnoremap <c-t> :tabnew<cr>
 nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
 vmap <C-c> "+yi
@@ -161,6 +160,7 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Rg<cr>
 nnoremap <leader>df :Tags<cr>
 
+nnoremap <leader>t :tabnew
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
