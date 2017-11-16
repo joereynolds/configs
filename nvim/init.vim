@@ -1,9 +1,7 @@
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'ap/vim-css-color'
-    Plug 'carlitux/deoplete-ternjs'                                             "js completion
     Plug 'crusoexia/vim-monokai'                                                "colourscheme
-    Plug 'joereynolds/gtags-scope'                                              "cscope, but better
     Plug 'joereynolds/vim-minisnip'                                             "snippets
     Plug 'joereynolds/deoplete-minisnip'
     " Plug 'joonty/vdebug'                                                        "Debugging support
@@ -91,6 +89,8 @@ command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
+highlight WordUnder ctermfg = 3
+
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -108,9 +108,6 @@ set viminfo='100,<1000,s100
 set mouse=a "mouse support
 set hidden
 
-"5
-highlight WordUnder ctermfg = 3
-
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let g:ale_sign_column_always = 1
@@ -118,9 +115,6 @@ let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-let g:gitgutter_grep_command = 'rg'
-let g:GtagsCscope_Quiet = 1
-let g:GtagsCscope_Auto_Load = 1
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 let g:netrw_liststyle = 3 "style it as a tree
@@ -135,6 +129,7 @@ let g:vdebug_options["path_maps"] = {
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
+    let g:gitgutter_grep_command = 'rg'
 endif
 
 "ctags/global
@@ -151,7 +146,6 @@ nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gt :Git stash<cr>
 nnoremap <silent> <leader>gh :call fzf#run({'source': "git branch -a --set-upstream \| cut -c 3- \| sed 's#^remotes/[^/]*/##'", 'sink': 'silent !git checkout'})<cr>
-
 
 "fzf
 " Use ripgrep instead of ag:
@@ -182,14 +176,6 @@ function! CopyFile()
     exec ':!cp ' . original_file . ' ' . new_name
     exec ':edit ' . new_name
     redraw!
-endfunction
-
-function! CreateFile()
-    let new_name = input('[Creating File]New file: ', expand('%'), 'file')
-    if new_name != ''
-        exec ':edit ' . new_name
-        redraw!
-    endif
 endfunction
 
 function! RenameFile()
