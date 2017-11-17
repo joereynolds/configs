@@ -94,7 +94,6 @@ set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
-set inccommand=split "Live substitution is the bees knees
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set lazyredraw "refresh the screen less often
 set ignorecase "Ignore cases when searching
@@ -123,6 +122,10 @@ let g:vdebug_options["port"] = 1337
 let g:vdebug_options["path_maps"] = {
     \ "/var/www/enterprise": "/home/joe/code/enterprise"
 \}
+
+if has('nvim')
+    set inccommand=split "Live substitution is the bees knees
+endif
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
