@@ -1,20 +1,18 @@
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'ap/vim-css-color'
-    Plug 'crusoexia/vim-monokai'                                                "colourscheme
-    Plug 'joereynolds/vim-minisnip'                                             "snippets
+    Plug 'crusoexia/vim-monokai'
+    Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
-    " Plug 'joonty/vdebug'                                                        "Debugging support
-    Plug 'jsfaint/gen_tags.vim'                                                 "autogen gtags
-    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' } "Fuzzy searching
-    Plug 'junegunn/fzf.vim'                                                     "Fuzzy searching
-    Plug 'Shougo/deoplete.nvim'                                                 "completion
-    Plug 'sbdchd/neoformat'
-    Plug 'tpope/vim-commentary'                                                 "easier commenting
-    Plug 'tpope/vim-fugitive'                                                   "git integration
+    Plug 'jsfaint/gen_tags.vim'
+    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-unimpaired'
-    Plug 'padawan-php/deoplete-padawan'                                         "php completion
-    Plug 'w0rp/ale'                                                             "linting
+    Plug 'padawan-php/deoplete-padawan'
+    Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
     Plug 'xtal8/traces.vim'
 call plug#end()
@@ -160,7 +158,7 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Rg<cr>
 nnoremap <leader>df :Tags<cr>
 
-nnoremap <leader>t :tabnew
+nnoremap <leader>t :tabnew<cr>
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
