@@ -5,8 +5,7 @@ call plug#begin()
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
     Plug 'jsfaint/gen_tags.vim'
-    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'Shougo/deoplete.nvim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -140,23 +139,12 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
-"fzf
-" Use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-nnoremap <c-p> :GFiles<cr>
-nnoremap <leader>b :BTags<cr>
-nnoremap <leader>z :Rg<cr>
-nnoremap <leader>df :Tags<cr>
+"leaderf
+let g:Lf_PreviewCode = 1
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_CursorBlink = 0
+nnoremap <leader>b :LeaderfBufTag<cr>
+nnoremap <leader>df :LeaderfTag<cr>
 
 nnoremap <leader>t :tabnew<cr>
 "File thing, unnamed
