@@ -87,6 +87,10 @@ command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
 highlight WordUnder ctermfg = 3
 
+function! DebugVariableUsage()
+    highlight WordUnder ctermfg = 7 ctermbg = 1
+endfunction
+
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -140,9 +144,9 @@ nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
 "leaderf
-let g:Lf_PreviewCode = 1
 let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_CursorBlink = 0
+let g:Lf_DefaultMode = 'FullPath'
 nnoremap <leader>b :LeaderfBufTag<cr>
 nnoremap <leader>df :LeaderfTag<cr>
 
