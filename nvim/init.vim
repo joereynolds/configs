@@ -45,14 +45,6 @@ function! ShowVariable()
     execute 'silent grep! .php.*\\b<cword> tags'
 endfunction
 
-"move codeblocks
-inoremap <c-j> <Esc>:m .+1<CR>==gi
-inoremap <c-k> <Esc>:m .-2<CR>==gi
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
-
 "DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
@@ -98,7 +90,6 @@ set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
-set lazyredraw "refresh the screen less often
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set noswapfile "it's 2017, people!
