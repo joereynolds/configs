@@ -65,7 +65,6 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
-    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
 
 let stub = "xdg-open 'http://devdocs.io/?q="
@@ -77,13 +76,15 @@ command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
 function! DebugVariableUsage()
+    autocmd!
     highlight WordUnder ctermfg = 7 ctermbg = 1
+    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 endfunction
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%{fugitive#statusline()}%m%=%f[%02p%%,04l,%03v]
+set statusline=%{fugitive#statusline()}%m%=%f[%02p%%]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
