@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
+    Plug 'xtal8/traces.vim'
 call plug#end()
 
 colorscheme monokai
@@ -105,10 +106,6 @@ let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
-let g:netrw_liststyle = 3 "style it as a tree
-let g:netrw_preview = 1   "open file previews vertically
-let g:netrw_banner = 0    "Hide the default banner
-let g:netrw_winsize = -40 "Give the window an absolute size of 40
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 1337
 let g:vdebug_options["path_maps"] = {
