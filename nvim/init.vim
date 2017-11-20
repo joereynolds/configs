@@ -65,6 +65,7 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
+    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 augroup END
 
 let stub = "xdg-open 'http://devdocs.io/?q="
@@ -75,10 +76,10 @@ command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
+highlight WordUnder ctermfg = 3
+
 function! DebugVariableUsage()
-    autocmd!
     highlight WordUnder ctermfg = 7 ctermbg = 1
-    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 endfunction
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
