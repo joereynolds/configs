@@ -63,7 +63,6 @@ imap <C-v> <ESC>"+pa
 augroup init_vim
     autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
-    autocmd BufWritePre,BufRead *.xml :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -76,8 +75,6 @@ command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
             \ stub . &ft . ' ' . <q-args> . "'" : stub . <q-args> . "'")
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-
-highlight WordUnder ctermfg = 3
 
 function! DebugVariableUsage()
     highlight WordUnder ctermfg = 7 ctermbg = 1
