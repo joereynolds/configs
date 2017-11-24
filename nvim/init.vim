@@ -4,6 +4,7 @@ call plug#begin()
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
+    Plug 'joereynolds/SQHell.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'Shougo/deoplete.nvim'
@@ -18,6 +19,7 @@ call plug#end()
 
 colorscheme monokai
 
+source ~/programs/configs/nvim/private.vim
 silent! source ~/programs/configs/nvim/work.vim
 silent! source ~/programs/configs/nvim/abbreviations.vim
 
