@@ -4,6 +4,8 @@ abbr cahching caching
 abbr cahcing caching
 abbr detaisl details
 abbr detials details
+abbr eith with
+abbr phil oatman
 abbr recive receive
 abbr reositot repository
 abbr repositiroy repository
@@ -19,7 +21,6 @@ abbr setene sentence
 abbr teh the
 abbr validatino validation
 abbr wih with
-abbr wth with
 abbr wiht with
-abbr eith with
+abbr wth with
 abbr yor your
