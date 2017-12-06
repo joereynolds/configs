@@ -39,14 +39,7 @@ nnoremap <m-j> <c-w>j
 nnoremap <m-k> <c-w>k
 nnoremap <m-l> <c-w>l
 nnoremap <m-=> <c-w>=
-
-"semantic keybindings...kinda
 nnoremap ]<cr> i<cr><esc>
-nnoremap ]v :call ShowVariable()<cr>
-
-function! ShowVariable()
-    execute 'silent grep! .php.*\\b<cword> tags'
-endfunction
 
 "DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
@@ -107,8 +100,6 @@ let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-let g:matchparen_timeout = 10
-let g:matchparen_insert_timeout = 10
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 1337
 let g:vdebug_options["path_maps"] = {
