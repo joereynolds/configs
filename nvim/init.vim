@@ -20,7 +20,7 @@ call plug#end()
 
 colorscheme monokai
 
-source ~/programs/configs/nvim/private.vim
+silent! source ~/programs/configs/nvim/private.vim
 silent! source ~/programs/configs/nvim/work.vim
 silent! source ~/programs/configs/nvim/abbreviations.vim
 
@@ -50,8 +50,8 @@ inoremap ' ''<left>
 
 "misc
 tnoremap <esc> <c-\><c-n>
-nnoremap <leader>ev :e ~/programs/configs/nvim/init.vim<cr>
-nnoremap <leader>es :e ~/programs/configs/nvim/snippets<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
 vmap <C-c> "+yi
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
@@ -62,15 +62,15 @@ augroup init_vim
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
 let stub = "xdg-open 'http://devdocs.io/?q="
 
-command! -nargs=* DD silent! call system(len(split(<q-args>, ' ')) == 0 ?
-            \ stub . &ft . ' ' . expand('<cword>') . "'" : len(split(<q-args>, ' ')) == 1 ?
-            \ stub . &ft . ' ' . <q-args> . "'" : stub . <q-args> . "'")
-
+command! -nargs=* DD silent! call system(stub . &ft . ' ' . expand('<cword>') . "'")
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,  fzf#vim#with_preview('up:60%'), <bang>0)
+command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 highlight WordUnder ctermfg = 3
 
@@ -96,7 +96,6 @@ set hidden
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let g:ale_sign_column_always = 1
-let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
@@ -126,27 +125,12 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
-"fzf
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
+"fzf"
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>z :Rg<cr>
 nnoremap <leader>df :Tags<cr>
-
 nnoremap <leader>t :tabnew<cr>
-
-"SQHell
-let g:sqh_results_limit = 5000
 
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
