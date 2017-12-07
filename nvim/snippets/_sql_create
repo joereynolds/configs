@@ -1,7 +1,0 @@
-CREATE TABLE `{{+database+}}`.`{{+table_name+}}` (
-  __pk UNSIGNED INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  {{+column+}} {{+datatype+}} {{+unsigned?+}},
-  {{+column+}} {{+datatype+}} {{+unsigned?+}},
-  PRIMARY KEY (`__pk`)
-  CONSTRAINT `con-` FOREIGN KEY(_fk_{{++}}) REFERENCES {{+database+}}.{{+table_name+}}({{+column_name+}})
-);
