@@ -8,6 +8,7 @@ call plug#begin()
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/vader.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -33,14 +34,6 @@ nnoremap <down> :resize -10<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
-"wrist friendly
-nnoremap <m-h> <c-w>h
-nnoremap <m-j> <c-w>j
-nnoremap <m-k> <c-w>k
-nnoremap <m-l> <c-w>l
-nnoremap <m-=> <c-w>=
-nnoremap ]<cr> i<cr><esc>
-
 "DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
@@ -49,6 +42,7 @@ inoremap " ""<left>
 inoremap ' ''<left>
 
 "misc
+nnoremap ]<cr> i<cr><esc>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
@@ -81,7 +75,7 @@ endfunction
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%{fugitive#statusline()}%m%=%f[%02p%%]
+set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
@@ -128,7 +122,6 @@ nnoremap <leader>gs :Gstatus<cr>
 "fzf"
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
-nnoremap <leader>z :Rg<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
