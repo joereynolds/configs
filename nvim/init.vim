@@ -44,9 +44,6 @@ inoremap ' ''<left>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
-vmap <C-c> "+yi
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
 
 augroup init_vim
     autocmd!
