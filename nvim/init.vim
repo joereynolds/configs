@@ -1,5 +1,4 @@
 call plug#begin()
-    Plug 'airblade/vim-gitgutter'
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
@@ -42,7 +41,6 @@ inoremap " ""<left>
 inoremap ' ''<left>
 
 "misc
-nnoremap ]<cr> i<cr><esc>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
@@ -63,7 +61,6 @@ let stub = "xdg-open 'http://devdocs.io/?q="
 
 command! -nargs=* DD silent! call system(stub . &ft . ' ' . expand('<cword>') . "'")
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,  fzf#vim#with_preview('up:60%'), <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 highlight WordUnder ctermfg = 3
@@ -105,7 +102,6 @@ endif
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
-    let g:gitgutter_grep_command = 'rg'
 endif
 
 "ctags/global
