@@ -113,6 +113,11 @@ nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
 
+"SQHell
+nnoremap <leader>se :SQHExecute<cr>
+vnoremap <leader>se :SQHExecute<cr>
+nnoremap <leader>sd :SQHShowDatabases<cr>
+
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
     let original_file = expand('%')
