@@ -75,7 +75,7 @@ endfunction
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
+set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%][%{sqhell#Host()}]
 set cscopetag "search both cscope's db AND the ctags tag file
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
