@@ -62,10 +62,6 @@ command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vi
 
 highlight WordUnder ctermfg = 3
 
-function! DebugVariableUsage()
-    highlight WordUnder ctermfg = 7 ctermbg = 1
-endfunction
-
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -87,11 +83,6 @@ let g:ale_sign_column_always = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-let g:vdebug_options = {}
-let g:vdebug_options["port"] = 1337
-let g:vdebug_options["path_maps"] = {
-    \ "/var/www/enterprise": "/home/joe/code/enterprise"
-\}
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
