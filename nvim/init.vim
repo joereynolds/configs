@@ -1,5 +1,4 @@
 call plug#begin()
-    Plug 'airblade/vim-gitgutter'
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
@@ -42,13 +41,9 @@ inoremap " ""<left>
 inoremap ' ''<left>
 
 "misc
-nnoremap ]<cr> i<cr><esc>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
-vmap <C-c> "+yi
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
 
 augroup init_vim
     autocmd!
@@ -63,14 +58,9 @@ let stub = "xdg-open 'http://devdocs.io/?q="
 
 command! -nargs=* DD silent! call system(stub . &ft . ' ' . expand('<cword>') . "'")
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,  fzf#vim#with_preview('up:60%'), <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 highlight WordUnder ctermfg = 3
-
-function! DebugVariableUsage()
-    highlight WordUnder ctermfg = 7 ctermbg = 1
-endfunction
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
@@ -93,11 +83,6 @@ let g:ale_sign_column_always = 1
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
-let g:vdebug_options = {}
-let g:vdebug_options["port"] = 1337
-let g:vdebug_options["path_maps"] = {
-    \ "/var/www/enterprise": "/home/joe/code/enterprise"
-\}
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
@@ -105,7 +90,6 @@ endif
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
-    let g:gitgutter_grep_command = 'rg'
 endif
 
 "ctags/global
@@ -128,6 +112,11 @@ nnoremap <leader>t :tabnew<cr>
 "File thing, unnamed
 nnoremap <leader>fr :call RenameFile()<cr>
 nnoremap <leader>fc :call CopyFile()<cr>
+
+"SQHell
+nnoremap <leader>se :SQHExecute<cr>
+vnoremap <leader>se :SQHExecute<cr>
+nnoremap <leader>sd :SQHShowDatabases<cr>
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
