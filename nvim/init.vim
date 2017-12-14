@@ -54,13 +54,10 @@ augroup init_vim
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
-let stub = "xdg-open 'http://devdocs.io/?q="
+highlight WordUnder ctermfg = 3
 
-command! -nargs=* DD silent! call system(stub . &ft . ' ' . expand('<cword>') . "'")
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-highlight WordUnder ctermfg = 3
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
@@ -93,9 +90,7 @@ if executable('rg')
 endif
 
 "ctags/global
-nnoremap <leader>csr :cs find c <cword><cr>
 nnoremap <leader>css :cs find s <cword><cr>
-nnoremap <leader>csd :cs find g <cword><cr>
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
@@ -108,10 +103,6 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
-
-"File thing, unnamed
-nnoremap <leader>fr :call RenameFile()<cr>
-nnoremap <leader>fc :call CopyFile()<cr>
 
 "SQHell
 nnoremap <leader>se :SQHExecute<cr>
