@@ -2,8 +2,9 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/deoplete-minisnip'
     Plug 'joereynolds/SQHell.vim'
+    Plug 'joereynolds/deoplete-minisnip'
+    Plug 'joereynolds/place.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -55,6 +56,7 @@ augroup init_vim
 augroup END
 
 highlight WordUnder ctermfg = 3
+highlight MatchParen ctermfg=7 ctermbg=3
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -104,10 +106,8 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
-"SQHell
-nnoremap <leader>se :SQHExecute<cr>
-vnoremap <leader>se :SQHExecute<cr>
-nnoremap <leader>sd :SQHShowDatabases<cr>
+"place.vim
+nmap ga <Plug>(place-insert)
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
