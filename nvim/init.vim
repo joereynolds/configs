@@ -41,6 +41,7 @@ inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap " ""<left>
 inoremap ' ''<left>
+inoremap ` ``<left>
 
 "misc
 tnoremap <esc> <c-\><c-n>
@@ -90,9 +91,6 @@ endif
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
-
-"ctags/global
-nnoremap <leader>css :cs find s <cword><cr>
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
