@@ -16,7 +16,6 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
-    Plug 'xtal8/traces.vim'
 call plug#end()
 
 colorscheme monokai
