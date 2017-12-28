@@ -1,2 +1,0 @@
-phpcs --standard=PSR2 --ignore=*/vendor/*,*/views/*,_ide_helper.php,html/phpdoc/*,cache/*,tests/Fixtures/*,*/storage/* .
-

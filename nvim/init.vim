@@ -91,6 +91,16 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
+"inspectee
+inoremap <leader><leader> <c-r>=Inspectee()<cr>
+
+function! Inspectee()
+    execute "let definition = normal! [i
+    echom definition
+    call complete(col('.'), ['my_test', 'some_other_item'])
+    return ''
+endfunction
+
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gvdiff<cr>
