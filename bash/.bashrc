@@ -1,5 +1,4 @@
 alias vim="nvim"
-alias ls="ls --color=auto"
 alias de="cd ~/Desktop"
 
 #git

@@ -62,18 +62,8 @@ installPackages(){
   ~/.fzf/install
 }
 
-
-installNpmPackages() {
-    sudo npm install -g jshint
-    sudo npm install -g csslint
-
-}
-
-configurePackages() {
+configure() {
   pip install --upgrade pip
-}
-
-configureGit() {
   git config --global user.email "joereynolds952@gmail.com"
   git config --global user.name "Joe Reynolds"
 }
@@ -85,6 +75,7 @@ clonePersonalRepos() {
     life
     programming-dump
     util.joereynoldsaudio
+    joereynoldsaudio
   )
 
   cd ~/programs

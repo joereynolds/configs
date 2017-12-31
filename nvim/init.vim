@@ -115,6 +115,10 @@ nnoremap <leader>t :tabnew<cr>
 
 "place.vim
 nmap ga <Plug>(place-insert)
+nmap gb <Plug>(place-insert-multiple)
+
+"vim-minisnip
+let g:minisnip_dir = '~/programs/configs/nvim/minisnip/'
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
