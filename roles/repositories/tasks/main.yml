@@ -1,0 +1,11 @@
+- git:
+    repo: "https://github.com/{{ item }}"
+    dest: "/home/joe/programs/{{ item }}"
+  with_items:
+      - joereynolds/Configs
+      - joereynolds/life
+      - joereynolds/programming-dump
+      - joereynolds/util.joereynoldsaudio
+      - joereynolds/joereynoldsaudio
+      - neovim/neovim
+      - universal-ctags/ctags

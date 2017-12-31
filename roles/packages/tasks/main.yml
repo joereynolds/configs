@@ -1,0 +1,22 @@
+- apt:
+    update_cache: yes
+    name: "{{ item }}"
+  become: true
+  with_items:
+      - automake
+      - cmake
+      - composer
+      - curl
+      - exuberant-ctags
+      - git
+      - libtool
+      - libtool-bin
+      - npm
+      - python-dev
+      - rake
+      - php7.1
+      - php7.1-curl
+      - php7.1-mbstring
+      - php7.1-simplexml
+      - python-pip
+      - python3-pip
