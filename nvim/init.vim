@@ -12,7 +12,6 @@ call plug#begin()
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-unimpaired'
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
