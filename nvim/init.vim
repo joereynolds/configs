@@ -134,6 +134,7 @@ function! TrimTrailingWhitespace()
     call winrestview(l:save)
 endfunction
 
+" ]improved
 " Inspectee
 "
 " What it does:
@@ -151,12 +152,28 @@ endfunction
 " should look in the tags, finally as a last resort it should
 " use cscope or global through the cscope interface.
 "
+" rambles:
+"
+" If no `gd` matches are found, try the tags.   
+"   - Maybe use the results of `ts` unless there are better things to use?
+" 
 "
 inoremap <leader><leader> <c-r>=Inspectee()<cr>
 
+"inspectee
 function! Inspectee()
-    execute "let definition = normal! [i
-    echom definition
-    call complete(col('.'), ['my_test', 'some_other_item'])
+    redir @a
+    try
+        normal! [i 
+    catch /E387/
+        "]i found no matches so fallback to the superior tags file
+        execute "silent! :tselect " . expand("<cword>")
+    endtry
+    redir end
+
+    let completion_message =  @a
+    
+    echom completion_message
+    call complete(col('.'), [completion_message])
     return ''
 endfunction
