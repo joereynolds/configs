@@ -158,7 +158,7 @@ endfunction
 "   - Maybe use the results of `ts` unless there are better things to use?
 " 
 " TODO
-"   - Split at @^ and insert each match in an array
+"   - Use tags first and fallback to [i, not the other way round
 "
 inoremap <leader><leader> <c-r>=Inspectee()<cr>
 
@@ -166,16 +166,21 @@ inoremap <leader><leader> <c-r>=Inspectee()<cr>
 function! Inspectee()
     redir @a
     try
-        normal! [i 
-    catch /E387/
-        "]i found no matches so fallback to the superior tags file
         execute "silent! :tselect " . expand("<cword>")
+    catch /E257/
+        ":tselect found no matches so fallback to the inferior ]i
+        normal! [i 
     endtry
     redir end
 
-    let completion_message = substitute(@a, "\n", "SPLIT_HERE", "g")
+    let completion_message = Trim(substitute(@a, "\n", "SPLIT_HERE", "g"))
     let completion_items = split(completion_message, "SPLIT_HERE")
+
 
     call complete(col('.'), completion_items)
     return ''
+endfunction
+
+function! Trim(input_string)
+        return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction

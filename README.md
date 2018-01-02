@@ -14,5 +14,5 @@ ansible all -m ping --ask-pass
 Running the playbook:
 
 ```
-ansible-playbook --ask-become-pass -i /etc/ansible/hosts play.yml
+ansible-playbook --ask-become-pass -i ./hosts play.yml
 ```
