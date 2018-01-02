@@ -157,6 +157,8 @@ endfunction
 " If no `gd` matches are found, try the tags.   
 "   - Maybe use the results of `ts` unless there are better things to use?
 " 
+" TODO
+"   - Split at @^ and insert each match in an array
 "
 inoremap <leader><leader> <c-r>=Inspectee()<cr>
 
@@ -171,9 +173,9 @@ function! Inspectee()
     endtry
     redir end
 
-    let completion_message =  @a
-    
-    echom completion_message
-    call complete(col('.'), [completion_message])
+    let completion_message = substitute(@a, "\n", "SPLIT_HERE", "g")
+    let completion_items = split(completion_message, "SPLIT_HERE")
+
+    call complete(col('.'), completion_items)
     return ''
 endfunction
