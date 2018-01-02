@@ -91,15 +91,6 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
-"inspectee
-inoremap <leader><leader> <c-r>=Inspectee()<cr>
-
-function! Inspectee()
-    execute "let definition = normal! [i
-    echom definition
-    call complete(col('.'), ['my_test', 'some_other_item'])
-    return ''
-endfunction
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
@@ -115,6 +106,7 @@ nnoremap <leader>t :tabnew<cr>
 
 "place.vim
 nmap ga <Plug>(place-insert)
+nmap gb <Plug>(place-insert-multiple)
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
@@ -138,4 +130,31 @@ function! TrimTrailingWhitespace()
     let l:save = winsaveview()
     %s/\s\+$//e
     call winrestview(l:save)
+endfunction
+
+" Inspectee
+"
+" What it does:
+" Inspectee allows you to view the definition of what is under the cursor.
+" It uses tags to find these definitions,
+"
+" There is a <Plug> mapping exposed, I recommend mapping this to [i
+" to match the native behaviour (but better).
+"
+" When you press [i the definition will open up in a completion box
+" above your cursor.
+"
+" How it works:
+" It should insert the contents of `gd`. If no matches are found, it
+" should look in the tags, finally as a last resort it should
+" use cscope or global through the cscope interface.
+"
+"
+inoremap <leader><leader> <c-r>=Inspectee()<cr>
+
+function! Inspectee()
+    execute "let definition = normal! [i
+    echom definition
+    call complete(col('.'), ['my_test', 'some_other_item'])
+    return ''
 endfunction
