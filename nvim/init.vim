@@ -2,13 +2,11 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/SQHell.vim'
     Plug 'joereynolds/deoplete-minisnip'
     Plug 'joereynolds/place.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'junegunn/vader.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -64,7 +62,7 @@ command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vi
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%][%{sqhell#Host()}]
+set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set ignorecase "Ignore cases when searching
@@ -89,7 +87,6 @@ endif
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
-
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
