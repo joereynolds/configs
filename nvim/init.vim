@@ -3,7 +3,7 @@ call plug#begin()
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
-    Plug 'joereynolds/place.vim'
+    Plug 'joereynolds/Inspectee'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -129,55 +129,4 @@ function! TrimTrailingWhitespace()
     let l:save = winsaveview()
     %s/\s\+$//e
     call winrestview(l:save)
-endfunction
-
-" ]improved
-" Inspectee
-"
-" What it does:
-" Inspectee allows you to view the definition of what is under the cursor.
-" It uses tags to find these definitions,
-"
-" There is a <Plug> mapping exposed, I recommend mapping this to [i
-" to match the native behaviour (but better).
-"
-" When you press [i the definition will open up in a completion box
-" above your cursor.
-"
-" How it works:
-" It should insert the contents of `gd`. If no matches are found, it
-" should look in the tags, finally as a last resort it should
-" use cscope or global through the cscope interface.
-"
-" rambles:
-"
-" If no `gd` matches are found, try the tags.   
-"   - Maybe use the results of `ts` unless there are better things to use?
-" 
-" TODO
-"   - Use tags first and fallback to [i, not the other way round
-"
-inoremap <leader><leader> <c-r>=Inspectee()<cr>
-
-"inspectee
-function! Inspectee()
-    redir @a
-    try
-        execute "silent! :tselect " . expand("<cword>")
-    catch /E257/
-        ":tselect found no matches so fallback to the inferior ]i
-        normal! [i 
-    endtry
-    redir end
-
-    let completion_message = Trim(substitute(@a, "\n", "SPLIT_HERE", "g"))
-    let completion_items = split(completion_message, "SPLIT_HERE")
-
-
-    call complete(col('.'), completion_items)
-    return ''
-endfunction
-
-function! Trim(input_string)
-        return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
