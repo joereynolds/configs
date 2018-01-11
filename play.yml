@@ -1,6 +1,6 @@
 - hosts: localhost
   connection: local
   roles:
-      - packages
-      - repositories
-      - nvim
+      - common/packages
+      - common/repositories
+      - common/nvim

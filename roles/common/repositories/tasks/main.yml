@@ -1,4 +1,5 @@
-- git:
+- name: Clone git repositories
+  git:
     repo: "https://github.com/{{ item }}"
     dest: "/home/joe/programs/{{ item }}"
   with_items:

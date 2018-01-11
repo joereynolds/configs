@@ -1,5 +1,6 @@
-- apt:
-    # update_cache: yes
+- name: Install apt repositories
+  apt:
+    update_cache: yes
     name: "{{ item }}"
   become: true
   with_items:
