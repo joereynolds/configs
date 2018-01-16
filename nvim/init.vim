@@ -24,6 +24,13 @@ silent! source ~/programs/configs/nvim/abbreviations.vim
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprevious<cr>
+nnoremap ]l :lnext<cr>
+nnoremap [l :lprevious<cr>
+nnoremap ]b :bnext<cr>
+nnoremap [b :bprevious<cr>
+
 "window resizing
 nnoremap <up> :resize +10<cr>
 nnoremap <down> :resize -10<cr>
@@ -99,10 +106,6 @@ nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
-
-"place.vim
-nmap ga <Plug>(place-insert)
-nmap gb <Plug>(place-insert-multiple)
 
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/nvim/minisnip/'
