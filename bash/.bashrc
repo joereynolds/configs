@@ -1,5 +1,7 @@
 alias vim="nvim"
+alias ls="ls --color=auto"
 alias de="cd ~/Desktop"
+alias gonv="~/Downloads/gonvim/gonvim.sh ."
 
 #git
 alias gs="git status"
@@ -13,14 +15,14 @@ report_unused_functions() {
   # Remove the ampersands for pass by reference functions
   # Remove everything after and including the ( in the function name
   git grep -Ei '(public|private|protected) function' $1 | awk '{print $4}' | tr -d '&' | cut -f1 -d"(" | while read -r function ; do
-      
+
     match_count="$(git grep -i $function| wc -l)"
 
     if [ "$match_count" -lt 2 ]; then
       echo "$function can be removed. $match_count match"
     fi
-    
-  done 
+
+  done
 }
 
 # enable bash completion in interactive shells

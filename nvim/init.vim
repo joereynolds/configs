@@ -3,7 +3,8 @@ call plug#begin()
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
-    Plug 'joereynolds/Inspectee'
+    Plug 'joereynolds/inspectee.vim'
+    Plug 'joereynolds/SQHell.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -13,6 +14,10 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
+
+    "Messing around with Gonvim"
+    Plug 'equalsraf/neovim-gui-shim'
+
 call plug#end()
 
 colorscheme monokai
@@ -31,6 +36,11 @@ nnoremap [l :lprevious<cr>
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprevious<cr>
 
+"Trying out gonvim
+nnoremap ]w :GonvimWorkspaceNext<cr>
+nnoremap [w :GonvimWorkspacePrevious<cr>
+nnoremap ]m :GonvimMarkdown<cr>
+
 "window resizing
 nnoremap <up> :resize +10<cr>
 nnoremap <down> :resize -10<cr>
@@ -38,6 +48,7 @@ nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
 "DIY autoclosing
+inoremap (; ();<left><left>
 inoremap ( ()<left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
@@ -132,4 +143,13 @@ function! TrimTrailingWhitespace()
     let l:save = winsaveview()
     %s/\s\+$//e
     call winrestview(l:save)
+endfunction
+
+"Messing around with Gonvim
+function! GV()
+    Guifont Courier 10 Pitch:h11
+    set laststatus=0
+    set noruler 
+    set noshowcmd
+    set noshowmode
 endfunction
