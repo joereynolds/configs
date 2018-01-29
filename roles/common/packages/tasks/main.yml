@@ -12,7 +12,7 @@
       - git
       - libtool
       - libtool-bin
-      - npm
+      # - npm
       - python-dev
       - rake
       - php7.1

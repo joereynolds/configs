@@ -10,24 +10,24 @@
 
 - name: "Symlink minisnip"
   file:
-    src: ~/programs/configs/nvim/minisnip
+    src: ~/programs/configs/dotfiles/nvim/minisnip
     dest: ~/.vim/minisnip
     state: link
 
 - name: "Symlink init.vim"
   file:
-    src: ~/programs/configs/nvim/init.vim
+    src: ~/programs/configs/dotfiles/nvim/init.vim
     dest: ~/.config/nvim/init.vim
     state: link
 
 - name: "Symlink bashrc"
   file:
-    src: ~/programs/configs/bash/.bashrc
+    src: ~/programs/configs/dotfiles/bash/.bashrc
     dest: ~/.bashrc
     state: link
 
 - name: "Symlink ctags configuration"
   file:
-    src: ~/programs/configs/ctags/.ctags
+    src: ~/programs/configs/dotfiles/ctags/.ctags
     dest: ~/.ctags
     state: link

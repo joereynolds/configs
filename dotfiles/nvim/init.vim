@@ -106,6 +106,10 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
+let g:ale_fixers = {
+\   'php': ['php-cs-fixer'],
+\}
+
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gvdiff<cr>
@@ -146,6 +150,7 @@ function! TrimTrailingWhitespace()
 endfunction
 
 "Messing around with Gonvim
+let g:gonvim_start_fullscreen = 1
 function! GV()
     Guifont Courier 10 Pitch:h11
     set laststatus=0

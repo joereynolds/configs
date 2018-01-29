@@ -1,7 +1,7 @@
 *.swp
 *.swo
-nvim/work.vim
-nvim/private.vim
+dotfiles/nvim/work.vim
+dotfiles/nvim/private.vim
 GPATH
 GRTAGS
 GTAGS

@@ -2,7 +2,6 @@
   connection: local
   roles:
       - common/system
-      # - common/packages
-      # - common/repositories
-      # - common/nvim
-
+      - common/packages
+      - common/repositories
+      - common/nvim
