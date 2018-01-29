@@ -1,0 +1,33 @@
+- name: "Create programs directory"
+  file:
+    path: ~/programs
+    state: directory
+
+- name: "Create code directory"
+  file:
+    path: ~/code
+    state: directory
+
+- name: "Symlink minisnip"
+  file:
+    src: ~/programs/configs/nvim/minisnip
+    dest: ~/.vim/minisnip
+    state: link
+
+- name: "Symlink init.vim"
+  file:
+    src: ~/programs/configs/nvim/init.vim
+    dest: ~/.config/nvim/init.vim
+    state: link
+
+- name: "Symlink bashrc"
+  file:
+    src: ~/programs/configs/bash/.bashrc
+    dest: ~/.bashrc
+    state: link
+
+- name: "Symlink ctags configuration"
+  file:
+    src: ~/programs/configs/ctags/.ctags
+    dest: ~/.ctags
+    state: link
