@@ -123,7 +123,7 @@ nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
 "vim-minisnip
-let g:minisnip_dir = '~/programs/configs/nvim/minisnip/'
+let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
 function! CopyFile()
     let new_name = input('[Copying File]New file: ', expand('%'), 'file')
