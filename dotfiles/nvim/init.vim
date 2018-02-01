@@ -3,7 +3,6 @@ call plug#begin()
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-minisnip'
-    Plug 'joereynolds/inspectee.vim'
     Plug 'joereynolds/SQHell.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
@@ -106,10 +105,6 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
-let g:ale_fixers = {
-\   'php': ['php-cs-fixer'],
-\}
-
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gvdiff<cr>
@@ -124,14 +119,6 @@ nnoremap <leader>t :tabnew<cr>
 
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
-
-function! CopyFile()
-    let new_name = input('[Copying File]New file: ', expand('%'), 'file')
-    let original_file = expand('%')
-    exec ':!cp ' . original_file . ' ' . new_name
-    exec ':edit ' . new_name
-    redraw!
-endfunction
 
 function! RenameFile()
     let old_name = expand('%')
