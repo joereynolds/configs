@@ -8,7 +8,7 @@
     path: ~/code
     state: directory
 
-- name: "Symlink minisnip"
+- name: "Symlink minisnip config"
   file:
     src: ~/programs/configs/dotfiles/nvim/minisnip
     dest: ~/.vim/minisnip
@@ -24,6 +24,12 @@
   file:
     src: ~/programs/configs/dotfiles/bash/.bashrc
     dest: ~/.bashrc
+    state: link
+
+- name: "Symlink newsbeuter config"
+  file:
+    src: ~/programs/configs/dotfiles/newsbeuter/urls    
+    dest: ~/.newsbeuter/urls
     state: link
 
 - name: "Symlink ctags configuration"
