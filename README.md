@@ -1,18 +1,16 @@
 # Configs
-My dotfiles and configs
 
+These are more than just dotfiles, these are everything that I frequently use on a machine.
+If you just care about dotfiles, go to ./dotfiles
 
+## Installing
 
-# Moving to ansible
-
-Checking it's up:
-
-```
-ansible all -m ping --ask-pass
-```
-
-Running the playbook:
+Make sure ansible >= 2.0 is installed and then do
 
 ```
 ansible-playbook --ask-become-pass -i ./hosts play.yml
 ```
+
+This will clone all my favourite repos, install my dev packages and symlink all my vim stuff.
+
+Enjoy :)
