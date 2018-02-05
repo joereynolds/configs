@@ -2,7 +2,6 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/deoplete-minisnip'
     Plug 'joereynolds/SQHell.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
@@ -21,9 +20,9 @@ call plug#end()
 
 colorscheme monokai
 
-silent! source ~/programs/configs/nvim/private.vim
-silent! source ~/programs/configs/nvim/work.vim
-silent! source ~/programs/configs/nvim/abbreviations.vim
+silent! source ~/programs/configs/dotfiles/nvim/private.vim
+silent! source ~/programs/configs/dotfiles/nvim/work.vim
+silent! source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
@@ -59,7 +58,6 @@ inoremap ` ``<left>
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>es :e ~/programs/configs/nvim/minisnip<cr>
 
 augroup init_vim
     autocmd!
@@ -77,7 +75,6 @@ command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
-set notimeout "Wait indefinitely for a keypress when we press the leader key
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
 set relativenumber "Turn on relative numbering for all lines
@@ -107,7 +104,6 @@ endif
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
