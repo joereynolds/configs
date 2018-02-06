@@ -1,0 +1,10 @@
+- name: "Add in smtp password to mutt config"
+  lineinfile:
+      dest: ./dotfiles/mutt/.muttrc
+      line: 'set imap_pass = "{{ email_pass }}"'
+
+- name: "Add in imap password to mutt config"
+  lineinfile:
+      dest: ./dotfiles/mutt/.muttrc
+      line: 'set smtp_pass = "{{ email_pass }}"'
+

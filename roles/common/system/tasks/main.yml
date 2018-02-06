@@ -8,6 +8,11 @@
     path: ~/code
     state: directory
 
+- name: "Create .newsbeuter directory"
+  file:
+    path: ~/.newsbeuter
+    state: directory
+
 - name: "Symlink minisnip config"
   file:
     src: ~/programs/configs/dotfiles/nvim/minisnip
@@ -26,9 +31,15 @@
     dest: ~/.bashrc
     state: link
 
+- name: "Symlink mutt config"
+  file:
+    src: ~/programs/configs/dotfiles/mutt/.muttrc
+    dest: ~/.muttrc
+    state: link
+
 - name: "Symlink newsbeuter config"
   file:
-    src: ~/programs/configs/dotfiles/newsbeuter/urls    
+    src: ~/programs/configs/dotfiles/newsbeuter/urls
     dest: ~/.newsbeuter/urls
     state: link
 
