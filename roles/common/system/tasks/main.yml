@@ -14,7 +14,6 @@
     state: link
   with_items:
     - { src: '~/programs/configs/dotfiles/nvim/minisnip',   dest: '~/.vim/minisnip' }
-    - { src: '~/programs/configs/dotfiles/nvim/minisnip',   dest: '~/.vim/minisnip' }
     - { src: '~/programs/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
     - { src: '~/programs/configs/dotfiles/bash/.bashrc',    dest: '~/.bashrc' }
     - { src: '~/programs/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
