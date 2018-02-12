@@ -3,7 +3,8 @@
     repo: "https://github.com/{{ item }}"
     dest: "/home/joe/programs/{{ item }}"
   with_items:
-      - joereynolds/Configs
+      - joereynolds/configs
+      - joereynolds/boganspunkrock
       - joereynolds/life
       - joereynolds/programming-dump
       - joereynolds/util.joereynoldsaudio
