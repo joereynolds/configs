@@ -2,7 +2,7 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/SQHell.vim'
+    Plug 'joereynolds/inspectee.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
