@@ -12,10 +12,6 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
-
-    "Messing around with Gonvim"
-    Plug 'equalsraf/neovim-gui-shim'
-
 call plug#end()
 
 colorscheme monokai
@@ -33,11 +29,6 @@ nnoremap ]l :lnext<cr>
 nnoremap [l :lprevious<cr>
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprevious<cr>
-
-"Trying out gonvim
-nnoremap ]w :GonvimWorkspaceNext<cr>
-nnoremap [w :GonvimWorkspacePrevious<cr>
-nnoremap ]m :GonvimMarkdown<cr>
 
 "window resizing
 nnoremap <up> :resize +10<cr>
@@ -116,28 +107,8 @@ nnoremap <leader>t :tabnew<cr>
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('[Renaming File]New file: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-
 function! TrimTrailingWhitespace()
     let l:save = winsaveview()
     %s/\s\+$//e
     call winrestview(l:save)
-endfunction
-
-"Messing around with Gonvim
-let g:gonvim_start_fullscreen = 1
-function! GV()
-    Guifont Courier 10 Pitch:h11
-    set laststatus=0
-    set noruler 
-    set noshowcmd
-    set noshowmode
 endfunction
