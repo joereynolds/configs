@@ -39,6 +39,7 @@ nnoremap <right> :vertical resize +10<cr>
 "DIY autoclosing
 inoremap (; ();<left><left>
 inoremap ( ()<left>
+inoremap [ []<left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
