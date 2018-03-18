@@ -2,7 +2,6 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/inspectee.vim'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -12,12 +11,12 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
+    Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 colorscheme monokai
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
-silent! source ~/programs/configs/dotfiles/nvim/work.vim
 silent! source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 "Clear the search when we press space
