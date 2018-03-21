@@ -16,8 +16,8 @@ call plug#end()
 
 colorscheme monokai
 
-silent! source ~/programs/configs/dotfiles/nvim/private.vim
-silent! source ~/programs/configs/dotfiles/nvim/abbreviations.vim
+source ~/programs/configs/dotfiles/nvim/private.vim
+source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 "Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
