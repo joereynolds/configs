@@ -1,3 +1,8 @@
+- name: Add peek repository
+  apt_repository:
+    repo: 'ppa:peek-developers/stable'
+    state: present
+
 - name: Install apt repositories
   apt:
     update_cache: yes
@@ -8,6 +13,7 @@
       - cmake
       - composer
       - curl
+      - google-chrome-stable
       - exuberant-ctags
       - git
       - libtool
@@ -15,9 +21,11 @@
       # - npm
       - python-dev
       - rake
+      - peek
       - php7.1
       - php7.1-curl
       - php7.1-mbstring
       - php7.1-simplexml
+      - ppa-purge
       - python-pip
       - python3-pip
