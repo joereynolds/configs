@@ -1,3 +1,12 @@
+- name: Download dbeaver
+  get_url:
+    url: https://github.com/dbeaver/dbeaver/releases/download/5.0.1/dbeaver-ce_5.0.1_amd64.deb
+    dest: /tmp/dbeaver.deb
+
+- name: Install deb packages
+  apt: deb=/tmp/dbeaver.deb
+  become: true
+
 - name: Add peek repository
   apt_repository:
     repo: 'ppa:peek-developers/stable'

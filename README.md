@@ -11,6 +11,12 @@ Make sure ansible >= 2.0 is installed and then do
 ansible-playbook --ask-become-pass -i ./hosts play.yml
 ```
 
+or
+
+```
+./run.sh
+```
+
 This will clone all my favourite repos, install my dev packages and symlink all my vim stuff.
 
 Enjoy :)
