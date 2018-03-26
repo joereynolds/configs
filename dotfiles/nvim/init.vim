@@ -2,7 +2,7 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
-    " Plug 'joereynolds/deoplete-phpactor'
+    Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -114,3 +114,34 @@ function! TrimTrailingWhitespace()
     %s/\s\+$//e
     call winrestview(l:save)
 endfunction
+
+"phpstorm jealousies
+"
+" When you type $this->
+" It automaticalls adds the >
+augroup _autocomplete
+    autocmd!
+    autocmd FileType php inoremap <silent> <buffer> - <c-r>=<sid>autocomplete("-")<cr>
+    autocmd FileType php inoremap <silent> <buffer> : <c-r>=<sid>autocomplete(":")<cr>
+augroup END
+
+func! s:autocomplete(key)
+    " Array in the following format
+    " key: The default key to return
+    " 1: The word that triggers [2] - The thing to proceed the word
+    " 2: The snippet that is autocompleted after the word is triggered
+    "
+    " Note that the triggering word [1] is also suffixed with a:key.
+    " Meaning that if we do $this, it's actuall $this-
+    let autocompletions = {
+        \'-' : ['\V$this\$', '->'],
+        \':' : ['\Vself\$', '::']
+    \}
+
+    " check the string before the cursor and if it's l:autocompletions[1] then it adds the rest
+    if strpart(getline('.'), 0, col('.')) =~ l:autocompletions[a:key][0]
+        return l:autocompletions[a:key][1]
+    end
+
+    return a:key
+endf
