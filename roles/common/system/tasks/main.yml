@@ -19,4 +19,5 @@
     - { src: '~/programs/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
     - { src: '~/programs/configs/dotfiles/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
     - { src: '~/programs/configs/dotfiles/ctags/.ctags',    dest: '~/.ctags' }
-    - { src: '~/programs/configs/dotfiles/salutem',    dest: '~/.config/salutem' }
+    # - { src: '~/programs/configs/dotfiles/salutem',         dest: '~/.config/salutem' }
+

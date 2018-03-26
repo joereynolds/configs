@@ -2,6 +2,7 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'crusoexia/vim-monokai'
     Plug 'joereynolds/vim-minisnip'
+    " Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -12,6 +13,7 @@ call plug#begin()
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
     Plug 'wlangstroth/vim-racket'
+    Plug 'phpactor/phpactor', { 'do': 'composer install' }
 call plug#end()
 
 colorscheme monokai
