@@ -18,7 +18,7 @@ call plug#end()
 
 colorscheme monokai
 
-source ~/programs/configs/dotfiles/nvim/private.vim
+silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 "Clear the search when we press space
@@ -119,29 +119,28 @@ endfunction
 "
 " When you type $this->
 " It automaticalls adds the >
-augroup _autocomplete
-    autocmd!
-    autocmd FileType php inoremap <silent> <buffer> - <c-r>=<sid>autocomplete("-")<cr>
-    autocmd FileType php inoremap <silent> <buffer> : <c-r>=<sid>autocomplete(":")<cr>
-augroup END
 
-func! s:autocomplete(key)
-    " Array in the following format
+"TODO Put this in ftplugin
+augroup vimrc_expand
+   autocmd!
+   autocmd InsertCharPre * call <sid>expand()
+augroup END 
+
+function! s:expand() abort
+    " Dictionary in the following format
     " key: The default key to return
     " 1: The word that triggers [2] - The thing to proceed the word
     " 2: The snippet that is autocompleted after the word is triggered
-    "
-    " Note that the triggering word [1] is also suffixed with a:key.
-    " Meaning that if we do $this, it's actuall $this-
-    let autocompletions = {
+    let l:autocompletions = {
         \'-' : ['\V$this\$', '->'],
         \':' : ['\Vself\$', '::']
     \}
 
-    " check the string before the cursor and if it's l:autocompletions[1] then it adds the rest
-    if strpart(getline('.'), 0, col('.')) =~ l:autocompletions[a:key][0]
-        return l:autocompletions[a:key][1]
-    end
+    if !has_key(l:autocompletions, v:char)
+        return
+    endif
 
-    return a:key
-endf
+    if strpart(getline('.'), 0, col('.') - 1) =~ l:autocompletions[v:char][0]
+        let v:char = l:autocompletions[v:char][1]
+    end
+endfunction
