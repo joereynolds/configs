@@ -25,6 +25,21 @@ report_unused_functions() {
   done
 }
 
+# Looks through a CSS file given as the first argument.
+# Searches through all files that aren't css or scss files
+find_unused_css() {
+
+    selectors="$(rg -i ^[#\.] $1 | cut -d' ' -f1 | tr -d \{,)"
+
+    for selector in $selectors; do
+        match_count="$(rg -i --iglob='!*.{css,scss}' $selector | wc -l)"
+
+        if [ "$match_count" -lt 1 ]; then
+          printf "$match_count usages found. \033[0;32m$selector \033[0m can probably be removed\n"
+        fi
+    done
+}
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then

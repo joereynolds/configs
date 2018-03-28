@@ -106,6 +106,10 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
+"phpactor   
+nnoremap <leader>pcm :call phpactor#ContextMenu()<cr>
+
+
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
@@ -117,9 +121,8 @@ endfunction
 
 "phpstorm jealousies
 "
-" When you type $this->
-" It automaticalls adds the >
-
+" - When you type $this-> It automaticalls adds the >
+"
 "TODO Put this in ftplugin
 augroup vimrc_expand
    autocmd!
