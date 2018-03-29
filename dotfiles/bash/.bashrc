@@ -29,13 +29,18 @@ report_unused_functions() {
 # Searches through all files that aren't css or scss files
 find_unused_css() {
 
-    selectors="$(rg -i ^[#\.] $1 | cut -d' ' -f1 | tr -d \{,)"
+    if [ -z "$1" ]; then
+        echo "Please specify a css file i.e. find_unused_css my-css-file.css"
+        return 1
+    fi
+
+    selectors="$(rg -i ^[#\.] $1 | cut -d' ' -f1 | tr -d \{,.\#)"
 
     for selector in $selectors; do
-        match_count="$(rg -i --iglob='!*.{css,scss}' $selector | wc -l)"
+        match_count="$(rg -i --iglob='!*.{css,scss}' "$selector" | wc -l)"
 
         if [ "$match_count" -lt 1 ]; then
-          printf "$match_count usages found. \033[0;32m$selector \033[0m can probably be removed\n"
+          printf "$match_count usages found. \033[0;32m$selector \033[0mcan probably be removed\n"
         fi
     done
 }
