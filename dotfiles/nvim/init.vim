@@ -14,6 +14,8 @@ call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'wlangstroth/vim-racket'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
+
+    Plug '~/programs/private-plugins/deoplete-leibniz'
 call plug#end()
 
 colorscheme monokai

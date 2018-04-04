@@ -37,6 +37,12 @@ find_unused_css() {
     selectors="$(rg -i ^[#\.] $1 | cut -d' ' -f1 | tr -d \{,.\#)"
 
     for selector in $selectors; do
+
+        #skip pseudoselectors (Add the rest as needed)
+        if [[ $selector =~ (:invalid|:hover|:valid|:active|:visited|:focus|:checked|:required|:disabled) ]]; then
+            continue
+        fi
+
         match_count="$(rg -i --iglob='!*.{css,scss}' "$selector" | wc -l)"
 
         if [ "$match_count" -lt 1 ]; then
