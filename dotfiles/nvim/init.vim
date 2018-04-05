@@ -1,6 +1,6 @@
 call plug#begin()
     Plug 'ap/vim-css-color'
-    Plug 'crusoexia/vim-monokai'
+    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
@@ -14,9 +14,11 @@ call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'wlangstroth/vim-racket'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
+
+    Plug '~/programs/private-plugins/deoplete-leibniz'
 call plug#end()
 
-colorscheme monokai
+colorscheme challenger_deep
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
@@ -57,12 +59,8 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
-    autocmd CursorMoved * exe printf('match WordUnder /\V\<%s\>/', escape(expand('<cword>'), '/\'))
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
-
-highlight WordUnder ctermfg = 3
-highlight MatchParen ctermfg=7 ctermbg=3
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -89,6 +87,7 @@ let g:gen_tags#gtags_auto_gen = 1
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
+    set termguicolors
 endif
 
 if executable('rg')
