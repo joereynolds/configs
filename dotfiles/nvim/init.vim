@@ -1,6 +1,6 @@
 call plug#begin()
     Plug 'ap/vim-css-color'
-    Plug 'crusoexia/vim-monokai'
+    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'joereynolds/vim-minisnip'
     Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
@@ -18,7 +18,7 @@ call plug#begin()
     Plug '~/programs/private-plugins/deoplete-leibniz'
 call plug#end()
 
-colorscheme monokai
+colorscheme challenger_deep
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
@@ -91,6 +91,7 @@ let g:gen_tags#gtags_auto_gen = 1
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
+    set termguicolors
 endif
 
 if executable('rg')
