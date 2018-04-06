@@ -26,3 +26,6 @@ abbr wth with
 abbr yor your
 abbr insertino insertion
 abbr insertr insert
+abbr inital initial
+abbr intiial initial
+abbr intial initial

@@ -15,6 +15,8 @@ call plug#begin()
     Plug 'wlangstroth/vim-racket'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
 
+    Plug 'mhartington/nvim-typescript',
+    Plug 'leafgarland/typescript-vim',
     Plug '~/programs/private-plugins/deoplete-leibniz'
 call plug#end()
 
