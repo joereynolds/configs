@@ -1,8 +1,7 @@
 call plug#begin()
-    Plug 'ap/vim-css-color'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'joereynolds/vim-minisnip'
-    Plug 'joereynolds/deoplete-phpactor'
+    " Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -19,6 +18,11 @@ call plug#begin()
     Plug 'leafgarland/typescript-vim',
     Plug '~/programs/private-plugins/deoplete-leibniz'
 call plug#end()
+
+"slow stuff that I've removed.
+let loaded_matchparen = 1 "highlighting matching pairs so slow
+"Plug 'ap/vim-css-color' "parse_screen takes a long time
+"TODO - fugitive#statusline is pinged a lot, need to change this 
 
 colorscheme challenger_deep
 
@@ -62,6 +66,7 @@ augroup init_vim
     autocmd BufWritePost init.vim source %
     autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd FileType php setlocal omnifunc=phpactor#Complete
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -110,7 +115,6 @@ nnoremap <leader>t :tabnew<cr>
 "phpactor   
 nnoremap <leader>pcm :call phpactor#ContextMenu()<cr>
 
-
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
@@ -148,3 +152,10 @@ function! s:expand() abort
         let v:char = l:autocompletions[v:char][1]
     end
 endfunction
+
+
+" Uses omni completion on things matching $this->dfgdfg->"
+" if !exists('g:deoplete#omni#input_patterns')
+  " let g:deoplete#omni_patterns = {}
+  " let g:deoplete#omni_patterns.php = '\$\w*\->\+\(\w*\->\)\+'
+" endif
