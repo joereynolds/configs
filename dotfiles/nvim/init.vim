@@ -1,7 +1,6 @@
 call plug#begin()
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'joereynolds/vim-minisnip'
-    " Plug 'joereynolds/deoplete-phpactor'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -11,12 +10,14 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
-    Plug 'wlangstroth/vim-racket'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
 
     Plug 'mhartington/nvim-typescript',
     Plug 'leafgarland/typescript-vim',
-    Plug '~/programs/private-plugins/deoplete-leibniz'
+
+    " Plug 'wlangstroth/vim-racket'
+    " Plug '~/programs/private-plugins/deoplete-leibniz'
+    " Plug 'joereynolds/deoplete-phpactor'
 call plug#end()
 
 "slow stuff that I've removed.
@@ -47,6 +48,7 @@ nnoremap <right> :vertical resize +10<cr>
 
 "DIY autoclosing
 inoremap (; ();<left><left>
+inoremap [; [];<left><left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap {<cr> {<cr>}<esc>O
