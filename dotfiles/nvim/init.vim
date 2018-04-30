@@ -11,19 +11,14 @@ call plug#begin()
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
+    Plug 'kristijanhusak/deoplete-phpactor'
 
     Plug 'mhartington/nvim-typescript',
     Plug 'leafgarland/typescript-vim',
-
-    " Plug 'wlangstroth/vim-racket'
-    " Plug '~/programs/private-plugins/deoplete-leibniz'
-    " Plug 'joereynolds/deoplete-phpactor'
 call plug#end()
 
 "slow stuff that I've removed.
 let loaded_matchparen = 1 "highlighting matching pairs so slow
-"Plug 'ap/vim-css-color' "parse_screen takes a long time
-"TODO - fugitive#statusline is pinged a lot, need to change this 
 
 colorscheme challenger_deep
 
@@ -126,11 +121,11 @@ function! TrimTrailingWhitespace()
     call winrestview(l:save)
 endfunction
 
-"phpstorm jealousies
-"
-" - When you type $this-> It automaticalls adds the >
-"
-"TODO Put this in ftplugin
+""phpstorm jealousies
+""
+"" - When you type $this-> It automaticalls adds the >
+""
+""TODO Put this in ftplugin
 augroup vimrc_expand
    autocmd!
    autocmd InsertCharPre * call <sid>expand()
@@ -154,10 +149,3 @@ function! s:expand() abort
         let v:char = l:autocompletions[v:char][1]
     end
 endfunction
-
-
-" Uses omni completion on things matching $this->dfgdfg->"
-" if !exists('g:deoplete#omni#input_patterns')
-  " let g:deoplete#omni_patterns = {}
-  " let g:deoplete#omni_patterns.php = '\$\w*\->\+\(\w*\->\)\+'
-" endif

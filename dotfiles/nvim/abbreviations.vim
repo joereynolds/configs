@@ -2,6 +2,9 @@ abbr agian again
 abbr aginst against
 abbr cahching caching
 abbr cahcing caching
+abbr compeitiion competition
+abbr compeition competition
+abbr competitionn competition
 abbr detaisl details
 abbr detials details
 abbr eith with
