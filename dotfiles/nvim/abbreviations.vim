@@ -32,3 +32,10 @@ abbr insertr insert
 abbr inital initial
 abbr intiial initial
 abbr intial initial
+abbr competitior competitor
+abbr compeititor competitor
+abbr comeptitior competitor
+abbr compeititor competitor
+abbr compeitor competitor
+abbr compeititor competitor
+abbr compeitior competitor

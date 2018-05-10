@@ -1,7 +1,8 @@
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias de="cd ~/Desktop"
-alias gonv="~/Downloads/gonvim/gonvim.sh ."
+alias gonv="~/Downloads/Gonvim-0.2.2-linux/gonvim.sh ."
+alias lewis="i3lock --color=000000"
 
 #git
 alias gs="git status"
@@ -62,6 +63,7 @@ fi
 
 source ~/programs/up/rc.sh
 source ~/git-prompt.sh
+source ~/work-stuff.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes

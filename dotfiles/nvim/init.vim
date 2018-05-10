@@ -10,7 +10,7 @@ call plug#begin()
     Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
     Plug 'machakann/vim-sandwich'
-    Plug 'phpactor/phpactor', { 'do': 'composer install' }
+    Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
     Plug 'kristijanhusak/deoplete-phpactor'
 
     Plug 'mhartington/nvim-typescript',
@@ -19,6 +19,7 @@ call plug#end()
 
 "slow stuff that I've removed.
 let loaded_matchparen = 1 "highlighting matching pairs so slow
+let did_install_default_menus = 1 "No point loading gvim menu stuff
 
 colorscheme challenger_deep
 
@@ -52,6 +53,7 @@ inoremap [<cr> [<cr>]<esc>O
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
+inoremap ``` ```<cr>```<esc>O
 
 "misc
 tnoremap <esc> <c-\><c-n>
@@ -70,6 +72,7 @@ command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
+set cscopequickfix=s-,c-,d-,i-,t-,e-,a- "cscope results should populate quickfix
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
 set relativenumber "Turn on relative numbering for all lines
@@ -85,6 +88,7 @@ set hidden
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let g:ale_sign_column_always = 1
+let g:ale_php_phpcs_standard="PSR2"
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
@@ -121,6 +125,7 @@ function! TrimTrailingWhitespace()
     call winrestview(l:save)
 endfunction
 
+" Dumping ground below, beware
 ""phpstorm jealousies
 ""
 "" - When you type $this-> It automaticalls adds the >
