@@ -25,6 +25,7 @@
       - google-chrome-stable
       - exuberant-ctags
       - git
+      - i3
       - libtool
       - libtool-bin
       # - npm
@@ -38,3 +39,4 @@
       - ppa-purge
       - python-pip
       - python3-pip
+      - thunar
