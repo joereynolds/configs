@@ -1,0 +1,23 @@
+<?php
+namespace Tests\{{+Acceptance|Unit+}}\{{++}};
+
+use Tests\TestCase;
+
+/**
+ *
+ * @group {{+Your group+}}
+ */
+class {{+Your test+}} extends TestCase
+{
+    protected $subDomain = '{{+Your subdomain+}}';
+
+    public function setUp()
+    {
+        parent::setUp();
+    }
+
+    public function testItWorks()
+    {
+        $this->assertEquals(3, 4);
+    }
+}
