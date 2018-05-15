@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
     Plug 'kristijanhusak/deoplete-phpactor'
 
+    Plug 'junegunn/vader.vim'
     Plug 'mhartington/nvim-typescript',
     Plug 'leafgarland/typescript-vim',
 call plug#end()
