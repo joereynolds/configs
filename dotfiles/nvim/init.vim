@@ -14,6 +14,7 @@ call plug#begin()
     Plug 'kristijanhusak/deoplete-phpactor'
 
     Plug '~/programs/exoskeleton'
+    Plug 'junegunn/vader.vim'
     Plug 'mhartington/nvim-typescript',
     Plug 'leafgarland/typescript-vim',
 call plug#end()
