@@ -1,5 +1,5 @@
 call plug#begin()
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+    Plug 'Lokaltog/vim-monotone'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
@@ -23,7 +23,7 @@ call plug#end()
 let loaded_matchparen = 1 "highlighting matching pairs so slow
 let did_install_default_menus = 1 "No point loading gvim menu stuff
 
-colorscheme challenger_deep
+colorscheme monotone
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
