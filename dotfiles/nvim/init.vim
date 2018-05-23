@@ -13,7 +13,7 @@ call plug#begin()
     Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
     Plug 'kristijanhusak/deoplete-phpactor'
 
-    Plug '~/programs/exoskeleton'
+    Plug 'joereynolds/exoskeleton'
     Plug 'junegunn/vader.vim'
     Plug 'mhartington/nvim-typescript',
     Plug 'leafgarland/typescript-vim',
@@ -58,6 +58,7 @@ inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
 
 "misc
+nnoremap gf :e <cfile><cr>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 
