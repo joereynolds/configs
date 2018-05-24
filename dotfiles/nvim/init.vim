@@ -72,7 +72,7 @@ command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vi
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set cscopequickfix=s-,c-,d-,i-,t-,e-,a- "cscope results should populate quickfix
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%{fugitive#statusline()}%y%m%=%f[%02p%%]
+set statusline=%y%m%=%f[%02p%%]
 set relativenumber "Turn on relative numbering for all lines
 set tabstop=4 "Pressing tab should only indent 4 spaces
 set ignorecase "Ignore cases when searching
