@@ -6,17 +6,12 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'padawan-php/deoplete-padawan'
     Plug 'w0rp/ale'
+    Plug 'padawan-php/deoplete-padawan'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
     Plug 'kristijanhusak/deoplete-phpactor'
-
-    Plug 'joereynolds/exoskeleton'
-    Plug 'junegunn/vader.vim'
-    Plug 'mhartington/nvim-typescript',
-    Plug 'leafgarland/typescript-vim',
+    Plug 'stefandtw/quickfix-reflector.vim'
 call plug#end()
 
 "slow stuff that I've removed.
