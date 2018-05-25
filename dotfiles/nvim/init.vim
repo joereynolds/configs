@@ -14,10 +14,6 @@ call plug#begin()
     Plug 'stefandtw/quickfix-reflector.vim'
 call plug#end()
 
-"slow stuff that I've removed.
-let loaded_matchparen = 1 "highlighting matching pairs so slow
-let did_install_default_menus = 1 "No point loading gvim menu stuff
-
 colorscheme monotone
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -61,7 +57,6 @@ augroup init_vim
     autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
-    autocmd BufWritePost * :call TrimTrailingWhitespace()
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     autocmd FileType php setlocal omnifunc=phpactor#Complete
 augroup END
@@ -85,11 +80,17 @@ set hidden
 
 let php_sql_query = 1
 let php_htmlInStrings = 1
+let g:ale_fixers = {'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
 let g:deoplete#enable_at_startup = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
+
+"Performance improvements
+set synmaxcol=200 "Don't bother highlighting anything over 200 chars
+let did_install_default_menus = 1 "No point loading gvim menu stuff
+let loaded_matchparen = 1 "highlighting matching pairs so slow
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
@@ -116,12 +117,6 @@ nnoremap <leader>pcm :call phpactor#ContextMenu()<cr>
 
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
-
-function! TrimTrailingWhitespace()
-    let l:save = winsaveview()
-    %s/\s\+$//e
-    call winrestview(l:save)
-endfunction
 
 " Dumping ground below, beware
 ""phpstorm jealousies
