@@ -6,6 +6,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
     Plug 'padawan-php/deoplete-padawan'
     Plug 'machakann/vim-sandwich'
@@ -103,8 +104,6 @@ endif
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gp :Git push<cr>
-nnoremap <leader>gs :Gstatus<cr>
 
 "fzf"
 nnoremap <c-p> :GFiles<cr>
