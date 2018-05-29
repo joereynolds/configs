@@ -1,7 +1,6 @@
 call plug#begin()
     Plug 'Lokaltog/vim-monotone'
     Plug 'joereynolds/vim-minisnip'
-    Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -85,8 +84,6 @@ let g:ale_fixers = {'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_white
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
 let g:deoplete#enable_at_startup = 1
-let g:gen_tags#ctags_auto_gen = 1
-let g:gen_tags#gtags_auto_gen = 1
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
