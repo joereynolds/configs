@@ -3,6 +3,7 @@ alias ls="ls --color=auto"
 alias de="cd ~/Desktop"
 alias gonv="~/Downloads/Gonvim-0.2.2-linux/gonvim.sh ."
 alias lewis="i3lock --color=000000"
+alias movescreen="randr --output DP-1-1 --above eDP-1"
 
 #git
 alias gs="git status"
