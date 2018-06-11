@@ -50,7 +50,6 @@ inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
 
 "misc
-nnoremap gf :e <cfile><cr>
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 
@@ -59,6 +58,7 @@ augroup init_vim
     autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
+    autocmd InsertCharPre * call <sid>expand()
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -113,23 +113,16 @@ let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
 " Dumping ground below, beware
 ""phpstorm jealousies
-""
 "" - When you type $this-> It automaticalls adds the >
-""
-""TODO Put this in ftplugin
-augroup vimrc_expand
-   autocmd!
-   autocmd InsertCharPre * call <sid>expand()
-augroup END 
-
+"" Autocmd is in init_vim
 function! s:expand() abort
     " Dictionary in the following format
     " key: The default key to return
     " 1: The word that triggers [2] - The thing to proceed the word
     " 2: The snippet that is autocompleted after the word is triggered
     let l:autocompletions = {
-        \'-' : ['\V$this\$', '->'],
-        \':' : ['\Vself\$', '::']
+        \'-' : ['\$[a-z]\+', '->'],
+        \':' : ['self$', '::']
     \}
 
     if !has_key(l:autocompletions, v:char)
