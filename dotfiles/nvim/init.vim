@@ -1,5 +1,6 @@
 call plug#begin()
     Plug 'Lokaltog/vim-monotone'
+    Plug 'joereynolds/SQHell.vim'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
@@ -13,9 +14,8 @@ call plug#begin()
     Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
     Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'stefandtw/quickfix-reflector.vim'
+    Plug 'KabbAmine/zeavim.vim'
 call plug#end()
-
-colorscheme monotone
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
@@ -48,6 +48,9 @@ inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
+inoremap < <><left>
+inoremap </ </><left>
+inoremap /* /**/<esc>kA<space>
 
 "misc
 tnoremap <esc> <c-\><c-n>
@@ -56,6 +59,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 augroup init_vim
     autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
+    autocmd BufWritePre,BufRead *.json execute '%!python -m json.tool' | w
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
     autocmd InsertCharPre * call <sid>expand()
@@ -79,7 +83,6 @@ set mouse=a "mouse support
 set hidden
 
 let php_sql_query = 1
-let php_htmlInStrings = 1
 let g:ale_fixers = {'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
@@ -108,6 +111,9 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
+"SQHEll
+let g:sqh_results_limit = 2000
+
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
@@ -133,3 +139,5 @@ function! s:expand() abort
         let v:char = l:autocompletions[v:char][1]
     end
 endfunction
+
+colorscheme monotone

@@ -39,3 +39,5 @@ abbr compeititor competitor
 abbr compeitor competitor
 abbr compeititor competitor
 abbr compeitior competitor
+abbr modifer modifier
+abbr modifieri modifier

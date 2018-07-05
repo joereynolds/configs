@@ -65,6 +65,7 @@ fi
 source ~/programs/up/rc.sh
 source ~/git-prompt.sh
 source ~/work-stuff.sh
+source ~/z.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
