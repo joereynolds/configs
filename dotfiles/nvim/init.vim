@@ -17,6 +17,7 @@ call plug#begin()
     Plug 'KabbAmine/zeavim.vim'
 call plug#end()
 
+syntax off
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
@@ -83,7 +84,11 @@ set mouse=a "mouse support
 set hidden
 
 let php_sql_query = 1
-let g:ale_fixers = {'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {
+            \'html': ['tidy'],
+            \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
+            \ 'markdown': ['remove_trailing_lines', 'trim_whitespace']
+            \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
 let g:deoplete#enable_at_startup = 1
