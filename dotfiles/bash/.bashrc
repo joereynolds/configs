@@ -53,6 +53,16 @@ find_unused_css() {
     done
 }
 
+# Finds all git statuses for directories in current path
+git_status_all() {
+    for directory in ./*; do 
+        echo "----==$directory==----"
+        cd $directory
+        git status  
+        cd -
+    done
+}
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then

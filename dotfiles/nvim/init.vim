@@ -15,9 +15,9 @@ call plug#begin()
     Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'KabbAmine/zeavim.vim'
+    Plug 'mattn/emmet-vim'
 call plug#end()
 
-syntax off
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
@@ -49,9 +49,6 @@ inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
-inoremap < <><left>
-inoremap </ </><left>
-inoremap /* /**/<esc>kA<space>
 
 "misc
 tnoremap <esc> <c-\><c-n>
@@ -106,6 +103,9 @@ endif
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
+
+"emmet  
+let g:user_emmet_leader_key='<C-D>'
 
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
