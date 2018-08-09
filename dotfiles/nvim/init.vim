@@ -16,12 +16,18 @@ call plug#begin()
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'KabbAmine/zeavim.vim'
     Plug 'mattn/emmet-vim'
+    Plug 'janko-m/vim-test'
+
+    "LSPs
+    Plug 'autozimu/LanguageClient-neovim', {
+                \ 'branch': 'next',
+                \ 'do': 'bash install.sh',
+                \}
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
-"Clear the search when we press space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 nnoremap ]q :cnext<cr>
@@ -61,6 +67,7 @@ augroup init_vim
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
     autocmd InsertCharPre * call <sid>expand()
+    autocmd FileType markdown setlocal textwidth=80
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -84,7 +91,7 @@ let php_sql_query = 1
 let g:ale_fixers = {
             \'html': ['tidy'],
             \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
-            \ 'markdown': ['remove_trailing_lines', 'trim_whitespace']
+            \'markdown': ['remove_trailing_lines', 'trim_whitespace']
             \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
@@ -121,6 +128,28 @@ let g:sqh_results_limit = 2000
 
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
+
+"vim-test   
+function! DockerTransform(cmd) abort    
+    return 'docker-compose exec php ' . a:cmd
+endfunction
+
+let g:test#custom_transformations = {'docker': function('DockerTransform')}
+let g:test#transformation = 'docker'
+let g:test#strategy = 'neovim'
+
+nnoremap <f4> :ALEFix<cr>
+nnoremap <f6> :TestNearest<cr>
+nnoremap <f5> :TestFile<cr>
+
+"LSP
+let g:LanguageClient_serverCommands = {
+\ 'sh': ['bash-language-server', 'start'],
+\ 'javascript': ['javascript-typescript-stdio'],
+\ 'typescript': ['javascript-typescript-stdio'],
+\ 'css': ['css-languageserver', '--stdio'],
+\ 'html': ['html-languageserver', '--stdio'],
+\ }
 
 " Dumping ground below, beware
 ""phpstorm jealousies

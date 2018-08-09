@@ -1,16 +1,9 @@
 alias vim="nvim"
 alias ls="ls --color=auto"
-alias de="cd ~/Desktop"
-alias gonv="~/Downloads/Gonvim-0.2.2-linux/gonvim.sh ."
 alias lewis="i3lock --color=000000"
 alias movescreen="xrandr --output DP-1-1 --above eDP-1"
-
-#git
 alias gs="git status"
 alias gl="git log --oneline"
-
-#conf aliases
-alias conf-dir="cd ~/programs/configs"
 
 report_unused_functions() {
   # Find the function
@@ -53,12 +46,13 @@ find_unused_css() {
     done
 }
 
-# Finds all git statuses for directories in current path
-git_status_all() {
+# Does a thing in each directory
+# i.e. `all 'git status'` will run git status in each directiry
+all() {
     for directory in ./*; do 
-        echo "----==$directory==----"
+        printf "\033[0;32m----==$directory==----\033[0m\n"
         cd $directory
-        git status  
+        $1  
         cd -
     done
 }
@@ -72,9 +66,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/programs/up/rc.sh
 source ~/git-prompt.sh
-source ~/work-stuff.sh
 source ~/z.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
@@ -86,6 +78,9 @@ export PATH=~/.composer/vendor/bin:$PATH
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
+export PATH=$PATH:~/Downloads/dasht-2.2.0/bin
+export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
