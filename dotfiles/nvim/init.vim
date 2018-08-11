@@ -1,11 +1,11 @@
 call plug#begin()
     Plug 'Lokaltog/vim-monotone'
-    Plug 'joereynolds/SQHell.vim'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'leafgarland/typescript-vim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
@@ -17,7 +17,6 @@ call plug#begin()
     Plug 'KabbAmine/zeavim.vim'
     Plug 'mattn/emmet-vim'
     Plug 'janko-m/vim-test'
-
     "LSPs
     Plug 'autozimu/LanguageClient-neovim', {
                 \ 'branch': 'next',
@@ -63,7 +62,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 augroup init_vim
     autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
-    autocmd BufWritePre,BufRead *.json execute '%!python -m json.tool' | w
+    " autocmd BufWritePre,BufRead *.json execute '%!python -m json.tool' | w
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
     autocmd InsertCharPre * call <sid>expand()
@@ -91,7 +90,8 @@ let php_sql_query = 1
 let g:ale_fixers = {
             \'html': ['tidy'],
             \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
-            \'markdown': ['remove_trailing_lines', 'trim_whitespace']
+            \'markdown': ['remove_trailing_lines', 'trim_whitespace'],
+            \'typescript': ['prettier'],
             \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard="PSR2"
@@ -130,17 +130,17 @@ let g:sqh_results_limit = 2000
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
 "vim-test   
-function! DockerTransform(cmd) abort    
-    return 'docker-compose exec php ' . a:cmd
-endfunction
+" function! DockerTransform(cmd) abort    
+"     return 'docker-compose exec php ' . a:cmd
+" endfunction
 
-let g:test#custom_transformations = {'docker': function('DockerTransform')}
-let g:test#transformation = 'docker'
+" let g:test#custom_transformations = {'docker': function('DockerTransform')}
+" let g:test#transformation = 'docker'
 let g:test#strategy = 'neovim'
 
 nnoremap <f4> :ALEFix<cr>
-nnoremap <f6> :TestNearest<cr>
 nnoremap <f5> :TestFile<cr>
+nnoremap <f6> :TestNearest<cr>
 
 "LSP
 let g:LanguageClient_serverCommands = {
