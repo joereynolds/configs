@@ -11,11 +11,9 @@ call plug#begin()
     Plug 'w0rp/ale'
     Plug 'padawan-php/deoplete-padawan'
     Plug 'machakann/vim-sandwich'
-    Plug 'phpactor/phpactor', { 'do': 'composer install', 'branch': 'develop' }
+    Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'KabbAmine/zeavim.vim'
-    Plug 'mattn/emmet-vim'
     Plug 'janko-m/vim-test'
     "LSPs
     Plug 'autozimu/LanguageClient-neovim', {
@@ -55,6 +53,9 @@ inoremap ' ''<left>
 inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
 
+"Delete the if/loop but not the content
+nnoremap da% $%dd<c-o>dd
+
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
@@ -62,11 +63,10 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 augroup init_vim
     autocmd!
     autocmd BufWritePre,BufRead *.html :normal gg=G
-    " autocmd BufWritePre,BufRead *.json execute '%!python -m json.tool' | w
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
     autocmd InsertCharPre * call <sid>expand()
-    autocmd FileType markdown setlocal textwidth=80
+    autocmd FileType markdown setlocal textwidth=80 spell
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -111,9 +111,6 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
-"emmet  
-let g:user_emmet_leader_key='<C-D>'
-
 "fugitive
 nnoremap <leader>gb :Gblame<cr>
 
@@ -123,19 +120,16 @@ nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
 nnoremap <leader>t :tabnew<cr>
 
-"SQHEll
-let g:sqh_results_limit = 2000
-
 "vim-minisnip
 let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
 "vim-test   
-" function! DockerTransform(cmd) abort    
-"     return 'docker-compose exec php ' . a:cmd
-" endfunction
+function! DockerTransform(cmd) abort    
+    return 'docker-compose exec php ' . a:cmd
+endfunction
 
-" let g:test#custom_transformations = {'docker': function('DockerTransform')}
-" let g:test#transformation = 'docker'
+let g:test#custom_transformations = {'docker': function('DockerTransform')}
+let g:test#transformation = 'docker'
 let g:test#strategy = 'neovim'
 
 nnoremap <f4> :ALEFix<cr>
