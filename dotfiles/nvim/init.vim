@@ -5,21 +5,14 @@ call plug#begin()
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'leafgarland/typescript-vim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
-    Plug 'padawan-php/deoplete-padawan'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'janko-m/vim-test'
-    "LSPs
-    Plug 'autozimu/LanguageClient-neovim', {
-                \ 'branch': 'next',
-                \ 'do': 'bash install.sh',
-                \}
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -94,25 +87,20 @@ let g:ale_fixers = {
             \'typescript': ['prettier'],
             \}
 let g:ale_sign_column_always = 1
-let g:ale_php_phpcs_standard="PSR2"
+let g:ale_php_phpcs_standard = "PSR2"
 let g:deoplete#enable_at_startup = 1
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
-let did_install_default_menus = 1 "No point loading gvim menu stuff
 let loaded_matchparen = 1 "highlighting matching pairs so slow
 
 if has('nvim')
     set inccommand=split "Live substitution is the bees knees
-    set termguicolors
 endif
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
-
-"fugitive
-nnoremap <leader>gb :Gblame<cr>
 
 "fzf"
 nnoremap <c-p> :GFiles<cr>
@@ -135,15 +123,6 @@ let g:test#strategy = 'neovim'
 nnoremap <f4> :ALEFix<cr>
 nnoremap <f5> :TestFile<cr>
 nnoremap <f6> :TestNearest<cr>
-
-"LSP
-let g:LanguageClient_serverCommands = {
-\ 'sh': ['bash-language-server', 'start'],
-\ 'javascript': ['javascript-typescript-stdio'],
-\ 'typescript': ['javascript-typescript-stdio'],
-\ 'css': ['css-languageserver', '--stdio'],
-\ 'html': ['html-languageserver', '--stdio'],
-\ }
 
 " Dumping ground below, beware
 ""phpstorm jealousies
