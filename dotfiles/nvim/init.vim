@@ -1,18 +1,17 @@
 call plug#begin()
-    Plug 'Lokaltog/vim-monotone'
+    Plug 'janko-m/vim-test'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    Plug 'kristijanhusak/deoplete-phpactor'
+    Plug 'Lokaltog/vim-monotone'
+    Plug 'machakann/vim-sandwich'
+    Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
-    Plug 'machakann/vim-sandwich'
-    Plug 'phpactor/phpactor', { 'do': 'composer install' }
-    Plug 'kristijanhusak/deoplete-phpactor'
-    Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'janko-m/vim-test'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -70,7 +69,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-,a- "cscope results should populate quickfix
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%y%m%=%f[%02p%%]
 set relativenumber "Turn on relative numbering for all lines
-set tabstop=4 "Pressing tab should only indent 4 spaces
+set inccommand=split "Live substitution is the bees knees
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set noswapfile "it's 2017, people!
@@ -94,10 +93,6 @@ let g:deoplete#enable_at_startup = 1
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
 let loaded_matchparen = 1 "highlighting matching pairs so slow
 
-if has('nvim')
-    set inccommand=split "Live substitution is the bees knees
-endif
-
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
@@ -106,10 +101,6 @@ endif
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
-nnoremap <leader>t :tabnew<cr>
-
-"vim-minisnip
-let g:minisnip_dir = '~/programs/configs/dotfiles/nvim/minisnip/'
 
 "vim-test   
 function! DockerTransform(cmd) abort    
