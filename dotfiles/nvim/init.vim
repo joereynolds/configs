@@ -58,7 +58,7 @@ augroup init_vim
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
     autocmd InsertCharPre * call <sid>expand()
-    autocmd FileType markdown setlocal textwidth=80 spell
+    autocmd FileType markdown setlocal textwidth=80 spell nonumber norelativenumber
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -79,6 +79,7 @@ set mouse=a "mouse support
 set hidden
 
 let php_sql_query = 1
+" let g:ale_virtualtext_cursor = 1
 let g:ale_fixers = {
             \'html': ['tidy'],
             \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
