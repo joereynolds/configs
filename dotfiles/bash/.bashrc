@@ -4,6 +4,7 @@ alias lewis="i3lock --color=000000"
 alias movescreen="xrandr --output DP-1-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
+alias t="vim ~/Dropbox/Apps/Simpletask/todo.txt"
 
 report_unused_functions() {
   # Find the function

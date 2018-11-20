@@ -12,6 +12,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
+    Plug 'ap/vim-css-color'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -54,10 +55,8 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 
 augroup init_vim
     autocmd!
-    autocmd BufWritePre,BufRead *.html :normal gg=G
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal omnifunc=phpactor#Complete
-    autocmd InsertCharPre * call <sid>expand()
     autocmd FileType markdown setlocal textwidth=80 spell nonumber norelativenumber
 augroup END
 
@@ -92,7 +91,7 @@ let g:deoplete#enable_at_startup = 1
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
-let loaded_matchparen = 1 "highlighting matching pairs so slow
+let loaded_matchparen = 1 "highlighting matching pairs is slow
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
@@ -115,28 +114,5 @@ let g:test#strategy = 'neovim'
 nnoremap <f4> :ALEFix<cr>
 nnoremap <f5> :TestFile<cr>
 nnoremap <f6> :TestNearest<cr>
-
-" Dumping ground below, beware
-""phpstorm jealousies
-"" - When you type $this-> It automaticalls adds the >
-"" Autocmd is in init_vim
-function! s:expand() abort
-    " Dictionary in the following format
-    " key: The default key to return
-    " 1: The word that triggers [2] - The thing to proceed the word
-    " 2: The snippet that is autocompleted after the word is triggered
-    let l:autocompletions = {
-        \'-' : ['\$[a-z]\+', '->'],
-        \':' : ['self$', '::']
-    \}
-
-    if !has_key(l:autocompletions, v:char)
-        return
-    endif
-
-    if strpart(getline('.'), 0, col('.') - 1) =~ l:autocompletions[v:char][0]
-        let v:char = l:autocompletions[v:char][1]
-    end
-endfunction
 
 colorscheme monotone
