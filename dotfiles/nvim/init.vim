@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
     Plug 'ap/vim-css-color'
+    Plug 'simeji/winresizer'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -26,12 +27,6 @@ nnoremap ]l :lnext<cr>
 nnoremap [l :lprevious<cr>
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprevious<cr>
-
-"window resizing
-nnoremap <up> :resize +10<cr>
-nnoremap <down> :resize -10<cr>
-nnoremap <left> :vertical resize -10<cr>
-nnoremap <right> :vertical resize +10<cr>
 
 "DIY autoclosing
 inoremap (; ();<left><left>
