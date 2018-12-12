@@ -1,4 +1,5 @@
 call plug#begin()
+    Plug 'AndrewRadev/linediff.vim'
     Plug 'janko-m/vim-test'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
@@ -14,6 +15,8 @@ call plug#begin()
     Plug 'w0rp/ale'
     Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
+
+    Plug '~/programs/duplo.vim'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -47,6 +50,15 @@ nnoremap da% $%dd<c-o>dd
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap ?? :Rg<cr>
+
+"move codeblocks
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 
 augroup init_vim
     autocmd!
