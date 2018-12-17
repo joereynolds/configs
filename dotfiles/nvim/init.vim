@@ -16,6 +16,8 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
 
+    Plug 'leafgarland/typescript-vim'
+    Plug 'Quramy/tsuquyomi'
     Plug '~/programs/duplo.vim'
 call plug#end()
 

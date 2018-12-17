@@ -69,6 +69,7 @@ fi
 
 source ~/git-prompt.sh
 source ~/z.sh
+source ~/.private_bashrc
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
