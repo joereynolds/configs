@@ -21,30 +21,8 @@ report_unused_functions() {
   done
 }
 
-# Looks through a CSS file given as the first argument.
-# Searches through all files that aren't css or scss files
-find_unused_css() {
-
-    if [ -z "$1" ]; then
-        echo "Please specify a css file i.e. find_unused_css my-css-file.css"
-        return 1
-    fi
-
-    selectors="$(rg -i ^[#\.] $1 | cut -d' ' -f1 | tr -d \{,.\#)"
-
-    for selector in $selectors; do
-
-        #skip pseudoselectors (Add the rest as needed)
-        if [[ $selector =~ (:invalid|:hover|:valid|:active|:visited|:focus|:checked|:required|:disabled) ]]; then
-            continue
-        fi
-
-        match_count="$(rg -i --iglob='!*.{css,scss}' "$selector" | wc -l)"
-
-        if [ "$match_count" -lt 1 ]; then
-          printf "$match_count usages found. \033[0;32m$selector \033[0mcan probably be removed\n"
-        fi
-    done
+grepblame() {
+    git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done
 }
 
 # Does a thing in each directory

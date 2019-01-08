@@ -5,16 +5,17 @@ call plug#begin()
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'kristijanhusak/deoplete-phpactor'
+    " Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
     Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
+    Plug 'neoclide/coc.nvim', {'do': 'npm install'}
 
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
@@ -25,6 +26,18 @@ silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
+
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
@@ -87,16 +100,17 @@ set mouse=a "mouse support
 set hidden
 
 let php_sql_query = 1
-" let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 1
 let g:ale_fixers = {
             \'html': ['tidy'],
             \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
+            \'python': ['autopep8', 'trim_whitespace'],
             \'markdown': ['remove_trailing_lines', 'trim_whitespace'],
             \'typescript': ['prettier'],
             \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = "PSR2"
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
