@@ -26,18 +26,6 @@ source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]l :lnext<cr>
@@ -64,7 +52,6 @@ nnoremap da% $%dd<c-o>dd
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap ?? :Rg<cr>
 
 "move codeblocks
 inoremap <c-j> <Esc>:m .+1<CR>==gi
