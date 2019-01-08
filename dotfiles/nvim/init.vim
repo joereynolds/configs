@@ -1,5 +1,4 @@
 call plug#begin()
-    Plug 'AndrewRadev/linediff.vim'
     Plug 'janko-m/vim-test'
     Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
