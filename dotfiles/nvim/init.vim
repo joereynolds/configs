@@ -4,17 +4,16 @@ call plug#begin()
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    " Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
-    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
     Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
     Plug 'neoclide/coc.nvim', {'do': 'npm install'}
+    Plug 'stefandtw/quickfix-reflector.vim'
 
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
@@ -104,6 +103,10 @@ let loaded_matchparen = 1 "highlighting matching pairs is slow
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
+endif
+
+if (!executable('fd'))
+    echoerr "fzf relies on fd to be installed, install it."
 endif
 
 "fzf"
