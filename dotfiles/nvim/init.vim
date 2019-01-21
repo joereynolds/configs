@@ -4,11 +4,9 @@ call plug#begin()
     Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    " Plug 'kristijanhusak/deoplete-phpactor'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
-    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
@@ -18,7 +16,6 @@ call plug#begin()
 
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
-    Plug '~/programs/duplo.vim'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -45,6 +42,7 @@ inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
+inoremap --- ---<cr>---<esc>O
 
 "Delete the if/loop but not the content
 nnoremap da% $%dd<c-o>dd
@@ -52,14 +50,6 @@ nnoremap da% $%dd<c-o>dd
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
-
-"move codeblocks
-inoremap <c-j> <Esc>:m .+1<CR>==gi
-inoremap <c-k> <Esc>:m .-2<CR>==gi
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
 
 augroup init_vim
     autocmd!
@@ -96,7 +86,6 @@ let g:ale_fixers = {
             \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = "PSR2"
-" let g:deoplete#enable_at_startup = 1
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
