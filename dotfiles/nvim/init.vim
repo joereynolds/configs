@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
     Plug 'neoclide/coc.nvim', {'do': 'npm install'}
+    Plug 'stefandtw/quickfix-reflector.vim'
 
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
@@ -93,6 +94,10 @@ let loaded_matchparen = 1 "highlighting matching pairs is slow
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
+endif
+
+if (!executable('fd'))
+    echoerr "fzf relies on fd to be installed, install it."
 endif
 
 "fzf"
