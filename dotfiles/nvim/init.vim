@@ -1,7 +1,6 @@
 call plug#begin()
-    Plug 'janko-m/vim-test'
-    Plug 'joereynolds/vim-minisnip'
     Plug 'jsfaint/gen_tags.vim'
+    Plug 'joereynolds/vim-minisnip'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'Lokaltog/vim-monotone'
@@ -9,14 +8,11 @@ call plug#begin()
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
-    Plug 'ap/vim-css-color'
     Plug 'simeji/winresizer'
     Plug 'neoclide/coc.nvim', {'do': 'npm install'}
-    Plug 'stefandtw/quickfix-reflector.vim'
-
     Plug 'leafgarland/typescript-vim'
-    Plug 'Quramy/tsuquyomi'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
@@ -24,12 +20,11 @@ source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
+nmap [c <Plug>(coc-codelens-action)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [l :lprevious<cr>
-nnoremap ]b :bnext<cr>
-nnoremap [b :bprevious<cr>
 
 "DIY autoclosing
 inoremap (; ();<left><left>
@@ -55,7 +50,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
-    autocmd FileType php setlocal omnifunc=phpactor#Complete
+    autocmd FileType php setlocal omnifunc=phpactor#Complete iskeyword+=$
     autocmd FileType markdown setlocal textwidth=80 spell nonumber norelativenumber
 augroup END
 
@@ -77,6 +72,8 @@ set mouse=a "mouse support
 set hidden
 
 let php_sql_query = 1
+
+let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_fixers = {
             \'html': ['tidy'],
@@ -96,26 +93,13 @@ if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
 endif
 
-if (!executable('fd'))
+if !executable('fd')
     echoerr "fzf relies on fd to be installed, install it."
 endif
 
-"fzf"
+"fzf
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
-
-"vim-test   
-function! DockerTransform(cmd) abort    
-    return 'docker-compose exec php ' . a:cmd
-endfunction
-
-let g:test#custom_transformations = {'docker': function('DockerTransform')}
-let g:test#transformation = 'docker'
-let g:test#strategy = 'neovim'
-
-nnoremap <f4> :ALEFix<cr>
-nnoremap <f5> :TestFile<cr>
-nnoremap <f6> :TestNearest<cr>
 
 colorscheme monotone

@@ -4,7 +4,6 @@ alias lewis="i3lock --color=000000"
 alias movescreen="xrandr --output DP-1-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
-alias t="vim ~/Dropbox/Apps/Simpletask/todo.txt"
 
 report_unused_functions() {
   # Find the function
@@ -63,7 +62,6 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=$PATH:~/Downloads/dasht-2.2.0/bin
 export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
