@@ -7,7 +7,6 @@ call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
     Plug 'simeji/winresizer'
