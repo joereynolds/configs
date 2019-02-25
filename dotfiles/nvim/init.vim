@@ -5,7 +5,6 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
-    Plug 'phpactor/phpactor', { 'do': 'composer install' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
@@ -49,7 +48,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
-    autocmd FileType php setlocal omnifunc=phpactor#Complete iskeyword+=$
+    autocmd FileType php setlocal iskeyword+=$
     autocmd FileType markdown setlocal textwidth=80 spell nonumber norelativenumber
 augroup END
 
