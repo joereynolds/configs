@@ -1,6 +1,4 @@
 call plug#begin()
-    Plug 'jsfaint/gen_tags.vim'
-    Plug 'joereynolds/vim-minisnip'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'Lokaltog/vim-monotone'
@@ -18,6 +16,10 @@ source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
+nmap [a <Plug>(ale_previous)
+nmap ]a <Plug>(ale_next)
+nmap ]r <Plug>(coc-references)
+nmap ]d <Plug>(coc-definition)
 nmap [c <Plug>(coc-codelens-action)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
@@ -49,7 +51,7 @@ augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
     autocmd FileType php setlocal iskeyword+=$
-    autocmd FileType markdown setlocal textwidth=80 spell nonumber norelativenumber
+    autocmd FileType markdown setlocal textwidth=80 spell
 augroup END
 
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
@@ -59,25 +61,21 @@ set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom
 set cscopequickfix=s-,c-,d-,i-,t-,e-,a- "cscope results should populate quickfix
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%y%m%=%f[%02p%%]
-set relativenumber "Turn on relative numbering for all lines
 set inccommand=split "Live substitution is the bees knees
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set noswapfile "it's 2017, people!
-set number "Show line numbers
 set viminfo='100,<100000,s100000
 set mouse=a "mouse support
 set hidden
 
-let php_sql_query = 1
-
 let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_fixers = {
+            \'*': ['remove_trailing_lines', 'trim_whitespace'],
             \'html': ['tidy'],
-            \'php': ['php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'], 
-            \'python': ['autopep8', 'trim_whitespace'],
-            \'markdown': ['remove_trailing_lines', 'trim_whitespace'],
+            \'php': ['php_cs_fixer'], 
+            \'python': ['autopep8'],
             \'typescript': ['prettier'],
             \}
 let g:ale_sign_column_always = 1
