@@ -4,6 +4,7 @@ call plug#begin()
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
     Plug 'simeji/winresizer'
@@ -20,17 +21,13 @@ nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
-nmap [c <Plug>(coc-codelens-action)
+nmap [o <Plug>(coc-codelens-action)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [l :lprevious<cr>
 
 "DIY autoclosing
-inoremap (; ();<left><left>
-inoremap [; [];<left><left>
-inoremap ( ()<left>
-inoremap [ []<left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
@@ -40,12 +37,10 @@ inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
 inoremap --- ---<cr>---<esc>O
 
-"Delete the if/loop but not the content
-nnoremap da% $%dd<c-o>dd
-
 "misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> K :call CocAction('doHover')<cr>
 
 augroup init_vim
     autocmd!
@@ -58,14 +53,11 @@ command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
-set cscopequickfix=s-,c-,d-,i-,t-,e-,a- "cscope results should populate quickfix
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%y%m%=%f[%02p%%]
 set inccommand=split "Live substitution is the bees knees
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
-set noswapfile "it's 2017, people!
-set viminfo='100,<100000,s100000
 set mouse=a "mouse support
 set hidden
 
