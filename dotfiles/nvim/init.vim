@@ -1,21 +1,21 @@
 call plug#begin()
+    Plug 'joereynolds/gq.vim'
+    Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    Plug 'leafgarland/typescript-vim'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
+    Plug 'neoclide/coc.nvim', {'do': 'npm install'}
+    Plug 'simeji/winresizer'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
-    Plug 'simeji/winresizer'
-    Plug 'neoclide/coc.nvim', {'do': 'npm install'}
-    Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
-
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
@@ -31,6 +31,10 @@ nnoremap [l :lprevious<cr>
 inoremap {<cr> {<cr>}<esc>O
 inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
+inoremap (; ();<left><left>
+inoremap [; [];<left><left>
+inoremap ( ()<left>
+inoremap [ []<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
@@ -41,6 +45,7 @@ inoremap --- ---<cr>---<esc>O
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> K :call CocAction('doHover')<cr>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 augroup init_vim
     autocmd!
@@ -60,16 +65,12 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set mouse=a "mouse support
 set hidden
+set noswapfile
 
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint until we've done something
 let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 1
-let g:ale_fixers = {
-            \'*': ['remove_trailing_lines', 'trim_whitespace'],
-            \'html': ['tidy'],
-            \'php': ['php_cs_fixer'], 
-            \'python': ['autopep8'],
-            \'typescript': ['prettier'],
-            \}
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = "PSR2"
 
