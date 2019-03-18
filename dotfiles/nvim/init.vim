@@ -24,12 +24,7 @@ nmap ]d <Plug>(coc-definition)
 nmap [o <Plug>(coc-codelens-action)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
-nnoremap ]l :lnext<cr>
-nnoremap [l :lprevious<cr>
-
-"DIY autoclosing
 inoremap {<cr> {<cr>}<esc>O
-inoremap (<cr> (<cr>)<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (; ();<left><left>
 inoremap [; [];<left><left>
@@ -39,13 +34,14 @@ inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
 inoremap ``` ```<cr>```<esc>O
-inoremap --- ---<cr>---<esc>O
-
-"misc
 tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
+nnoremap gs :Gstatus<cr>
+nnoremap <c-p> :GFiles<cr>
+nnoremap <leader>b :BTags<cr>
+nnoremap <leader>df :Tags<cr>
 
 augroup init_vim
     autocmd!
@@ -63,7 +59,6 @@ set statusline=%y%m%=%f[%02p%%]
 set inccommand=split "Live substitution is the bees knees
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
-set mouse=a "mouse support
 set hidden
 set noswapfile
 
@@ -72,7 +67,7 @@ let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
-let g:ale_php_phpcs_standard = "PSR2"
+let g:ale_php_phpcs_standard = 'PSR2'
 
 "Performance improvements
 set synmaxcol=200 "Don't bother highlighting anything over 200 chars
@@ -83,12 +78,7 @@ if executable('rg')
 endif
 
 if !executable('fd')
-    echoerr "fzf relies on fd to be installed, install it."
+    echoerr 'fzf relies on fd to be installed, install it.'
 endif
-
-"fzf
-nnoremap <c-p> :GFiles<cr>
-nnoremap <leader>b :BTags<cr>
-nnoremap <leader>df :Tags<cr>
 
 colorscheme monotone
