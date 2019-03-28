@@ -1,6 +1,5 @@
 call plug#begin()
     Plug 'joereynolds/gq.vim'
-    Plug 'jsfaint/gen_tags.vim'
     Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'leafgarland/typescript-vim'
@@ -38,7 +37,6 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
-nnoremap gs :Gstatus<cr>
 nnoremap <c-p> :GFiles<cr>
 nnoremap <leader>b :BTags<cr>
 nnoremap <leader>df :Tags<cr>
