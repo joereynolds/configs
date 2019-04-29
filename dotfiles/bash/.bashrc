@@ -25,7 +25,7 @@ grepblame() {
 }
 
 # Does a thing in each directory
-# i.e. `all 'git status'` will run git status in each directiry
+# i.e. `all 'git status'` will run git status in each directory
 all() {
     for directory in ./*; do 
         printf "\033[0;32m----==$directory==----\033[0m\n"
@@ -51,7 +51,6 @@ source ~/.private_bashrc
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
 
-export PATH=~/.composer/vendor/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export FZF_DEFAULT_COMMAND="fd --type f"
@@ -60,9 +59,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
-export PATH=$PATH:~/Downloads/dasht-2.2.0/bin
+export PATH=~/.composer/vendor/bin:$PATH
+export PATH="$PATH:/home/joe/bin"
 export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
