@@ -1,14 +1,13 @@
 call plug#begin()
     Plug 'joereynolds/gq.vim'
-    Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'neoclide/coc.nvim', {'do': 'npm install'}
+    Plug 'rhysd/git-messenger.vim'
     Plug 'simeji/winresizer'
+    Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
 call plug#end()
@@ -26,7 +25,6 @@ nnoremap [q :cprevious<cr>
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (; ();<left><left>
-inoremap [; [];<left><left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap " ""<left>
@@ -37,9 +35,11 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
-nnoremap <c-p> :GFiles<cr>
-nnoremap <leader>b :BTags<cr>
-nnoremap <leader>df :Tags<cr>
+nnoremap <c-p> :PickerEdit<cr>
+nnoremap <leader>b :PickerBufferTag<cr>
+nnoremap <leader>df :PickerTag<cr>
+
+command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
 augroup init_vim
     autocmd!
@@ -47,9 +47,6 @@ augroup init_vim
     autocmd FileType php setlocal iskeyword+=$
     autocmd FileType markdown setlocal textwidth=80 spell
 augroup END
-
-command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-command! -bang -nargs=? -complete=dir GFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
@@ -73,10 +70,6 @@ let loaded_matchparen = 1 "highlighting matching pairs is slow
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --ignore-case
-endif
-
-if !executable('fd')
-    echoerr 'fzf relies on fd to be installed, install it.'
 endif
 
 colorscheme monotone
