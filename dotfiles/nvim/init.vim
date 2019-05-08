@@ -12,8 +12,8 @@ call plug#begin()
     Plug 'w0rp/ale'
 call plug#end()
 
-silent! source ~/programs/configs/dotfiles/nvim/private.vim
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
+command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 
 nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
@@ -39,15 +39,6 @@ nnoremap <c-p> :PickerEdit<cr>
 nnoremap <leader>b :PickerBufferTag<cr>
 nnoremap <leader>df :PickerTag<cr>
 
-command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-
-augroup init_vim
-    autocmd!
-    autocmd BufWritePost init.vim source %
-    autocmd FileType php setlocal iskeyword+=$
-    autocmd FileType markdown setlocal textwidth=80 spell
-augroup END
-
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
 set statusline=%y%m%=%f[%02p%%]
@@ -56,7 +47,9 @@ set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
 set hidden
 set noswapfile
-
+set grepprg=rg\ --vimgrep\ --ignore-case
+set synmaxcol=200 "Don't bother highlighting anything over 200 chars
+let loaded_matchparen = 1 "highlighting matching pairs is slow
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint until we've done something
 let g:ale_lint_on_insert_leave = 1
@@ -64,12 +57,11 @@ let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 
-"Performance improvements
-set synmaxcol=200 "Don't bother highlighting anything over 200 chars
-let loaded_matchparen = 1 "highlighting matching pairs is slow
-
-if executable('rg')
-    set grepprg=rg\ --vimgrep\ --ignore-case
-endif
+augroup init_vim
+    autocmd!
+    autocmd BufWritePost init.vim source %
+    autocmd FileType php setlocal iskeyword+=$
+    autocmd FileType markdown setlocal textwidth=80 spell
+augroup END
 
 colorscheme monotone
