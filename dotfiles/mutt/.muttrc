@@ -7,12 +7,12 @@ set smtp_url = "smtps://joereynolds952@gmail.com@smtp.gmail.com:465/"
 set imap_user = "joereynolds952@gmail.com"
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
-set ssl_force_tls = yes
+# set ssl_force_tls = yes
 
 # G to get mail
 bind index G imap-fetch-mail
 set editor = "nvim"
 set charset = "utf-8"
 set record = ''
-
+# false
 source ~/.muttrc-private
