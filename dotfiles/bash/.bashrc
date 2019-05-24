@@ -51,17 +51,13 @@ source ~/.private_bashrc
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export FZF_DEFAULT_COMMAND="fd --type f"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/home/joe/bin"
 export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
