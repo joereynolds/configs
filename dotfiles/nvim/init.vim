@@ -2,14 +2,13 @@ call plug#begin()
     Plug 'leafgarland/typescript-vim'
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
-    Plug 'neoclide/coc.nvim', {'do': 'npm install'}
-    Plug 'rhysd/git-messenger.vim'
+    Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
     Plug 'simeji/winresizer'
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
-    Plug 'mhinz/vim-signify'
 call plug#end()
 
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
@@ -20,6 +19,8 @@ nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
 nmap [o <Plug>(coc-codelens-action)
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 inoremap {<cr> {<cr>}<esc>O
@@ -56,6 +57,8 @@ let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint 
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
+
+call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver')
 
 augroup init_vim
     autocmd!
