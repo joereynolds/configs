@@ -13,6 +13,7 @@ call plug#end()
 
 source ~/programs/configs/dotfiles/nvim/abbreviations.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
+packadd cfilter
 
 nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
