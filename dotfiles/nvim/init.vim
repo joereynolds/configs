@@ -27,6 +27,7 @@ inoremap [<cr> [<cr>]<esc>O
 inoremap (; ();<left><left>
 inoremap ( ()<left>
 inoremap [ []<left>
+inoremap { {}<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
