@@ -11,5 +11,5 @@ bind index G imap-fetch-mail
 set editor = "nvim"
 set charset = "utf-8"
 set record = ''
-
+# false
 source ~/.muttrc-private
