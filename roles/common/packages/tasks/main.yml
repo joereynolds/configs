@@ -40,6 +40,7 @@
         - npm
         - python-dev
         - rake
+        - pavucontrol
         - ppa-purge
         - python-pip
         - python3-pip
