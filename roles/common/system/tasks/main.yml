@@ -3,8 +3,14 @@
     path: "{{ item }}"
     state: directory
   with_items:
+      - ~/.config/nvim
       - ~/.newsbeuter
       - ~/code/me
+
+- name: "Remove default files"
+  file:
+    state: absent
+    path: "~/.bashrc"
 
 - name: "Symlink configuration files"
   file:

@@ -1,22 +1,12 @@
+- name: "Download neovim appimage"
+  become: true
+  get_url:
+    url: "https://github.com/neovim/neovim/releases/download/v0.3.8/nvim.appimage"
+    dest: "/usr/local/bin/nvim"
+    mode: "0775"
+    
 - name: "Install vim plug"
   raw: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-- name: "Update pip2"
-  pip:
-    name: pip
-    executable: pip2
-
-- name: "Update pip3"
-  pip:
-    name: pip
-    executable: pip3
-
-- name: "Install neovim for pip3"
-  pip:
-    name: neovim
-    executable: pip3
-
-- name: "Install neovim for pip2"
-  pip:
-    name: neovim
-    executable: pip2
+- name: "Run :PlugInstall"
+  raw: "nvim +PlugInstall +qall > /dev/null"

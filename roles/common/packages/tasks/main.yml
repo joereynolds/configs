@@ -3,29 +3,44 @@
     url: https://github.com/dbeaver/dbeaver/releases/download/6.1.5/dbeaver-ce_6.1.5_amd64.deb
     dest: /tmp/dbeaver.deb
 
+- name: Download Z
+  get_url:
+    url: https://raw.githubusercontent.com/rupa/z/master/z.sh
+    dest: ~/z.sh
+    mode: "0775"
+
 - name: Install deb packages
   apt: deb=/tmp/dbeaver.deb
   become: true
 
+- name: Install snap packages
+  become: true
+  snap:
+    name: ripgrep
+    classic: yes
+
 - name: Install apt repositories
   apt:
     update_cache: yes
-    name: "{{ item }}"
+    name: "{{ packages }}"
   become: true
-  with_items:
-      - automake
-      - cmake
-      - composer
-      - curl
-      - google-chrome-stable
-      - exuberant-ctags
-      - git
-      - i3
-      - libtool
-      - libtool-bin
-      - python-dev
-      - rake
-      - ppa-purge
-      - python-pip
-      - python3-pip
-      - thunar
+  vars:
+    packages:
+        - automake
+        - cmake
+        - composer
+        - curl
+        - exuberant-ctags
+        - fzy
+        - git
+        - i3
+        - libtool
+        - libtool-bin
+        - nodejs
+        - npm
+        - python-dev
+        - rake
+        - ppa-purge
+        - python-pip
+        - python3-pip
+        - thunar
