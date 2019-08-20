@@ -10,7 +10,7 @@ call plug#begin()
     Plug 'w0rp/ale'
 call plug#end()
 
-source ~/programs/configs/dotfiles/nvim/abbreviations.vim
+source ~/code/me/configs/dotfiles/nvim/abbreviations.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
 

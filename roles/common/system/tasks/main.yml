@@ -4,8 +4,7 @@
     state: directory
   with_items:
       - ~/.newsbeuter
-      - ~/code
-      - ~/programs
+      - ~/code/me
 
 - name: "Symlink configuration files"
   file:
@@ -13,8 +12,8 @@
     dest: "{{ item.dest }}"
     state: link
   with_items:
-    - { src: '~/programs/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
-    - { src: '~/programs/configs/dotfiles/bash/.bashrc',    dest: '~/.bashrc' }
-    - { src: '~/programs/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
-    - { src: '~/programs/configs/dotfiles/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
-    - { src: '~/programs/configs/dotfiles/ctags/.ctags',    dest: '~/.ctags' }
+    - { src: '~/code/me/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
+    - { src: '~/code/me/configs/dotfiles/bash/.bashrc',    dest: '~/.bashrc' }
+    - { src: '~/code/me/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
+    - { src: '~/code/me/configs/dotfiles/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
+    - { src: '~/code/me/configs/dotfiles/ctags/.ctags',    dest: '~/.ctags' }
