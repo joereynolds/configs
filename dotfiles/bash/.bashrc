@@ -1,7 +1,7 @@
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias lewis="i3lock --color=000000"
-alias movescreen="xrandr --output DP-1-1 --above eDP-1"
+alias movescreen="xrandr --output HDMI-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
@@ -44,9 +44,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/git-prompt.sh
 source ~/z.sh
-source ~/.private_bashrc
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes

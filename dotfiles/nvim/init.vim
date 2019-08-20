@@ -1,5 +1,3 @@
-let loaded_netrwPlugin = 1
-
 call plug#begin()
     Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'

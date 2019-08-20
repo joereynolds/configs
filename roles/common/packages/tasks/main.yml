@@ -1,6 +1,6 @@
 - name: Download dbeaver
   get_url:
-    url: https://github.com/dbeaver/dbeaver/releases/download/6.0.3/dbeaver-ce_6.0.3_amd64.deb
+    url: https://github.com/dbeaver/dbeaver/releases/download/6.1.5/dbeaver-ce_6.1.5_amd64.deb
     dest: /tmp/dbeaver.deb
 
 - name: Install deb packages
