@@ -23,11 +23,16 @@
     mode: "0775"
 
 
-- name: Install snap packages
+- name: Install ripgrep
   become: true
   snap:
     name: ripgrep
     classic: yes
+
+- name: Install spotify
+  become: true
+  snap:
+    name: spotify
 
 - name: Install apt repositories
   apt:
