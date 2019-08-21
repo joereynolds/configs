@@ -1,0 +1,4 @@
+- Setup git editor to be nvim (git config --global core.editor nvim)
+- Show patch in git commit view (git commit -v)
+- neovim cant copy to global clipboard
+- No fd

@@ -3,15 +3,25 @@
     url: https://github.com/dbeaver/dbeaver/releases/download/6.1.5/dbeaver-ce_6.1.5_amd64.deb
     dest: /tmp/dbeaver.deb
 
+- name: Install dbeaver
+  apt: deb=/tmp/dbeaver.deb
+  become: true
+
+- name: Download fd
+  get_url:
+    url: https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb
+    dest: /tmp/fd.deb
+
+- name: Install fd
+  apt: deb=/tmp/fd.deb
+  become: true
+
 - name: Download Z
   get_url:
     url: https://raw.githubusercontent.com/rupa/z/master/z.sh
     dest: ~/z.sh
     mode: "0775"
 
-- name: Install deb packages
-  apt: deb=/tmp/dbeaver.deb
-  become: true
 
 - name: Install snap packages
   become: true
