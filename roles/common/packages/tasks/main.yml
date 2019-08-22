@@ -48,6 +48,7 @@
         - i3
         - libtool
         - libtool-bin
+        - meld
         - nodejs
         - npm
         - python-dev
