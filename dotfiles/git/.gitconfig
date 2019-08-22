@@ -2,3 +2,6 @@
 	editor = nvim
 [commit]
 	verbose = True
+[user]
+	email = joereynolds952@gmail.com
+	name = Joe Reynolds
