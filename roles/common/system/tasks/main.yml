@@ -18,8 +18,9 @@
     dest: "{{ item.dest }}"
     state: link
   with_items:
-    - { src: '~/code/me/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
     - { src: '~/code/me/configs/dotfiles/bash/.bashrc',    dest: '~/.bashrc' }
+    - { src: '~/code/me/configs/dotfiles/ctags/.ctags',    dest: '~/.ctags' }
+    - { src: '~/code/me/configs/dotfiles/git/.gitconfig',  dest: '~/.gitconfig' }
     - { src: '~/code/me/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
     - { src: '~/code/me/configs/dotfiles/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
-    - { src: '~/code/me/configs/dotfiles/ctags/.ctags',    dest: '~/.ctags' }
+    - { src: '~/code/me/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }

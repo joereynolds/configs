@@ -1,0 +1,4 @@
+[core]
+	editor = nvim
+[commit]
+	verbose = True
