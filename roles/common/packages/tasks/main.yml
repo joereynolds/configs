@@ -31,6 +31,11 @@
   snap:
     name: spotify
 
+- name: Install lnav
+  become: true
+  snap:
+    name: lnav
+
 - name: Install apt repositories
   apt:
     update_cache: yes
