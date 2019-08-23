@@ -1,7 +1,7 @@
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias lewis="i3lock --color=000000"
-alias movescreen="xrandr --output HDMI-1 --above eDP-1"
+alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
