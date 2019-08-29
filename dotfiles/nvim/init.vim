@@ -25,16 +25,15 @@ nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
-inoremap (; ();<left><left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
+inoremap ; <esc>mzA;<esc>`z
 inoremap ``` ```<cr>```<esc>O
 tnoremap <esc> <c-\><c-n>
-nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <c-p> :PickerEdit<cr>
