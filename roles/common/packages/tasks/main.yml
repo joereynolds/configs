@@ -61,6 +61,7 @@
         - rake
         - pavucontrol
         - ppa-purge
+        - puredata
         - python-pip
         - python3-pip
         - thunar
