@@ -21,8 +21,10 @@ nmap ]d <Plug>(coc-definition)
 nmap [o <Plug>(coc-codelens-action)
 nmap [c <Plug>(coc-git-prevchunk)
 nmap ]c <Plug>(coc-git-nextchunk)
+nmap ]u :CocCommand git.chunkUndo<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
+nnoremap ds% <i{?{<cr>%dd<c-o>dd<esc>
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap ( ()<left>
@@ -57,6 +59,7 @@ let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint 
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
+let g:picker_custom_find_executable = 'fd'
 
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 

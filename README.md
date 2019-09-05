@@ -3,6 +3,8 @@
 These are more than just dotfiles, these are everything that I frequently use on a machine.
 If you just care about dotfiles, go to ./dotfiles
 
+Made for Ubuntu 18.04
+
 ## Installing
 
 Make sure ansible >= 2.0 is installed and then do

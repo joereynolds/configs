@@ -43,27 +43,40 @@
   become: true
   vars:
     packages:
+        # Manage i3 window layouts
         - arandr
         - automake
         - cmake
         - composer
         - curl
         - exuberant-ctags
+        # fuzzy finder for vim/other things
         - fzy
         - git
         - i3
+        # Screenshotting
+        - kde-spectactle
         - libtool
         - libtool-bin
+        # Diff and mergetool
         - meld
+        # Has vidir in it
+        - moreutils
         - nodejs
         - npm
         - python-dev
         - rake
         - pavucontrol
         - ppa-purge
+        # Music stuff
         - puredata
         - python-pip
         - python3-pip
+        # i3 compatible screen recorder
+        - simplescreenrecorder
+        # decent gui file manager
         - thunar
+        # clipboard provider for neovim
         - xclip
+        # Multiple clipbaord support
         - xfc4-clipman
