@@ -1,1 +1,0 @@
-UPDATE {{+db+}}.{{+table_name+}} SET {{+column+}} = {{+value+}} WHERE {{+clause+}};
