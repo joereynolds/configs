@@ -11,7 +11,7 @@ call plug#begin()
     Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 call plug#end()
 
-source ~/code/me/configs/dotfiles/nvim/abbreviations.vim
+source ~/code/me/configs/roles/common/files/nvim/abbreviations.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
 
