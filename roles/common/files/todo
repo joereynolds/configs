@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# Task management via dmenu.
+# Write and remove a task. When a task is removed it is saved
+# in a separate file so you can see what you've done on that day.
+#
+# Select an existing entry to remove it from the file, or type a new entry to
+# add it.
+
+file="$HOME/.todo"
+touch "$file"
+height=$(wc -l "$file" | awk '{print $1}')
+prompt="Add/delete a task: "
+
+today=$(date +%Y-%m-%d)
+
+cmd=$(dmenu -l "$height" -p "$prompt" "$@" < "$file")
+while [ -n "$cmd" ]; do
+ 	if grep -q "^$cmd\$" "$file"; then
+
+                # If the command has been selected, delete it and
+                # append it to todays completed todo file
+		grep -v "^$cmd\$" "$file" > "$file.$$"
+                echo "$cmd" >> "$HOME/todo-$today"
+
+		mv "$file.$$" "$file"
+        height=$(( height - 1 ))
+ 	else
+		echo "$cmd" >> "$file"
+		height=$(( height + 1 ))
+ 	fi
+
+	cmd=$(dmenu -l "$height" -p "$prompt" "$@" < "$file")
+done
+
+exit 0

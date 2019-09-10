@@ -8,6 +8,7 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
+    Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 call plug#end()
 
 source ~/code/me/configs/dotfiles/nvim/abbreviations.vim
@@ -24,6 +25,7 @@ nmap ]c <Plug>(coc-git-nextchunk)
 nmap ]u :CocCommand git.chunkUndo<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
+nnoremap gm :call phpactor#ContextMenu()<cr>
 nnoremap ds% <i{?{<cr>%dd<c-o>dd<esc>
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
@@ -39,7 +41,6 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <c-p> :PickerEdit<cr>
-nnoremap <leader>b :PickerBufferTag<cr>
 nnoremap <leader>df :PickerTag<cr>
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
@@ -60,6 +61,7 @@ let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:picker_custom_find_executable = 'fd'
+let g:picker_custom_find_flags = "--type f"
 
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 

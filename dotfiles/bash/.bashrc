@@ -5,6 +5,10 @@ alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
+fzgb() {
+    git checkout $(git branch | tr -d ' *' | fzy)
+}
+
 report_unused_functions() {
   # Find the function
   # Remove the ampersands for pass by reference functions

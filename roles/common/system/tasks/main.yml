@@ -6,6 +6,7 @@
       - ~/.config/nvim
       - ~/.newsbeuter
       - ~/code/me
+      - ~/bin
 
 - name: "Remove default files"
   file:
@@ -24,3 +25,4 @@
     - { src: '~/code/me/configs/dotfiles/mutt/.muttrc',    dest: '~/.muttrc' }
     - { src: '~/code/me/configs/dotfiles/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
     - { src: '~/code/me/configs/dotfiles/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
+    - { src: '~/code/me/configs/roles/common/files/todo',  dest: '~/bin/todo' }

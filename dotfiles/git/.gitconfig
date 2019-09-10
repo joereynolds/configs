@@ -5,3 +5,8 @@
 [user]
 	email = joereynolds952@gmail.com
 	name = Joe Reynolds
+[alias]
+	files = !git diff origin/develop --name-only
+        review = !nvim -p $(git files) +\"tabdo Gdiff origin/develop\"
+	appraise = !/home/joe/go/bin/git-appraise
+
