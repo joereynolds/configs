@@ -55,7 +55,7 @@
         - git
         - i3
         # Screenshotting
-        - kde-spectactle
+        - kde-spectacle
         - libtool
         - libtool-bin
         # Diff and mergetool
@@ -79,4 +79,4 @@
         # clipboard provider for neovim
         - xclip
         # Multiple clipbaord support
-        - xfc4-clipman
+        - xfce4-clipman
