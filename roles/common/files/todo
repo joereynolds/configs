@@ -21,7 +21,7 @@ while [ -n "$cmd" ]; do
                 # If the command has been selected, delete it and
                 # append it to todays completed todo file
 		grep -v "^$cmd\$" "$file" > "$file.$$"
-                echo "$cmd" >> "$HOME/todo-$today"
+                echo "$cmd" >> "$HOME/done-$today"
 
 		mv "$file.$$" "$file"
         height=$(( height - 1 ))
