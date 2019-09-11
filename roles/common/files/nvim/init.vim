@@ -45,7 +45,7 @@ nnoremap <leader>df :PickerTag<cr>
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%y%m%=%f[%02p%%]
+set statusline=%y%m%=%f\ [%02p%%]\ [%L]
 set inccommand=split "Live substitution is the bees knees
 set ignorecase "Ignore cases when searching
 set expandtab "Change tabs into spaces
