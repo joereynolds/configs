@@ -57,8 +57,6 @@ call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html'
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
-    autocmd FileType php setlocal iskeyword+=$
-    autocmd FileType markdown setlocal textwidth=80 spell
 augroup END
 
 colorscheme monotone
