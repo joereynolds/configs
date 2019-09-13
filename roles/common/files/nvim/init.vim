@@ -45,11 +45,7 @@ set expandtab "Change tabs into spaces
 set hidden
 set noswapfile
 set grepprg=rg\ --vimgrep\ --ignore-case
-set synmaxcol=200 "Don't bother highlighting anything over 200 chars
 let loaded_matchparen = 1 "highlighting matching pairs is slow
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 0 "Ale makes vim shit itself on big files. Don't lint until we've done something
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
