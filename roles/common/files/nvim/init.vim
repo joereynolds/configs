@@ -8,7 +8,6 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
-    Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 call plug#end()
 
 source ~/code/me/configs/roles/common/files/nvim/abbreviations.vim
