@@ -18,19 +18,14 @@ nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
-nmap [o <Plug>(coc-codelens-action)
 nmap [c <Plug>(coc-git-prevchunk)
 nmap ]c <Plug>(coc-git-nextchunk)
-nmap ]u :CocCommand git.chunkUndo<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
-nnoremap gm :call phpactor#ContextMenu()<cr>
-nnoremap ds% <i{?{<cr>%dd<c-o>dd<esc>
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap ( ()<left>
 inoremap [ []<left>
-inoremap { {}<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ` ``<left>
@@ -40,7 +35,6 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 nnoremap <c-p> :PickerEdit<cr>
-nnoremap <leader>df :PickerTag<cr>
 
 set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
