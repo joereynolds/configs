@@ -8,10 +8,20 @@
       - ~/code/me
       - ~/bin
 
-- name: "Remove default files"
+- name: "Remove default bashrc"
   file:
     state: absent
     path: "~/.bashrc"
+
+- name: "Remove default i3 config"
+  file:
+    state: absent
+    path: "~/.config/i3/config"
+
+- name: "Remove default git config"
+  file:
+    state: absent
+    path: "~/.gitconfig"
 
 - name: "Symlink configuration files"
   file:

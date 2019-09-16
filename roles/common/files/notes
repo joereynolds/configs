@@ -1,0 +1,6 @@
+note_dir="$HOME/programs/life/docs/"
+note_files=$(fd . $note_dir -x basename)
+
+selection=$(echo -e $note_files | tr ' ' '\n' | dmenu -l 15)
+
+nvim "$note_dir/$selection"
