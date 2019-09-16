@@ -29,3 +29,4 @@
     - { src: '~/code/me/configs/roles/common/files/todo',            dest: '~/bin/todo' }
     - { src: '~/code/me/configs/roles/common/files/keys',            dest: '~/bin/keys' }
     - { src: '~/code/me/configs/roles/common/files/nvim/after',      dest: '~/.config/nvim/after' }
+    - { src: '~/code/me/configs/roles/common/files/nvim/colors',      dest: '~/.config/nvim/colors' }

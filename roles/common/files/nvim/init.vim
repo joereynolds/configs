@@ -1,5 +1,4 @@
 call plug#begin()
-    Plug 'Lokaltog/vim-monotone'
     Plug 'machakann/vim-sandwich'
     Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
     Plug 'simeji/winresizer'
