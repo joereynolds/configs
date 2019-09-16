@@ -2,3 +2,4 @@
 - version control cocconfig
 - set mergetool
 - Make an ftplugin directory and a syntax one and a colours one so we can ditch some noise in init.vim
+- Symlink the ftpluing

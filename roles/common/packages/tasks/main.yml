@@ -20,21 +20,24 @@
     dest: ~/z.sh
     mode: "0775"
 
-- name: Install ripgrep
+- name: Install classic snap packages
   become: true
   snap:
-    name: ripgrep
+    name: "{{ packages }}"
     classic: yes
+  vars:
+    packages:
+      - tmux
+      - ripgrep
 
-- name: Install spotify
+- name: Install snap packages
   become: true
   snap:
-    name: spotify
-
-- name: Install lnav
-  become: true
-  snap:
-    name: lnav
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - spotify
+      - lnav
 
 - name: Install apt repositories
   apt:
@@ -78,5 +81,6 @@
         - thunar
         # clipboard provider for neovim
         - xclip
+        - xdotool
         # Multiple clipbaord support
         - xfce4-clipman

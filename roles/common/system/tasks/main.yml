@@ -27,3 +27,4 @@
     - { src: '~/code/me/configs/roles/common/files/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
     - { src: '~/code/me/configs/roles/common/files/i3/config',       dest: '~/.config/i3/config' }
     - { src: '~/code/me/configs/roles/common/files/todo',            dest: '~/bin/todo' }
+    - { src: '~/code/me/configs/roles/common/files/keys',            dest: '~/bin/keys' }

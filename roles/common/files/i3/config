@@ -38,6 +38,8 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
+bindsym $mod+p exec "i3lock --color=000000"
+bindsym $mod+o exec keys
 bindsym $mod+t exec todo
 bindsym $mod+c exec "spectacle --region"
 # There also is the (new) i3-dmenu-desktop which only displays applications
