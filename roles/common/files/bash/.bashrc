@@ -9,6 +9,11 @@ fzgb() {
     git checkout $(git branch | tr -d ' *' | fzy)
 }
 
+# fuzzy find and open with vim
+fzfd() {
+    fd --no-ignore $1 | fzy | vim
+}
+
 report_unused_functions() {
   # Find the function
   # Remove the ampersands for pass by reference functions
