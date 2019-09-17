@@ -4,6 +4,16 @@
 note_dir="$HOME/code/me/life/docs/"
 note_files=$(fd . $note_dir -x basename)
 
-selection=$(echo $note_files | tr ' ' '\n' | dmenu -l 15)
+recent_label="[recently-opened-files]"
+selection=$(echo "$recent_label $note_files" | tr ' ' '\n' | dmenu -l 15)
 
-gnome-terminal -e "nvim $note_dir/$selection"
+case $selection in
+    "$recent_label"*)
+        note_files=$(fd --changed-within 1week . /var/www $HOME)
+        selection=$(echo "$note_files" | tr ' ' '\n' | dmenu -l 15)
+        gnome-terminal -e "nvim $selection"
+        ;;
+        *)
+        gnome-terminal -e "nvim $note_dir/$selection"
+        ;;
+esac
