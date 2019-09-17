@@ -3,5 +3,5 @@
     repo: "https://github.com/joereynolds/{{ item }}"
     dest: "/home/joe/code/me/{{ item }}"
   with_items:
-      - joereynolds/life
-      - joereynolds/joereynolds.github.io
+      - life
+      - joereynolds.github.io

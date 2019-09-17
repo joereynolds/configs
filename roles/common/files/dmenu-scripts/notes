@@ -1,7 +1,7 @@
 # Opens up a small file browser to look at
 # my notes and edit/create them
 
-note_dir="$HOME/programs/life/docs/"
+note_dir="$HOME/code/me/life/docs/"
 note_files=$(fd . $note_dir -x basename)
 
 selection=$(echo -e $note_files | tr ' ' '\n' | dmenu -l 15)
