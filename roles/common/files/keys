@@ -1,9 +1,0 @@
-file="$HOME/keys"
-valid_keys=$(grep "^\." $file | tr -d .)
-height=$(echo $"$valid_keys" | wc -l)
-prompt="Choose a shortcut"
-
-cmd=$(echo "$valid_keys" | dmenu -l "$height" -p "$prompt")
-
-watcher=$(grep "^\.$cmd" ~/keys -A 1 | tail -n1)
-eval $watcher

@@ -29,14 +29,15 @@
     dest: "{{ item.dest }}"
     state: link
   with_items:
-    - { src: '~/code/me/configs/roles/common/files/bash/.bashrc',    dest: '~/.bashrc' }
-    - { src: '~/code/me/configs/roles/common/files/ctags/.ctags',    dest: '~/.ctags' }
-    - { src: '~/code/me/configs/roles/common/files/git/.gitconfig',  dest: '~/.gitconfig' }
-    - { src: '~/code/me/configs/roles/common/files/mutt/.muttrc',    dest: '~/.muttrc' }
-    - { src: '~/code/me/configs/roles/common/files/newsbeuter/urls', dest: '~/.newsbeuter/urls' }
-    - { src: '~/code/me/configs/roles/common/files/nvim/init.vim',   dest: '~/.config/nvim/init.vim' }
-    - { src: '~/code/me/configs/roles/common/files/i3/config',       dest: '~/.config/i3/config' }
-    - { src: '~/code/me/configs/roles/common/files/todo',            dest: '~/bin/todo' }
-    - { src: '~/code/me/configs/roles/common/files/keys',            dest: '~/bin/keys' }
-    - { src: '~/code/me/configs/roles/common/files/nvim/after',      dest: '~/.config/nvim/after' }
-    - { src: '~/code/me/configs/roles/common/files/nvim/colors',      dest: '~/.config/nvim/colors' }
+    - { src: '~/code/me/configs/roles/common/files/bash/.bashrc',        dest: '~/.bashrc' }
+    - { src: '~/code/me/configs/roles/common/files/ctags/.ctags',        dest: '~/.ctags' }
+    - { src: '~/code/me/configs/roles/common/files/dmenu-scripts/keys',  dest: '~/bin/keys' }
+    - { src: '~/code/me/configs/roles/common/files/dmenu-scripts/notes', dest: '~/bin/notes' }
+    - { src: '~/code/me/configs/roles/common/files/dmenu-scripts/todo',  dest: '~/bin/todo' }
+    - { src: '~/code/me/configs/roles/common/files/git/.gitconfig',      dest: '~/.gitconfig' }
+    - { src: '~/code/me/configs/roles/common/files/i3/config',           dest: '~/.config/i3/config' }
+    - { src: '~/code/me/configs/roles/common/files/mutt/.muttrc',        dest: '~/.muttrc' }
+    - { src: '~/code/me/configs/roles/common/files/newsbeuter/urls',     dest: '~/.newsbeuter/urls' }
+    - { src: '~/code/me/configs/roles/common/files/nvim/after',          dest: '~/.config/nvim/after' }
+    - { src: '~/code/me/configs/roles/common/files/nvim/colors',         dest: '~/.config/nvim/colors' }
+    - { src: '~/code/me/configs/roles/common/files/nvim/init.vim',       dest: '~/.config/nvim/init.vim' }
