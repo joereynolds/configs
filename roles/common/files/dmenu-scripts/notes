@@ -5,13 +5,20 @@ note_dir="$HOME/code/me/life/docs/"
 note_files=$(fd . $note_dir -x basename)
 
 recent_label="[recently-opened-files]"
-selection=$(echo "$recent_label $note_files" | tr ' ' '\n' | dmenu -l 15)
+knowledge_base="[knowledge-base]"
+selection=$(echo "$knowledge_base $recent_label $note_files" | tr ' ' '\n' | dmenu -l 15)
 
 case $selection in
     "$recent_label"*)
         note_files=$(fd --changed-within 1week . /var/www $HOME)
         selection=$(echo "$note_files" | tr ' ' '\n' | dmenu -l 15)
         gnome-terminal -e "nvim $selection"
+        ;;
+        "$knowledge_base"*)
+        note_dir="$HOME/Documents/bikmo"
+        note_files=$(fd . $note_dir)
+        selection=$(echo "$note_files" | tr ' ' '\n' | dmenu -l 15)
+        gnome-terminal -e "nvim $note_dir/$selection"
         ;;
         *)
         gnome-terminal -e "nvim $note_dir/$selection"
