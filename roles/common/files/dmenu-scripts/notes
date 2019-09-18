@@ -11,16 +11,14 @@ selection=$(echo "$knowledge_base $recent_label $note_files" | tr ' ' '\n' | dme
 case $selection in
     "$recent_label"*)
         note_files=$(fd --changed-within 1week . /var/www $HOME)
+        note_dir=""
         selection=$(echo "$note_files" | tr ' ' '\n' | dmenu -l 15)
-        gnome-terminal -e "nvim $selection"
         ;;
         "$knowledge_base"*)
         note_dir="$HOME/Documents/bikmo"
-        note_files=$(fd . $note_dir)
+        note_files=$(fd . $note_dir -x basename)
         selection=$(echo "$note_files" | tr ' ' '\n' | dmenu -l 15)
-        gnome-terminal -e "nvim $note_dir/$selection"
-        ;;
-        *)
-        gnome-terminal -e "nvim $note_dir/$selection"
         ;;
 esac
+
+gnome-terminal -e "nvim $note_dir/$selection"
