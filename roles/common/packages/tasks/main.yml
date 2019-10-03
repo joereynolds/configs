@@ -38,6 +38,7 @@
     packages:
       - spotify
       - lnav
+      - htop
 
 - name: Install apt repositories
   apt:

@@ -4,7 +4,6 @@ call plug#begin()
     Plug 'simeji/winresizer'
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
 call plug#end()
 
