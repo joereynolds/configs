@@ -5,11 +5,11 @@ call plug#begin()
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-projectionist'
     Plug 'w0rp/ale'
 call plug#end()
 
 source ~/code/me/configs/roles/common/files/nvim/abbreviations.vim
+source ~/private.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
 
@@ -17,8 +17,6 @@ nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 inoremap {<cr> {<cr>}<esc>O
@@ -44,7 +42,6 @@ set expandtab "Change tabs into spaces
 set hidden
 set noswapfile
 set grepprg=rg\ --vimgrep\ --ignore-case
-let loaded_matchparen = 1 "highlighting matching pairs is slow
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
@@ -53,23 +50,9 @@ let g:picker_custom_find_flags = "--type f --hidden"
 
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
 augroup END
 
 colorscheme monotone
-
