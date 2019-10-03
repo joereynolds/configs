@@ -42,6 +42,7 @@ set expandtab "Change tabs into spaces
 set hidden
 set noswapfile
 set grepprg=rg\ --vimgrep\ --ignore-case
+let loaded_matchparen = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
