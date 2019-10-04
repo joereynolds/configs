@@ -1,9 +1,10 @@
-text-width 80
 auto-reload yes
+text-width 80
 
 articlelist-format "%D - %t (%a) %L"
 articlelist-title-format ""
 itemview-title-format "%T"
+feedlist-format "%i %7u %t"
 feedlist-title-format ""
 
 color background          white black
