@@ -1,0 +1,18 @@
+text-width 80
+auto-reload yes
+
+articlelist-format "%D - %t (%a) %L"
+articlelist-title-format ""
+itemview-title-format "%T"
+feedlist-title-format ""
+
+color background          white black
+color listnormal          white black
+color listfocus           white black bold
+color listnormal_unread   white black bold
+color listfocus_unread    white black bold
+color info                white black bold
+color article             white black
+
+bind-key n down
+bind-key p up

@@ -38,6 +38,7 @@
     - { src: '~/code/me/configs/roles/common/files/i3/config',           dest: '~/.config/i3/config' }
     - { src: '~/code/me/configs/roles/common/files/mutt/.muttrc',        dest: '~/.muttrc' }
     - { src: '~/code/me/configs/roles/common/files/newsbeuter/urls',     dest: '~/.newsbeuter/urls' }
+    - { src: '~/code/me/configs/roles/common/files/newsbeuter/config',     dest: '~/.newsbeuter/config' }
     - { src: '~/code/me/configs/roles/common/files/nvim/after',          dest: '~/.config/nvim/after' }
     - { src: '~/code/me/configs/roles/common/files/nvim/colors',         dest: '~/.config/nvim/colors' }
     - { src: '~/code/me/configs/roles/common/files/nvim/init.vim',       dest: '~/.config/nvim/init.vim' }
