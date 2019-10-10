@@ -12,6 +12,8 @@ source ~/private.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
 
+nmap ]b :bnext<cr>
+nmap [b :bprevious<cr>
 nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
