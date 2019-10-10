@@ -4,7 +4,7 @@ text-width 80
 articlelist-format "%D - %t (%a) %L"
 articlelist-title-format ""
 itemview-title-format "%T"
-feedlist-format "%i %7u %t"
+feedlist-format "%i %7u [%T] %t "
 feedlist-title-format ""
 
 color background          white black
