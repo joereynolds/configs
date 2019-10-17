@@ -43,12 +43,13 @@ set expandtab "Change tabs into spaces
 set hidden
 set noswapfile
 set grepprg=rg\ --vimgrep\ --ignore-case
-let loaded_matchparen = 1
+let loaded_matchparen = 1 "Crazy slow and annoying highlighting
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:picker_custom_find_executable = 'fd'
 let g:picker_custom_find_flags = "--type f --hidden"
+let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
