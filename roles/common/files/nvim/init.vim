@@ -5,6 +5,7 @@ call plug#begin()
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'w0rp/ale'
+    Plug 'tmsvg/pear-tree'
 call plug#end()
 
 source ~/code/me/configs/roles/common/files/nvim/abbreviations.vim
@@ -21,14 +22,7 @@ nmap ]d <Plug>(coc-definition)
 nmap <c-p> <Plug>(PickerEdit)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
-inoremap {<cr> {<cr>}<esc>O
-inoremap [<cr> [<cr>]<esc>O
 inoremap ``` ```<cr>```<esc>O
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ` ``<left>
 inoremap ; <esc>mzA;<esc>`z
 tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
