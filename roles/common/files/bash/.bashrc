@@ -4,6 +4,10 @@ alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
+grab() {
+    curl -s $1 | pandoc --from=html --to=markdown | glow - -p -w 80
+}
+
 fzgb() {
     git checkout $(git branch | tr -d ' *' | fzy)
 }
@@ -64,7 +68,8 @@ export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/home/joe/bin"
 export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
-
 export NVM_DIR="$HOME/.nvm"
+export EDITOR=nvim
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

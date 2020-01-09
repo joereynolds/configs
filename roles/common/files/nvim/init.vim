@@ -1,9 +1,9 @@
 call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-    Plug 'simeji/winresizer'
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'w0rp/ale'
     Plug 'tmsvg/pear-tree'
 call plug#end()
@@ -41,7 +41,7 @@ let loaded_matchparen = 1 "Crazy slow and annoying highlighting
 let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
-let g:ale_php_phpcs_standard = 'Doctrine'
+let g:ale_php_phpcs_standard = 'psr2'
 
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
