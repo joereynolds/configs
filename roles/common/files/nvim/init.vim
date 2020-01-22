@@ -30,7 +30,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
 set expandtab "Change tabs into spaces
 set grepprg=rg\ --vimgrep\ --ignore-case
-set hidden
 set ignorecase "Ignore cases when searching
 set inccommand=split "Live substitution is the bees knees
 set noswapfile
