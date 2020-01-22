@@ -8,7 +8,6 @@ call plug#begin()
     Plug 'tmsvg/pear-tree'
 call plug#end()
 
-source ~/code/me/configs/roles/common/files/nvim/abbreviations.vim
 source ~/private.vim
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
