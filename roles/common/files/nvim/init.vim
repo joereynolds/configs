@@ -32,9 +32,8 @@ set grepprg=rg\ --vimgrep\ --ignore-case
 set ignorecase "Ignore cases when searching
 set inccommand=split "Live substitution is the bees knees
 set noswapfile
-set scrolloff=10 "Keep at least 10 lines in view when the cursor hits the bottom of the buffer
 set shiftwidth=4 "indentation should be 4 spaces when we use >> and <<
-set statusline=%y%m%=%f\ [%02p%%]\ [%L]
+" set statusline=%y%m%=%f\ [%02p%%]\ [%L]
 let loaded_matchparen = 1 "Crazy slow and annoying highlighting
 let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
