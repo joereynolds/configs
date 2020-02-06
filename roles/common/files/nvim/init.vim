@@ -9,8 +9,9 @@ call plug#begin()
 call plug#end()
 
 source ~/private.vim
-command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 packadd cfilter
+command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
+call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
 nmap ]b :bnext<cr>
 nmap [b :bprevious<cr>
@@ -38,8 +39,6 @@ let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'psr2'
-
-call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
 augroup init_vim
     autocmd!
