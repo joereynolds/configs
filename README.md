@@ -1,7 +1,7 @@
 # Configs
 
 These are more than just dotfiles, these are everything that I frequently use on a machine.
-If you just care about dotfiles, go to ./dotfiles
+If you only care about my dotfiles, go [here](https://github.com/joereynolds/configs/tree/master/roles/common/files)
 
 Made for Ubuntu 18.04
 
