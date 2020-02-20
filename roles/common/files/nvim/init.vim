@@ -4,8 +4,11 @@ call plug#begin()
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'w0rp/ale'
+    Plug 'joereynolds/ale'
     Plug 'tmsvg/pear-tree'
+    Plug 'stefandtw/quickfix-reflector.vim'
+    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'https://github.com/voldikss/vim-floaterm'
 call plug#end()
 
 source ~/private.vim
@@ -39,10 +42,26 @@ let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'psr2'
+let g:floaterm_position = 'center'
 
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
+    " Make quickfix span the entire window
+    autocmd FileType qf wincmd J
 augroup END
 
-colorscheme monotone
+set termguicolors
+
+set background=light
+colorscheme PaperColor
+
+nnoremap <m-w> :FloatermToggle<cr>
+tnoremap <m-w> <c-\><c-n>:FloatermToggle<cr>
+
+"Goneovim testing stuff
+
+nmap ]f :GonvimFilerOpen<cr>
+nmap ]w :GonvimWorkspaceNext<cr>
+nmap [w :GonvimWorkspacePrevious<cr>
+

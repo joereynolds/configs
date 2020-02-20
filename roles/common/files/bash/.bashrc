@@ -57,6 +57,7 @@ if ! shopt -oq posix; then
 fi
 
 source ~/z.sh
+source ~/base16-papercolor-light.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes

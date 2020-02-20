@@ -7,6 +7,7 @@
 	name = Joe Reynolds
 [alias]
 	files = !git diff origin/develop --name-only
+	vim-files = !nvim $(git files)
 	appraise = !/home/joe/go/bin/git-appraise
         review = !nvim -p $(git files) +\"tabdo Gdiff origin/develop\"
 [merge]
