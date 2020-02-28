@@ -22,6 +22,7 @@ nmap [a <Plug>(ale_previous)
 nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
+vmap ]f <Plug>(coc-format-selected)
 nmap <c-p> <Plug>(PickerEdit)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
@@ -60,7 +61,6 @@ nnoremap <m-w> :FloatermToggle<cr>
 tnoremap <m-w> <c-\><c-n>:FloatermToggle<cr>
 
 "Goneovim testing stuff
-
 nmap ]f :GonvimFilerOpen<cr>
 nmap ]w :GonvimWorkspaceNext<cr>
 nmap [w :GonvimWorkspacePrevious<cr>

@@ -5,7 +5,7 @@ alias gs="git status"
 alias gl="git log --oneline"
 
 grab() {
-    curl -s $1 | pandoc --from=html --to=markdown | glow - -p -w 80
+    curl -s $1 | pandoc --from=html --to=markdown | glow - -p -s light -w 80
 }
 
 fzgb() {
