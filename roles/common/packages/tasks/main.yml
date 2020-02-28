@@ -54,7 +54,7 @@
         - composer
         - curl
         - exuberant-ctags
-        # fuzzy finder for vim/other things
+        # fuzzy finder for vim/other things (Not available on 16.04)
         - fzy
         - git
         - i3

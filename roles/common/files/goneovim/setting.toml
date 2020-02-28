@@ -1,0 +1,152 @@
+[Editor]
+# Editor minimum window width (>= 400)
+Width = 800
+# Editor minimum window height (>= 300)
+Height = 600
+
+# Start maximized window
+StartMaximizedWindow = false
+
+# Start fullscreen
+StartFullscreen = false
+
+# Editor external font-family, font-size, and linespace.
+# This is the font and linespace settings of the graphical UI as an nvim front end. 
+# For example, linespace affects the margins of the external completion popup menu UI. 
+# Font settings in nvim are set with well-known options, such as `:set guifont = hoge:h10`, `:set linespace=4`.
+FontFamily = "Monospace"
+FontSize = 10
+Linespace = 0
+
+# Neovim external UI features
+# The following is the default value of goneovim.
+# You can change the behavior of the GUI by changing the following boolean values.
+# If you prefer the traditional Vim UI, set it to false for all. 
+# Also, `ExtMessages` is still experimental at this time and we don't recommend setting it to true if you want stability.
+ExtCmdline = true
+ExtPopupmenu = false
+ExtTabline = true
+ExtMessages = false
+
+# Drawing window border instead of vertical split, statusline
+# Draw borders on the GUI side instead of the vertical border and status line that nvim draws.
+# This option assumes that you use an external status line.
+DrawBorder = true
+
+# Copy yanked text to clipboard
+# Clipboard = true
+
+# Disable IME in Normal mode
+# This option disables the input method editor(IME) in normal mode.
+# For example, it may be useful for East Asian users who use the input method editor.
+DisableImeInNormal = false
+
+# Transparent window alpha
+# Note: This setting also implicitly enables the Drawborder setting
+# This option makes the whole GUI window in semi-transparent.
+# Transparent = 0.8
+
+# Draw indent guide
+# Enable this option to draw a simple indent guide. 
+# Indentation width is calculated based on the value of `tabstop` set in nvim.
+IndentGuide = true
+
+# Desktop Notifications
+# Enable desktop notification settings for nvim messages.
+# This option works only if `ExtMessages` is enabled.
+DesktopNotifications = false
+
+# Pattern that fills the diff background
+# Change the background pattern used for diff display.
+# This option allows you to use a visual effect pattern such as Dense, Diagonal Stripe instead of a regular solid pattern. 
+# The available patterns are all Qt brush styles. For more information, See: https://doc.qt.io/qt-5/qbrush.html#details
+# // -- diffpattern enum --
+# // SolidPattern             1
+# // Dense1Pattern            2
+# // Dense2Pattern            3
+# // Dense3Pattern            4
+# // Dense4Pattern            5
+# // Dense5Pattern            6
+# // Dense6Pattern            7
+# // Dense7Pattern            8
+# // HorPattern               9
+# // VerPattern               10
+# // CrossPattern             11
+# // BDiagPattern             12
+# // FDiagPattern             13
+# // DiagCrossPattern         14
+# // LinearGradientPattern    15
+# // RadialGradientPattern    16
+# // ConicalGradientPattern   17
+# // TexturePattern           24
+Diffdeletepattern = 12
+Diffchangepattern = 12
+Diffaddpattern = 1
+
+
+[Statusline]
+Visible = true
+
+# Options: “textLabel” / “icon” / “background” / “none”
+ModeIndicatorType = "textLabel"
+
+# Optional setting colors per Neovim editing modes
+# NormalModeColor = "#3cabeb"
+# CommandModeColor = "#5285b8"
+# InsertModeColor = "#2abcb4"
+# ReplaceModeColor = "#ff8c0a"
+# VisualModeColor = "#9932cc"
+# TerminalModeColor = "#778899"
+
+# Statusline components
+Left = [ "filepath", "filename" ]
+Right = [ "message", "git", "filetype", "curpos" ]
+
+[Palette]
+# Transparent = 0.8
+
+[Message]
+# Transparent = 0.8
+
+[Popupmenu]
+# show detail column
+ShowDetail = true
+# total number to display item
+Total = 20
+# width of `menu` column
+MenuWidth = 400
+# width of `info` column
+InfoWidth = 1
+# width of `detail` column
+DetailWidth = 250
+
+
+[Tabline]
+Visible = true
+
+[Lint]
+Visible = true
+
+[ScrollBar]
+Visible = true
+
+[MiniMap]
+Visible = false
+
+[SideBar]
+Visible = true
+DropShadow = false
+Width = 200
+AccentColor = "#5596ea"
+
+[Workspace]
+# This setting sets the format of the path string of CWD in the sidebar.
+#  name: directoryname
+#  full: /path/to/directoryname
+#  minimum: /p/t/directoryname
+PathStyle = "minimum"
+
+# Restore session — information that was ended without being saved
+RestoreSession = false
+
+# File open command in gonvim file explorer
