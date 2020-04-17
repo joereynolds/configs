@@ -4,17 +4,16 @@ alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
+cdr() {
+    cd $(git rev-parse --show-toplevel)
+}
+
 grab() {
     curl -s $1 | pandoc --from=html --to=markdown | glow - -p -s light -w 80
 }
 
 fzgb() {
     git checkout $(git branch | tr -d ' *' | fzy)
-}
-
-# fuzzy find and open with vim
-fzfd() {
-    fd --no-ignore $1 | fzy | vim
 }
 
 grepblame() {
@@ -43,6 +42,7 @@ fi
 
 source ~/z.sh
 source ~/base16-papercolor-light.sh
+source ~/.private.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes

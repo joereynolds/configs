@@ -43,7 +43,6 @@ let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_php_phpcs_standard = 'psr2'
-let g:floaterm_position = 'center'
 
 augroup init_vim
     autocmd!
@@ -57,11 +56,7 @@ set termguicolors
 set background=light
 colorscheme PaperColor
 
-nnoremap <m-w> :FloatermToggle<cr>
-tnoremap <m-w> <c-\><c-n>:FloatermToggle<cr>
-
 "Goneovim testing stuff
 nmap ]f :GonvimFilerOpen<cr>
 nmap ]w :GonvimWorkspaceNext<cr>
 nmap [w :GonvimWorkspacePrevious<cr>
-

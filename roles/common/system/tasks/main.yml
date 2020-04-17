@@ -42,5 +42,4 @@
     - { src: '~/code/me/configs/roles/common/files/nvim/after',            dest: '~/.config/nvim/after' }
     - { src: '~/code/me/configs/roles/common/files/nvim/colors',           dest: '~/.config/nvim/colors' }
     - { src: '~/code/me/configs/roles/common/files/nvim/init.vim',         dest: '~/.config/nvim/init.vim' }
-    - { src: '~/code/me/configs/roles/common/files/goneovim/setting.toml', dest: '~/.goneovim/setting.toml' }
     
