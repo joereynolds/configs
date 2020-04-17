@@ -5,6 +5,7 @@
   with_items:
     - { url: "https://github.com/dbeaver/dbeaver/releases/download/7.0.0/dbeaver-ce_7.0.0_amd64.deb", dest: '/tmp/dbeaver.deb' }
     - { url: "https://github.com/sharkdp/fd/releases/download/v7.4.0/fd_7.4.0_amd64.deb", dest: "/tmp/fd.deb" }
+    - { url: "https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb", dest: "/tmp/rg.deb" }
 
 - name: Install debian packages
   apt: 
@@ -13,6 +14,7 @@
   with_items:
     - "https://github.com/dbeaver/dbeaver/releases/download/7.0.0/dbeaver-ce_7.0.0_amd64.deb"
     - "https://github.com/sharkdp/fd/releases/download/v7.4.0/fd_7.4.0_amd64.deb"
+    - "https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb"
 
 - name: Download Z
   get_url:
@@ -28,8 +30,6 @@
   vars:
     packages:
       - tmux
-        # TODO - The ripgrep from snap is dodgy (os error 2). Use a release from github
-      - ripgrep
 
 - name: Install snap packages
   become: true
