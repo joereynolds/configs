@@ -8,7 +8,6 @@ call plug#begin()
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'NLKNguyen/papercolor-theme'
-    Plug 'https://github.com/voldikss/vim-floaterm'
 call plug#end()
 
 source ~/private.vim
