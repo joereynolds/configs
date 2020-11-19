@@ -41,8 +41,6 @@ if ! shopt -oq posix; then
 fi
 
 source ~/z.sh
-source ~/base16-papercolor-light.sh
-source ~/.private.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
@@ -56,6 +54,13 @@ export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
+export CLOUDSDK_PYTHON=/usr/bin/python
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc'; fi

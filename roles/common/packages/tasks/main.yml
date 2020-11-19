@@ -1,20 +1,20 @@
-- name: Download debian packages
-  get_url:
-    url: "{{ item.url }}"
-    dest: "{{ item.dest }}"
-  with_items:
-    - { url: "https://github.com/dbeaver/dbeaver/releases/download/7.0.0/dbeaver-ce_7.0.0_amd64.deb", dest: '/tmp/dbeaver.deb' }
-    - { url: "https://github.com/sharkdp/fd/releases/download/v7.4.0/fd_7.4.0_amd64.deb", dest: "/tmp/fd.deb" }
-    - { url: "https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb", dest: "/tmp/rg.deb" }
+# - name: Download debian packages
+#   get_url:
+#     url: "{{ item.url }}"
+#     dest: "{{ item.dest }}"
+#   with_items:
+#     - { url: "https://github.com/dbeaver/dbeaver/releases/download/7.0.0/dbeaver-ce_7.0.0_amd64.deb", dest: '/tmp/dbeaver.deb' }
+#     - { url: "https://github.com/sharkdp/fd/releases/download/v7.4.0/fd_7.4.0_amd64.deb", dest: "/tmp/fd.deb" }
+#     - { url: "https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb", dest: "/tmp/rg.deb" }
 
-- name: Install debian packages
-  apt: 
-    deb: "{{ item }}"
-  become: true
-  with_items:
-    - "https://github.com/dbeaver/dbeaver/releases/download/7.0.0/dbeaver-ce_7.0.0_amd64.deb"
-    - "https://github.com/sharkdp/fd/releases/download/v7.4.0/fd_7.4.0_amd64.deb"
-    - "https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb"
+#- name: Install debian packages
+#  apt: 
+#    deb: "{{ item }}"
+#  become: true
+#  with_items:
+#    - "https://github.com/dbeaver/dbeaver/releases/download/7.2.5/dbeaver-ce_7.2.5_amd64.deb"
+#    - "https://github.com/sharkdp/fd/releases/download/v8.1.1/fd_8.1.1_amd64.deb"
+#    - "https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb"
 
 - name: Download Z
   get_url:
@@ -22,23 +22,12 @@
     dest: ~/z.sh
     mode: "0775"
 
-- name: Install classic snap packages
-  become: true
-  snap:
-    name: "{{ packages }}"
-    classic: yes
-  vars:
-    packages:
-      - tmux
-
 - name: Install snap packages
   become: true
   snap:
     name: "{{ packages }}"
   vars:
     packages:
-      - spotify
-      - lnav
       - htop
 
 - name: Install apt repositories
@@ -58,7 +47,10 @@
         # fuzzy finder for vim/other things (Not available on 16.04)
         - fzy
         - git
-        - i3
+        - i3-wm
+        - i3status
+        - i3lock
+        - suckless-tools
         # Screenshotting
         - kde-spectacle
         - libtool
@@ -75,8 +67,6 @@
         - ppa-purge
         # Music stuff
         - puredata
-        - python-pip
-        - python3-pip
         # i3 compatible screen recorder
         - simplescreenrecorder
         # decent gui file manager
@@ -84,5 +74,3 @@
         # clipboard provider for neovim
         - xclip
         - xdotool
-        # Multiple clipboard support
-        - xfce4-clipman

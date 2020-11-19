@@ -8,9 +8,9 @@ call plug#begin()
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'NLKNguyen/papercolor-theme'
+    Plug 'https://github.com/vim-vdebug/vdebug'
 call plug#end()
 
-source ~/private.vim
 packadd cfilter
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
@@ -54,8 +54,3 @@ set termguicolors
 
 set background=light
 colorscheme PaperColor
-
-"Goneovim testing stuff
-nmap ]f :GonvimFilerOpen<cr>
-nmap ]w :GonvimWorkspaceNext<cr>
-nmap [w :GonvimWorkspacePrevious<cr>
