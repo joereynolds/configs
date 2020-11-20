@@ -69,8 +69,6 @@
         - puredata
         # i3 compatible screen recorder
         - simplescreenrecorder
-        # decent gui file manager
-        - thunar
         # clipboard provider for neovim
         - xclip
         - xdotool

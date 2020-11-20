@@ -41,7 +41,6 @@ let loaded_matchparen = 1 "Crazy slow and annoying highlighting
 let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
-let g:ale_php_phpcs_standard = 'psr2'
 
 augroup init_vim
     autocmd!
@@ -50,6 +49,9 @@ augroup init_vim
     autocmd FileType qf wincmd J
 augroup END
 
+augroup work_related
+    autocmd FileType php set shiftwidth=3
+augroup END
 set termguicolors
 
 set background=light
