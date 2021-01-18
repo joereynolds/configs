@@ -1,14 +1,14 @@
 call plug#begin()
     Plug 'machakann/vim-sandwich'
-    Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'joereynolds/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'NLKNguyen/papercolor-theme'
     Plug 'https://github.com/vim-vdebug/vdebug'
+    Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 packadd cfilter
@@ -31,6 +31,8 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
+set hidden
+set mouse=a
 set expandtab "Change tabs into spaces
 set grepprg=rg\ --vimgrep\ --ignore-case
 set ignorecase "Ignore cases when searching
@@ -54,5 +56,7 @@ augroup work_related
 augroup END
 set termguicolors
 
-set background=light
-colorscheme PaperColor
+nmap ]w :GonvimWorkspaceNext<cr>
+nmap [w :GonvimWorkspacePrevious<cr>
+
+colorscheme codedark
