@@ -35,7 +35,7 @@
     - { src: '~/code/configs/roles/common/files/dmenu-scripts/notes',   dest: '~/bin/notes' }
     - { src: '~/code/configs/roles/common/files/dmenu-scripts/todo',    dest: '~/bin/todo' }
     - { src: '~/code/configs/roles/common/files/git/.gitconfig',        dest: '~/.gitconfig' }
-      #- { src: '~/code/configs/roles/common/files/i3/config',             dest: '~/.config/i3/config' }
+    - { src: '~/code/configs/roles/common/files/i3/config',             dest: '~/.config/i3/config' }
     - { src: '~/code/configs/roles/common/files/mutt/.muttrc',          dest: '~/.muttrc' }
     - { src: '~/code/configs/roles/common/files/newsbeuter/urls',       dest: '~/.newsbeuter/urls' }
     - { src: '~/code/configs/roles/common/files/newsbeuter/config',     dest: '~/.newsbeuter/config' }

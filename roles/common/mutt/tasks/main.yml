@@ -1,6 +1,0 @@
-- name: "Add in passwords for mutt"
-  copy:
-    content: "
-      set imap_pass = {{ email_pass }}\n
-      set smtp_pass = {{ email_pass }}"
-    dest: ~/.muttrc-private
