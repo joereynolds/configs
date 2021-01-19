@@ -1,7 +1,0 @@
-- name: Clone my git repositories
-  git:
-    repo: "https://github.com/joereynolds/{{ item }}"
-    dest: "/home/joe/code/me/{{ item }}"
-  with_items:
-      - life
-      - joereynolds.github.io

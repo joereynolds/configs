@@ -1,16 +1,16 @@
 call plug#begin()
     Plug 'machakann/vim-sandwich'
-    Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'joereynolds/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'https://github.com/vim-vdebug/vdebug'
+    Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
-source ~/private.vim
 packadd cfilter
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
@@ -31,6 +31,8 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
+set hidden
+set mouse=a
 set expandtab "Change tabs into spaces
 set grepprg=rg\ --vimgrep\ --ignore-case
 set ignorecase "Ignore cases when searching
@@ -41,7 +43,6 @@ let loaded_matchparen = 1 "Crazy slow and annoying highlighting
 let loaded_netrwPlugin = 1 " https://github.com/vim/vim/issues/5073
 let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
-let g:ale_php_phpcs_standard = 'psr2'
 
 augroup init_vim
     autocmd!
@@ -50,12 +51,12 @@ augroup init_vim
     autocmd FileType qf wincmd J
 augroup END
 
+augroup work_related
+    autocmd FileType php set shiftwidth=3
+augroup END
 set termguicolors
 
-set background=light
-colorscheme PaperColor
-
-"Goneovim testing stuff
-nmap ]f :GonvimFilerOpen<cr>
 nmap ]w :GonvimWorkspaceNext<cr>
 nmap [w :GonvimWorkspacePrevious<cr>
+
+colorscheme codedark

@@ -6,10 +6,9 @@
 	email = joereynolds952@gmail.com
 	name = Joe Reynolds
 [alias]
-	files = !git diff origin/develop --name-only
+	files = !git diff master --name-only
 	vim-files = !nvim $(git files)
-	appraise = !/home/joe/go/bin/git-appraise
-        review = !nvim -p $(git files) +\"tabdo Gdiff origin/develop\"
+        review = !nvim -p $(git files) +\"tabdo Gdiff master\"
 [merge]
 	tool = meld
 [diff]

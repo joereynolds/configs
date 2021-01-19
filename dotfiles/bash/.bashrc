@@ -3,6 +3,7 @@ alias ls="ls --color=auto"
 alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
+alias gn="~/Downloads/Goneovim-0.4.9-linux/goneovim"
 
 cdr() {
     cd $(git rev-parse --show-toplevel)
@@ -31,6 +32,18 @@ all() {
     done
 }
 
+reduce_brightness() {
+    brightness=$(echo "$(cat /sys/class/backlight/intel_backlight/brightness) - 1000" | bc)
+    echo "Reducing brightness to $brightness"
+    sudo bash -c "echo $brightness > /sys/class/backlight/intel_backlight/brightness"
+}
+
+increase_brightness() {
+    brightness=$(echo "$(cat /sys/class/backlight/intel_backlight/brightness) + 1000" | bc)
+    echo "Increasing brightness to $brightness"
+    sudo bash -c "echo $brightness > /sys/class/backlight/intel_backlight/brightness"
+}
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -41,8 +54,6 @@ if ! shopt -oq posix; then
 fi
 
 source ~/z.sh
-source ~/base16-papercolor-light.sh
-source ~/.private.sh
 
 export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
@@ -56,6 +67,13 @@ export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
+export CLOUDSDK_PYTHON=/usr/bin/python
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc'; fi
