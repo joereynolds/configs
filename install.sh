@@ -20,6 +20,7 @@ packagelist=(
   simplescreenrecorder 
   stow
   suckless-tools 
+  tree
   xclip 
   xdotool 
 )
@@ -41,7 +42,7 @@ wget -O ~/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh
 
 
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts -t ~/
+stow bash git i3 nvim dmenu-scripts ssh -t ~/
 cd -
 
 # Install and run vim plug

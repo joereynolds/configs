@@ -9,6 +9,7 @@ call plug#begin()
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'https://github.com/vim-vdebug/vdebug'
     Plug 'tomasiser/vim-code-dark'
+    Plug 'https://github.com/voldikss/vim-floaterm'
 call plug#end()
 
 packadd cfilter
@@ -30,6 +31,9 @@ inoremap ; <esc>mzA;<esc>`z
 tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
+
+nnoremap <leader>t :FloatermToggle<cr>
+tmap <leader>t <esc>:FloatermToggle<cr>
 
 set hidden
 set mouse=a
