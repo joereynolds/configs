@@ -51,16 +51,9 @@ let g:ale_sign_column_always = 1
 augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
-    " Make quickfix span the entire window
-    autocmd FileType qf wincmd J
+    autocmd FileType qf wincmd J " Make quickfix span the entire window
 augroup END
 
-augroup work_related
-    autocmd FileType php set shiftwidth=3
-augroup END
 set termguicolors
-
-nmap ]w :GonvimWorkspaceNext<cr>
-nmap [w :GonvimWorkspacePrevious<cr>
 
 colorscheme codedark
