@@ -1,10 +1,10 @@
 # Assumes Ubuntu 20.04
-sudo apt update
 
 packagelist=(
   arandr 
   composer 
   curl 
+  ffmpeg
   fzy 
   git  
   htop 
@@ -24,6 +24,9 @@ packagelist=(
   xclip 
   xdotool 
 )
+
+sudo apt-add-repository ppa:maarten-baert/simplescreenrecorder
+sudo apt-get update
 
 sudo apt-get install ${packagelist[@]}
 

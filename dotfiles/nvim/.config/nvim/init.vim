@@ -7,14 +7,14 @@ call plug#begin()
     Plug 'joereynolds/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'https://github.com/vim-vdebug/vdebug'
     Plug 'tomasiser/vim-code-dark'
     Plug 'https://github.com/voldikss/vim-floaterm'
+    Plug 'https://github.com/jdonaldson/vaxe'
 call plug#end()
 
 packadd cfilter
 command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
-call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
+call coc#add_extension('coc-haxe', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')
 
 nmap ]b :bnext<cr>
 nmap [b :bprevious<cr>
@@ -53,7 +53,5 @@ augroup init_vim
     autocmd BufWritePost init.vim source %
     autocmd FileType qf wincmd J " Make quickfix span the entire window
 augroup END
-
-set termguicolors
 
 colorscheme codedark
