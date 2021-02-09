@@ -10,6 +10,7 @@ call plug#begin()
     Plug 'tomasiser/vim-code-dark'
     Plug 'https://github.com/voldikss/vim-floaterm'
     Plug 'https://github.com/jdonaldson/vaxe'
+    Plug 'https://github.com/joereynolds/SQHell.vim'
 call plug#end()
 
 packadd cfilter
