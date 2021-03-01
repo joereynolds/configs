@@ -17,6 +17,7 @@ packagelist=(
   nodejs 
   npm 
   pavucontrol 
+  rofi
   simplescreenrecorder 
   stow
   suckless-tools 
