@@ -29,16 +29,9 @@ else
     else
         MATCHING=$(grep "^${LINE_UNESCAPED}$" "${TODO_FILE}")
         if [[ -n "${MATCHING}" ]]; then
-            echo "${MATCHING}" >> "$HOME/done-$today"
+            echo "${MATCHING}" >> "$HOME/todos/done-$today"
             remove_todo ${LINE_UNESCAPED}
         fi
     fi
     get_todos
 fi
-
-
-
-                # If the command has been selected, delete it and
-                # append it to todays completed todo file
-		# grep -v "^$cmd\$" "$file" > "$file.$$"
-
