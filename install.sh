@@ -5,13 +5,13 @@ packagelist=(
   composer 
   curl 
   ffmpeg
+  flameshot
   fzy 
   git  
   htop 
   i3-wm 
   i3lock 
   i3status 
-  kde-spectacle 
   meld 
   moreutils 
   nodejs 

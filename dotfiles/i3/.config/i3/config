@@ -44,7 +44,7 @@ bindsym $mod+n exec notes
 # bindsym $mod+t exec todo
 bindsym $mod+t exec rofi -modi TODO:~/bin/rofi-todo -show TODO
 
-bindsym $mod+c exec "spectacle --region"
+bindsym $mod+c exec "flameshot gui"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
