@@ -7,10 +7,12 @@ packagelist=(
   arandr 
   composer 
   curl 
+  dunst
   ffmpeg
   flameshot
   fzy 
   git  
+  gparted
   htop 
   i3-wm 
   i3lock 
@@ -25,6 +27,7 @@ packagelist=(
   stow
   suckless-tools 
   tree
+  vlc
   xclip 
   xdotool 
 )
