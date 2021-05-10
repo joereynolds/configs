@@ -4,13 +4,10 @@ call plug#begin()
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'joereynolds/ale'
+    Plug 'dense-analysis/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'tomasiser/vim-code-dark'
-    Plug 'https://github.com/voldikss/vim-floaterm'
-    Plug 'https://github.com/jdonaldson/vaxe'
-    Plug 'https://github.com/joereynolds/SQHell.vim'
 call plug#end()
 
 packadd cfilter
