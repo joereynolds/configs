@@ -53,9 +53,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/z.sh
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-export  PS1='\w$(__git_ps1 " (%s)")\n: '
+# export  PS1='\w$(__git_ps1 " (%s)")\n: '
 force_color_prompt=yes
 
 export GOPATH=~/go
