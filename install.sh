@@ -11,14 +11,18 @@ yay -S fd
 yay -S flameshot
 yay -S fzy
 yay -S google-chrome
+yay -S i3
+yay -S moreutils
 yay -S neovim
 yay -S node
-yay -S tiled
+yay -S reaper-bin
 yay -S ripgrep
+yay -S rofi
 yay -S simplescreenrecorder
 yay -S spotify
 yay -S steam
 yay -S stow
+yay -S tiled
 yay -S tree
 yay -S yabridge
 yay -S yabridgectl
@@ -32,20 +36,3 @@ cd -
 # Install and run vim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall > /dev/null
-
-# TODO - 
-# packagelist=(
-#   arandr 
-#   composer 
-#   dunst
-#   i3-wm 
-#   i3lock 
-#   i3status 
-#   meld 
-#   moreutils 
-#   pavucontrol 
-#   rofi
-#   suckless-tools 
-#   xclip 
-#   xdotool 
-# )
