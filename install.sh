@@ -16,7 +16,7 @@ yay -S google-chrome
 yay -S i3
 yay -S moreutils
 yay -S neovim
-yay -S node
+yay -S nodejs
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
