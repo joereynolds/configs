@@ -15,6 +15,8 @@ yay -S i3
 yay -S moreutils
 yay -S neovim
 yay -S node
+yay -S qtodotxt2-git
+yay -S pass
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
