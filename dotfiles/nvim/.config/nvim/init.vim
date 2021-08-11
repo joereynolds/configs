@@ -8,6 +8,7 @@ call plug#begin()
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'tomasiser/vim-code-dark'
+    Plug 'hashivim/vim-terraform'
 call plug#end()
 
 packadd cfilter
@@ -30,9 +31,6 @@ tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-nnoremap <leader>t :FloatermToggle<cr>
-tmap <leader>t <esc>:FloatermToggle<cr>
-
 set hidden
 set mouse=a
 set expandtab "Change tabs into spaces
@@ -50,6 +48,7 @@ augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
     autocmd FileType qf wincmd J " Make quickfix span the entire window
+    autocmd BufWritePre * :%s/\s\+$//e "Remove trailing whitespace
 augroup END
 
 colorscheme codedark
