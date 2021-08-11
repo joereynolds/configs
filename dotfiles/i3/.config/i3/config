@@ -139,6 +139,3 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
-
-for_window [class="^.*"] border pixel 0
-hide_edge_borders smart
