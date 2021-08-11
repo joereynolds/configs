@@ -5,7 +5,7 @@ sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
-cd - 
+cd -
 rm -rf yay-git
 
 yay -S dbeaver
@@ -16,6 +16,9 @@ yay -S google-chrome
 yay -S i3
 yay -S moreutils
 yay -S neovim
+yay -S qtodotxt2-git
+yay -S pass
+yay -S nodejs
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
