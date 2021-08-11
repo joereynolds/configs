@@ -5,7 +5,7 @@ sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
-cd -
+cd - 
 rm -rf yay-git
 
 yay -S dbeaver
@@ -31,7 +31,7 @@ yay -S z
 
 # Symlink our configs
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts ssh xdg-dirs -t ~/
+stow bash git i3 nvim dmenu-scripts ssh -t ~/
 cd -
 
 # Install and run vim plug
