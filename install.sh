@@ -5,7 +5,7 @@ sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
-cd - 
+cd -
 rm -rf yay-git
 
 yay -S dbeaver
