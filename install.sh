@@ -9,6 +9,8 @@ cd -
 rm -rf yay-git
 
 yay -S dbeaver
+yay -S docker
+yay -S docker-compose
 yay -S fd
 yay -S flameshot
 yay -S fzy
@@ -16,9 +18,9 @@ yay -S google-chrome
 yay -S i3
 yay -S moreutils
 yay -S neovim
-yay -S qtodotxt2-git
-yay -S pass
 yay -S nodejs
+yay -S pass
+yay -S qtodotxt2-git
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
