@@ -1,10 +1,12 @@
+eval `ssh-agent`
+
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
-alias gn="~/Downloads/Goneovim-0.4.9-linux/goneovim"
 
+. ~/.private-bashrc
 cdr() {
     cd $(git rev-parse --show-toplevel)
 }
@@ -24,10 +26,10 @@ grepblame() {
 # Does a thing in each directory
 # i.e. `all 'git status'` will run git status in each directory
 all() {
-    for directory in ./*; do 
+    for directory in ./*; do
         printf "\033[0;32m----==$directory==----\033[0m\n"
         cd $directory
-        $1  
+        $1
         cd -
     done
 }
@@ -69,13 +71,6 @@ export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
-export CLOUDSDK_PYTHON=/usr/bin/python
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/joe.reynolds/Downloads/google-cloud-sdk/completion.bash.inc'; fi
