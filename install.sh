@@ -1,6 +1,7 @@
 # Assumes Manjaro
 rm -f ~/.bashrc
 
+sudo pacman -Syu
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
@@ -20,7 +21,6 @@ yay -S moreutils
 yay -S neovim
 yay -S nodejs
 yay -S pass
-yay -S qtodotxt2-git
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
