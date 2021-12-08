@@ -12,6 +12,7 @@ rm -rf yay-git
 yay -S dbeaver
 yay -S docker
 yay -S docker-compose
+yay -S dropbox
 yay -S fd
 yay -S flameshot
 yay -S fzy
