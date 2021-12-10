@@ -2,6 +2,7 @@
 rm -f ~/.bashrc
 
 sudo pacman -S --needed base-devel git
+
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
@@ -20,6 +21,7 @@ yay -S moreutils
 yay -S neovim
 yay -S nodejs
 yay -S pass
+yay -S picom
 yay -S qtodotxt2-git
 yay -S reaper-bin
 yay -S ripgrep
