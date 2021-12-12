@@ -1,13 +1,9 @@
 # Configs
 
-Assumes a Ubuntu 20.04 distribution.
-
-Uses stow for managing symlinks.
-
-
+Assumes use of Manjaro.
 
 ## Notes
 
 - Reaper's configs aren't symlinked because they are forever changing.
-  Just import the config from static/reaper
+  Just import the config from static/reaper or do without them altogether
 
