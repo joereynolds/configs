@@ -3,6 +3,7 @@ rm -f ~/.bashrc
 
 sudo pacman -Syu
 sudo pacman -S --needed base-devel git
+
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
@@ -22,6 +23,7 @@ yay -S moreutils
 yay -S neovim
 yay -S nodejs
 yay -S pass
+yay -S qbittorrent
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
@@ -37,7 +39,7 @@ yay -S z
 
 # Symlink our configs
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts ssh -t ~/
+stow bash git i3 nvim dmenu-scripts ssh ripgrep -t ~/
 cd -
 
 # Install and run vim plug
