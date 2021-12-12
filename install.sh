@@ -24,6 +24,7 @@ yay -S neovim
 yay -S nodejs
 yay -S pass
 yay -S qbittorrent
+yay -S picom
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
