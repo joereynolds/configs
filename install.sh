@@ -40,7 +40,7 @@ yay -S z
 
 # Symlink our configs
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts ssh ripgrep -t ~/
+stow bash git i3 nvim dmenu-scripts ssh ripgrep picom -t ~/
 cd -
 
 # Install and run vim plug

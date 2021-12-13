@@ -13,3 +13,5 @@
 	tool = meld
 [diff]
 	tool = meld
+[pull]
+	rebase = false
