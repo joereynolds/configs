@@ -7,6 +7,7 @@ call plug#begin()
     Plug 'dense-analysis/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
+    Plug 'tomasiser/vim-code-dark'
     Plug 'hashivim/vim-terraform'
 call plug#end()
 
@@ -47,4 +48,7 @@ augroup init_vim
     autocmd!
     autocmd BufWritePost init.vim source %
     autocmd FileType qf wincmd J " Make quickfix span the entire window
+    " autocmd BufWritePre * :%s/\s\+$//e "Remove trailing whitespace
 augroup END
+
+colorscheme codedark
