@@ -19,12 +19,14 @@ yay -S flameshot
 yay -S fzy
 yay -S google-chrome
 yay -S i3
+yay -S kdenlive
 yay -S moreutils
 yay -S neovim
 yay -S nodejs
 yay -S pass
 yay -S qbittorrent
 yay -S picom
+yay -S realtime-privileges # used with yabridgectl
 yay -S reaper-bin
 yay -S ripgrep
 yay -S rofi
