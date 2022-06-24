@@ -19,6 +19,7 @@ yay -S flameshot
 yay -S fzy
 yay -S google-chrome
 yay -S i3
+yay -S meld
 yay -S moreutils
 yay -S neovim
 yay -S nodejs
