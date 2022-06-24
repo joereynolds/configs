@@ -1,14 +1,12 @@
 call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'dense-analysis/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'tomasiser/vim-code-dark'
-    Plug 'hashivim/vim-terraform'
 call plug#end()
 
 packadd cfilter
@@ -22,16 +20,14 @@ nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
 vmap ]f <Plug>(coc-format-selected)
-nmap <c-p> <Plug>(PickerEdit)
+nmap <c-p> :CocList gfiles<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 inoremap ``` ```<cr>```<esc>O
 inoremap ; <esc>mzA;<esc>`z
 tnoremap <esc> <c-\><c-n>
 nnoremap <silent> K :call CocAction('doHover')<cr>
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>:set nospell<CR>
 
-set hidden
 set mouse=a
 set expandtab "Change tabs into spaces
 set grepprg=rg\ --vimgrep\ --ignore-case
