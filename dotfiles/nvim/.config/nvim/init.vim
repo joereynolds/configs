@@ -1,12 +1,13 @@
 call plug#begin()
     Plug 'machakann/vim-sandwich'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'dense-analysis/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'tomasiser/vim-code-dark'
+    Plug 'Lokaltog/vim-monotone'
 call plug#end()
 
 packadd cfilter
@@ -20,7 +21,7 @@ nmap ]a <Plug>(ale_next)
 nmap ]r <Plug>(coc-references)
 nmap ]d <Plug>(coc-definition)
 vmap ]f <Plug>(coc-format-selected)
-nmap <c-p> :CocList gfiles<cr>
+nmap <c-p> <Plug>(PickerEdit)
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 inoremap ``` ```<cr>```<esc>O
@@ -47,4 +48,4 @@ augroup init_vim
     " autocmd BufWritePre * :%s/\s\+$//e "Remove trailing whitespace
 augroup END
 
-colorscheme codedark
+colorscheme monotone
