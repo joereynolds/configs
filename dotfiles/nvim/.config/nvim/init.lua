@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
     Plug 'machakann/vim-sandwich'
-    Plug 'neoclide/coc.nvim'
+    Plug('neoclide/coc.nvim', {branch = 'release'})
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -21,6 +21,8 @@ vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
 
 vim.g.ale_sign_column_always = 1
 vim.g.ale_virtualtext_cursor = 1
+vim.g.loaded_matchparen = 1 --Crazy slow and annoying highlighting
+vim.g.loaded_netrwPlugin = 1 -- https://github.com/vim/vim/issues/5073
 
 local augroup = vim.api.nvim_create_augroup('init_vim', {clear = true})
 
@@ -66,6 +68,4 @@ vim.keymap.set('n', '<silent> K', ':call CocAction("doHover")<cr>')
 
 -- Find out the correct vim opts for these instead of being lazy and using cmd
 vim.cmd("command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!")
-vim.cmd("let loaded_matchparen = 1") --Crazy slow and annoying highlighting
-vim.cmd("let loaded_netrwPlugin = 1") -- https://github.com/vim/vim/issues/5073
 vim.cmd("call coc#add_extension('coc-haxe', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')")
