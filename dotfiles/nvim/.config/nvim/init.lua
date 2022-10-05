@@ -16,7 +16,6 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.swapfile = false
 vim.opt.inccommand = 'split' --Live substitution is the bees knees
-vim.opt.mouse = 'a'
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
 
 vim.g.ale_sign_column_always = 1
