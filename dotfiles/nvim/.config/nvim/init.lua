@@ -14,9 +14,9 @@ vim.call('plug#end')
 
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
-vim.opt.swapfile = false
 vim.opt.inccommand = 'split' --Live substitution is the bees knees
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
+vim.opt.swapfile = false
 
 vim.g.ale_sign_column_always = 1
 vim.g.ale_virtualtext_cursor = 1
@@ -63,7 +63,7 @@ vim.keymap.set('n', '[q', ':cprevious<cr>')
 vim.keymap.set('i', '```', '```<cr>```<esc>O')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
-vim.keymap.set('n', '<silent> K', ':call CocAction("doHover")<cr>')
+vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 
 -- Find out the correct vim opts for these instead of being lazy and using cmd
 vim.cmd("command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!")
