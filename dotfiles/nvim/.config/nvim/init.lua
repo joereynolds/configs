@@ -25,16 +25,6 @@ vim.g.loaded_netrwPlugin = 1 -- https://github.com/vim/vim/issues/5073
 
 local augroup = vim.api.nvim_create_augroup('init_vim', {clear = true})
 
--- Re source init.vim on save
-vim.api.nvim_create_autocmd(
-    'BufWritePost',
-    {
-        group = augroup,
-        pattern = 'init.vim',
-        command = 'source %'
-    }
-)
-
 -- Make quickfix span the entire window
 vim.api.nvim_create_autocmd(
     'FileType',
@@ -60,11 +50,8 @@ vim.keymap.set('v', ']f', '<Plug>(coc-format-selected)')
 vim.keymap.set('n', '<c-p>', '<Plug>(PickerEdit)')
 vim.keymap.set('n', ']q', ':cnext<cr>')
 vim.keymap.set('n', '[q', ':cprevious<cr>')
-vim.keymap.set('i', '```', '```<cr>```<esc>O')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 
--- Find out the correct vim opts for these instead of being lazy and using cmd
-vim.cmd("command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!")
 vim.cmd("call coc#add_extension('coc-haxe', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')")

@@ -2,21 +2,13 @@ eval `ssh-agent`
 
 alias vim="nvim"
 alias ls="ls --color=auto"
-alias movescreen="xrandr --output DP-1 --above eDP-1"
 alias gs="git status"
 alias gl="git log --oneline"
 
 . ~/.private-bashrc
+
 cdr() {
     cd $(git rev-parse --show-toplevel)
-}
-
-grab() {
-    curl -s $1 | pandoc --from=html --to=markdown | glow - -p -s light -w 80
-}
-
-fzgb() {
-    git checkout $(git branch | tr -d ' *' | fzy)
 }
 
 grepblame() {
@@ -32,18 +24,6 @@ all() {
         $1
         cd -
     done
-}
-
-reduce_brightness() {
-    brightness=$(echo "$(cat /sys/class/backlight/intel_backlight/brightness) - 1000" | bc)
-    echo "Reducing brightness to $brightness"
-    sudo bash -c "echo $brightness > /sys/class/backlight/intel_backlight/brightness"
-}
-
-increase_brightness() {
-    brightness=$(echo "$(cat /sys/class/backlight/intel_backlight/brightness) + 1000" | bc)
-    echo "Increasing brightness to $brightness"
-    sudo bash -c "echo $brightness > /sys/class/backlight/intel_backlight/brightness"
 }
 
 # enable bash completion in interactive shells
