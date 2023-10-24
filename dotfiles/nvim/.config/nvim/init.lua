@@ -6,7 +6,6 @@ vim.call('plug#begin')
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'dense-analysis/ale'
     Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'Lokaltog/vim-monotone'
@@ -18,8 +17,6 @@ vim.opt.inccommand = 'split' --Live substitution is the bees knees
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
 vim.opt.swapfile = false
 
-vim.g.ale_sign_column_always = 1
-vim.g.ale_virtualtext_cursor = 1
 vim.g.loaded_matchparen = 1 --Crazy slow and annoying highlighting
 vim.g.loaded_netrwPlugin = 1 -- https://github.com/vim/vim/issues/5073
 
@@ -52,8 +49,6 @@ vim.o.grepprg = 'rg --vimgrep --ignore-case'
 
 vim.keymap.set('n', ']b', ':bnext<cr>')
 vim.keymap.set('n', '[b', ':bprevious<cr>')
-vim.keymap.set('n', '[a',  '<Plug>(ale_previous)')
-vim.keymap.set('n', ']a',  '<Plug>(ale_next)')
 vim.keymap.set('n', ']r',  '<Plug>(coc-references)')
 vim.keymap.set('n', ']d',  '<Plug>(coc-definition)')
 vim.keymap.set('v', ']f', '<Plug>(coc-format-selected)')
