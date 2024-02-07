@@ -1,5 +1,15 @@
+[free-disk-space]
+label=free disk: 
+command=df -h | rg /dev/nvme0n1p2 | awk '{print $4}'
+interval=60
+
+[free-ram]
+label=free ram: 
+command=free -g | rg Mem | awk '{print $4}'
+interval=5
+
 [battery]
-label=battery 
+label=battery: 
 command=cat /sys/class/power_supply/BAT0/capacity
 interval=5
 
