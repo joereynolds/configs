@@ -4,6 +4,7 @@ alias vim="nvim"
 alias ls="ls --color=auto"
 alias gs="git status"
 alias gl="git log --oneline"
+alias xflux="xflux -l 53.19 -g -2.89"
 
 . ~/.private-bashrc
 
