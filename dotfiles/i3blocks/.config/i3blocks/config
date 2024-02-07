@@ -1,0 +1,8 @@
+[battery]
+label=battery 
+command=cat /sys/class/power_supply/BAT0/capacity
+interval=5
+
+[time]
+command=date '+%Y-%m-%d %T'
+interval=5
