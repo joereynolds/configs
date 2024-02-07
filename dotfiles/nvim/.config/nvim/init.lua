@@ -7,7 +7,6 @@ vim.call('plug#begin')
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'dense-analysis/ale'
-    Plug 'tmsvg/pear-tree'
     Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'Lokaltog/vim-monotone'
 vim.call('plug#end')
@@ -54,4 +53,4 @@ vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 
-vim.cmd("call coc#add_extension('coc-haxe', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html', 'coc-tslint', 'coc-tsserver', 'coc-snippets')")
+vim.cmd("call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
