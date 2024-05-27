@@ -13,6 +13,11 @@ label=battery:
 command=cat /sys/class/power_supply/BAT0/capacity
 interval=5
 
+[battery-status]
+label=status: 
+command=cat /sys/class/power_supply/BAT0/status 
+interval=5
+
 [time]
 command=date '+%Y-%m-%d %T'
 interval=5

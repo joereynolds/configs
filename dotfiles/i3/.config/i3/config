@@ -140,3 +140,5 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks
 }
+
+for_window [class="xpad"] floating enable
