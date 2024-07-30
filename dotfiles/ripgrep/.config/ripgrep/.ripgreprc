@@ -1,3 +1,4 @@
 -i
 --glob=!*.{svg}
 --glob=!*aristotle.sql
+--glob=!*NationalTrust.json

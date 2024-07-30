@@ -18,18 +18,6 @@ vim.opt.swapfile = false
 vim.g.loaded_matchparen = 1 --Crazy slow and annoying highlighting
 vim.g.loaded_netrwPlugin = 1 -- https://github.com/vim/vim/issues/5073
 
-local augroup = vim.api.nvim_create_augroup('init_vim', {clear = true})
-
--- Make quickfix span the entire window
-vim.api.nvim_create_autocmd(
-    'FileType',
-    {
-        group = augroup,
-        pattern = 'qf',
-        command = 'wincmd J'
-    }
-)
-
 vim.keymap.set('n', ']b', ':bnext<cr>')
 vim.keymap.set('n', '[b', ':bprevious<cr>')
 vim.keymap.set('n', ']r',  '<Plug>(coc-references)')
