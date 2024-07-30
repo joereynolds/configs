@@ -4,7 +4,6 @@ vim.call('plug#begin')
     Plug 'machakann/vim-sandwich'
     Plug('neoclide/coc.nvim', {branch = 'release'})
     Plug 'srstevenson/vim-picker'
-    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'stefandtw/quickfix-reflector.vim'
 vim.call('plug#end')
