@@ -12,6 +12,18 @@
 [merge]
 	tool = meld
 [diff]
-	tool = meld
+        external = difft
+	tool = difftastic
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
+
 [pull]
 	rebase = false
+[safe]
+	directory = /site

@@ -4,31 +4,18 @@ vim.call('plug#begin')
     Plug 'machakann/vim-sandwich'
     Plug('neoclide/coc.nvim', {branch = 'release'})
     Plug 'srstevenson/vim-picker'
-    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'stefandtw/quickfix-reflector.vim'
+    Plug 'stevearc/oil.nvim'
 vim.call('plug#end')
+
+require("oil").setup()
 
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = 'split' --Live substitution is the bees knees
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
 vim.opt.swapfile = false
-
-vim.g.loaded_matchparen = 1 --Crazy slow and annoying highlighting
-vim.g.loaded_netrwPlugin = 1 -- https://github.com/vim/vim/issues/5073
-
-local augroup = vim.api.nvim_create_augroup('init_vim', {clear = true})
-
--- Make quickfix span the entire window
-vim.api.nvim_create_autocmd(
-    'FileType',
-    {
-        group = augroup,
-        pattern = 'qf',
-        command = 'wincmd J'
-    }
-)
 
 vim.keymap.set('n', ']b', ':bnext<cr>')
 vim.keymap.set('n', '[b', ':bprevious<cr>')
@@ -41,6 +28,7 @@ vim.keymap.set('n', '[q', ':cprevious<cr>')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.cmd('packadd cfilter')
 vim.cmd("call coc#add_extension('coc-pyright', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
