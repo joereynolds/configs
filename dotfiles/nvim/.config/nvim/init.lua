@@ -31,4 +31,4 @@ vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.cmd('packadd cfilter')
-vim.cmd("call coc#add_extension('coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
+vim.cmd("call coc#add_extension('coc-pyright', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
