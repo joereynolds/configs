@@ -9,7 +9,7 @@ vim.call('plug#begin')
     Plug 'stevearc/oil.nvim'
 vim.call('plug#end')
 
-require("oil").setup()
+require("oil").setup({keymaps = {["<C-p>"] = false}})
 
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
