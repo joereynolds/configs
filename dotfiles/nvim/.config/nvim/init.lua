@@ -6,10 +6,7 @@ vim.call('plug#begin')
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-fugitive'
     Plug 'stefandtw/quickfix-reflector.vim'
-    Plug 'stevearc/oil.nvim'
 vim.call('plug#end')
-
-require("oil").setup({keymaps = {["<C-p>"] = false}})
 
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
@@ -27,7 +24,6 @@ vim.keymap.set('n', '[q', ':cprevious<cr>')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.cmd('packadd cfilter')
 vim.cmd("call coc#add_extension('coc-pyright', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
