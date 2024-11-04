@@ -12,6 +12,7 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = 'split' --Live substitution is the bees knees
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
+vim.opt.swapfile = false
 
 vim.keymap.set('n', ']b', ':bnext<cr>')
 vim.keymap.set('n', '[b', ':bprevious<cr>')
