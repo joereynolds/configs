@@ -23,8 +23,7 @@ yay -S meld
 yay -S kdenlive
 yay -S moreutils
 yay -S neovim
-yay -S nodejs
-yay -S pass
+yay -S keepassxc
 yay -S qbittorrent
 yay -S picom
 yay -S realtime-privileges # used with yabridgectl
@@ -43,7 +42,7 @@ yay -S z
 
 # Symlink our configs
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts ssh ripgrep picom -t ~/
+stow bash git i3 nvim dmenu-scripts ssh ripgrep picom tmux -t ~/
 cd -
 
 # Install and run vim plug
