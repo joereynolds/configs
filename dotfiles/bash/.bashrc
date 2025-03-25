@@ -16,17 +16,6 @@ grepblame() {
     git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done
 }
 
-# Does a thing in each directory
-# i.e. `all 'git status'` will run git status in each directory
-all() {
-    for directory in ./*; do
-        printf "\033[0;32m----==$directory==----\033[0m\n"
-        cd $directory
-        $1
-        cd -
-    done
-}
-
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then

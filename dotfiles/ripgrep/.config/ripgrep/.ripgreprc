@@ -2,3 +2,9 @@
 --glob=!*.{svg}
 --glob=!*aristotle.sql
 --glob=!*NationalTrust.json
+--glob=!*mapbox-gl.js
+--glob=!*twilio-widget.js
+--glob=!*.min.css
+--glob=!*min.js
+--glob=!*bundle.map
+--glob=!*bundle
