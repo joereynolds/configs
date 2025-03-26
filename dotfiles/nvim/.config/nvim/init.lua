@@ -6,11 +6,6 @@ vim.call('plug#begin')
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-fugitive'
     Plug 'stefandtw/quickfix-reflector.vim'
-
-    -- Work shite
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'rcarriga/nvim-dap-ui'
-    Plug 'nvim-neotest/nvim-nio'
     Plug 'github/copilot.vim'
 vim.call('plug#end')
 
@@ -29,30 +24,4 @@ vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 vim.cmd('packadd cfilter')
 vim.cmd("call coc#add_extension('coc-pyright', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
-
--- work shite below
-vim.cmd('set path +=/home/joe/Documents/work') -- So we can gf to stuff from anywhere
-local dap = require('dap')
-vim.keymap.set('n', '<M-b>', ":lua require'dap'.toggle_breakpoint()<cr>")
-vim.keymap.set('n', '<M-n>', ":lua require'dap'.continue()<cr>")
-vim.keymap.set('n', '<M-t>', ":lua require'dapui'.toggle()<cr>")
-require("dapui").setup()
-
-dap.adapters.php = {
-    type = "executable",
-    command = "node",
-    args = { os.getenv("HOME") .. "/code/vscode-php-debug/out/phpDebug.js" }
-}
-
-dap.configurations.php = {
-    {
-        type = 'php',
-        request = 'launch',
-        port = 9003,
-        name = 'Listen for xdebug',
-        hostname = '::',
-        pathMappings = {
-            ["/var/www/hyperion"] = "/home/joe/code/hyperion",
-        }
-    }
-}
+vim.cmd('set path +=/home/joe/Documents/work') -- So we can gf to stuff from anywhere (work related)
