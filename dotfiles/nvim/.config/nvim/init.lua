@@ -20,7 +20,10 @@ vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.cmd('packadd cfilter')
 vim.cmd('set path +=/home/joe/Documents/work') -- So we can gf to stuff from anywhere (work related)
 vim.diagnostic.config({ virtual_lines = true})
-vim.lsp.enable('intelephense') -- defined in ~/.config/nvim/lsp/intelephense.lua
+
+-- defined in ~/.config/nvim/lsp/
+vim.lsp.enable('intelephense') -- php
+vim.lsp.enable('pylsp')      -- python
 
 require('blink.cmp').setup {
     completion = {
