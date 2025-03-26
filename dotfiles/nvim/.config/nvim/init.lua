@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
     Plug 'machakann/vim-sandwich'
-    Plug('neoclide/coc.nvim', {branch = 'release'})
+    Plug 'saghen/blink.cmp'
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-fugitive'
     Plug 'stefandtw/quickfix-reflector.vim'
@@ -14,14 +14,16 @@ vim.opt.ignorecase = true
 vim.opt.inccommand = 'split' --Live substitution is the bees knees
 vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
 vim.opt.swapfile = false
-
-vim.keymap.set('n', ']r',  '<Plug>(coc-references)')
-vim.keymap.set('n', ']d',  '<Plug>(coc-definition)')
-vim.keymap.set('v', ']f', '<Plug>(coc-format-selected)')
 vim.keymap.set('n', '<c-p>', '<Plug>(PickerEdit)')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
-vim.keymap.set('n', 'K', ':call CocAction("doHover")<cr>')
 vim.cmd('packadd cfilter')
-vim.cmd("call coc#add_extension('coc-pyright', 'coc-json', 'coc-git', 'coc-phpls', 'coc-css', 'coc-html')")
 vim.cmd('set path +=/home/joe/Documents/work') -- So we can gf to stuff from anywhere (work related)
+
+vim.lsp.config['intelephense'] = {
+    cmd = { 'intelephense', '--stdio' },
+    filetypes = { 'php' },
+    root_markers = { 'composer.json' }
+}
+
+vim.lsp.enable('intelephense')
