@@ -19,7 +19,7 @@ vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.cmd('packadd cfilter')
 vim.cmd('set path +=/home/joe/Documents/work') -- So we can gf to stuff from anywhere (work related)
-vim.diagnostic.config({ virtual_lines = true})
+vim.diagnostic.config({ virtual_text = true})
 
 -- defined in ~/.config/nvim/lsp/
 vim.lsp.enable('intelephense') -- php
