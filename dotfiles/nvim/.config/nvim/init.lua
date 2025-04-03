@@ -5,7 +5,6 @@ vim.call('plug#begin')
     Plug ('saghen/blink.cmp', { tag = '*' })
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-fugitive'
-    Plug 'stefandtw/quickfix-reflector.vim'
     Plug 'github/copilot.vim'
 vim.call('plug#end')
 
