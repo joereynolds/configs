@@ -45,6 +45,9 @@ cd ./dotfiles
 stow bash git i3 nvim dmenu-scripts ssh ripgrep picom tmux -t ~/
 cd -
 
+this_dir=$(pwd)
+ln -sf this_dir/dotfiles/remind/.reminders ~/.reminders
+
 # Install and run vim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall > /dev/null
