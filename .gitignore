@@ -9,4 +9,4 @@ tags
 ticket
 _sql_gbb_batch
 _sql_add_endpoint
-./dotfiles/remind/.reminders
+dotfiles/remind/.reminders
