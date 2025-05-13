@@ -25,6 +25,7 @@ vim.lsp.enable('intelephense') -- php
 vim.lsp.enable('pylsp')      -- python
 
 require('blink.cmp').setup {
+    cmdline = { enabled = false },
     completion = {
         documentation = { auto_show = true },
     },

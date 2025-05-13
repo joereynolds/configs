@@ -23,7 +23,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 bindsym $mod+p exec "i3lock --color=000000"
-bindsym $mod+t exec rofi -modi TODO:~/bin/rofi-todo -show TODO
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
 bindsym $mod+c exec "flameshot gui"
 bindsym $mod+Shift+p exec "shutdown now"
@@ -145,3 +144,5 @@ bar {
 }
 
 for_window [class="xpad"] floating enable
+
+exec_always rem > ~/reminders.md && xpad -hf ~/reminders.md
