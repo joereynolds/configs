@@ -6,6 +6,7 @@ vim.call('plug#begin')
     Plug 'srstevenson/vim-picker'
     Plug 'tpope/vim-fugitive'
     Plug 'github/copilot.vim'
+    Plug 'stefandtw/quickfix-reflector.vim'
 vim.call('plug#end')
 
 vim.opt.expandtab = true
@@ -25,6 +26,7 @@ vim.lsp.enable('intelephense') -- php
 vim.lsp.enable('pylsp')      -- python
 
 require('blink.cmp').setup {
+    cmdline = { enabled = false },
     completion = {
         documentation = { auto_show = true },
     },
