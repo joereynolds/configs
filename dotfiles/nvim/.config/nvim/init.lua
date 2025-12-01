@@ -9,13 +9,13 @@ vim.call('plug#begin')
 vim.call('plug#end')
 
 vim.lsp.enable('intelephense') -- ~/.config/nvim/lsp/intelephense.lua
-vim.lsp.enable('pylsp') -- ~/.config/nvim/lsp/intelephense.lua
+vim.lsp.enable('pylsp') -- ~/.config/nvim/lsp/pylsp.lua
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
-vim.opt.inccommand = 'split' -- Live substitution is the bees knees
-vim.opt.shiftwidth = 4 -- indentation should be 4 spaces when we use >> and <<
+vim.opt.inccommand = 'split'
+vim.opt.path:append('/home/joe/Documents/work')
+vim.opt.shiftwidth = 4
 vim.opt.swapfile = false
-vim.opt.path:append('/home/joe/Documents/work') -- So we can gf to stuff from anywhere (work related)
 vim.keymap.set('n', '<c-p>', '<Plug>(PickerEdit)')
 vim.keymap.set('i', ';', '<esc>mzA;<esc>`z')
 vim.cmd('packadd cfilter')
