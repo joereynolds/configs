@@ -7,4 +7,11 @@
 --glob=!*.min.css
 --glob=!*min.js
 --glob=!*bundle.map
+--glob=!*css.map
 --glob=!*bundle
+--glob=!*_bootstrap.scss
+--glob=!*public/assets/static/norfolk/assets/js/vendor/
+--glob=!*public/js/lyc/letyourcottage.js
+--glob=!*static/javascript/tinymce/
+--glob=!*static/javascript/jquery/
+

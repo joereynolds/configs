@@ -3,17 +3,12 @@ eval `ssh-agent`
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias gs="git status"
-alias gl="git log --oneline"
 alias xflux="xflux -l 53.19 -g -2.89"
 
 . ~/.private-bashrc
 
 cdr() {
     cd $(git rev-parse --show-toplevel)
-}
-
-grepblame() {
-    git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done
 }
 
 # enable bash completion in interactive shells
@@ -37,7 +32,6 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/home/joe/bin"
-export MANPATH=~/Downloads/dasht-2.2.0/man:$MANPATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
