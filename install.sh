@@ -19,7 +19,6 @@ yay -S flameshot
 yay -S fzy
 yay -S google-chrome
 yay -S i3
-yay -S meld
 yay -S kdenlive
 yay -S moreutils
 yay -S neovim
@@ -35,18 +34,14 @@ yay -S spotify
 yay -S steam
 yay -S stow
 yay -S tiled
-yay -S tree
 yay -S yabridge
 yay -S yabridgectl
 yay -S z
 
 # Symlink our configs
 cd ./dotfiles
-stow bash git i3 nvim dmenu-scripts ssh ripgrep picom tmux -t ~/
+stow bash git i3 jn nvim dmenu-scripts ssh ripgrep picom tmux -t ~/
 cd -
-
-this_dir=$(pwd)
-ln -sf this_dir/dotfiles/remind/.reminders ~/.reminders
 
 # Install and run vim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

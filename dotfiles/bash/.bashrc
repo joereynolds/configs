@@ -20,7 +20,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. /usr/share/git/git-prompt.sh
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
@@ -32,9 +31,12 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/home/joe/bin"
+export PATH=/home/joe/.nimble/bin:$PATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+source /usr/share/git/git-prompt.sh
