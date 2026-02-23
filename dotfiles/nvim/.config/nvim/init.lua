@@ -22,7 +22,6 @@ vim.cmd('packadd cfilter')
 vim.diagnostic.config({ virtual_text = true})
 
 require('blink.cmp').setup {
-    cmdline = { enabled = false },
     completion = {
         documentation = { auto_show = true },
     },

@@ -31,6 +31,8 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/home/joe/bin"
+export PATH="$PATH:/home/joe/.local/bin"
+
 export PATH=/home/joe/.nimble/bin:$PATH
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"
@@ -40,3 +42,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 source /usr/share/git/git-prompt.sh
+
+# opencode
+export PATH=/home/joe/.opencode/bin:$PATH
