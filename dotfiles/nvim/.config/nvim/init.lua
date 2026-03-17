@@ -23,17 +23,5 @@ vim.cmd('packadd cfilter')
 vim.diagnostic.config({ virtual_text = true})
 vim.keymap.set('n', '<c-c><c-c>', function() require('sniprun').run() end, { silent = true })
 
-require('sniprun').setup({
-    display = { "TempFloatingWindow" },
-})
-
-require('blink.cmp').setup {
-    completion = {
-        documentation = { auto_show = true },
-        menu = {
-            draw = {
-                columns = { { 'label', 'label_description', gap = 1 }, { 'kind' } },
-            },
-        },
-    },
-}
+require('sniprun').setup({display = { "TempFloatingWindow" }})
+require('blink.cmp').setup()
