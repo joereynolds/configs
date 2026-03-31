@@ -25,6 +25,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+p exec "i3lock --color=000000"
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
 bindsym $mod+c exec "flameshot gui"
+bindsym $mod+t exec "todo"
 bindsym $mod+Shift+p exec "shutdown now"
 
 # change focus
