@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 # Assumes Manjaro
 rm -f ~/.bashrc
 

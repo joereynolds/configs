@@ -6,7 +6,7 @@ alias gs="git status"
 alias xflux="xflux -l 53.19 -g -2.89"
 alias r="vim ~/.reminders"
 
-. ~/.private-bashrc
+[ -f ~/.private-bashrc ] && . ~/.private-bashrc
 
 cdr() {
     cd $(git rev-parse --show-toplevel)

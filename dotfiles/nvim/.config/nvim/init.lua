@@ -9,7 +9,6 @@ vim.pack.add({
 
 vim.cmd.packadd('cfilter')
 vim.cmd.packadd('nvim.undotree')
-
 vim.lsp.enable('intelephense') -- ~/.config/nvim/lsp/intelephense.lua
 vim.lsp.enable('pylsp') -- ~/.config/nvim/lsp/pylsp.lua
 vim.opt.expandtab = true
