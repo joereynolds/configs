@@ -9,8 +9,7 @@ vim.pack.add({
 
 vim.cmd.packadd('cfilter')
 vim.cmd.packadd('nvim.undotree')
-vim.lsp.enable('intelephense') -- ~/.config/nvim/lsp/intelephense.lua
-vim.lsp.enable('pylsp') -- ~/.config/nvim/lsp/pylsp.lua
+vim.lsp.enable({'intelephense', 'pylsp'}) -- ~/.config/nvim/lsp
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = 'split'
