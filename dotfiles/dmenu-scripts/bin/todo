@@ -1,36 +1,61 @@
 #!/bin/sh
 #
-# Task management via dmenu.
-# Write and remove a task. When a task is removed it is saved
-# in a separate file so you can see what you've done on that day.
+# Task management via rofi.
 #
-# Select an existing entry to remove it from the file, or type a new entry to
-# add it.
+# Opens a rofi menu showing incomplete tasks from a markdown file.
+# Type a new entry to add it as "- [ ] <task>".
+# Select an existing entry to mark it as complete "- [x] <task> (YYYY-mm-dd)".
+# Completed tasks are hidden from the menu but remain in the file.
 
-file="$HOME/.todo"
+file="$HOME/Documents/jn/todo.md"
+mkdir -p "$(dirname "$file")"
 touch "$file"
-height=$(wc -l "$file" | awk '{print $1}')
-prompt="Add/delete a task: "
 
-today=$(date +%Y-%m-%d)
+prompt="Add/complete a task: "
 
-cmd=$(dmenu -l "$height" -p "$prompt" "$@" < "$file")
-while [ -n "$cmd" ]; do
- 	if grep -q "^$cmd\$" "$file"; then
+show_menu() {
+    incomplete=$(grep '^- \[ \] ' "$file" | sed 's/^- \[ \] //')
+    if [ -n "$incomplete" ]; then
+        echo "$incomplete" | rofi -dmenu -p "$prompt" -no-custom
+    else
+        rofi -dmenu -p "$prompt" < /dev/null
+    fi
+}
 
-                # If the command has been selected, delete it and
-                # append it to todays completed todo file
-		grep -v "^$cmd\$" "$file" > "$file.$$"
-                echo "$cmd" >> "$HOME/done-$today"
+while true; do
+    incomplete=$(grep '^- \[ \] ' "$file" | sed 's/^- \[ \] //')
 
-		mv "$file.$$" "$file"
-        height=$(( height - 1 ))
- 	else
-		echo "$cmd" >> "$file"
-		height=$(( height + 1 ))
- 	fi
+    if [ -n "$incomplete" ]; then
+        cmd=$(echo "$incomplete" | rofi -dmenu -p "$prompt")
+    else
+        cmd=$(rofi -dmenu -p "$prompt" < /dev/null)
+    fi
 
-	cmd=$(dmenu -l "$height" -p "$prompt" "$@" < "$file")
+    # Exit if nothing was entered (Escape pressed)
+    [ -z "$cmd" ] && break
+
+    # Check if the selected text matches an existing incomplete task
+    matched=0
+    while IFS= read -r line; do
+        task="${line#- \[ \] }"
+        if [ "$cmd" = "$task" ]; then
+            matched=1
+            break
+        fi
+    done <<EOF
+$(grep '^- \[ \] ' "$file")
+EOF
+
+    if [ "$matched" = "1" ]; then
+        # Mark the task as complete
+        today=$(date +%Y-%m-%d)
+        awk -v task="$cmd" -v d="$today" -v found=0 \
+            '!found && $0 == "- [ ] " task { print "- [x] " task " (" d ")"; found=1; next } { print }' \
+            "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+    else
+        # Add a new task
+        echo "- [ ] $cmd" >> "$file"
+    fi
 done
 
 exit 0

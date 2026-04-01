@@ -1,27 +1,28 @@
 [core]
-	editor = nvim
+    editor = nvim
 [commit]
-	verbose = True
+    verbose = True
 [user]
-	email = joereynolds952@gmail.com
-	name = Joe Reynolds
+    email = joereynolds952@gmail.com
+    name = Joe Reynolds
+
+[includeIf "gitdir:~/code/work/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/code/personal/"]
+    path = ~/.gitconfig-personal
+
 [alias]
-	files = !git diff master --name-only
-	vim-files = !nvim $(git files)
-        review = !nvim -p $(git files) +\"tabdo Gdiff master\"
-[merge]
-	tool = meld
-[diff]
-        external = difft
+    files = !git diff master --name-only
+    vim-files = !nvim $(git files)
+    review = !nvim -p $(git files) +\"tabdo Gdiff master\"
 [difftool]
-        prompt = false
-
+    prompt = false
 [pager]
-        difftool = true
-
+    difftool = true
 [pull]
-	rebase = false
+    rebase = false
 [safe]
-	directory = /site
+    directory = /site
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
