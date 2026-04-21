@@ -1,17 +1,13 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
-      "version": "'v1.6.0'"
+      "version": "'v1'"
     },
     "quickfix-reflector.vim": {
       "rev": "6a6a9e28e1713b9e9db99eec1e6672e5666c01b9",
       "src": "https://github.com/stefandtw/quickfix-reflector.vim"
-    },
-    "sniprun": {
-      "rev": "973acfe83cff35d13b95369a5606c47565b824fb",
-      "src": "https://github.com/michaelb/sniprun"
     },
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
