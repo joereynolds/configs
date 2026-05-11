@@ -13,7 +13,7 @@ makepkg -si
 cd -
 rm -rf yay-git
 
-yay -S dbeaver
+yay -S dbgate
 yay -S docker
 yay -S docker-compose
 yay -S dropbox
