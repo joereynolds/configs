@@ -5,6 +5,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "'v1'"
     },
+    "haunt.nvim": {
+      "rev": "fc910cde6cafa8c595245fe7f6c5b69106b02af9",
+      "src": "https://github.com/TheNoeTrevino/haunt.nvim"
+    },
     "quickfix-reflector.vim": {
       "rev": "6a6a9e28e1713b9e9db99eec1e6672e5666c01b9",
       "src": "https://github.com/stefandtw/quickfix-reflector.vim"
