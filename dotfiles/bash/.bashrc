@@ -3,6 +3,7 @@ eval `ssh-agent`
 alias vim="nvim"
 alias ls="ls --color=auto"
 alias gs="git status"
+alias gm="git checkout main"
 alias xflux="xflux -l 53.19 -g -2.89"
 alias r="vim ~/.reminders"
 
