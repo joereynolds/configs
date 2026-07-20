@@ -1,7 +1,11 @@
 [core]
     editor = nvim
+[help]
+    autocorrect = prompt
 [commit]
     verbose = True
+[alias]
+    purge = !git branch --merged | grep -v '\\*' | grep -v 'main' | grep -v 'master' | xargs -r git branch -d
 [includeIf "gitdir:~/code/work/"]
     path = ~/.gitconfig-work
 [includeIf "gitdir:~/code/personal/"]
