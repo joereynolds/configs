@@ -13,6 +13,11 @@ makepkg -si
 cd -
 rm -rf yay-git
 
+# Slowly moving to nix to keep my life interesting
+# nix profile install nixpkgs#stow
+# nix profile install nixpkgs#rofi
+# nix profile install github:joereynolds/jn
+
 yay -S dbgate
 yay -S docker
 yay -S docker-compose
@@ -35,7 +40,6 @@ yay -S rofi
 yay -S simplescreenrecorder
 yay -S spotify
 yay -S steam
-yay -S stow
 yay -S tiled
 yay -S yabridge
 yay -S yabridgectl
