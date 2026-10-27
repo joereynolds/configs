@@ -16,19 +16,19 @@ rm -rf yay-git
 # Slowly moving to nix to keep my life interesting
 # nix profile install nixpkgs#stow
 # nix profile install nixpkgs#rofi
+# nix profile install nixpkgs#fd
+# nix profile install nixpkgs#flameshot
+# nix profile install nixpkgs#moreutils
 # nix profile install github:joereynolds/jn
 
 yay -S dbgate
 yay -S docker
 yay -S docker-compose
 yay -S dropbox
-yay -S fd
-yay -S flameshot
 yay -S fzy
 yay -S google-chrome
 yay -S i3
 yay -S kdenlive
-yay -S moreutils
 yay -S neovim
 yay -S keepassxc
 yay -S qbittorrent
@@ -36,7 +36,6 @@ yay -S picom
 yay -S realtime-privileges # used with yabridgectl
 yay -S reaper-bin
 yay -S ripgrep
-yay -S rofi
 yay -S simplescreenrecorder
 yay -S spotify
 yay -S steam
