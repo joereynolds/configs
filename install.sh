@@ -14,6 +14,11 @@ cd -
 rm -rf yay-git
 
 # Slowly moving to nix to keep my life interesting
+# Games
+# nix profile install nixpkgs#wesnoth
+# nix profile install nixpkgs#fheroes2
+
+# Software
 # nix profile install github:joereynolds/jn
 
 # nix profile install nixpkgs#fd
