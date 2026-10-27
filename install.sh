@@ -14,34 +14,32 @@ cd -
 rm -rf yay-git
 
 # Slowly moving to nix to keep my life interesting
-# nix profile install nixpkgs#stow
-# nix profile install nixpkgs#rofi
-# nix profile install nixpkgs#fd
-# nix profile install nixpkgs#flameshot
-# nix profile install nixpkgs#moreutils
 # nix profile install github:joereynolds/jn
 
-yay -S dbgate
-yay -S docker
-yay -S docker-compose
+# nix profile install nixpkgs#fd
+# nix profile install nixpkgs#flameshot
+# nix profile install nixpkgs#kdenlive
+# nix profile install nixpkgs#keepassxc
+# nix profile install nixpkgs#moreutils
+# nix profile install nixpkgs#picom
+# nix profile install nixpkgs#ripgrep
+# nix profile install nixpkgs#rofi
+# nix profile install nixpkgs#simplescreenrecorder
+# nix profile install nixpkgs#stow
+# nix profile install nixpkgs#tiled
+# nix profile install nixpkgs#yabridge
+# nix profile install nixpkgs#yabridgectl
+# nix profile install nixpkgs#dbgate
+# nix profile install nixpkgs#docker
 yay -S dropbox
-yay -S fzy
 yay -S google-chrome
 yay -S i3
-yay -S kdenlive
 yay -S neovim
-yay -S keepassxc
 yay -S qbittorrent
-yay -S picom
 yay -S realtime-privileges # used with yabridgectl
 yay -S reaper-bin
-yay -S ripgrep
-yay -S simplescreenrecorder
 yay -S spotify
 yay -S steam
-yay -S tiled
-yay -S yabridge
-yay -S yabridgectl
 yay -S z
 
 # Symlink our configs
